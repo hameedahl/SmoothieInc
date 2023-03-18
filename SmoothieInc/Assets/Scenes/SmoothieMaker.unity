@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (5)
+      value: Slot5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -318,7 +318,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (4)
+      value: Slot4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -504,7 +504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (1)
+      value: Slot1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -826,7 +826,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (3)
+      value: Slot3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -1075,7 +1075,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (7)
+      value: Slot7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 4e9a32971c3564686beae6bf45a71277, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1fb7d8ee93cf544a5abbc20f434067b9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1476,7 +1476,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (2)
+      value: Slot2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
@@ -1688,7 +1688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7701178674853641133, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_Name
-      value: Slot (6)
+      value: Slot6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
