@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c3b5ef5cfb48a4640a3f65db8153ef73
+guid: 8dc656ba2f4a942f19860811c5cf2769
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,7 +104,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blender-sprite_0
+      name: blend-sprite_0
       rect:
         serializedVersion: 2
         x: 0
@@ -118,14 +118,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 370d5caad3bd441778e2551bf084d501
-      internalID: 223393326
+      spriteID: 435449498f6834716aca4daf086f9423
+      internalID: 225777154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_1
+      name: blend-sprite_1
       rect:
         serializedVersion: 2
         x: 512
@@ -139,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e5074c9cfda814f0b870ed4aa2fd4673
-      internalID: 74325468
+      spriteID: b25be921ef342400999e116ff244d3b0
+      internalID: -608829925
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_2
+      name: blend-sprite_2
       rect:
         serializedVersion: 2
         x: 1024
@@ -160,14 +160,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 070ec2842c16f4792bc83e889e725050
-      internalID: -668074511
+      spriteID: cee23d098e04543b4b7f89bfae43133c
+      internalID: 1212528922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_3
+      name: blend-sprite_3
       rect:
         serializedVersion: 2
         x: 1536
@@ -181,14 +181,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 103af00cc30154149a0dff940523eb9b
-      internalID: 1016227988
+      spriteID: 5920c90da66094377ac3c9655bf91156
+      internalID: -1418880627
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_4
+      name: blend-sprite_4
       rect:
         serializedVersion: 2
         x: 0
@@ -202,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5396ef030971a48a5b1dd892b80f53ff
-      internalID: 1625656755
+      spriteID: 454e4a5f44d16433980424274043cf9e
+      internalID: -203529359
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_5
+      name: blend-sprite_5
       rect:
         serializedVersion: 2
         x: 512
@@ -223,14 +223,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccfc17ddbfacc41ccbfd8af0d38a654c
-      internalID: 43319846
+      spriteID: f617d6c63378846ffaed477df4356f07
+      internalID: 712124348
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_6
+      name: blend-sprite_6
       rect:
         serializedVersion: 2
         x: 1024
@@ -244,14 +244,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d7634f635ace4a93b4bdda10adef65f
-      internalID: -531592799
+      spriteID: cb67e53c4635c4e4db9ed639657fd233
+      internalID: -1279174105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_7
+      name: blend-sprite_7
       rect:
         serializedVersion: 2
         x: 1536
@@ -265,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8bfd62d9c84de4e0c96c1e3b193b7747
-      internalID: -352900631
+      spriteID: 251af8e9098c94288bbe8a5d09fb81e8
+      internalID: 2033333202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blender-sprite_8
+      name: blend-sprite_8
       rect:
         serializedVersion: 2
         x: 0
@@ -286,29 +286,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fe66954f0c65045e687e94dcbbd4b997
-      internalID: -1207403466
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blender-sprite_9
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0022a494f9c5a443d8af4ec44d14560e
-      internalID: -330844846
+      spriteID: 36e60d769befa4ad89ba645c28aea8a3
+      internalID: 946007588
       vertices: []
       indices: 
       edges: []
@@ -324,16 +303,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      blender-sprite_4: 1625656755
-      blender-sprite_2: -668074511
-      blender-sprite_1: 74325468
-      blender-sprite_3: 1016227988
-      blender-sprite_0: 223393326
-      blender-sprite_5: 43319846
-      blender-sprite_6: -531592799
-      blender-sprite_9: -330844846
-      blender-sprite_8: -1207403466
-      blender-sprite_7: -352900631
+      blend-sprite_1: -608829925
+      blend-sprite_0: 225777154
+      blend-sprite_7: 2033333202
+      blend-sprite_8: 946007588
+      blend-sprite_3: -1418880627
+      blend-sprite_6: -1279174105
+      blend-sprite_5: 712124348
+      blend-sprite_4: -203529359
+      blend-sprite_2: 1212528922
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
