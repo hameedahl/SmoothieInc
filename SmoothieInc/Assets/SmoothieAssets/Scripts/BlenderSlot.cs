@@ -7,7 +7,12 @@ public class BlenderSlot : MonoBehaviour
 {
     public GameObject[] slots;
     public bool[] isFull;
+    private Animation anim;
 
+    // void Start() {
+    //     anim = this.GetComponent<Animation>();
+    // }
+ 
     public bool addedToSlot(DragDrop item) {
         /* check if item is close to blender */
         if (Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 2.3f &&
@@ -23,7 +28,19 @@ public class BlenderSlot : MonoBehaviour
                     }
                 }
         }
-
         return false;
+    }
+
+    public void stop() {
+        anim = this.GetComponent<Animation>();
+        Debug.Log("Here");
+        anim.Play("Idle-Blended");
+    }
+
+    public void start() {
+        anim = this.GetComponent<Animation>();
+        Debug.Log("asdlfkz");
+
+        anim.Play("Blending");
     }
 }
