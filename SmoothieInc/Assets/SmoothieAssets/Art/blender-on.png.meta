@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8dc656ba2f4a942f19860811c5cf2769
+guid: 2ad40b0bee44f4bc18decf0998b415f2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,11 +104,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: blend-sprite_0
+      name: blender-on_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 1536
+        y: 0
         width: 512
         height: 512
       alignment: 0
@@ -118,18 +118,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 435449498f6834716aca4daf086f9423
-      internalID: 225777154
+      spriteID: 013a565906fb94a5785369b9dbd57ac0
+      internalID: 210920502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blend-sprite_1
+      name: blender-on_1
       rect:
         serializedVersion: 2
         x: 512
-        y: 1536
+        y: 0
         width: 512
         height: 512
       alignment: 0
@@ -139,18 +139,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b25be921ef342400999e116ff244d3b0
-      internalID: -608829925
+      spriteID: 2ad7c2c1d02c94d3faff1f7fb95ad5c1
+      internalID: 1595660303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blend-sprite_2
+      name: blender-on_2
       rect:
         serializedVersion: 2
         x: 1024
-        y: 1536
+        y: 0
         width: 512
         height: 512
       alignment: 0
@@ -160,18 +160,18 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cee23d098e04543b4b7f89bfae43133c
-      internalID: 1212528922
+      spriteID: 7a60d0153afd14badb811a104aae6080
+      internalID: 544211493
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: blend-sprite_3
+      name: blender-on_3
       rect:
         serializedVersion: 2
         x: 1536
-        y: 1536
+        y: 0
         width: 512
         height: 512
       alignment: 0
@@ -181,113 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5920c90da66094377ac3c9655bf91156
-      internalID: -1418880627
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blend-sprite_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 454e4a5f44d16433980424274043cf9e
-      internalID: -203529359
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blend-sprite_5
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f617d6c63378846ffaed477df4356f07
-      internalID: 712124348
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blend-sprite_6
-      rect:
-        serializedVersion: 2
-        x: 1024
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cb67e53c4635c4e4db9ed639657fd233
-      internalID: -1279174105
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blend-sprite_7
-      rect:
-        serializedVersion: 2
-        x: 1536
-        y: 1024
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 251af8e9098c94288bbe8a5d09fb81e8
-      internalID: 2033333202
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: blend-sprite_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 512
-        width: 512
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 36e60d769befa4ad89ba645c28aea8a3
-      internalID: 946007588
+      spriteID: b9282f571d2fe49c994cc305d435dab7
+      internalID: -2108281810
       vertices: []
       indices: 
       edges: []
@@ -303,15 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      blend-sprite_1: -608829925
-      blend-sprite_0: 225777154
-      blend-sprite_7: 2033333202
-      blend-sprite_8: 946007588
-      blend-sprite_3: -1418880627
-      blend-sprite_6: -1279174105
-      blend-sprite_5: 712124348
-      blend-sprite_4: -203529359
-      blend-sprite_2: 1212528922
+      blender-on_3: -2108281810
+      blender-on_0: 210920502
+      blender-on_2: 544211493
+      blender-on_1: 1595660303
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
