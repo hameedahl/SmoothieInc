@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Blender
+  - Destination
   layers:
   - Default
   - TransparentFX
