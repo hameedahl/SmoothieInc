@@ -682,7 +682,6 @@ RectTransform:
   - {fileID: 1721381798}
   - {fileID: 783153641}
   - {fileID: 745146066}
-  - {fileID: 1334944024}
   m_Father: {fileID: 1880498619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -965,7 +964,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1703485234935726628, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Name
-      value: Food (2)
+      value: Banana
       objectReference: {fileID: 0}
     - target: {fileID: 2945650610478518531, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: slot
@@ -1177,116 +1176,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6192317328382839062, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
   m_PrefabInstance: {fileID: 7175752124080629465}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1334944023
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 742934343}
-    m_Modifications:
-    - target: {fileID: 1703485234935726628, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_Name
-      value: Food (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2945650610478518531, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: slot
-      value: 
-      objectReference: {fileID: 1267713466}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_RootOrder
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 4.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -1.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8968743999703371789, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 08ce6e29c73db4497b03dd369c1df02e, type: 3}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
---- !u!224 &1334944024 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
-  m_PrefabInstance: {fileID: 1334944023}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1570549136
 GameObject:
   m_ObjectHideFlags: 0
@@ -1440,7 +1329,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1703485234935726628, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Name
-      value: Food (1)
+      value: Strawberry
       objectReference: {fileID: 0}
     - target: {fileID: 2945650610478518531, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: slot
@@ -1917,7 +1806,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1703485234935726628, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Name
-      value: Food
+      value: Blueberry
       objectReference: {fileID: 0}
     - target: {fileID: 2945650610478518531, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: slot
