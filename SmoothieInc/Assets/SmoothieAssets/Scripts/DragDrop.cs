@@ -30,6 +30,7 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseDown() {
+        Debug.Log("drag");
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
