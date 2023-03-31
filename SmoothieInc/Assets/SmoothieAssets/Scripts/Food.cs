@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour
+public class Food : MonoBehaviour
 {
     private bool isMoving;
     public  bool inBlender;
@@ -16,6 +16,7 @@ public class DragDrop : MonoBehaviour
     private Vector3 resetPos;
 
     public  int slotNum;
+    public  int id;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
@@ -30,7 +31,6 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        Debug.Log("drag");
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
@@ -52,7 +52,6 @@ public class DragDrop : MonoBehaviour
         /* insert item into available slot if close to blender */
         addedToSlot = blender.addedToSlot(this);
         
-        // canvasGroup.alpha = 1f;
         if (!addedToSlot) {
             /* reset to starting position if not close to blender */
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
