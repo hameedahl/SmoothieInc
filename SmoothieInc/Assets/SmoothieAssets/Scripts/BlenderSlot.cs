@@ -24,7 +24,7 @@ public class BlenderSlot : MonoBehaviour
                         isFull[i] = true;
                         item.inBlender = true;
                         item.slotNum = i;
-                        gameHandler.playerOrder.Add(item.id);
+                        gameHandler.playerOrder.Add(new KeyValuePair<string, int>(item.category, item.id));
                         return true;
                     }
                 }

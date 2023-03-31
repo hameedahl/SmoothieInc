@@ -17,6 +17,7 @@ public class Food : MonoBehaviour
 
     public  int slotNum;
     public  int id;
+    public  string category;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
@@ -52,6 +53,7 @@ public class Food : MonoBehaviour
         /* insert item into available slot if close to blender */
         addedToSlot = blender.addedToSlot(this);
         
+        // canvasGroup.alpha = 1f;
         if (!addedToSlot) {
             /* reset to starting position if not close to blender */
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);

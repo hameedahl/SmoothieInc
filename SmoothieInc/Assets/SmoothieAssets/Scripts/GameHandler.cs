@@ -12,10 +12,10 @@ public class GameHandler : MonoBehaviour
     const int cupsSize = 3; // S M L
     const int specialSize = 5;
 
-    public List<int> playerOrder = new List<int>();
-    public List<int> order = new List<int>();
+   // public List<int> playerOrder = new List<int>();
+    public List<KeyValuePair<string, int>> playerOrder = new List<KeyValuePair<string, int>>();
+    public List<KeyValuePair<string, int>> order = new List<KeyValuePair<string, int>>();
     public bool orderComplete = false;
-
 
     // Start is called before the first frame update
     void Start() {
@@ -29,20 +29,25 @@ public class GameHandler : MonoBehaviour
     void Update()
     {
         if (orderComplete) {
+                for (int i = 0; i < playerOrder.Count; i++) {
+                    Debug.Log(playerOrder[i]);
+                }
             bool res = order.Count == playerOrder.Count && playerOrder.All(order.Contains);
             if (res) {
                 Debug.Log("Correct");
             } else {
                 Debug.Log("Wrong");
             }
+            // Application.Quit();
         }
     }
 
     public void generateOrder(int difficulty) { // 1 - 3
         Random rnd = new Random();
         if (difficulty == 1) {
-            order.Add(rnd.Next(solidsSize));
-            order.Add(rnd.Next(liquidsSize));
+            order.Add(new KeyValuePair<string, int>("Solids", rnd.Next(solidsSize)));
+            order.Add(new KeyValuePair<string, int>("Liquids", rnd.Next(liquidsSize)));
+
             //order.Add(rnd.Next(toppingsSize));
            // order.Add(rnd.Next(cupsSize));
            // order.Add(rnd.Next(specialSize));
