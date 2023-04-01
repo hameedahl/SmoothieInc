@@ -19,8 +19,11 @@ public class Food : MonoBehaviour
     public  int id;
     public  string category;
 
+    BlenderSlot blender;
+
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
+        blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
     }
 
     void Update() {
@@ -39,13 +42,13 @@ public class Food : MonoBehaviour
             startPosY = mousePos.y - this.transform.localPosition.y;
             // canvasGroup.alpha = .6f; /* make transparent while drag */
             isMoving = true;
+            // blender.pour(this);
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
-        BlenderSlot blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
-        
+
         if (inBlender) {
             /* make spot in blender available */
             blender.isFull[this.slotNum] = false;
