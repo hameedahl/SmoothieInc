@@ -8,12 +8,16 @@ public class BlenderSlot : MonoBehaviour
     public GameObject[] slots;
     public bool[] isFull;
     private Animator anim;
+    private Animator animBottom;
+    private Animator animTop;
+
     public GameHandler gameHandler;
     private bool isBlending = false;
 
-    // void Start() {
-    //      gameHandler = gameObject.FindGameObjectsWithTag("GameHandler").GetComponent<GameHandler>();
-    // }
+    void Start() {
+        animTop = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
+        animBottom = gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>();
+    }
  
     public bool addedToSlot(Food item) {
         /* check if item is close to blender */
@@ -34,6 +38,7 @@ public class BlenderSlot : MonoBehaviour
                         isFull[i] = true;
                         item.inBlender = true;
                         item.slotNum = i;
+                        gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty = false;
                         gameHandler.playerOrder.Add(new KeyValuePair<string, int>(item.category, item.id));
                         return true;
                     }
@@ -43,33 +48,23 @@ public class BlenderSlot : MonoBehaviour
         return false;
     }
 
-    public void pour(Food item) {
-        /* check if item is close to blender */
-        if (Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 2.3f &&
-            Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
-                if (item.category == "Liquids") {
-                    anim = item.GetComponent<Animator>();
-                    anim.Play("Pouring" + item.id);
-                    Debug.Log("hi");
-                    //item.transform.eulerAngles = Vector3.forward * 90;
-                } 
-        }
-    }
-
-    public void stop() {
+    public void stopBlender() {
         if (isBlending) {
-            anim = this.GetComponent<Animator>();
-            anim.Play("Idle-Blended");
+            animTop.Play("Idle-Blended-Top");
+            animBottom.Play("Idle-Bottom");
+            gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isBlended = true;
         }
     }
 
-    public void start() {
-        isBlending = true;
-        anim = this.GetComponent<Animator>();
-        anim.Play("Blending");
-        for (int i = 0; i < slots.Length; i++) { 
-            if (isFull[i]) { /* remove all items in the blender */
-                Destroy(slots[i]);
+    public void startBlender() {
+        if (!gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty) {
+            isBlending = true;
+            animTop.Play("Blending-Top");
+            animBottom.Play("Blending-Bottom");
+            for (int i = 0; i < slots.Length; i++) { 
+                if (isFull[i]) { /* remove all items in the blender */
+                    Destroy(slots[i]);
+                }
             }
         }
     }
