@@ -62,7 +62,7 @@ public class CarController : MonoBehaviour
         minTurnSpeed = Mathf.Clamp01(minTurnSpeed);
 
         rotationAngle -= steeringInput * turnFactor * minTurnSpeed;
-
+    
         rb.MoveRotation(rotationAngle);
     }
 

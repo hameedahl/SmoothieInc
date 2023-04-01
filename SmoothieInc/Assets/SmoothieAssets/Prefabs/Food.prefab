@@ -79,6 +79,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inBlender: 0
   slotNum: 0
+  id: 0
 --- !u!1 &4674378551312541211
 GameObject:
   m_ObjectHideFlags: 0

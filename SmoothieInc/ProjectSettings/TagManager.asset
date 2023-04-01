@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Blender
   - Destination
+  - GameHandler
+  - Cup
   layers:
   - Default
   - TransparentFX

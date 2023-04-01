@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour
+public class Food : MonoBehaviour
 {
     private bool isMoving;
     public  bool inBlender;
@@ -16,9 +16,14 @@ public class DragDrop : MonoBehaviour
     private Vector3 resetPos;
 
     public  int slotNum;
+    public  int id;
+    public  string category;
+
+    BlenderSlot blender;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
+        blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
     }
 
     void Update() {
@@ -30,7 +35,6 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        Debug.Log("drag");
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
@@ -38,13 +42,13 @@ public class DragDrop : MonoBehaviour
             startPosY = mousePos.y - this.transform.localPosition.y;
             // canvasGroup.alpha = .6f; /* make transparent while drag */
             isMoving = true;
+            // blender.pour(this);
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
-        BlenderSlot blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
-        
+
         if (inBlender) {
             /* make spot in blender available */
             blender.isFull[this.slotNum] = false;
