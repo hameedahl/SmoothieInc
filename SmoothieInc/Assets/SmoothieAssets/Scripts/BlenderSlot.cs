@@ -13,7 +13,7 @@ public class BlenderSlot : MonoBehaviour
 
     public GameHandler gameHandler;
     private bool isBlending = false;
-    private int orderIndex = 0;
+    // private int orderIndex = 0;
 
     void Start() {
         animTop = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -50,8 +50,18 @@ public class BlenderSlot : MonoBehaviour
     }
 
     private void addToOrder(Food item) {
-        gameHandler.playerOrder[orderIndex] = new KeyValuePair<string, int>(item.category, item.id);
-        orderIndex++;
+       // gameHandler.playerOrder[orderIndex] = new KeyValuePair<string, int>(item.category, item.id);
+        //orderIndex++;
+        KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
+        for (int i = 0; i < gameHandler.order.Length; i++) {
+            if (newPair.ToString() == gameHandler.order[i].ToString()) {
+                return;
+            }
+        }
+
+        gameHandler.playerScore -= 10;
+    
+        // (new KeyValuePair<string, int>(item.category, item.id));
     }
 
     public void stopBlender() {

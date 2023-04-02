@@ -5,13 +5,12 @@ using UnityEngine.EventSystems;
 
 public class Food : MonoBehaviour
 {
-    private bool isMoving;
     public  bool inBlender;
     private bool addedToSlot;
     private bool isInserted;
 
-    private float startPosX;
-    private float startPosY;
+    // private float startPosX;
+    // private float startPosY;
 
     private Vector3 resetPos;
 
@@ -26,28 +25,28 @@ public class Food : MonoBehaviour
         blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
     }
 
-    void Update() {
-        if (!inBlender && isMoving) {
-            Vector3 mousePos = MousePosition();
-            /* move object on drag; update position */
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
-        }
-    }
+    // void Update() {
+    //     if (!inBlender && isMoving) {
+    //         Vector3 mousePos = MousePosition();
+    //         /* move object on drag; update position */
+    //         this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+    //     }
+    // }
 
-    private void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)) {
-            Vector3 mousePos = MousePosition();
-            /* get mouse positions and move object */
-            startPosX = mousePos.x - this.transform.localPosition.x;
-            startPosY = mousePos.y - this.transform.localPosition.y;
-            // canvasGroup.alpha = .6f; /* make transparent while drag */
-            isMoving = true;
-            // blender.pour(this);
-        }
-    }
+    // private void OnMouseDown() {
+    //     if (Input.GetMouseButtonDown(0)) {
+    //         Vector3 mousePos = MousePosition();
+    //         /* get mouse positions and move object */
+    //         startPosX = mousePos.x - this.transform.localPosition.x;
+    //         startPosY = mousePos.y - this.transform.localPosition.y;
+    //         // canvasGroup.alpha = .6f; /* make transparent while drag */
+    //         isMoving = true;
+    //         // blender.pour(this);
+    //     }
+    // }
 
     private void OnMouseUp() {
-        isMoving = false;
+        // isMoving = false;
 
         if (inBlender) {
             /* make spot in blender available */
@@ -63,10 +62,10 @@ public class Food : MonoBehaviour
         }
     }
 
-    private Vector3 MousePosition() {
-        Vector3 mousePos;
-        mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos); /* align with camera */
-        return mousePos;
-    }
+    // private Vector3 MousePosition() {
+    //     Vector3 mousePos;
+    //     mousePos = Input.mousePosition;
+    //     mousePos = Camera.main.ScreenToWorldPoint(mousePos); /* align with camera */
+    //     return mousePos;
+    // }
 }
