@@ -28,6 +28,7 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
+            Debug.Log("in");
             singleObj = Instantiate(objToGrab); /* create new object from stack */
             Vector3 mousePos = MousePosition();
             /* objects spawn where mouse is */

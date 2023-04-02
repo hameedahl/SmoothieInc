@@ -23,7 +23,7 @@ public class BlenderSlot : MonoBehaviour
     public bool addedToSlot(Food item) {
         /* check if item is close to blender */
         if (Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 2.3f &&
-            Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 5f) {
+            Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
                 if (item.category == "Liquids") {
                     /* put item in slot above blender */
                     item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);

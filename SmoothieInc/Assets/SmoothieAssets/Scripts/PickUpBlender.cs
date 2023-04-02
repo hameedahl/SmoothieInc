@@ -16,11 +16,11 @@ public class PickUpBlender : MonoBehaviour
 
     private Vector3 resetPos;
 
-    private Cup cup;
+   // private Cup cup;
     private Animator anim;
 
     void Start() {
-        cup = GameObject.FindGameObjectsWithTag("Cup")[0].GetComponent<Cup>();
+       // cup = GameObject.FindGameObjectsWithTag("Cup")[0].GetComponent<Cup>();
         resetPos = this.transform.localPosition; /* get original pos of object */
         anim = this.GetComponent<Animator>();
     }
@@ -30,7 +30,7 @@ public class PickUpBlender : MonoBehaviour
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
-            pour();
+          //  pour();
         }
     }
 
@@ -67,23 +67,23 @@ public class PickUpBlender : MonoBehaviour
         // }
     }
 
-    private void pour() {
-        /* check if item is close to blender */
-        if (!isEmpty && isBlended && Mathf.Abs(cup.slot.transform.localPosition.x - this.transform.localPosition.x) <= .9f &&
-            Mathf.Abs(cup.slot.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
-                /* play pour anim? */
-                this.transform.position = new Vector3(cup.slot.transform.position.x, cup.slot.transform.position.y, cup.slot.transform.position.z);
-                this.transform.eulerAngles = Vector3.forward * 90;
-                /* play cup filling animation */
-                /* wait a few to put top back up */
-                // item.transform.eulerAngles = Vector3.forward / 90;
-                /* make dirty */
-                anim.Play("Idle-Dirty-Top");
-                isPouring = true;
+    // private void pour() {
+    //     /* check if item is close to blender */
+    //     if (!isEmpty && isBlended && Mathf.Abs(cup.slot.transform.localPosition.x - this.transform.localPosition.x) <= .9f &&
+    //         Mathf.Abs(cup.slot.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
+    //             /* play pour anim? */
+    //             this.transform.position = new Vector3(cup.slot.transform.position.x, cup.slot.transform.position.y, cup.slot.transform.position.z);
+    //             this.transform.eulerAngles = Vector3.forward * 90;
+    //             /* play cup filling animation */
+    //             /* wait a few to put top back up */
+    //             // item.transform.eulerAngles = Vector3.forward / 90;
+    //             /* make dirty */
+    //             anim.Play("Idle-Dirty-Top");
+    //             isPouring = true;
 
-                //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
-        }
-    }
+    //             //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+    //     }
+    // }
 
     private Vector3 MousePosition() {
         Vector3 mousePos;
