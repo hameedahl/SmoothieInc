@@ -30,12 +30,12 @@ public class GrabFromStack : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
             singleObj = Instantiate(objToGrab); /* create new object from stack */
             Vector3 mousePos = MousePosition();
-            // /* objects spawn where mouse is */
+            /* objects spawn where mouse is */
+         
+
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            // objToGrab.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, singleObj.gameObject.transform.localPosition.z);
-
             // canvasGroup.alpha = .6f; /* make transparent while drag */
             isMoving = true;
             // blender.pour(singleObj);
