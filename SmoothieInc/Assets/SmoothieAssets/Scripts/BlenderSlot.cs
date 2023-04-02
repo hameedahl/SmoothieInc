@@ -13,6 +13,7 @@ public class BlenderSlot : MonoBehaviour
 
     public GameHandler gameHandler;
     private bool isBlending = false;
+    private int orderIndex = 0;
 
     void Start() {
         animTop = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
@@ -31,21 +32,26 @@ public class BlenderSlot : MonoBehaviour
                     anim.Play("Pouring" + item.id);
                     return true;
                 } else {
-                for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-                    if (!isFull[i]) { /* snap object into slot if close enough */
-                        item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-                        slots[i] = item.gameObject;
-                        isFull[i] = true;
-                        item.inBlender = true;
-                        item.slotNum = i;
-                        gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                        gameHandler.playerOrder.Add(new KeyValuePair<string, int>(item.category, item.id));
-                        return true;
+                    for (int i = 0; i < slots.Length; i++) { /* find next available slot */
+                        if (!isFull[i]) { /* snap object into slot if close enough */
+                            item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
+                            slots[i] = item.gameObject;
+                            isFull[i] = true;
+                            item.inBlender = true;
+                            item.slotNum = i;
+                            gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty = false;
+                            addToOrder(item);
+                            return true;
+                        }
                     }
-                }
                 }
         }
         return false;
+    }
+
+    private void addToOrder(Food item) {
+        gameHandler.playerOrder[orderIndex] = new KeyValuePair<string, int>(item.category, item.id);
+        orderIndex++;
     }
 
     public void stopBlender() {
