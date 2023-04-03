@@ -1,0 +1,21 @@
+Array Format
+[SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID, LIQUID_ID, LIQUID_ID, LIQUID_ID, BLEND_TIME (0-2), CUP_SIZE (0-2), MIX_IN_ID, TOPPING_ID, TOPPING_ID]
+
+Solids
+0 - Banana
+1 - Strawberry
+2 - Blueberry
+
+Liquids
+0 - Milk
+1 - Honey
+
+Blend Times
+0 - Light Blend
+1 - Medium Blend
+2 - Strong Blend
+
+Cup Sizes
+0 - Small
+1 - Medium
+2 - Large
