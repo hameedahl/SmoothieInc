@@ -54,7 +54,9 @@ public class GrabFromStack : MonoBehaviour
         //     blender.isFull[this.slotNum] = false;
         // }
         /* insert item into available slot if close to blender */
-        blender.addedToSlot(singleObj);
+        if (this.tag != "Cover" || this.tag != "Cup" || this.tag != "Straw") {
+            blender.addedToSlot(singleObj);
+        }
         
         // canvasGroup.alpha = 1f;
         // if (!addedToSlot) {

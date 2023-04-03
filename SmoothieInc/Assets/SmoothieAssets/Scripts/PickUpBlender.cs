@@ -37,6 +37,7 @@ public class PickUpBlender : MonoBehaviour
         if (isPouring) {
             this.transform.eulerAngles = Vector3.forward / 90;
             anim.Play("Idle-Dirty-Top");
+            this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
         }
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = MousePosition();
@@ -77,7 +78,7 @@ public class PickUpBlender : MonoBehaviour
         
 
         /* check if item is close to blender */
-        if (cup.isEmpty && !isEmpty && isBlended && Mathf.Abs(cup.slot.transform.localPosition.x - this.transform.localPosition.x) <= .4f &&
+        if (cup.isEmpty && !isEmpty && isBlended && Mathf.Abs(cup.slot.transform.localPosition.x - this.transform.localPosition.x) <= 2.3f &&
             Mathf.Abs(cup.slot.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
                 /* play pour anim? */
                 this.transform.position = new Vector3(cup.slot.transform.position.x, cup.slot.transform.position.y, cup.slot.transform.position.z);

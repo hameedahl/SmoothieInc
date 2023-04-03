@@ -43,9 +43,9 @@ public class Cup : MonoBehaviour
 
     private void finishCup() {
         cover = GameObject.FindGameObjectWithTag("Cover");
-
         if (cover && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= .4f &&
-            Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
+            Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= .3f) {
+                Debug.Log("here");
                 cover.transform.position = new Vector3(coverSlot.transform.position.x, coverSlot.transform.position.y, coverSlot.transform.position.z);
         
                 isCovered = true;

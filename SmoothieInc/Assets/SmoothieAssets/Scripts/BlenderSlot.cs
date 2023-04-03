@@ -50,7 +50,7 @@ public class BlenderSlot : MonoBehaviour
         // Debug.Log(Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x));
         // Debug.Log(Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y));
 
-        if (Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) >= 2.3f && Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 4f ||
+        if (foodItem && Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) >= 2.3f && Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 4f ||
             Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 2f && Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) >= .4f) {
                 if (foodItem.category == "Liquids") {
                     /* put item in slot above blender */
