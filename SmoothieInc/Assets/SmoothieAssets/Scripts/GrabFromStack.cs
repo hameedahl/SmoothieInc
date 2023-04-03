@@ -12,14 +12,13 @@ public class GrabFromStack : MonoBehaviour
     private GameObject singleObj;
 
     private Vector3 resetPos;
-    BlenderSlot blender;
+    GameObject blender;
+    BlenderSlot blenderTop;
+    bool addedToSlot = false;
 
-    
-    // Start is called before the first frame update
     void Start() {
-        blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
-
-        // resetPos = singleObj.transform.localPosition; /* get original pos of object */
+        blender = GameObject.FindGameObjectWithTag("Blender");
+        blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
     }
 
     void Update() {
@@ -32,36 +31,30 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            
             singleObj = Instantiate(objToGrab); /* create new object from stack */
             Vector3 mousePos = MousePosition();
-            /* objects spawn where mouse is */
-         
-
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            // canvasGroup.alpha = .6f; /* make transparent while drag */
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+
+            /* make transparent while drag */
             isMoving = true;
-            // blender.pour(singleObj);
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
-        // if (inBlender) {
-        //     /* make spot in blender available */
-        //     blender.isFull[this.slotNum] = false;
-        // }
         /* insert item into available slot if close to blender */
-        if (this.tag != "Cover" || this.tag != "Cup" || this.tag != "Straw") {
-            blender.addedToSlot(singleObj);
+        if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
+            addedToSlot = blenderTop.addedToSlot(singleObj);
         }
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
         
-        // canvasGroup.alpha = 1f;
+       
         // if (!addedToSlot) {
-        //     /* reset to starting position if not close to blender */
-        //     this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+        //     /* reset to starting position */
+        //     Destroy(singleObj);
         // }
     }
 

@@ -14,7 +14,9 @@ public class BlenderSlot : MonoBehaviour
     public GameHandler gameHandler;
     public GameObject bottom;
     private PickUpBlender top;
-    Food foodItem;
+    Food itemInfo;
+
+    GameObject blender;
 
     private bool isBlending = false;
 
@@ -22,53 +24,40 @@ public class BlenderSlot : MonoBehaviour
         animTop = this.gameObject.GetComponent<Animator>();
         top = this.gameObject.GetComponent<PickUpBlender>();
         animBottom = bottom.gameObject.GetComponent<Animator>();
+        if (GameObject.FindGameObjectWithTag("Blender")) {
+            blender = GameObject.FindGameObjectWithTag("Blender");
+        }
     }
-    // public void OnDrop(PointerEventData eventData) {
-    //     if (eventData.pointerDrag != null) {
-    //         Debug.Log("HIHJHO:JUIOHJ:");
-    //           for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-    //                     if (!isFull[i]) { /* snap object into slot if close enough */
-    //                     //     eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = slots[i].GetComponent<RectTransform>().anchoredPosition;
-    //         Debug.Log("JUasdIOHJ:");
 
-    //                     //     //item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-    //                     //     slots[i] = eventData.pointerDrag.gameObject;
-    //                     //     isFull[i] = true;
-    //                     //     eventData.pointerDrag.GetComponent<Food>().inBlender = true;
-    //                     //     eventData.pointerDrag.GetComponent<Food>().slotNum = i;
-    //                     //    eventData.pointerDrag.GetComponent<PickUpBlender>().isEmpty = false;
-    //                     //     addToOrder(eventData.pointerDrag.GetComponent<Food>());
-    //                     //     //return true;
-    //                     }
-    //                 }
-    //     }
-    // }
- 
     public bool addedToSlot(GameObject item) {
-        foodItem = item.GetComponent<Food>();
+        itemInfo = item.GetComponent<Food>();
         /* check if item is close to blender */
-        // Debug.Log(Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x));
-        // Debug.Log(Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y));
+        Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
+        Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
 
-        if (foodItem && Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) >= 2.3f && Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 4f ||
-            Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 2f && Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) >= .4f) {
-                if (foodItem.category == "Liquids") {
+        if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= .01f &&  
+                        Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
+                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= .1f &&
+                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
+                if (itemInfo.category == "Liquids") {
                     /* put item in slot above blender */
                     item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
-                    //anim = item.GetComponent<Animator>();
+                    itemInfo.isPouring = true;
+                    // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
-                    //anim.Play("Pouring" + item.id);
+                    // anim.Play("Pouring" + itemInfo.id);
                     return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-                        if (!isFull[i]) { /* snap object into slot if close enough */
+                        if (!isFull[i] && i != slots.Length - 1) { /* snap object into slot if close enough (don't add to liquid slot)*/
                             item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-                            slots[i] = item.gameObject;
+                            slots[i] = item;
                             isFull[i] = true;
-                            foodItem.inBlender = true;
-                            foodItem.slotNum = i;
-                           top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                            addToOrder(foodItem);
+                            itemInfo.inBlender = true;
+                            itemInfo.slotNum = i;
+                            top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
+                            addToOrder(itemInfo);
+                            Destroy(item.GetComponent<Food>());   /* object is no longer draggable */
                             return true;
                         }
                    }
@@ -104,6 +93,7 @@ public class BlenderSlot : MonoBehaviour
             for (int i = 0; i < slots.Length; i++) { 
                 if (isFull[i]) { /* remove all items in the blender */
                     Destroy(slots[i]);
+                    isFull[i] = false;
                 }
             }
         }

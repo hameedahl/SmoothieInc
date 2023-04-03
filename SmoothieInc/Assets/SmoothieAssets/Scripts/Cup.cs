@@ -9,30 +9,24 @@ public class Cup : MonoBehaviour
     public GameObject slot;
     public bool isEmpty = true;
     private Animator anim;
-    private bool isCovered = false;
-    // private bool hasStraw = false;
+    public bool isCovered = false;
+    public bool hasStraw = false;
+
     private GameObject cover;
     private GameObject coverSlot;
-    // private GameObject strawSlot;
+    public Sprite coverArt;
 
+    private GameObject straw;
+    private GameObject strawSlot;
+    public Sprite strawArt;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
         anim = this.GetComponent<Animator>();
         coverSlot = this.transform.GetChild(1).gameObject;
-        // strawSlot = gameObject.Find("StrawSlot");
+        strawSlot = this.transform.GetChild(2).gameObject;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-   
-
-        // if (GameObject.FindGameObjectWithTag("Straw")) {
-        //     straw = GameObject.FindGameObjectWithTag("Straw");
-        // }
-
+    
+    void Update() {
         finishCup();
     }
 
@@ -43,13 +37,20 @@ public class Cup : MonoBehaviour
 
     private void finishCup() {
         cover = GameObject.FindGameObjectWithTag("Cover");
-        if (cover && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= .4f &&
-            Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= .3f) {
-                Debug.Log("here");
-                cover.transform.position = new Vector3(coverSlot.transform.position.x, coverSlot.transform.position.y, coverSlot.transform.position.z);
-        
+        straw = GameObject.FindGameObjectWithTag("Straw");
+        /* if straw and cover are close to cup, finish this smoothie */
+        if (cover && !isEmpty && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= 1f &&
+            Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= 1f) {
+                coverSlot.GetComponent<SpriteRenderer>().sprite = coverArt;
+                cover.SetActive(false);
                 isCovered = true;
         }
-    }
 
+        if (straw && isCovered && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .4f &&
+            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .4f) {
+                strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
+                straw.SetActive(false);
+                hasStraw = true;
+        }
+    }
 }

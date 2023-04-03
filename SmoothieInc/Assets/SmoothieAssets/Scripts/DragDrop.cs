@@ -31,13 +31,17 @@ public class DragDrop : MonoBehaviour
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            // canvasGroup.alpha = .6f; /* make transparent while drag */
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+
+             /* make transparent while drag */
             isMoving = true;
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+      
     }
 
     private Vector3 MousePosition() {

@@ -10,6 +10,7 @@ TagManager:
   - Cup
   - Straw
   - Cover
+  - Blender-Top
   layers:
   - Default
   - TransparentFX

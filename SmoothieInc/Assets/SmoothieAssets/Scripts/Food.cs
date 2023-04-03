@@ -7,6 +7,7 @@ public class Food : MonoBehaviour
 {
     public  bool inBlender;
     public  bool isMoving;
+    public  bool isPouring = false;
 
     private bool addedToSlot;
     private bool isInserted;
@@ -20,11 +21,13 @@ public class Food : MonoBehaviour
     public  int id;
     public  string category;
 
-    BlenderSlot blender;
+    BlenderSlot blenderTop;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
-        blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
+        if (GameObject.FindGameObjectWithTag("Blender-Top")) {
+            blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
+        }
     }
 
     void Update() {
@@ -41,27 +44,30 @@ public class Food : MonoBehaviour
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            // canvasGroup.alpha = .6f; /* make transparent while drag */
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
+
+            //this.GetComponent<SpriteRenderer>().sprite.alpha = .6f; /* make transparent while drag */
             isMoving = true;
-            // blender.pour(this);
+            if (isPouring) {
+                this.transform.eulerAngles = Vector3.forward / 90;
+                isPouring = false;
+                this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+            }
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
-// Debug.Log("hi");
-//         if (inBlender) {
-//             /* make spot in blender available */
-//             blender.isFull[this.slotNum] = false;
-//         }
-//         /* insert item into available slot if close to blender */
-//         addedToSlot = blender.addedToSlot(this);
-        
-//         // canvasGroup.alpha = 1f;
-//         if (!addedToSlot) {
-//             /* reset to starting position if not close to blender */
-//             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
-//         }
+        /* insert item into available slot if close to blender */
+        addedToSlot = blenderTop.addedToSlot(this.gameObject);
+
+
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        // if (!addedToSlot) {
+        //     Destroy(this);
+        //     /* reset to starting position if not close to blender */
+        //     // this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+        // }
     }
 
     private Vector3 MousePosition() {
