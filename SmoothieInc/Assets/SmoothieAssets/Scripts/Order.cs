@@ -7,8 +7,8 @@ public class Order : MonoBehaviour
 {
     const int tableSize = 5;
     const int solidsSize = 3; // banana, strawberries, blueberries
-    const int liquidsSize = 4; // milk
-    const int toppingsSize = 5;
+    const int liquidsSize = 1; // milk
+    const int toppingsSize = 0;
     const int cupsSize = 3; // S M L
     const int specialSize = 5;
     public GameHandler gameHandler;

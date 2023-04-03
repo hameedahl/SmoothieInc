@@ -39,8 +39,16 @@ public class GameHandler : MonoBehaviour
         }
 
         generateOrder(1);
-        for (int i = 0; i < order.Length; i++) {
-            Debug.Log(order[i]);
+        // for (int i = 0; i < order.Length; i++) {
+        //     if (order[i].)
+        //     Debug.Log(order[i]);
+        // }
+        foreach( KeyValuePair<string, int> kvp in order )
+        {
+           // if (kvp.Value != -1) {
+                Debug.Log(kvp.Key + kvp.Value);
+           // }
+
         }
     }
 

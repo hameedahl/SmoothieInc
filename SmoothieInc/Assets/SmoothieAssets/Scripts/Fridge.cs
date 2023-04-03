@@ -5,24 +5,22 @@ using UnityEngine.EventSystems;
 
 public class Fridge : MonoBehaviour
 {
-    Animator anim;
-    private SpriteRenderer sprite;
+    public GameObject open_door;
+    public GameObject closed_door;
 
     void Start() {
-        anim = gameObject.GetComponentInChildren<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        open_door.SetActive(false);
     }
 
     /* toggle fridge open and close on click */
     private void OnMouseDown() {
-        if (anim.GetBool("closed")) {
-            anim.SetBool("opened", true);
-            // sprite.sortingOrder -= 2;
-            anim.SetBool("closed", false);
+        if (open_door.activeSelf) {
+            open_door.SetActive(false);
+            closed_door.SetActive(true);
         } else {
-            anim.SetBool("closed", true);
-            // sprite.sortingOrder += 2;
-            anim.SetBool("opened", false);
+            closed_door.SetActive(false);
+            open_door.SetActive(true);
         }
     }
+
 }

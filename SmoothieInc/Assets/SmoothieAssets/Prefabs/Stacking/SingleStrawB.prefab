@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3613598466866584621}
   - component: {fileID: 3613598466866584620}
   - component: {fileID: 3613598466866584592}
-  - component: {fileID: 1949114123088518831}
   m_Layer: 0
   m_Name: SingleStrawB
   m_TagString: Untagged
@@ -99,8 +98,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2003719907
+  m_SortingLayer: 1
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fc18492f37c9348e686065edadbcd0ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -126,18 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inBlender: 0
+  isMoving: 0
   slotNum: 0
-  id: 1
+  id: 2
   category: Solids
---- !u!114 &1949114123088518831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3613598466866584623}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

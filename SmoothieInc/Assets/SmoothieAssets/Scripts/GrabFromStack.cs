@@ -12,9 +12,13 @@ public class GrabFromStack : MonoBehaviour
     private GameObject singleObj;
 
     private Vector3 resetPos;
+    BlenderSlot blender;
+
     
     // Start is called before the first frame update
     void Start() {
+        blender = GameObject.FindGameObjectWithTag("Blender").GetComponent<BlenderSlot>();
+
         // resetPos = singleObj.transform.localPosition; /* get original pos of object */
     }
 
@@ -28,7 +32,7 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("in");
+            
             singleObj = Instantiate(objToGrab); /* create new object from stack */
             Vector3 mousePos = MousePosition();
             /* objects spawn where mouse is */
@@ -45,6 +49,18 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseUp() {
         isMoving = false;
+        // if (inBlender) {
+        //     /* make spot in blender available */
+        //     blender.isFull[this.slotNum] = false;
+        // }
+        /* insert item into available slot if close to blender */
+        blender.addedToSlot(singleObj);
+        
+        // canvasGroup.alpha = 1f;
+        // if (!addedToSlot) {
+        //     /* reset to starting position if not close to blender */
+        //     this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+        // }
     }
 
     private Vector3 MousePosition() {
