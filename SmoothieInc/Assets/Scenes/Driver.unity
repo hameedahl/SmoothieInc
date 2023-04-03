@@ -1772,10 +1772,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad531b382bbb949d8bc11878c15fa768, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  solids: []
-  liquids: []
-  blendTimes: []
-  cupSizes: []
+  empty: {fileID: 21300000, guid: 437fb160ab67446d0afee3b47ac2c996, type: 3}
+  solids:
+  - {fileID: 21300000, guid: 2762f33a0849244f3a4e3d1ae154dcda, type: 3}
+  - {fileID: 21300000, guid: c239c9659788d4bfb904f0fdf2ffa6d4, type: 3}
+  - {fileID: 21300000, guid: ecdd2f7d6b3e945d7bf8919740c6b5cb, type: 3}
+  liquids:
+  - {fileID: 21300000, guid: e1685918193f74124baa0ca5c47b9924, type: 3}
+  - {fileID: 21300000, guid: e9786548dcd33483d9708b8eef7cf831, type: 3}
+  blendTimes:
+  - {fileID: 21300000, guid: a9c0e44f0506543fea1c1e89f7d17a26, type: 3}
+  - {fileID: 21300000, guid: b16516ad89dc74425b70651bae3f6cc2, type: 3}
+  - {fileID: 21300000, guid: f45c5e097bcb04171be9fa76a0ab38c5, type: 3}
+  cupSizes:
+  - {fileID: 21300000, guid: 5d8fa2fecb51441b083dca79f3b0aab8, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
   mixIns: []
   toppings: []
   solid1: {fileID: 247912566}
