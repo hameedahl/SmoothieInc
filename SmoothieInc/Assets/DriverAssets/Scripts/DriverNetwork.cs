@@ -10,7 +10,7 @@ public class DriverNetwork : NetworkBehaviour
     );
 
     // Start is called before the first frame update
-    public void arrive()
+    public void Arrive()
     {
         arrived.Value = true;
     }

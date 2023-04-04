@@ -5,6 +5,7 @@ using UnityEngine;
 public class DropZone : MonoBehaviour
 {
     public SpriteRenderer sr;
+    public bool currentOrder = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,20 @@ public class DropZone : MonoBehaviour
         if(col.tag == "Player")
         {
             sr.color = new Color(1f,1f,1f,0.1f);
+        }
+    }
+
+    public void SetCurrent(bool current)
+    {
+        if(current)
+        {
+            // currentOrder = true;
+            sr.enabled = true;
+        }
+        else
+        {
+            // currentOrder = false;
+            sr.enabled = false;
         }
     }
 }

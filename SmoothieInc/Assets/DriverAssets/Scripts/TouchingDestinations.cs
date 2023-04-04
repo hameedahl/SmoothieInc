@@ -21,4 +21,19 @@ public class TouchingDestinations : MonoBehaviour
             destinations.Remove(col.transform.parent.gameObject);
         }
     }
+
+    public List<GameObject> GetDestinations()
+    {
+        int shift = Random.Range(0,destinations.Count - 1);
+        for(int i = 0; i < shift; i++)
+        {
+            GameObject temp = destinations[0];
+            for(int j = 1; j < destinations.Count; j++)
+            {
+                destinations[j - 1] = destinations[j];
+            }
+            destinations[destinations.Count - 1] = temp;
+        }
+        return destinations;
+    }
 }
