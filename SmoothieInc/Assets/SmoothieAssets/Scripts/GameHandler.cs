@@ -1,9 +1,14 @@
-using System.Collections;
+// using System.Collections;
+// using System.Collections.Generic;
+// using System.Linq;
+// using UnityEngine;
+// using System;
+// using UnityEngine.UI;
+// using System.Random;
 using System.Collections.Generic;
-using System.Linq;
+using System.Collections;
 using UnityEngine;
-using System;
-using Random = System.Random;
+using UnityEngine.UI;
 
 public class GameHandler : MonoBehaviour
 {
@@ -29,8 +34,11 @@ public class GameHandler : MonoBehaviour
     const int emptySlot = -1;
 
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int> [arraySize];
+    private GameObject cup;
     public int playerScore = 100;
     public bool orderComplete = false;
+    public GameObject WinText;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -39,43 +47,55 @@ public class GameHandler : MonoBehaviour
         }
 
         generateOrder(1);
-        for (int i = 0; i < order.Length; i++) {
-            Debug.Log(order[i]);
+        // for (int i = 0; i < order.Length; i++) {
+        //     if (order[i].)
+        //     Debug.Log(order[i]);
+        // }
+        foreach( KeyValuePair<string, int> kvp in order )
+        {
+           // if (kvp.Value != -1) {
+                Debug.Log(kvp.Key + kvp.Value);
+           // }
+
         }
     }
 
 
     // Update is called once per frame
     void Update() {
-        if (orderComplete) {
+        cup = GameObject.FindGameObjectWithTag("Cup");
+        if (cup && cup.GetComponent<Cup>().hasStraw && cup.GetComponent<Cup>().isCovered) { /////***
+            Text scoreTextB = WinText.GetComponent<Text>();
+
             if (playerScore == 100) {
-                Debug.Log("Correct");
+                scoreTextB.text = "Correct!";
+                scoreTextB.color = Color.green;
             } else {
-                Debug.Log("Wrong");
+                scoreTextB.text = "Wrong :(";
+                scoreTextB.color = Color.red;
             }
         }
     }
 
     public void generateOrder(int difficulty) { 
-        Random rnd = new Random();
         if (difficulty == 1) {
             for (int i = 0; i < solidsIndex; i++) {
-                order[i] = new KeyValuePair<string, int>("Solids", rnd.Next(solidsRange));
+                order[i] = new KeyValuePair<string, int>("Solids", Random.Range(0, solidsRange));
             }
 
             for (int i = solidsIndex; i < liquidsIndex; i++) {
-                order[i] = new KeyValuePair<string, int>("Liquids", rnd.Next(liquidsRange)); 
+                order[i] = new KeyValuePair<string, int>("Liquids", Random.Range(0, liquidsRange)); 
             }
 
-            // order[timeIndex] = new KeyValuePair<string, int>("Time", rnd.Next(timeRange)); 
+            // order[timeIndex] = new KeyValuePair<string, int>("Time", Random.Range(0, timeRange)); 
 
-            // order[cupsIndex] = new KeyValuePair<string, int>("Cups", rnd.Next(cupsRange)); 
+            // order[cupsIndex] = new KeyValuePair<string, int>("Cups", Random.Range(0, cupsRange)); 
 
-            // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", rnd.Next(mixInRange)); 
+            // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", Random.Range(0, mixInIndex)); 
 
 
             // for (int i = mixInIndex + 1; i < toppingsIndex + 1; i++) {
-            //     order[i] = new KeyValuePair<string, int>("Toppings", rnd.Next(toppingsRange)); 
+            //     order[i] = new KeyValuePair<string, int>("Toppings", Random.Range(0, toppingsRange)); 
             // }
         // } else if (difficulty == 2) {
 

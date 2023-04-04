@@ -12,10 +12,13 @@ public class GrabFromStack : MonoBehaviour
     private GameObject singleObj;
 
     private Vector3 resetPos;
-    
-    // Start is called before the first frame update
+    GameObject blender;
+    BlenderSlot blenderTop;
+    bool addedToSlot = false;
+
     void Start() {
-        // resetPos = singleObj.transform.localPosition; /* get original pos of object */
+        blender = GameObject.FindGameObjectWithTag("Blender");
+        blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
     }
 
     void Update() {
@@ -28,23 +31,31 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            Debug.Log("in");
             singleObj = Instantiate(objToGrab); /* create new object from stack */
             Vector3 mousePos = MousePosition();
-            /* objects spawn where mouse is */
-         
-
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            // canvasGroup.alpha = .6f; /* make transparent while drag */
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+
+            /* make transparent while drag */
             isMoving = true;
-            // blender.pour(singleObj);
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
+        /* insert item into available slot if close to blender */
+        if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
+            addedToSlot = blenderTop.addedToSlot(singleObj);
+        }
+        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+        
+       
+        // if (!addedToSlot) {
+        //     /* reset to starting position */
+        //     Destroy(singleObj);
+        // }
     }
 
     private Vector3 MousePosition() {

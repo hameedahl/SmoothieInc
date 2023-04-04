@@ -4,44 +4,38 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 
-public class DragDrop : MonoBehaviour
+public class TurnOnClick : MonoBehaviour
 {
-    private bool isMoving;
+
     private float startPosX;
     private float startPosY;
 
-    private Vector3 resetPos;
-    
+    // private Vector3 resetPos;
     // Start is called before the first frame update
-    void Start() {
-        resetPos = this.transform.localPosition; /* get original pos of object */
+    void Start()
+    {
+        // this.transform.eulerAngles = Vector3.forward / 90;
+        
     }
 
-    void Update() {
-        if (isMoving) {
-            Vector3 mousePos = MousePosition();
-            /* move object on drag; update position */
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
-        }
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
-
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
-
-             /* make transparent while drag */
-            isMoving = true;
+            // canvasGroup.alpha = .6f; /* make transparent while drag */
+            this.transform.eulerAngles = Vector3.forward / 90;
         }
     }
 
     private void OnMouseUp() {
-        isMoving = false;
-        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-      
+        this.transform.eulerAngles = Vector3.forward * 90;
     }
 
     private Vector3 MousePosition() {

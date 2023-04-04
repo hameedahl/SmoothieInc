@@ -8,6 +8,9 @@ TagManager:
   - Destination
   - GameHandler
   - Cup
+  - Straw
+  - Cover
+  - Blender-Top
   layers:
   - Default
   - TransparentFX

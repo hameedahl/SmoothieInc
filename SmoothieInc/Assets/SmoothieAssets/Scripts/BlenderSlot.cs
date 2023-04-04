@@ -12,46 +12,61 @@ public class BlenderSlot : MonoBehaviour
     private Animator animTop;
 
     public GameHandler gameHandler;
+    public GameObject bottom;
+    private PickUpBlender top;
+    Food itemInfo;
+
+    GameObject blender;
+
     private bool isBlending = false;
-    // private int orderIndex = 0;
 
     void Start() {
-        animTop = gameObject.transform.GetChild(0).gameObject.GetComponent<Animator>();
-        animBottom = gameObject.transform.GetChild(1).gameObject.GetComponent<Animator>();
+        animTop = this.gameObject.GetComponent<Animator>();
+        top = this.gameObject.GetComponent<PickUpBlender>();
+        animBottom = bottom.gameObject.GetComponent<Animator>();
+        if (GameObject.FindGameObjectWithTag("Blender")) {
+            blender = GameObject.FindGameObjectWithTag("Blender");
+        }
     }
- 
-    public bool addedToSlot(Food item) {
+
+    public bool addedToSlot(GameObject item) {
+        itemInfo = item.GetComponent<Food>();
         /* check if item is close to blender */
-        if (Mathf.Abs(item.transform.localPosition.x - this.transform.localPosition.x) <= 2.3f &&
-            Mathf.Abs(item.transform.localPosition.y - this.transform.localPosition.y) <= 2.3f) {
-                if (item.category == "Liquids") {
+        // Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
+        // Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
+
+        if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= .01f &&  
+                        Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
+                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= .1f &&
+                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
+                if (itemInfo.category == "Liquids") {
                     /* put item in slot above blender */
                     item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
-                    anim = item.GetComponent<Animator>();
+                    itemInfo.isPouring = true;
+                    // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
-                    anim.Play("Pouring" + item.id);
+                    // anim.Play("Pouring" + itemInfo.id);
                     return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-                        if (!isFull[i]) { /* snap object into slot if close enough */
+                        if (!isFull[i] && i != slots.Length - 1) { /* snap object into slot if close enough (don't add to liquid slot)*/
                             item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-                            slots[i] = item.gameObject;
+                            slots[i] = item;
                             isFull[i] = true;
-                            item.inBlender = true;
-                            item.slotNum = i;
-                            gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                            addToOrder(item);
+                            itemInfo.inBlender = true;
+                            itemInfo.slotNum = i;
+                            top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
+                            addToOrder(itemInfo);
+                            Destroy(item.GetComponent<Food>());   /* object is no longer draggable */
                             return true;
                         }
-                    }
+                   }
                 }
         }
         return false;
     }
 
     private void addToOrder(Food item) {
-       // gameHandler.playerOrder[orderIndex] = new KeyValuePair<string, int>(item.category, item.id);
-        //orderIndex++;
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
         for (int i = 0; i < gameHandler.order.Length; i++) {
             if (newPair.ToString() == gameHandler.order[i].ToString()) {
@@ -60,26 +75,25 @@ public class BlenderSlot : MonoBehaviour
         }
 
         gameHandler.playerScore -= 10;
-    
-        // (new KeyValuePair<string, int>(item.category, item.id));
     }
 
     public void stopBlender() {
         if (isBlending) {
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
-            gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isBlended = true;
+            top.isBlended = true;
         }
     }
 
     public void startBlender() {
-        if (!gameObject.transform.GetChild(0).gameObject.GetComponent<PickUpBlender>().isEmpty) {
+        if (!top.isEmpty) {
             isBlending = true;
             animTop.Play("Blending-Top");
             animBottom.Play("Blending-Bottom");
             for (int i = 0; i < slots.Length; i++) { 
                 if (isFull[i]) { /* remove all items in the blender */
                     Destroy(slots[i]);
+                    isFull[i] = false;
                 }
             }
         }
