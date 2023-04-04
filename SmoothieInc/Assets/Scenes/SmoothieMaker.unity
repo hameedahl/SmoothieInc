@@ -889,6 +889,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[0].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1ddd68b74902e46ebba7bb6fae8badd9, type: 3}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[0].name
+      value: Fridge-Open
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: e60e1d50c1c354453b83c3b488bb1a56, type: 3}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[1].name
+      value: Fridge-Close
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[0].volume
+      value: 0.656
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939274143193633925, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
+      propertyPath: sounds.Array.data[1].volume
+      value: 0.656
+      objectReference: {fileID: 0}
     - target: {fileID: 4939274143193633926, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
       propertyPath: m_Name
       value: Audio Manager
