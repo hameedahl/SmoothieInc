@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Driver.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Christopher_Minimap_Driver.unity
+    guid: bee158d830b8443eebdd5bde2ef6cc3c
   m_configObjects: {}
