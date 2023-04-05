@@ -5,10 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/Driver.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/SmoothieMaker.unity
-    guid: 0690af6a45ded45ce93d069d61251826
+    path: Assets/Scenes/Christopher_Minimap_Driver.unity
+    guid: bee158d830b8443eebdd5bde2ef6cc3c
   m_configObjects: {}

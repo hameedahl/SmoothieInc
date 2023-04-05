@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class CarController : MonoBehaviour
+public class CarController : NetworkBehaviour
 {
     [Header("Car Settings")]
     public float driftFactor = 0.95f;
@@ -26,11 +27,15 @@ public class CarController : MonoBehaviour
 
     void FixedUpdate()
     {
+
+      if(IsHost) {
+
         ApplyEngineForce();
-
         KillOrthogonalVelocity();
-
         ApplySteering();
+
+      }
+
     }
 
     void ApplyEngineForce()
@@ -51,7 +56,7 @@ public class CarController : MonoBehaviour
         else
             rb.drag = 0;
 
-        Vector2 efVector = transform.up * accelerationInput * accelerationFactor; 
+        Vector2 efVector = transform.up * accelerationInput * accelerationFactor;
 
         rb.AddForce(efVector, ForceMode2D.Force);
     }
@@ -67,7 +72,7 @@ public class CarController : MonoBehaviour
             rotationAngle -= steeringInput * turnFactor * minTurnSpeed;
         else
             rotationAngle -= -steeringInput * turnFactor * minTurnSpeed;
-    
+
         rb.MoveRotation(rotationAngle);
     }
 
