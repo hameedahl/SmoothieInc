@@ -44,5 +44,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71638addadb3943b5a1bfc49b61968f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sounds: []
-  audioMixerGroup: {fileID: 0}
+  sounds:
+  - name: EngineOn
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EngineIn
+    clip: {fileID: 8300000, guid: f40920fcf073d4719bc1d493dbd2771f, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: EngineOut
+    clip: {fileID: 8300000, guid: 56a8871de864f423788bb4e32a12342c, type: 3}
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
