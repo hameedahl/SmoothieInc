@@ -10,6 +10,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameHandler : MonoBehaviour
 {
     const int solidsRange = 3; // banana, strawberries, blueberries
@@ -34,11 +35,12 @@ public class GameHandler : MonoBehaviour
     const int emptySlot = -1;
 
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int> [arraySize];
-    int[] valuesArray = new int[arraySize];
+    public int[] valuesArray = new int[arraySize];
     private GameObject cup;
     public int playerScore = 100;
     public bool orderComplete = false;
     public GameObject WinText;
+    public FillCard fillCard;
 
 
     // Start is called before the first frame update
@@ -52,13 +54,6 @@ public class GameHandler : MonoBehaviour
         //     if (order[i].)
         //     Debug.Log(order[i]);
         // }
-        foreach( KeyValuePair<string, int> kvp in order )
-        {
-           // if (kvp.Value != -1) {
-                Debug.Log(kvp.Key + kvp.Value);
-           // }
-
-        }
 
         for (int i = 0; i < arraySize; i++)
         {
@@ -70,6 +65,8 @@ public class GameHandler : MonoBehaviour
         {
             Debug.Log(value);
         }
+
+        fillCard.Initialize(valuesArray);
     }
 
 
