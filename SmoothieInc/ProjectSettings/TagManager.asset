@@ -11,6 +11,8 @@ TagManager:
   - Straw
   - Cover
   - Blender-Top
+  - Station0
+  - Station1
   layers:
   - Default
   - TransparentFX

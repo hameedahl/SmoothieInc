@@ -86,6 +86,7 @@ public class BlenderSlot : MonoBehaviour
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
             top.isBlended = true;
+            
         }
     }
 

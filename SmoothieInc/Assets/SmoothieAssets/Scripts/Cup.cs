@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static Unity.Burst.Intrinsics.X86.Avx;
 
 
 public class Cup : MonoBehaviour
@@ -19,20 +20,43 @@ public class Cup : MonoBehaviour
     private GameObject straw;
     private GameObject strawSlot;
     public Sprite strawArt;
+    public GameHandler gameHandler;
+    //private bool moveStation = false;
+
+    //[SerializeField] private Transform toppingStation;
+    //[SerializeField] private Transform blendingStation;
+
+    //[SerializeField] private CameraControl cam;
+    //private GameObject newCup;
+
 
     void Start() {
         anim = this.GetComponent<Animator>();
         coverSlot = this.transform.GetChild(1).gameObject;
         strawSlot = this.transform.GetChild(2).gameObject;
+        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
+        //toppingStation = GameObject.FindGameObjectWithTag("Station0").transform;
+        //blendingStation = GameObject.FindGameObjectWithTag("Station1").transform;
+
+        //cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>();
+
     }
-    
+
     void Update() {
         finishCup();
+        //if (moveStation) {
+        //    cam.MoveToNewStation(toppingStation, this);
+
+        //}
+
     }
 
     public void fillCup() {
         isEmpty = false;
         anim.Play("Fill-Cup");
+        //gameHandler.inStation0 = false;
+        //newCup = Instantiate(this.gameObject);
+        //newCup.transform.position = new Vector3(17.6f, -2.82f, 0);
     }
 
     private void finishCup() {
@@ -53,4 +77,12 @@ public class Cup : MonoBehaviour
                 hasStraw = true;
         }
     }
+
+    //private void OnMouseDown()
+    //{
+    //    if (gameHandler.drinkFinished)
+    //    {
+    //        moveStation = true;
+    //    }
+    //}
 }
