@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 4903660779188602220}
   - component: {fileID: 7004957858365187023}
   - component: {fileID: 841316118803548915}
+  - component: {fileID: 5359509448860461848}
   m_Layer: 5
   m_Name: FoodStack
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -52,7 +53,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeed3a7e20444e42a7976bce1a390fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objToGrab: {fileID: 0}
 --- !u!61 &7004957858365187023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -100,6 +100,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5359509448860461848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1703485234935726628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothieCam: {fileID: 0}
+  objToGrab: {fileID: 0}
 --- !u!1 &4674378551312541211
 GameObject:
   m_ObjectHideFlags: 0
