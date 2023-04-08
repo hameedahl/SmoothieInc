@@ -1421,9 +1421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe9f38f5959cc4de68a4fd01becd8211, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerScore: 100
+  valuesArray: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  playerScore: 0
+  itemWeight: 0
   orderComplete: 0
   WinText: {fileID: 1468283780}
+  fillCard: {fileID: 0}
 --- !u!1 &742934342
 GameObject:
   m_ObjectHideFlags: 0

@@ -46,6 +46,8 @@ public class BlenderSlot : MonoBehaviour
                     // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
                     // anim.Play("Pouring" + itemInfo.id);
+                    addToOrder(itemInfo);
+
                     return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
@@ -68,13 +70,15 @@ public class BlenderSlot : MonoBehaviour
 
     private void addToOrder(Food item) {
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
-        for (int i = 0; i < gameHandler.order.Length; i++) {
-            if (newPair.ToString() == gameHandler.order[i].ToString()) {
-                return;
+        if (gameHandler.playerScore < 100) {
+            for (int i = 0; i < gameHandler.order.Length; i++) {
+                if (newPair.ToString() == gameHandler.order[i].ToString()) {
+                    gameHandler.playerScore += gameHandler.itemWeight;
+                    return;
+                }
             }
+            gameHandler.playerScore -= gameHandler.itemWeight;
         }
-
-        gameHandler.playerScore -= 10;
     }
 
     public void stopBlender() {
