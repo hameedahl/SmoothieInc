@@ -20,7 +20,7 @@ public class PickUpBlender : MonoBehaviour
     private GameObject pourSlot;
 
     private Animator anim;
-    private Camera SmoothieCam;
+    public Camera SmoothieCam;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */

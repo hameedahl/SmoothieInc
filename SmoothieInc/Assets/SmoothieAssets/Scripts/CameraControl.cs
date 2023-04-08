@@ -17,13 +17,14 @@ public class CameraControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z),
-        ref velocity, speed);
+
     }
     
     public void MoveToNewStation(Transform newStation, Cup cup) {
+        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z),
+        ref velocity, speed);
         currentPosX = newStation.position.x;
-        cup.transform.position = new Vector3(17.6f, -2.82f, 0);
+        cup.transform.position = new Vector3(17.59f, -1.45f, 0);
     }
 }
 

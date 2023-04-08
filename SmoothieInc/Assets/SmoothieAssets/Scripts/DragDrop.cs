@@ -9,7 +9,7 @@ public class DragDrop : MonoBehaviour
     private bool isMoving;
     private float startPosX;
     private float startPosY;
-    private Camera SmoothieCam;
+    public Camera SmoothieCam;
 
     private Vector3 resetPos;
     
@@ -19,9 +19,9 @@ public class DragDrop : MonoBehaviour
     }
 
     void Update() {
-        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
-            SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
-        }
+        //if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+        //    SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
+        //}
 
         if (isMoving) {
             Vector3 mousePos = MousePosition();

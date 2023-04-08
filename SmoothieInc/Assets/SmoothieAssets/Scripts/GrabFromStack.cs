@@ -15,7 +15,7 @@ public class GrabFromStack : MonoBehaviour
     GameObject blender;
     BlenderSlot blenderTop;
     bool addedToSlot = false;
-    private Camera SmoothieCam;
+    public Camera SmoothieCam;
 
     void Start() {
         blender = GameObject.FindGameObjectWithTag("Blender");
@@ -23,9 +23,9 @@ public class GrabFromStack : MonoBehaviour
     }
 
     void Update() {
-        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
-            SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
-        }
+        //if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+        //    SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
+        //}
 
         if (isMoving) {
             Vector3 mousePos = MousePosition();
@@ -36,12 +36,19 @@ public class GrabFromStack : MonoBehaviour
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0)) {
-            singleObj = Instantiate(objToGrab); /* create new object from stack */
+
+           // singleObj = Instantiate(objToGrab, transform);
+
+            //singleObj.GetComponent<Food>().SmoothieCam = SmoothieCam;
+
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
+            singleObj = Instantiate(objToGrab, SmoothieCam.ScreenToWorldPoint(Input.mousePosition) + SmoothieCam.gameObject.transform.position
+           , Quaternion.identity); /* create new object from stack */
+            singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+            // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
 
             /* make transparent while drag */
             isMoving = true;

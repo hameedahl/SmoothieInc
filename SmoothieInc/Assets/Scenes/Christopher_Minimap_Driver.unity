@@ -3122,6 +3122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToGrab: {fileID: 693063009806989934, guid: f0049e4fa8d734546ae9ecbc6f7b6bdf, type: 3}
+  SmoothieCam: {fileID: 915007746}
 --- !u!1001 &737548600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3793,6 +3794,10 @@ PrefabInstance:
       propertyPath: objToGrab
       value: 
       objectReference: {fileID: 4215589394086021758, guid: 144f7c5c2b2ec4520a2e74051a21d7d8, type: 3}
+    - target: {fileID: 4903660779188602220, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 7004957858365187023, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Size.x
       value: 0.707372
@@ -3994,7 +3999,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 915007744}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 997.97, y: -0.17, z: -10}
+  m_LocalPosition: {x: 997.97, y: -0.08, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4863,6 +4868,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -89.177
       objectReference: {fileID: 0}
+    - target: {fileID: 6164002501391527687, guid: 5db4aa4f3d0a741c987a2debd5e47b1c, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5db4aa4f3d0a741c987a2debd5e47b1c, type: 3}
 --- !u!1 &1161814689
@@ -5629,6 +5638,10 @@ PrefabInstance:
       propertyPath: objToGrab
       value: 
       objectReference: {fileID: 3613598466866584623, guid: 87b2551f9a8ed46beab96ae89bac7151, type: 3}
+    - target: {fileID: 4903660779188602220, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 7004957858365187023, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Size.x
       value: 0.6626098
@@ -6818,10 +6831,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 577152741}
     m_Modifications:
+    - target: {fileID: 683772874109321957, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 2719918735347496072, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
       propertyPath: m_Name
       value: Milk
       objectReference: {fileID: 0}
+    - target: {fileID: 2820722884761289498, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 6055727472285447751, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -7402,6 +7423,10 @@ PrefabInstance:
       propertyPath: objToGrab
       value: 
       objectReference: {fileID: 6357238681055708901, guid: 0794c7bfe7a5846bbba65e43f69f6caa, type: 3}
+    - target: {fileID: 4903660779188602220, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 7004957858365187023, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
       propertyPath: m_Size.x
       value: 0.5664037
@@ -8541,6 +8566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmoothieCam: {fileID: 0}
 --- !u!114 &2005809968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8559,6 +8585,7 @@ MonoBehaviour:
   slotNum: 0
   id: 1
   category: Liquids
+  SmoothieCam: {fileID: 915007746}
 --- !u!212 &2005809969
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9143,6 +9170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SmoothieCam: {fileID: 915007746}
 --- !u!1001 &2081909792
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9477,6 +9505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objToGrab: {fileID: 7809265443200847290, guid: 3bf06c6ef20cd4839b61a20bab6c2132, type: 3}
+  SmoothieCam: {fileID: 915007746}
 --- !u!1001 &2116843132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9840,6 +9869,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8012040554185719375, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: SmoothieCam
+      value: 
+      objectReference: {fileID: 915007746}
     - target: {fileID: 8759245177960192188, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
       propertyPath: gameHandler
       value: 
