@@ -11,7 +11,7 @@ public class Fridge : MonoBehaviour
 
     void Start() {
         open_door.SetActive(false);
-        // audioMan = gameObject.Find("Audio Manager").GetComponent<AudioManager>();
+        //audioMan = gameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
     /* toggle fridge open and close on click */

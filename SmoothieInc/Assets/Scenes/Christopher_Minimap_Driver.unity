@@ -4008,9 +4008,10 @@ GameObject:
   - component: {fileID: 915007747}
   - component: {fileID: 915007746}
   - component: {fileID: 915007745}
+  - component: {fileID: 915007748}
   m_Layer: 0
   m_Name: Main Smoothie Camera
-  m_TagString: MainCamera
+  m_TagString: Smoothie-Camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4081,6 +4082,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &915007748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915007744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ebf25a1ebf7847708bc85044d7dc16b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.5
 --- !u!1001 &919764132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7256,9 +7270,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   valuesArray: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   playerScore: 100
+  itemWeight: 0
   orderComplete: 0
+  drinkFinished: 0
   WinText: {fileID: 1519929947}
   fillCard: {fileID: 1739170484}
+  toppingStation: {fileID: 0}
+  blendingStation: {fileID: 0}
+  cam: {fileID: 0}
 --- !u!4 &1652144663
 Transform:
   m_ObjectHideFlags: 0

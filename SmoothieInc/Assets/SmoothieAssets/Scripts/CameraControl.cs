@@ -24,7 +24,6 @@ public class CameraControl : MonoBehaviour
     public void MoveToNewStation(Transform newStation, Cup cup) {
         currentPosX = newStation.position.x;
         cup.transform.position = new Vector3(17.6f, -2.82f, 0);
-
     }
 }
 

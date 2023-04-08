@@ -9,11 +9,13 @@ public class DragDrop : MonoBehaviour
     private bool isMoving;
     private float startPosX;
     private float startPosY;
+    private Camera SmoothieCam;
 
     private Vector3 resetPos;
     
     // Start is called before the first frame update
     void Start() {
+        SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
         resetPos = this.transform.localPosition; /* get original pos of object */
     }
 
@@ -47,7 +49,7 @@ public class DragDrop : MonoBehaviour
     private Vector3 MousePosition() {
         Vector3 mousePos;
         mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos); /* align with camera */
+        mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
         return mousePos;
     }
 }
