@@ -20,6 +20,8 @@ public class Food : MonoBehaviour
     public  int slotNum;
     public  int id;
     public  string category;
+    private Camera SmoothieCam;
+
 
     BlenderSlot blenderTop;
 
@@ -31,6 +33,10 @@ public class Food : MonoBehaviour
     }
 
     void Update() {
+        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+            SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
+        }
+
         if (isMoving) {
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */
@@ -73,7 +79,7 @@ public class Food : MonoBehaviour
     private Vector3 MousePosition() {
         Vector3 mousePos;
         mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos); /* align with camera */
+        mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
         return mousePos;
     }
 }

@@ -8933,7 +8933,7 @@ GameObject:
   - component: {fileID: 2013853939}
   m_Layer: 0
   m_Name: Topping-Station
-  m_TagString: Untagged
+  m_TagString: Station1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10203,7 +10203,7 @@ GameObject:
   - component: {fileID: 2128210825}
   m_Layer: 0
   m_Name: Blending-Station
-  m_TagString: Untagged
+  m_TagString: Station0
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

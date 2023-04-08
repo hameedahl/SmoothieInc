@@ -55,8 +55,6 @@ public class GameHandler : MonoBehaviour
         blendingStation = GameObject.FindGameObjectWithTag("Station0").transform;
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
 
-        cam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraControl>();
-
         for (int i = 0; i < arraySize; i++) {
             order[i] = new KeyValuePair<string, int>("", emptySlot);
         }
@@ -88,6 +86,11 @@ public class GameHandler : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+            cam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<CameraControl>();
+
+        }
+
         cup = GameObject.FindGameObjectWithTag("Cup");
         if (cup && !cup.GetComponent<Cup>().isEmpty) { /////***
             if (inStation0)

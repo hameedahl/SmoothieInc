@@ -15,11 +15,14 @@ public class DragDrop : MonoBehaviour
     
     // Start is called before the first frame update
     void Start() {
-        SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
         resetPos = this.transform.localPosition; /* get original pos of object */
     }
 
     void Update() {
+        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+            SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
+        }
+
         if (isMoving) {
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */

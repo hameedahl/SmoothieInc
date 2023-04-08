@@ -20,6 +20,7 @@ public class PickUpBlender : MonoBehaviour
     private GameObject pourSlot;
 
     private Animator anim;
+    private Camera SmoothieCam;
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
@@ -27,6 +28,10 @@ public class PickUpBlender : MonoBehaviour
     }
 
     void Update() {
+        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+            SmoothieCam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<Camera>();
+        }
+
         if (!isEmpty && isBlended && isMoving) {
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */
@@ -81,7 +86,7 @@ public class PickUpBlender : MonoBehaviour
     private Vector3 MousePosition() {
         Vector3 mousePos;
         mousePos = Input.mousePosition;
-        mousePos = Camera.main.ScreenToWorldPoint(mousePos); /* align with camera */
+        mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
         return mousePos;
     }
 }
