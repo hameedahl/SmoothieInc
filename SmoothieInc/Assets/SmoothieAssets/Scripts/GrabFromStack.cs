@@ -30,7 +30,8 @@ public class GrabFromStack : MonoBehaviour
         if (isMoving) {
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */
-            singleObj.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, singleObj.gameObject.transform.localPosition.z);
+            singleObj.gameObject.transform.position = MousePosition();
+            // new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, singleObj.gameObject.transform.localPosition.z);
         }
     }
 
@@ -45,8 +46,7 @@ public class GrabFromStack : MonoBehaviour
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            singleObj = Instantiate(objToGrab, SmoothieCam.ScreenToWorldPoint(Input.mousePosition) + SmoothieCam.gameObject.transform.position
-           , Quaternion.identity); /* create new object from stack */
+            singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
             singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
             // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
 
@@ -74,6 +74,7 @@ public class GrabFromStack : MonoBehaviour
         Vector3 mousePos;
         mousePos = Input.mousePosition;
         mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
+        mousePos.z = 20f;
         return mousePos;
     }
 }
