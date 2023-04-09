@@ -10,7 +10,6 @@ public class PickUpBlender : MonoBehaviour
     public bool isBlended = false;
     public bool isPouring = false;
 
-
     private float startPosX;
     private float startPosY;
 
@@ -64,16 +63,20 @@ public class PickUpBlender : MonoBehaviour
     }
 
     private void pour() {
-        cup = GameObject.FindGameObjectWithTag("Cup").GetComponent<Cup>();
+        if (GameObject.FindGameObjectWithTag("Cup"))
+        {
+            cup = GameObject.FindGameObjectWithTag("Cup").GetComponent<Cup>();
 
-        /* check if item is close to blender */
-        // Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
-        // Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
+        }
+
+        /* check if item is close to cup */
+        Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
+        Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
         if (cup && cup.isEmpty && !isEmpty && isBlended && 
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 10.5f &&
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 8.2f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 2f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .4f) {
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= -1.7f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 0f) {
                  //pourSlot = cup.transform.GetChild(0).gameObject;
                // this.transform.position = new Vector3(pourSlot.transform.position.x, pourSlot.transform.position.y, pourSlot.transform.position.z);
                 this.transform.eulerAngles = Vector3.forward * 90;

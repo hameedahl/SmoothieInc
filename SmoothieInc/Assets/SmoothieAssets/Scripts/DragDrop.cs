@@ -16,7 +16,7 @@ public class DragDrop : MonoBehaviour
     private bool isFood = false;
     private bool isFoodStack = false;
     private BlenderSlot blenderTop;
-    private Food food;
+    private Food foodInfo;
 
     /* FoodStack variables */
     public GameObject objToGrab;
@@ -31,10 +31,16 @@ public class DragDrop : MonoBehaviour
     }
 
     void Update() {
-        if (isMoving && this.tag != "FoodStack") {
+        if (isMoving) {
             Vector3 mousePos = MousePosition();
             /* move object on drag; update position */
-            this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            if (this.tag == "FoodStack") {
+                /* move object on drag; update position */
+                singleObj.gameObject.transform.position = MousePosition();
+            }
+            else {
+                this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
+            }
         }
     }
 
@@ -46,37 +52,40 @@ public class DragDrop : MonoBehaviour
             startPosY = mousePos.y - this.transform.localPosition.y;
             /* make transparent while drag */
             // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
-            isMoving = true;
 
             if (this.tag == "Food") {
-                food = this.GetComponent<Food>();
+                foodInfo = this.GetComponent<Food>();
                 isFood = true;
+                isFoodStack = false;
+
                 pourLiquid(); /* check if liquid is pouring */
             } else if (this.tag == "FoodStack") {
+                isFoodStack = true;
+                isFood = false;
                 singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
                 singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
-                food = singleObj.GetComponent<Food>();
+                foodInfo = singleObj.GetComponent<Food>();
             }
+            isMoving = true;
+
         }
     }
 
     private void OnMouseUp() {
         isMoving = false;
-
         if (isFood) {
-            
             if (!blenderTop.addedToSlot(this.gameObject)) {
                 /* reset to starting position if not inserted */
-                Destroy(food);
+                //Destroy(gameObject);
                 //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
             }
         } else if (isFoodStack) {
             /* insert item into available slot if close to blender */
             if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
-                if (!blenderTop.addedToSlot(this.singleObj))
+                if (!blenderTop.addedToSlot(singleObj))
                 {
                     /* reset to starting position if not inserted */
-                    Destroy(food);
+                    //Destroy(singleObj);
                     //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
                 }
             }
@@ -85,10 +94,6 @@ public class DragDrop : MonoBehaviour
     }
 
     private Vector3 MousePosition() {
-        //Vector3 mousePos;
-        //mousePos = Input.mousePosition;
-        //mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
-        //return mousePos;
         Vector3 mousePos;
         mousePos = Input.mousePosition;
         mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
@@ -98,9 +103,9 @@ public class DragDrop : MonoBehaviour
 
     private void pourLiquid() {
         /* rotate sprite to OG position */
-        if (food.isPouring) {
+        if (foodInfo.isPouring) {
             this.transform.eulerAngles = Vector3.forward / 90;
-            food.isPouring = false;
+            foodInfo.isPouring = false;
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
         }
     }

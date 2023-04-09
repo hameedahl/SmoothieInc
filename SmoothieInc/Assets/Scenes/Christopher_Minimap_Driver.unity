@@ -1323,7 +1323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 317090379}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: -3.3, z: 0}
+  m_LocalPosition: {x: -0.09, y: -3.49, z: 0}
   m_LocalScale: {x: 10.872508, y: 10.872508, z: 10.872508}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2138,7 +2138,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.192
+      value: 3.71
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2334,7 +2334,7 @@ RectTransform:
   m_Children:
   - {fileID: 197788925}
   m_Father: {fileID: 938500435}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2805,8 +2805,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 679575401}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.15, y: -0.33, z: 0}
-  m_LocalScale: {x: 1.6489736, y: 1.6489736, z: 1.6489736}
+  m_LocalPosition: {x: -6.09, y: -0.3125, z: 0}
+  m_LocalScale: {x: 1.561512, y: 1.561512, z: 1.561512}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2023576413}
@@ -3010,9 +3010,10 @@ GameObject:
   - component: {fileID: 731201164}
   - component: {fileID: 731201163}
   - component: {fileID: 731201162}
+  - component: {fileID: 731201165}
   m_Layer: 0
   m_Name: CoverStack
-  m_TagString: Untagged
+  m_TagString: FoodStack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3122,6 +3123,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeed3a7e20444e42a7976bce1a390fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &731201165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731201160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothieCam: {fileID: 915007746}
+  objToGrab: {fileID: 693063009806989934, guid: f0049e4fa8d734546ae9ecbc6f7b6bdf, type: 3}
 --- !u!1001 &737548600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3520,11 +3535,11 @@ RectTransform:
   m_Children:
   - {fileID: 125942598}
   m_Father: {fileID: 938500435}
-  m_RootOrder: 3
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -722.9516, y: 92}
+  m_AnchoredPosition: {x: -179.35161, y: 109.8}
   m_SizeDelta: {x: 65.501, y: 27.661}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &869222643
@@ -4265,10 +4280,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1204149375}
-  - {fileID: 473750995}
   - {fileID: 1806267213}
   - {fileID: 869222642}
+  - {fileID: 1204149375}
+  - {fileID: 473750995}
   - {fileID: 1519929948}
   m_Father: {fileID: 534812409}
   m_RootOrder: 0
@@ -5173,7 +5188,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 938500435}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6866,6 +6881,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Milk
       objectReference: {fileID: 0}
+    - target: {fileID: 2719918735347496072, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
+      propertyPath: m_TagString
+      value: Food
+      objectReference: {fileID: 0}
     - target: {fileID: 2820722884761289498, guid: 2a70f791fb6f4405c8d508dbcdebc49f, type: 3}
       propertyPath: SmoothieCam
       value: 
@@ -8032,11 +8051,11 @@ RectTransform:
   m_Children:
   - {fileID: 2096085940}
   m_Father: {fileID: 938500435}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -753.1, y: 92}
+  m_AnchoredPosition: {x: -209.5, y: 109.8}
   m_SizeDelta: {x: 65.7982, y: 27.1369}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806267214
@@ -8714,7 +8733,7 @@ GameObject:
   - component: {fileID: 2005809966}
   m_Layer: 5
   m_Name: Honey
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8737,7 +8756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3.94, y: 2.75}
+  m_AnchoredPosition: {x: -4.41, y: 2.75}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2005809966
@@ -8772,7 +8791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SmoothieCam: {fileID: 0}
+  SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
 --- !u!114 &2005809968
 MonoBehaviour:
@@ -9340,15 +9359,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068166998}
-  m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -0.56, y: -3.19, z: 0.15838109}
+  m_LocalRotation: {x: -0, y: -0, z: 0.7051058, w: 0.70910215}
+  m_LocalPosition: {x: -2.39, y: -2.4, z: 0.15838109}
   m_LocalScale: {x: 1.4251508, y: 1.4251508, z: 1.4251509}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1540784756}
   m_Father: {fileID: 1516607664}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 89.676}
 --- !u!65 &2068167000
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -9597,9 +9616,10 @@ GameObject:
   - component: {fileID: 2102175618}
   - component: {fileID: 2102175617}
   - component: {fileID: 2102175616}
+  - component: {fileID: 2102175619}
   m_Layer: 0
   m_Name: CupStack
-  m_TagString: Untagged
+  m_TagString: FoodStack
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9709,6 +9729,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daeed3a7e20444e42a7976bce1a390fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2102175619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2102175614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fbfb271fb6794600b0035015f11e5af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SmoothieCam: {fileID: 915007746}
+  objToGrab: {fileID: 7809265443200847290, guid: 3bf06c6ef20cd4839b61a20bab6c2132, type: 3}
 --- !u!1001 &2116843132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9716,6 +9750,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1978481196}
     m_Modifications:
+    - target: {fileID: 3687514314070190016, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: m_Size.x
+      value: 2.5404696
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687514314070190016, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: m_Size.y
+      value: 2.802455
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687514314070190016, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.060380697
+      objectReference: {fileID: 0}
+    - target: {fileID: 3687514314070190016, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: m_Offset.y
+      value: 1.1587725
+      objectReference: {fileID: 0}
     - target: {fileID: 4057691559993973534, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
       propertyPath: m_SortingLayer
       value: 1

@@ -21,6 +21,17 @@ public class GrabFromStack : MonoBehaviour
     //        blender = GameObject.FindGameObjectWithTag("Blender");
     //        blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
     //    }
+    //public GameObject objToGrab;
+    //private GameObject singleObj;
+    //public Camera SmoothieCam;
+
+
+    //public void grabfromStack()
+    //{
+    //    singleObj = Instantiate(objToGrab); /* create new object from stack */
+    //    singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+    //   // food = singleObj.GetComponent<Food>();
+    //}
 
     //void Update() {
     //    //if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {

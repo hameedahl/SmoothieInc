@@ -125,7 +125,7 @@ public class GameHandler : MonoBehaviour
     public IEnumerator GamePauser()
     {
         yield return new WaitForSeconds(1);
-        cam.MoveToNewStation(toppingStation, cup.GetComponent<Cup>());
+        //cam.MoveToNewStation(toppingStation, cup.GetComponent<Cup>());
         inStation0 = false;
     }
 
