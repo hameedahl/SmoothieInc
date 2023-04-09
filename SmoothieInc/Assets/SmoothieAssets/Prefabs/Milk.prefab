@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2956677499978756975}
   m_Layer: 5
   m_Name: Milk
-  m_TagString: Untagged
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31,7 +31,7 @@ RectTransform:
   m_GameObject: {fileID: 2719918735347496072}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.547154, y: 2.547154, z: 1.9593494}
+  m_LocalScale: {x: 1.3889, y: 1.3889, z: 1.3889}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.000000059604645, y: 0.0030603632}
+  m_Offset: {x: -0.007291667, y: 0.04496193}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -66,7 +66,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.42462248, y: 0.43074358}
+  m_Size: {x: 0.41003925, y: 0.6675788}
   m_EdgeRadius: 0
 --- !u!114 &683772874109321957
 MonoBehaviour:
@@ -85,6 +85,7 @@ MonoBehaviour:
   category: Liquids
   isPouring: 0
   inBlender: 0
+  canCut: 0
 --- !u!114 &2820722884761289498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,7 +140,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: e1685918193f74124baa0ca5c47b9924, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

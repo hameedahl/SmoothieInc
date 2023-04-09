@@ -6,5 +6,6 @@ public class Food : MonoBehaviour
     public  int id;
     public  string category;
     public  bool isPouring = false;
-    public  bool inBlender;
+    public  bool inBlender = false;
+    public  bool canCut = false;
 }

@@ -57,7 +57,6 @@ public class DragDrop : MonoBehaviour
                 foodInfo = this.GetComponent<Food>();
                 isFood = true;
                 isFoodStack = false;
-
                 pourLiquid(); /* check if liquid is pouring */
             } else if (this.tag == "FoodStack") {
                 isFoodStack = true;
@@ -75,6 +74,11 @@ public class DragDrop : MonoBehaviour
         isMoving = false;
         if (isFood) {
             if (!blenderTop.addedToSlot(this.gameObject)) {
+               if (blenderTop.blenderIsFull) { /* returns false if not close enough or if filled up */
+                    Destroy(gameObject);
+                }
+
+
                 /* reset to starting position if not inserted */
                 //Destroy(gameObject);
                 //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
@@ -84,6 +88,10 @@ public class DragDrop : MonoBehaviour
             if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
                 if (!blenderTop.addedToSlot(singleObj))
                 {
+                    if (blenderTop.blenderIsFull)
+                    { /* returns false if not close enough or if filled up */
+                        Destroy(singleObj);
+                    }
                     /* reset to starting position if not inserted */
                     //Destroy(singleObj);
                     //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);

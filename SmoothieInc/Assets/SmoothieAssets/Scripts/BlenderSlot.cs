@@ -17,6 +17,7 @@ public class BlenderSlot : MonoBehaviour
     Food itemInfo;
 
     GameObject blender;
+    public bool blenderIsFull = false;
 
     private bool isBlending = false;
 
@@ -32,12 +33,12 @@ public class BlenderSlot : MonoBehaviour
     public bool addedToSlot(GameObject item) {
         itemInfo = item.GetComponent<Food>();
         /* check if item is close to blender */
-        //Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
-        //Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
+        Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
+        Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
 
-        if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= .01f &&  
-                        Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 999.8f && 
-                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= -.04f &&
+        if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= 0 &&  
+                        Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
+                        Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= .1f &&
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
                 if (itemInfo.category == "Liquids") {
                     /* put item in slot above blender */
@@ -47,7 +48,6 @@ public class BlenderSlot : MonoBehaviour
                     item.transform.eulerAngles = Vector3.forward * 90;
                     // anim.Play("Pouring" + itemInfo.id);
                     addToOrder(itemInfo);
-
                     return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
@@ -59,11 +59,12 @@ public class BlenderSlot : MonoBehaviour
                             itemInfo.slotNum = i;
                             top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
                             addToOrder(itemInfo);
-                            Destroy(item.GetComponent<Food>());   /* object is no longer draggable */
+                            Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
                             return true;
                         }
-                   }
-                }
+                    }
+                    blenderIsFull = true;
+            }
         }
         return false;
     }
@@ -86,7 +87,6 @@ public class BlenderSlot : MonoBehaviour
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
             top.isBlended = true;
-            
         }
     }
 
