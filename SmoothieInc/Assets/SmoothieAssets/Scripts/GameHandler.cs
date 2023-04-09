@@ -11,10 +11,10 @@ using UnityEngine.EventSystems;
 
 public class GameHandler : MonoBehaviour
 {
-    const int solidsRange = 3; // banana, strawberries, blueberries
+    const int solidsRange = 5; 
     const int solidsIndex = 4; /* end index */
 
-    const int liquidsRange = 2; // milk
+    const int liquidsRange = 5; 
     const int liquidsIndex = 7;
 
     const int timeRange = 4;
@@ -49,6 +49,7 @@ public class GameHandler : MonoBehaviour
 
     [SerializeField] private CameraControl cam;
     private bool inStation0 = true;
+    
 
     // Start is called before the first frame update
     void Start() {
@@ -93,26 +94,29 @@ public class GameHandler : MonoBehaviour
 
         cup = GameObject.FindGameObjectWithTag("Cup");
         if (cup && !cup.GetComponent<Cup>().isEmpty) { /////***
-            if (inStation0)
-            {
-                pauseGame();
-            }
-           // Text scoreTextB = WinText.GetComponent<Text>();
+            //if (inStation0)
+            //{
+            //    pauseGame();
+            //}
+            Text scoreTextB = WinText.GetComponent<Text>();
 
-           //// if (playerScore == 100) {
-           //     // scoreTextB.text = "Correct!";
-           //     // scoreTextB.color = Color.green;
-           // //} else {
-           //     if (playerScore < 0) {
-           //         scoreTextB.text = "Accuracy: 0%";
-           //     } else {
-           //         scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
-           //     }
-           //     scoreTextB.color = Color.red;
-           // drinkFinished = true;
-           // delete old cup
-     
-           
+            //// if (playerScore == 100) {
+            //     // scoreTextB.text = "Correct!";
+            //     // scoreTextB.color = Color.green;
+            // //} else {
+            if (playerScore < 0)
+            {
+                scoreTextB.text = "Accuracy: 0%";
+            }
+            else
+            {
+                scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
+            }
+            scoreTextB.color = Color.red;
+            // drinkFinished = true;
+            // delete old cup
+
+
             // }
         }
     }

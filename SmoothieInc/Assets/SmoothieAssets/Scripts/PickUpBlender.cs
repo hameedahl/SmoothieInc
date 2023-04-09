@@ -70,13 +70,13 @@ public class PickUpBlender : MonoBehaviour
         }
 
         /* check if item is close to cup */
-        Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
-        Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
+        //Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
+        //Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
         if (cup && cup.isEmpty && !isEmpty && isBlended &&
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 10.5f &&
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 8.2f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 2f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .4f) {
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 2f) {
                  //pourSlot = cup.transform.GetChild(0).gameObject;
                // this.transform.position = new Vector3(pourSlot.transform.position.x, pourSlot.transform.position.y, pourSlot.transform.position.z);
                 this.transform.eulerAngles = Vector3.forward * 90;
