@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 
 public class GameHandler : MonoBehaviour
 {
-    const int solidsRange = 5; 
+    const int solidsRange = 7; 
     const int solidsIndex = 4; /* end index */
 
     const int liquidsRange = 5; 

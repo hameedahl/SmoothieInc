@@ -10,10 +10,10 @@ public class FillCard : MonoBehaviour
     public Sprite empty;
     public Sprite[] solids;
     public Sprite[] liquids;
-    public Sprite[] blendTimes;
-    public Sprite[] cupSizes;
-    public Sprite[] mixIns;
-    public Sprite[] toppings;
+    //public Sprite[] blendTimes;
+    //public Sprite[] cupSizes;
+    //public Sprite[] mixIns;
+    //public Sprite[] toppings;
 
     [Header("Slots")]
     public Image solid1;
@@ -105,34 +105,34 @@ public class FillCard : MonoBehaviour
         else
             liquid3.sprite = liquids[arr[6]];
 
-        // Blend Time
-        if(arr[7] == -1)
-            blendTime.sprite = empty;
-        else
-            blendTime.sprite = blendTimes[arr[7]];
+        //// Blend Time
+        //if(arr[7] == -1)
+        //    blendTime.sprite = empty;
+        //else
+        //    blendTime.sprite = blendTimes[arr[7]];
 
-        // Cup Size
-        if(arr[8] == -1)
-            cupSize.sprite = empty;
-        else
-            cupSize.sprite = cupSizes[arr[8]];
+        //// Cup Size
+        //if(arr[8] == -1)
+        //    cupSize.sprite = empty;
+        //else
+        //    cupSize.sprite = cupSizes[arr[8]];
 
-        // Mix-In
-        if(arr[9] == -1)
-            mixIn.sprite = empty;
-        else
-            mixIn.sprite = mixIns[arr[9]];
+        //// Mix-In
+        //if(arr[9] == -1)
+        //    mixIn.sprite = empty;
+        //else
+        //    mixIn.sprite = mixIns[arr[9]];
 
-        // Topping 1
-        if(arr[10] == -1)
-            topping1.sprite = empty;
-        else
-            topping1.sprite = toppings[arr[10]];
+        //// Topping 1
+        //if(arr[10] == -1)
+        //    topping1.sprite = empty;
+        //else
+        //    topping1.sprite = toppings[arr[10]];
 
-        // Topping 2
-        if(arr[11] == -1)
-            topping2.sprite = empty;
-        else
-            topping2.sprite = toppings[arr[11]];
+        //// Topping 2
+        //if(arr[11] == -1)
+        //    topping2.sprite = empty;
+        //else
+        //    topping2.sprite = toppings[arr[11]];
     }
 }
