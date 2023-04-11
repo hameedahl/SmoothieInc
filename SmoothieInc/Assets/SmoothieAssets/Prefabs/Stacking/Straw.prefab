@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2040261180500859703}
   - component: {fileID: 2040261180500859700}
   - component: {fileID: 7863787663229335011}
-  - component: {fileID: 1449790550285951}
   - component: {fileID: 6164002501391527687}
   m_Layer: 0
   m_Name: Straw
@@ -113,19 +112,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3544638, y: 2.272856}
   m_EdgeRadius: 0
---- !u!114 &1449790550285951
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2040261180500859702}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3494f637407034172a69c8161a9c2956, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SmoothieCam: {fileID: 0}
 --- !u!114 &6164002501391527687
 MonoBehaviour:
   m_ObjectHideFlags: 0

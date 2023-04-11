@@ -33,8 +33,8 @@ public class BlenderSlot : MonoBehaviour
     public bool addedToSlot(GameObject item) {
         itemInfo = item.GetComponent<Food>();
         /* check if item is close to blender */
-        Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
-        Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
+        //Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
+        //Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
 
         if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= 0 &&  
                         Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
