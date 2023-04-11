@@ -3,22 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 
-public class NetworkArrivedStatus : NetworkBehaviour
+public class BooleanNetworkHandler : NetworkBehaviour
 {
     public GameObject truckManagerObject;
     public GameObject gameHandlerObject;
 
-    [SerializeField]
-    [NetworkVariable]
-    private NetworkVariableBool arrivedNetworkVariable = new NetworkVariableBool();
+    private NetworkVariable<bool> arrivedNetworkVariable = new NetworkVariable<bool>(
+      value:false,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
 
-    [SerializeField]
-   [NetworkVariable]
-   private NetworkVariableBool drinkFinishedNetworkVariable = new NetworkVariableBool();
-
-   [SerializeField]
-   [NetworkVariable]
-   private NetworkVariableDouble playerScoreNetworkVariable = new NetworkVariableDouble();
+    private NetworkVariable<bool> drinkFinishedNetworkVariable = new NetworkVariable<bool>(
+      value:false,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+    private NetworkVariable<double> playerScoreNetworkVariable = new NetworkVariable<double>(
+      value:0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
 
     private TruckManager truckManager;
     private GameHandler gameHandler;
