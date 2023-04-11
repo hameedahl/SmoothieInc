@@ -95,7 +95,7 @@ public class GameHandler : MonoBehaviour
         //}
 
         cup = GameObject.FindGameObjectWithTag("Cup");
-        if (orderComplete) { /////***
+        if (drinkFinished) { /////***
             //if (inStation0)
             //{
             //    pauseGame();
