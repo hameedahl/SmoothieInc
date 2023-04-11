@@ -33,6 +33,7 @@ public class GameHandler : MonoBehaviour
     const int emptySlot = -1;
 
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int> [arraySize];
+    public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
     public int[] valuesArray = new int[arraySize];
     private GameObject cup;
     public double playerScore = 0;
@@ -58,12 +59,13 @@ public class GameHandler : MonoBehaviour
 
         for (int i = 0; i < arraySize; i++) {
             order[i] = new KeyValuePair<string, int>("", emptySlot);
+            playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
         }
 
         generateOrder(1);
         foreach (KeyValuePair<string, int> item in order)
         {
-            //Debug.Log(item);
+            Debug.Log(item);
         }
 
         for (int i = 0; i < arraySize; i++)
@@ -163,32 +165,33 @@ public class GameHandler : MonoBehaviour
     }
 
     public void generateOrder(int difficulty) {
+        System.Random rand = new System.Random();
         if (difficulty == 1) {
             for (int i = 0; i < 3; i++) {
-                order[i] = new KeyValuePair<string, int>("Solids", Random.Range(0, solidsRange));
+                order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
                 orderCount++;
             }
 
             for (int i = solidsIndex; i < solidsIndex + 2; i++) {
-                order[i] = new KeyValuePair<string, int>("Liquids", Random.Range(0, liquidsRange));
+                order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
                 orderCount++;
 
             }
 
-            order[timeIndex] = new KeyValuePair<string, int>("Time", Random.Range(0, timeRange));
-                orderCount++;
+            //order[timeIndex] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+            //    orderCount++;
 
             itemWeight = System.Math.Round(100.0 / orderCount, 2);
 
-            // order[cupsIndex] = new KeyValuePair<string, int>("Cups", Random.Range(0, cupsRange));
+            // order[cupsIndex] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
 
-            // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", Random.Range(0, mixInIndex));
+            // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", rand.Next(0, mixInIndex));
 
             // for (int i = mixInIndex + 1; i < toppingsIndex + 1; i++) {
-            //     order[i] = new KeyValuePair<string, int>("Toppings", Random.Range(0, toppingsRange));
+            //     order[i] = new KeyValuePair<string, int>("Toppings", rand.Next(0, toppingsRange));
             // }
         }
-        
+
         // else if (difficulty == 2) {
 
         // } else (difficulty == 3) {

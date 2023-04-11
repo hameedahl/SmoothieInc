@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -63,7 +65,7 @@ public class BlenderSlot : MonoBehaviour
                             return true;
                         }
                     }
-                    blenderIsFull = true;
+                    //blenderIsFull = true;
             }
         }
         return false;
@@ -71,15 +73,18 @@ public class BlenderSlot : MonoBehaviour
 
     private void addToOrder(Food item) {
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
-        if (gameHandler.playerScore < 100) {
             for (int i = 0; i < gameHandler.order.Length; i++) {
-                if (newPair.ToString() == gameHandler.order[i].ToString()) {
+                if (newPair.ToString() == gameHandler.order[i].ToString() &&
+                    !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
+                    gameHandler.playerOrder[i] = newPair;
                     gameHandler.playerScore += gameHandler.itemWeight;
                     return;
                 }
             }
-            gameHandler.playerScore -= gameHandler.itemWeight;
-        }
+            if (gameHandler.playerScore > 0)
+            {
+                gameHandler.playerScore -= gameHandler.itemWeight;
+            }
     }
 
     public void stopBlender() {
