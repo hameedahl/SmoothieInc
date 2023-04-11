@@ -9,6 +9,7 @@ public class TruckManager : MonoBehaviour
     public OrderFinder of;
 
     public GameObject dest;
+    public Transform target;
 
     void Start()
     {
@@ -20,6 +21,7 @@ public class TruckManager : MonoBehaviour
         int diff = Random.Range(1,10);
         dest = of.Find(diff);
         dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
+        target.position = dest.transform.GetChild(0).position;
     }
 
     void OnTriggerEnter2D(Collider2D col)

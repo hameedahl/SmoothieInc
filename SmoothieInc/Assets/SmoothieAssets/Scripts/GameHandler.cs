@@ -63,7 +63,7 @@ public class GameHandler : MonoBehaviour
         generateOrder(1);
         foreach (KeyValuePair<string, int> item in order)
         {
-            Debug.Log(item);
+            //Debug.Log(item);
         }
 
         for (int i = 0; i < arraySize; i++)
