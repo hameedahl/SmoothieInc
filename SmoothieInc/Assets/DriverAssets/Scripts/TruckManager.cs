@@ -41,4 +41,9 @@ public class TruckManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         NewOrder();
     }
+
+    public bool GetArrivedStatus()
+    {
+      return arrived;
+    }
 }
