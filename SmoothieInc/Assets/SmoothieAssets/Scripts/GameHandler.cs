@@ -11,7 +11,7 @@ using UnityEngine.EventSystems;
 
 public class GameHandler : MonoBehaviour
 {
-    const int solidsRange = 7; 
+    const int solidsRange = 10; 
     const int solidsIndex = 4; /* end index */
 
     const int liquidsRange = 5; 
@@ -47,8 +47,8 @@ public class GameHandler : MonoBehaviour
     [SerializeField] private Transform toppingStation;
     [SerializeField] private Transform blendingStation;
 
-    [SerializeField] private CameraControl cam;
-    private bool inStation0 = true;
+    //[SerializeField] private CameraControl cam;
+   // private bool inStation0 = true;
     
 
     // Start is called before the first frame update
@@ -87,17 +87,18 @@ public class GameHandler : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-        if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
-            cam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<CameraControl>();
+        //if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
+        //    cam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<CameraControl>();
 
-        }
+        //}
 
         cup = GameObject.FindGameObjectWithTag("Cup");
-        if (cup && !cup.GetComponent<Cup>().isEmpty) { /////***
+        if (orderComplete) { /////***
             //if (inStation0)
             //{
             //    pauseGame();
             //}
+            pauseGame();
             Text scoreTextB = WinText.GetComponent<Text>();
 
             //// if (playerScore == 100) {
@@ -119,6 +120,34 @@ public class GameHandler : MonoBehaviour
 
             // }
         }
+
+        //cup = GameObject.FindGameObjectWithTag("Cup");
+        //if (cup && !cup.GetComponent<Cup>().isEmpty) { /////***
+        //    //if (inStation0)
+        //    //{
+        //    //    pauseGame();
+        //    //}
+        //    Text scoreTextB = WinText.GetComponent<Text>();
+
+        //    //// if (playerScore == 100) {
+        //    //     // scoreTextB.text = "Correct!";
+        //    //     // scoreTextB.color = Color.green;
+        //    // //} else {
+        //    if (playerScore < 0)
+        //    {
+        //        scoreTextB.text = "Accuracy: 0%";
+        //    }
+        //    else
+        //    {
+        //        scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
+        //    }
+        //    scoreTextB.color = Color.red;
+        //    // drinkFinished = true;
+        //    // delete old cup
+
+
+        //    // }
+        //}
     }
 
     public void pauseGame()
@@ -130,7 +159,7 @@ public class GameHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         //cam.MoveToNewStation(toppingStation, cup.GetComponent<Cup>());
-        inStation0 = false;
+       // inStation0 = false;
     }
 
     public void generateOrder(int difficulty) {
