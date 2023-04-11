@@ -1,20 +1,34 @@
-using Unity.Netcode;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Unity.Netcode;
 
-public class DriverNetwork : NetworkBehaviour
+public class NetworkArrivedStatus : NetworkBehaviour
 {
+    public GameObject truckManagerObject;
 
-    public TruckManager arrived;
+    [SerializeField]
+    [NetworkVariable]
+    private NetworkVariableBool arrivedNetworkVariable = new NetworkVariableBool();
 
-    public NetworkVariable<bool> networkArrived = new NetworkVariable<bool>(
-        value:false,
-        NetworkVariableReadPermission.Everyone,
-        NetworkVariableWritePermission.Owner
-    );
+    private TruckManager truckManager;
 
-    // Start is called before the first frame update
-    public void Arrive()
+    private void Start()
     {
-        networkArrived.Value = arrived;
+        truckManager = truckManagerObject.GetComponent<TruckManager>();
+    }
+
+    private void Update()
+    {
+        if (IsServer)
+        {
+            bool isTruckArrived = truckManager.GetArrivedStatus();
+            arrivedNetworkVariable.Value = isTruckArrived;
+        }
+    }
+
+    public bool GetArrivedStatus()
+    {
+        return arrivedNetworkVariable.Value;
     }
 }

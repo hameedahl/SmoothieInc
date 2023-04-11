@@ -5,16 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 
-/*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID, 
-     LIQUID_ID, LIQUID_ID, LIQUID_ID, BLEND_TIME (1-4), 
+/*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID,
+     LIQUID_ID, LIQUID_ID, LIQUID_ID, BLEND_TIME (1-4),
      CUP_SIZE (1-3), MIX_IN_ID, TOPPING_ID, TOPPING_ID] */
 
 public class GameHandler : MonoBehaviour
 {
-    const int solidsRange = 10; 
+    const int solidsRange = 10;
     const int solidsIndex = 4; /* end index */
 
-    const int liquidsRange = 5; 
+    const int liquidsRange = 5;
     const int liquidsIndex = 7;
 
     const int timeRange = 4;
@@ -50,7 +50,7 @@ public class GameHandler : MonoBehaviour
 
     //[SerializeField] private CameraControl cam;
    // private bool inStation0 = true;
-    
+
 
     // Start is called before the first frame update
     void Start() {
@@ -196,4 +196,15 @@ public class GameHandler : MonoBehaviour
 
         // } else (difficulty == 3) {
     }
+
+    public bool GetDrinkFinished()
+    {
+      return drinkFinished;
+    }
+
+    public double GetPlayerScore()
+    {
+      return playerScore;
+    }
+    
 }
