@@ -42,14 +42,10 @@ public class GameHandler : MonoBehaviour
     public bool drinkFinished = false;
 
     private int orderCount = 0;
-    public GameObject WinText;
     public FillCard fillCard;
 
     [SerializeField] private Transform toppingStation;
     [SerializeField] private Transform blendingStation;
-
-    //[SerializeField] private CameraControl cam;
-   // private bool inStation0 = true;
 
 
     // Start is called before the first frame update
@@ -63,10 +59,10 @@ public class GameHandler : MonoBehaviour
         }
 
         generateOrder(1);
-        foreach (KeyValuePair<string, int> item in order)
-        {
-            Debug.Log(item);
-        }
+        //foreach (KeyValuePair<string, int> item in order)
+        //{
+        //    Debug.Log(item);
+        //}
 
         for (int i = 0; i < arraySize; i++)
         {
@@ -86,71 +82,33 @@ public class GameHandler : MonoBehaviour
 
     }
 
+    //// Update is called once per frame
+    //void Update() {
+    //    cup = GameObject.FindGameObjectWithTag("Cup");
+    //    if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus() &&
+    //        networkHandler.GetPlayerScoreStatus()) { /////***
+    //        //if (inStation0)
+    //        //{
+    //        //    pauseGame();
+    //        //}
+    //        pauseGame();
+    //        Text scoreTextB = WinText.GetComponent<Text>();
 
-    // Update is called once per frame
-    void Update() {
-        //if (GameObject.FindGameObjectWithTag("Smoothie-Camera")) {
-        //    cam = GameObject.FindGameObjectWithTag("Smoothie-Camera").GetComponent<CameraControl>();
-
-        //}
-
-        cup = GameObject.FindGameObjectWithTag("Cup");
-        if (drinkFinished) { /////***
-            //if (inStation0)
-            //{
-            //    pauseGame();
-            //}
-            pauseGame();
-            Text scoreTextB = WinText.GetComponent<Text>();
-
-            //// if (playerScore == 100) {
-            //     // scoreTextB.text = "Correct!";
-            //     // scoreTextB.color = Color.green;
-            // //} else {
-            if (playerScore < 0)
-            {
-                scoreTextB.text = "Accuracy: 0%";
-            }
-            else
-            {
-                scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
-            }
-            scoreTextB.color = Color.red;
-            // drinkFinished = true;
-            // delete old cup
-
-
-            // }
-        }
-
-        //cup = GameObject.FindGameObjectWithTag("Cup");
-        //if (cup && !cup.GetComponent<Cup>().isEmpty) { /////***
-        //    //if (inStation0)
-        //    //{
-        //    //    pauseGame();
-        //    //}
-        //    Text scoreTextB = WinText.GetComponent<Text>();
-
-        //    //// if (playerScore == 100) {
-        //    //     // scoreTextB.text = "Correct!";
-        //    //     // scoreTextB.color = Color.green;
-        //    // //} else {
-        //    if (playerScore < 0)
-        //    {
-        //        scoreTextB.text = "Accuracy: 0%";
-        //    }
-        //    else
-        //    {
-        //        scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
-        //    }
-        //    scoreTextB.color = Color.red;
-        //    // drinkFinished = true;
-        //    // delete old cup
-
-
-        //    // }
-        //}
-    }
+    //        //// if (playerScore == 100) {
+    //        //     // scoreTextB.text = "Correct!";
+    //        //     // scoreTextB.color = Color.green;
+    //        // //} else {
+    //        if (playerScore < 0)
+    //        {
+    //            scoreTextB.text = "Accuracy: 0%";
+    //        }
+    //        else
+    //        {
+    //            scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
+    //        }
+    //        scoreTextB.color = Color.red;
+    //    }
+    //}
 
     public void pauseGame()
     {

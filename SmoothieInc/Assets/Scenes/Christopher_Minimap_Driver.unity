@@ -4552,7 +4552,6 @@ RectTransform:
   - {fileID: 869222642}
   - {fileID: 1204149375}
   - {fileID: 473750995}
-  - {fileID: 1519929948}
   m_Father: {fileID: 534812409}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5419,6 +5418,69 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204149374}
   m_CullTransparentMesh: 1
+--- !u!1 &1226185014
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1226185017}
+  - component: {fileID: 1226185016}
+  - component: {fileID: 1226185015}
+  m_Layer: 0
+  m_Name: BooleanNetworkHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1226185015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226185014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GlobalObjectIdHash: 947166123
+  AlwaysReplicateAsRoot: 0
+  DontDestroyWithOwner: 0
+  AutoObjectParentSync: 1
+--- !u!114 &1226185016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226185014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e153b96941964690a379c3268bdc688, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  truckManagerObject: {fileID: 399107415}
+  gameHandlerObject: {fileID: 1652144661}
+--- !u!4 &1226185017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226185014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 311.0523, y: 165.76349, z: -0.44074774}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1226605117
 GameObject:
   m_ObjectHideFlags: 0
@@ -6039,6 +6101,54 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7356257717637562603, guid: 2ba735741325e4eae90a4a51f496f285, type: 3}
   m_PrefabInstance: {fileID: 1352932226}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1364502414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1364502416}
+  - component: {fileID: 1364502415}
+  m_Layer: 0
+  m_Name: MainGameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1364502415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364502414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b76a48d0df8324a97b947a0db818b147, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  networkHandler: {fileID: 1226185016}
+  WinText: {fileID: 1519929947}
+  truckUI: {fileID: 961049516}
+  smoothieUI: {fileID: 534812408}
+--- !u!4 &1364502416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1364502414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 820.23193, y: -4.7606335, z: -1.5454087}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 20
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1406220101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 7dd200c93f02542658980bb7e94339c5, type: 3}
@@ -6370,18 +6480,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1519929947}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8358726, y: 0.8358726, z: 0.8358726}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 938500435}
-  m_RootOrder: 4
+  m_Father: {fileID: 1961813692}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 11.8681, y: 0}
-  m_SizeDelta: {x: 515.1814, y: 61.0086}
+  m_AnchoredPosition: {x: -0.0000038147, y: -18.685}
+  m_SizeDelta: {x: 409.2099, y: 325.2308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519929949
 MonoBehaviour:
@@ -7091,7 +7201,6 @@ MonoBehaviour:
   itemWeight: 0
   orderComplete: 0
   drinkFinished: 0
-  WinText: {fileID: 1519929947}
   fillCard: {fileID: 1739170484}
   toppingStation: {fileID: 0}
   blendingStation: {fileID: 0}
@@ -8317,6 +8426,7 @@ RectTransform:
   m_Children:
   - {fileID: 10190693}
   - {fileID: 412913516}
+  - {fileID: 1519929948}
   m_Father: {fileID: 150325403}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
