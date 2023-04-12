@@ -8,6 +8,8 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public GameObject truckManagerObject;
     public GameObject gameHandlerObject;
 
+    bool started = false;
+
     private NetworkVariable<bool> arrivedNetworkVariable = new NetworkVariable<bool>(
       value:false,
       NetworkVariableReadPermission.Everyone,
@@ -38,6 +40,13 @@ public class BooleanNetworkHandler : NetworkBehaviour
     {
       if (IsHost)
       {
+          if(!started)
+          {
+            started = true;
+            truckManager.host = true;
+            truckManager.NewOrder();
+          }
+
           bool isTruckArrived = truckManager.GetArrivedStatus();
           arrivedNetworkVariable.Value = isTruckArrived;
 

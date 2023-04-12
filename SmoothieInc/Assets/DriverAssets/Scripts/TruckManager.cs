@@ -11,17 +11,22 @@ public class TruckManager : MonoBehaviour
     public GameObject dest;
     public Transform target;
 
+    public bool host = false;
+
     void Start()
     {
-        StartCoroutine(WaitOrder());
+        //StartCoroutine(WaitOrder());
     }
 
     public void NewOrder()
     {
-        int diff = Random.Range(1,10);
-        dest = of.Find(diff);
-        dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
-        target.position = dest.transform.GetChild(0).position;
+        if(host)
+        {
+            int diff = Random.Range(1,10);
+            dest = of.Find(diff);
+            dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
+            target.position = dest.transform.GetChild(0).position;
+        }
     }
 
     void OnTriggerEnter2D(Collider2D col)
