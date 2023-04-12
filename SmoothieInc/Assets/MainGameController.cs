@@ -9,11 +9,23 @@ public class MainGameController : MonoBehaviour
     public GameObject WinText;
     public GameObject truckUI;
     public GameObject smoothieUI;
+    bool sFinish = false;
+    bool dFinish = false;
 
     // Update is called once per frame
     void Update()
     {
         double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
+        if (!sFinish && networkHandler.GetDrinkFinishedStatus())
+        {
+            sFinish = true;
+            Debug.Log("Smoothie has finished");
+        }
+        if (!dFinish && networkHandler.GetArrivedStatus())
+        {
+            dFinish = true;
+            Debug.Log("Driver has arrived");
+        }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             Text scoreTextB = WinText.GetComponent<Text>();
             if (playerScore >= 80)

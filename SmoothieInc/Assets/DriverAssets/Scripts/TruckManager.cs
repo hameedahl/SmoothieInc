@@ -18,7 +18,7 @@ public class TruckManager : MonoBehaviour
         //StartCoroutine(WaitOrder());
     }
 
-    public void NewOrder()
+    public Vector3 NewOrder()
     {
         if(host)
         {
@@ -26,7 +26,9 @@ public class TruckManager : MonoBehaviour
             dest = of.Find(diff);
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
             target.position = dest.transform.GetChild(0).position;
+            return dest.transform.GetChild(0).position;
         }
+        return new Vector3(0,0,0);
     }
 
     void OnTriggerEnter2D(Collider2D col)

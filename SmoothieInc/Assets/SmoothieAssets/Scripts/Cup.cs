@@ -33,7 +33,7 @@ public class Cup : MonoBehaviour
     void Update() {
         finishCup();
         if (isCovered && hasStraw) {
-            gameHandler.drinkFinished = true;
+            gameHandler.finishDrink();
         }
     }
 

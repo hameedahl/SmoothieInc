@@ -44,6 +44,8 @@ public class GameHandler : MonoBehaviour
     private int orderCount = 0;
     public FillCard fillCard;
 
+    public BooleanNetworkHandler bnh;
+
     [SerializeField] private Transform toppingStation;
     [SerializeField] private Transform blendingStation;
 
@@ -163,6 +165,12 @@ public class GameHandler : MonoBehaviour
     public double GetPlayerScore()
     {
       return playerScore;
+    }
+
+    public void finishDrink()
+    {
+        drinkFinished = true;
+        bnh.SetSmoothieServerRPC(true, playerScore);
     }
     
 }

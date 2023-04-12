@@ -26,9 +26,15 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
+    private NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
+      value:new Vector3(0,0,0),
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
 
     private TruckManager truckManager;
     private GameHandler gameHandler;
+    public Transform target;
 
     private void Start()
     {
@@ -44,17 +50,23 @@ public class BooleanNetworkHandler : NetworkBehaviour
           {
             started = true;
             truckManager.host = true;
-            truckManager.NewOrder();
+            destinationPos.Value = truckManager.NewOrder();
           }
 
           bool isTruckArrived = truckManager.GetArrivedStatus();
           arrivedNetworkVariable.Value = isTruckArrived;
 
-          bool isDrinkFinished = gameHandler.GetDrinkFinished();
-          drinkFinishedNetworkVariable.Value = isDrinkFinished;
+          // bool isDrinkFinished = gameHandler.GetDrinkFinished();
+          // drinkFinishedNetworkVariable.Value = isDrinkFinished;
 
-          double currentPlayerScore = gameHandler.GetPlayerScore();
-          playerScoreNetworkVariable.Value = currentPlayerScore;
+          // double currentPlayerScore = gameHandler.GetPlayerScore();
+          // playerScoreNetworkVariable.Value = currentPlayerScore;
+
+      }
+      else
+      {
+        if(destinationPos.Value.x != 0)
+          target.position = destinationPos.Value;
       }
     }
 
@@ -71,5 +83,17 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public double GetPlayerScoreStatus()
     {
         return playerScoreNetworkVariable.Value;
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SetSmoothieServerRPC(bool finished, double points, ServerRpcParams serverRpcParams = default)
+    {
+      var clientId = serverRpcParams.Receive.SenderClientId;
+      if (NetworkManager.ConnectedClients.ContainsKey(clientId))
+      {
+          var client = NetworkManager.ConnectedClients[clientId];
+          drinkFinishedNetworkVariable.Value = finished;
+          playerScoreNetworkVariable.Value = points;
+      }
     }
 }
