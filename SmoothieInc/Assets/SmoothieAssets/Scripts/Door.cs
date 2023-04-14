@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Fridge : MonoBehaviour
+public class Door : MonoBehaviour
 {
     public GameObject open_door;
     public GameObject closed_door;
     //public AudioManager audioMan;
 
     void Start() {
-        open_door.SetActive(false);
+        //open_door.SetActive(false);
         //audioMan = gameObject.Find("Audio Manager").GetComponent<AudioManager>();
     }
 
