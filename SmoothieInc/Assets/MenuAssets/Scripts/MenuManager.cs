@@ -5,19 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void startGame(bool isDriver)
+    public void startGame(bool isDriver)
     {
         if(isDriver)
         {
@@ -29,5 +17,10 @@ public class MenuManager : MonoBehaviour
             StaticClass.CrossSceneInformation = "Smoothie";
             SceneManager.LoadScene("Christopher_Minimap_Driver");
         }
+    }
+    
+    public void Credits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 }
