@@ -10,7 +10,7 @@ public class NetworkUIManager : MonoBehaviour
 
   public Button hostButton;
   public Button clientButton;
-  public GameObject clientButton;
+  public GameObject clientButtonObject;
   public GameObject joinCode;
   public TMP_InputField joinCodeInput;
 
@@ -52,7 +52,7 @@ public class NetworkUIManager : MonoBehaviour
     }
     if(StaticClass.CrossSceneInformation == "Smoothie")
     {
-      clientButton.SetActive(true);
+      clientButtonObject.SetActive(true);
       clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
       smoothieCamera.gameObject.SetActive(true);
       smoothieUI.gameObject.SetActive(true);
