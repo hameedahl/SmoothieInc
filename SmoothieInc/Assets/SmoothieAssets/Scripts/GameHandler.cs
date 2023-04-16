@@ -78,10 +78,6 @@ public class GameHandler : MonoBehaviour
         // }
 
 
-
-        fillCard.Initialize(valuesArray);
-
-
     }
 
 
@@ -140,10 +136,15 @@ public class GameHandler : MonoBehaviour
       return playerScore;
     }
 
+    public int[] GetValuesArray()
+    {
+      return valuesArray;
+    }
+
     public void finishDrink()
     {
         drinkFinished = true;
         bnh.SetSmoothieServerRPC(true, playerScore);
     }
-    
+
 }
