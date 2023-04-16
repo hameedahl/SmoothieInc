@@ -8,4 +8,5 @@ public class Food : MonoBehaviour
     public  bool isPouring = false;
     public  bool inBlender = false;
     public  bool canCut = false;
+    public  Color liqColor;
 }

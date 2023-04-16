@@ -16,6 +16,8 @@ TagManager:
   - Smoothie-Camera
   - Food
   - FoodStack
+  - BlenderLiq
+  - Anchor
   layers:
   - Default
   - TransparentFX

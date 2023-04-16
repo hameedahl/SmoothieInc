@@ -22,6 +22,11 @@ public class BlenderSlot : MonoBehaviour
     public bool blenderIsFull = false;
 
     private bool isBlending = false;
+    GameObject anchor;
+    public GameObject liquid;
+    private GameObject newLiquid;
+
+
 
     void Start() {
         animTop = this.gameObject.GetComponent<Animator>();
@@ -30,6 +35,11 @@ public class BlenderSlot : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Blender")) {
             blender = GameObject.FindGameObjectWithTag("Blender");
         }
+    }
+
+    private void Update()
+    {
+        
     }
 
     public bool addedToSlot(GameObject item) {
@@ -43,11 +53,14 @@ public class BlenderSlot : MonoBehaviour
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= 0f &&
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
                 if (itemInfo.category == "Liquids") {
-                    /* put item in slot above blender */
-                    item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
+                /* put item in slot above blender */
+                item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
                     itemInfo.isPouring = true;
+                top.isEmpty = false;
                     // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
+                    newLiquid = Instantiate(liquid);
+                    pour(itemInfo, newLiquid);
                     // anim.Play("Pouring" + itemInfo.id);
                     addToOrder(itemInfo);
                     return true;
@@ -66,7 +79,7 @@ public class BlenderSlot : MonoBehaviour
                         }
                     }
                     //blenderIsFull = true;
-            }
+                }
         }
         return false;
     }
@@ -96,6 +109,7 @@ public class BlenderSlot : MonoBehaviour
     }
 
     public void startBlender() {
+        GameObject liquids = GameObject.FindGameObjectWithTag("BlenderLiq");
         if (!top.isEmpty) {
             isBlending = true;
             animTop.Play("Blending-Top");
@@ -105,7 +119,36 @@ public class BlenderSlot : MonoBehaviour
                     Destroy(slots[i]);
                     isFull[i] = false;
                 }
+                if (liquids)
+                {
+                    Destroy(liquids);
+                }
             }
+        }
+    }
+
+    //public void pour()
+    //{
+
+    //}
+
+
+    public void pour(Food item, GameObject liquid)
+    {
+        SpriteRenderer sprite = liquid.GetComponentInChildren<SpriteRenderer>();
+        //anchor = GameObject.FindGameObjectWithTag("Anchor");
+       // SpriteRenderer sprite = GameObject.FindGameObjectWithTag("BlenderLiq").GetComponent<SpriteRenderer>();
+        sprite.color = new Color(item.liqColor.r, item.liqColor.g, item.liqColor.b);
+        StartCoroutine(pouring(0, item, liquid));
+    }
+
+    public IEnumerator pouring(int yVal, Food item, GameObject anchor)
+    {
+        anchor = anchor.transform.GetChild(0).gameObject;
+        while (anchor.transform.localScale.y != 11 && item.isPouring)
+        {
+            anchor.transform.localScale = new Vector3(.9f, yVal += 1);
+            yield return new WaitForSeconds(.5f);
         }
     }
 }

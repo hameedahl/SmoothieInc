@@ -84,33 +84,6 @@ public class GameHandler : MonoBehaviour
 
     }
 
-    //// Update is called once per frame
-    //void Update() {
-    //    cup = GameObject.FindGameObjectWithTag("Cup");
-    //    if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus() &&
-    //        networkHandler.GetPlayerScoreStatus()) { /////***
-    //        //if (inStation0)
-    //        //{
-    //        //    pauseGame();
-    //        //}
-    //        pauseGame();
-    //        Text scoreTextB = WinText.GetComponent<Text>();
-
-    //        //// if (playerScore == 100) {
-    //        //     // scoreTextB.text = "Correct!";
-    //        //     // scoreTextB.color = Color.green;
-    //        // //} else {
-    //        if (playerScore < 0)
-    //        {
-    //            scoreTextB.text = "Accuracy: 0%";
-    //        }
-    //        else
-    //        {
-    //            scoreTextB.text = "Accuracy: " + System.Math.Round(playerScore) + "%";
-    //        }
-    //        scoreTextB.color = Color.red;
-    //    }
-    //}
 
     public void pauseGame()
     {

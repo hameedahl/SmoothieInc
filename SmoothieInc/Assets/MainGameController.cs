@@ -33,7 +33,7 @@ public class MainGameController : MonoBehaviour
                 scoreTextB.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
                 scoreTextB.color = Color.green;
             } else {
-                scoreTextB.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for at least 80% next time!";
+                scoreTextB.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
                 scoreTextB.color = Color.red;
             }
         }
