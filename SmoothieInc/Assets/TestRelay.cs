@@ -17,6 +17,8 @@ public class TestRelay : MonoBehaviour
   public TMP_Text joinCodeDisplay;
   public TMP_InputField joinCodeInput;
 
+  public BooleanNetworkHandler bnh;
+
   private async void Start() {
     await UnityServices.InitializeAsync();
 
@@ -73,6 +75,7 @@ public class TestRelay : MonoBehaviour
 
       NetworkManager.Singleton.StartClient();
 
+      bnh.SmoothieStartServerRPC();
     } catch (RelayServiceException e) {
       Debug.Log(e);
     }

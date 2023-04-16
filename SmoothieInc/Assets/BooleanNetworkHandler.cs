@@ -106,6 +106,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
     );
 
     private TruckManager truckManager;
+    public NetworkUIManager nuim;
     private GameHandler gameHandler;
     public Transform target;
 
@@ -239,6 +240,16 @@ public class BooleanNetworkHandler : NetworkBehaviour
           var client = NetworkManager.ConnectedClients[clientId];
           drinkFinishedNetworkVariable.Value = finished;
           playerScoreNetworkVariable.Value = points;
+      }
+    }
+
+    [ServerRpc(RequireOwnership = false)]
+    public void SmoothieStartServerRPC(ServerRpcParams serverRpcParams = default)
+    {
+      var clientId = serverRpcParams.Receive.SenderClientId;
+      if (NetworkManager.ConnectedClients.ContainsKey(clientId))
+      {
+          nuim.StartHost();
       }
     }
 }
