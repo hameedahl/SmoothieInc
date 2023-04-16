@@ -25,20 +25,35 @@ public class NetworkUIManager : MonoBehaviour
 
   private void Awake()
   {
+    //  hostButton.onClick.AddListener(() => {NetworkManager.Singleton.StartHost();
+    //                                        truckCamera.gameObject.SetActive(true);
+    //                                        truckUI.gameObject.SetActive(true);
+    //                                        testRelay.CreateRelay();
+    //                                         });
 
-     hostButton.onClick.AddListener(() => {NetworkManager.Singleton.StartHost();
-                                           truckCamera.gameObject.SetActive(true);
-                                           truckUI.gameObject.SetActive(true);
-                                           testRelay.CreateRelay();
-                                            });
+    //  clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
+    //                                          smoothieCamera.gameObject.SetActive(true);
+    //                                          smoothieUI.gameObject.SetActive(true);
+    //                                          testRelay.JoinRelay(joinCodeInput.text);
+    //                                         });
+  }
 
-     clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
-                                             smoothieCamera.gameObject.SetActive(true);
-                                             smoothieUI.gameObject.SetActive(true);
-                                             testRelay.JoinRelay(joinCodeInput.text);
-                                            });
-
-
+  private void Start()
+  {
+    if(StaticClass.CrossSceneInformation == "Driver")
+    {
+      NetworkManager.Singleton.StartHost();
+      truckCamera.gameObject.SetActive(true);
+      truckUI.gameObject.SetActive(true);
+      testRelay.CreateRelay();
+    }
+    if(StaticClass.CrossSceneInformation == "Smoothie")
+    {
+      NetworkManager.Singleton.StartClient();
+      smoothieCamera.gameObject.SetActive(true);
+      smoothieUI.gameObject.SetActive(true);
+      testRelay.JoinRelay(joinCodeInput.text);
+    }
   }
 
   private void FixedUpdate()
