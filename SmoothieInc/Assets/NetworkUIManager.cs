@@ -10,6 +10,8 @@ public class NetworkUIManager : MonoBehaviour
 
   public Button hostButton;
   public Button clientButton;
+  public GameObject clientButton;
+  public GameObject joinCode;
   public TMP_InputField joinCodeInput;
 
   public Camera truckCamera;
@@ -46,13 +48,15 @@ public class NetworkUIManager : MonoBehaviour
       truckCamera.gameObject.SetActive(true);
       truckUI.gameObject.SetActive(true);
       testRelay.CreateRelay();
+      joinCode.SetActive(true);
     }
     if(StaticClass.CrossSceneInformation == "Smoothie")
     {
-      NetworkManager.Singleton.StartClient();
+      clientButton.SetActive(true);
+      clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
       smoothieCamera.gameObject.SetActive(true);
       smoothieUI.gameObject.SetActive(true);
-      testRelay.JoinRelay(joinCodeInput.text);
+      testRelay.JoinRelay(joinCodeInput.text);});
     }
   }
 
