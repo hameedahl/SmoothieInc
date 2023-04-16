@@ -262,9 +262,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   driftFactor: 0.95
-  accelerationFactor: 7
+  normalAccelerationFactor: 30
+  nitroAccelerationFactor: 40
   turnFactor: 3
-  maxSpeed: 15
+  normalMaxSpeed: 20
+  nitroMaxSpeed: 40
+  maxNitroTime: 5
+  maxNitroCooldownTime: 30
 --- !u!114 &7572873286991242973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +297,8 @@ MonoBehaviour:
   drivernet: {fileID: 0}
   of: {fileID: 0}
   dest: {fileID: 0}
+  target: {fileID: 0}
+  host: 0
 --- !u!114 &5614059393455513002
 MonoBehaviour:
   m_ObjectHideFlags: 0

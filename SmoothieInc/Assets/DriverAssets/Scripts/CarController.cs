@@ -7,9 +7,20 @@ public class CarController : NetworkBehaviour
 {
     [Header("Car Settings")]
     public float driftFactor = 0.95f;
-    public float accelerationFactor = 30.0f;
+    public float normalAccelerationFactor = 30.0f;
+    float accelerationFactor = 30.0f;
+    public float nitroAccelerationFactor = 40.0f;
+    
     public float turnFactor = 3.5f;
-    public float maxSpeed = 20;
+    public float normalMaxSpeed = 20;
+    float maxSpeed = 20;
+    public float nitroMaxSpeed = 40;
+
+    bool nitro = false;
+    public int maxNitroTime = 60;
+    int nitroTime = 0;
+    public int maxNitroCooldownTime = 180;
+    int nitroCooldownTime = 0;
 
     float accelerationInput = 0;
     float steeringInput = 0;
@@ -23,19 +34,53 @@ public class CarController : NetworkBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        accelerationFactor = normalAccelerationFactor;
+        maxSpeed = normalMaxSpeed;
+    }
+
+    void Update()
+    {
+        if(Input.GetKeyDown("space"))
+        {
+            if(nitroCooldownTime <= 0)
+            {
+                nitro = true;
+                nitroCooldownTime = maxNitroCooldownTime;
+                nitroTime = 0;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-
-      if(IsHost) {
-
-        ApplyEngineForce();
-        KillOrthogonalVelocity();
-        ApplySteering();
-
-      }
-
+        if(IsHost) 
+        {
+            ApplyEngineForce();
+            KillOrthogonalVelocity();
+            ApplySteering();
+        }
+        if(nitro)
+        {
+            if(nitroTime < maxNitroTime)
+            {
+                nitroTime++;
+                accelerationFactor = nitroAccelerationFactor;
+                maxSpeed = nitroMaxSpeed;
+            }
+            else
+            {
+                nitro = false;
+                accelerationFactor = normalAccelerationFactor;
+                maxSpeed = normalMaxSpeed;
+            }
+        }
+        else
+        {
+            if(nitroCooldownTime > 0)
+            {
+                nitroCooldownTime--;
+            }
+        }
     }
 
     void ApplyEngineForce()
