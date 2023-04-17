@@ -61,21 +61,11 @@ public class GameHandler : MonoBehaviour
         }
 
         generateOrder(1);
-        //foreach (KeyValuePair<string, int> item in order)
-        //{
-        //    Debug.Log(item);
-        //}
 
         for (int i = 0; i < arraySize; i++)
         {
             valuesArray[i] = order[i].Value;
         }
-
-        // Print the valuesArray for debugging purposes
-        // foreach (int value in valuesArray)
-        // {
-        //     Debug.Log(value);
-        // }
 
 
     }

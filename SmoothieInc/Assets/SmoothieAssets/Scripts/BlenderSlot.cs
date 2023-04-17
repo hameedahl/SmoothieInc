@@ -127,11 +127,6 @@ public class BlenderSlot : MonoBehaviour
         }
     }
 
-    //public void pour()
-    //{
-
-    //}
-
 
     public void pour(Food item, GameObject liquid)
     {

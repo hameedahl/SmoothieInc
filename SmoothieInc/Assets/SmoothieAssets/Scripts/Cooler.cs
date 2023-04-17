@@ -1,19 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class Door : MonoBehaviour
+public class Cooler : MonoBehaviour
 {
-    public GameObject open_door;
-    public GameObject closed_door;
+
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
-    //public AudioManager audioMan;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
-    void Start() {
-        //open_door.SetActive(false);
-        //audioMan = gameObject.Find("Audio Manager").GetComponent<AudioManager>();
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 
     private void OnMouseEnter()
@@ -29,18 +33,15 @@ public class Door : MonoBehaviour
         Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
     }
 
-    /* toggle fridge open and close on click */
-    private void OnMouseDown() {
+    private void OnMouseDown()
+    {
         Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
         Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
-        if (open_door.activeSelf) {
-            open_door.SetActive(false);
-            closed_door.SetActive(true);
-            //audioMan.Play("Fridge-Close");
-        } else {
-            closed_door.SetActive(false);
-            open_door.SetActive(true);
-            //audioMan.Play("Fridge-Open");
-        }
+    }
+
+    private void OnMouseUp()
+    {
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
     }
 }

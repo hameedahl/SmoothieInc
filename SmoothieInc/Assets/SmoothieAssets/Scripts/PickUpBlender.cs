@@ -21,6 +21,9 @@ public class PickUpBlender : MonoBehaviour
     private Animator anim;
     public Camera SmoothieCam;
 
+    public Texture2D cursorHand;
+    public Texture2D cursorGrab;
+
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
         anim = this.GetComponent<Animator>();
@@ -33,10 +36,25 @@ public class PickUpBlender : MonoBehaviour
 
         if (!isEmpty && isBlended && isMoving) {
             Vector3 mousePos = MousePosition();
+            Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
+            Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
             /* move object on drag; update position */
             this.gameObject.transform.localPosition = new Vector3(mousePos.x - startPosX, mousePos.y - startPosY, this.gameObject.transform.localPosition.z);
             pour();
         }
+    }
+
+    private void OnMouseEnter()
+    {
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+    }
+
+
+    private void OnMouseExit()
+    {
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
     }
 
     private void OnMouseDown() {
@@ -51,6 +69,8 @@ public class PickUpBlender : MonoBehaviour
     }
 
     private void OnMouseUp() {
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         isMoving = false;
         if (isPouring) {
             this.transform.eulerAngles = Vector3.forward / 90;

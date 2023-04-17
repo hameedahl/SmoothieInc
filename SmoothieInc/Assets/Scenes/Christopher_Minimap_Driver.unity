@@ -321,6 +321,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 666dd1ccc49734d2692edd9e4a01c0af, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &15912638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -655,6 +657,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open_door: {fileID: 1274041667}
   closed_door: {fileID: 113154244}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1 &125942597
 GameObject:
   m_ObjectHideFlags: 0
@@ -1519,6 +1523,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 54c994ca71db54f7d9ec8f2496af8c7c, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &281206874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3235,6 +3241,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 4215589394086021758, guid: 8a197958264ad4e42ae53e23e70696ba, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1 &532243377
 GameObject:
   m_ObjectHideFlags: 0
@@ -3619,6 +3627,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &589191642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4159,6 +4169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 693063009806989934, guid: f0049e4fa8d734546ae9ecbc6f7b6bdf, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1001 &769057186
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4529,6 +4541,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &791006505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4874,6 +4888,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 2b2db3b2993fa4b218e656cc33f2066e, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &863280848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6099,6 +6115,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &1013763122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7056,6 +7074,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &1198690794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7700,6 +7720,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open_door: {fileID: 1274041667}
   closed_door: {fileID: 113154244}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!61 &1274041671
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -8468,6 +8490,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1 &1516607663
 GameObject:
   m_ObjectHideFlags: 0
@@ -9386,6 +9410,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open_door: {fileID: 1635133257}
   closed_door: {fileID: 2032431268}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!61 &1635133259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10146,6 +10172,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 161c7990db7104ed78184a011fbba66b, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &1710516540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11467,6 +11495,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &2005809968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11829,6 +11859,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open_door: {fileID: 1635133257}
   closed_door: {fileID: 2032431268}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!61 &2032431271
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12069,6 +12101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 2040261180500859702, guid: 5db4aa4f3d0a741c987a2debd5e47b1c, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!61 &2034031323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12145,6 +12179,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &2068167002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12715,6 +12751,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 7809265443200847290, guid: 3bf06c6ef20cd4839b61a20bab6c2132, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1001 &2116843132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13409,6 +13447,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 56d10c27729ab47b39aaea769710f9d4, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &2119831147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13688,6 +13728,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 3613598466866584623, guid: 1e7874f156dc9446e91bf4fa05b2c1a5, type: 3}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &2128485471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14081,6 +14123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!114 &2820722885432322726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14095,6 +14139,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 915007746}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!50 &2956677499576031955
 Rigidbody2D:
   serializedVersion: 4
