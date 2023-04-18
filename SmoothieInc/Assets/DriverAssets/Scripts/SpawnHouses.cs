@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnHouses : MonoBehaviour
 {
-    public GameObject houseModel;
+    public GameObject[] houseModels;
 
     // Start is called before the first frame update
     void Start()
@@ -12,7 +12,8 @@ public class SpawnHouses : MonoBehaviour
         for(int i = 0; i < transform.childCount; i++)
         {
             Transform currChild = transform.GetChild(i);
-            GameObject curr = Instantiate(houseModel, currChild);
+            int house = Random.Range(0,2);
+            GameObject curr = Instantiate(houseModels[house], currChild);
             curr.transform.parent = currChild;
         }
     }
