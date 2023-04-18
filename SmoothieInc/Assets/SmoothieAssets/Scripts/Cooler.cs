@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Cooler : MonoBehaviour
 {
@@ -35,8 +36,11 @@ public class Cooler : MonoBehaviour
 
     private void OnMouseDown()
     {
-        Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
-        Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
+        if (!EventSystem.current.IsPointerOverGameObject())
+        {
+            Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
+            Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
+        }
     }
 
     private void OnMouseUp()

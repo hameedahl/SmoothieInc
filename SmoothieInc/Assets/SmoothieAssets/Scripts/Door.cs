@@ -31,16 +31,22 @@ public class Door : MonoBehaviour
 
     /* toggle fridge open and close on click */
     private void OnMouseDown() {
-        Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
-        Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
-        if (open_door.activeSelf) {
-            open_door.SetActive(false);
-            closed_door.SetActive(true);
-            //audioMan.Play("Fridge-Close");
-        } else {
-            closed_door.SetActive(false);
-            open_door.SetActive(true);
-            //audioMan.Play("Fridge-Open");
+        if (!EventSystem.current.IsPointerOverGameObject()) /* no clicking through canvas */
+        {
+            Vector2 cursorOffset = new Vector2(cursorGrab.width / 2, cursorGrab.height / 2);
+            Cursor.SetCursor(cursorGrab, cursorOffset, CursorMode.ForceSoftware);
+            if (open_door.activeSelf)
+            {
+                open_door.SetActive(false);
+                closed_door.SetActive(true);
+                //audioMan.Play("Fridge-Close");
+            }
+            else
+            {
+                closed_door.SetActive(false);
+                open_door.SetActive(true);
+                //audioMan.Play("Fridge-Open");
+            }
         }
     }
 }

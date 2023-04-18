@@ -9,6 +9,7 @@ public class PickUpBlender : MonoBehaviour
     public bool isEmpty = true;
     public bool isBlended = false;
     public bool isPouring = false;
+    public bool hasIce = false;
 
     private float startPosX;
     private float startPosY;
@@ -58,7 +59,7 @@ public class PickUpBlender : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
@@ -96,9 +97,9 @@ public class PickUpBlender : MonoBehaviour
             Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
             Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
             Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 2f) {
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f) {
                  //pourSlot = cup.transform.GetChild(0).gameObject;
-               // this.transform.position = new Vector3(pourSlot.transform.position.x, pourSlot.transform.position.y, pourSlot.transform.position.z);
+                this.transform.position = new Vector3(cup.pourSlot.transform.position.x, cup.pourSlot.transform.position.y, cup.pourSlot.transform.position.z);
                 this.transform.eulerAngles = Vector3.forward * 90;
                 cup.fillCup();
                 isPouring = true;

@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class BlenderSlot : MonoBehaviour
 {
     public GameObject[] slots;
+    public GameObject[] blenderItems;
+
     public bool[] isFull;
     private Animator anim;
     private Animator animBottom;
@@ -54,9 +56,9 @@ public class BlenderSlot : MonoBehaviour
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
                 if (itemInfo.category == "Liquids") {
                 /* put item in slot above blender */
-                item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
+                    item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
                     itemInfo.isPouring = true;
-                top.isEmpty = false;
+                    top.isEmpty = false;
                     // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
                     newLiquid = Instantiate(liquid);
@@ -64,11 +66,17 @@ public class BlenderSlot : MonoBehaviour
                     // anim.Play("Pouring" + itemInfo.id);
                     addToOrder(itemInfo);
                     return true;
+                } else if (itemInfo.category == "Ice") {
+                    item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
+                    blenderItems[blenderItems.Length - 1] = item;
+                    top.hasIce = true;
+                    isFull[slots.Length - 1] = true;
+                    return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
                         if (!isFull[i] && i != slots.Length - 1) { /* snap object into slot if close enough (don't add to liquid slot)*/
                             item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-                            slots[i] = item;
+                            blenderItems[i] = item;
                             isFull[i] = true;
                             itemInfo.inBlender = true;
                             itemInfo.slotNum = i;
@@ -110,13 +118,13 @@ public class BlenderSlot : MonoBehaviour
 
     public void startBlender() {
         GameObject liquids = GameObject.FindGameObjectWithTag("BlenderLiq");
-        if (!top.isEmpty) {
+        if (!top.isEmpty && top.hasIce) {
             isBlending = true;
             animTop.Play("Blending-Top");
             animBottom.Play("Blending-Bottom");
-            for (int i = 0; i < slots.Length; i++) { 
+            for (int i = 0; i < blenderItems.Length; i++) { 
                 if (isFull[i]) { /* remove all items in the blender */
-                    Destroy(slots[i]);
+                    Destroy(blenderItems[i]);
                     isFull[i] = false;
                 }
                 if (liquids)

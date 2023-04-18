@@ -15,6 +15,7 @@ public class Cup : MonoBehaviour
 
     private GameObject cover;
     private GameObject coverSlot;
+    public GameObject pourSlot;
     public Sprite coverArt;
 
     private GameObject straw;
@@ -25,6 +26,7 @@ public class Cup : MonoBehaviour
 
     void Start() {
         anim = this.GetComponent<Animator>();
+        pourSlot = this.transform.GetChild(0).gameObject;
         coverSlot = this.transform.GetChild(1).gameObject;
         strawSlot = this.transform.GetChild(2).gameObject;
         gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();

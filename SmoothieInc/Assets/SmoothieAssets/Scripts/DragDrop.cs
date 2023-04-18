@@ -65,7 +65,8 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        if (Input.GetMouseButtonDown(0)) {
+        if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
+         
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
