@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7356257717637562603}
-  - component: {fileID: 4903660779188602220}
   - component: {fileID: 7004957858365187023}
   - component: {fileID: 841316118803548915}
   - component: {fileID: 5359509448860461848}
@@ -41,18 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4903660779188602220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1703485234935726628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daeed3a7e20444e42a7976bce1a390fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &7004957858365187023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -114,6 +101,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 0}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!1 &4674378551312541211
 GameObject:
   m_ObjectHideFlags: 0

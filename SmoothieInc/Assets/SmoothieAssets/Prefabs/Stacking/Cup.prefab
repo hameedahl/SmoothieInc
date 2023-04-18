@@ -233,6 +233,7 @@ MonoBehaviour:
   isEmpty: 1
   isCovered: 0
   hasStraw: 0
+  pourSlot: {fileID: 0}
   coverArt: {fileID: 1095066861, guid: 712a1f4b09af34da0a665663b10cece4, type: 3}
   strawArt: {fileID: 21300000, guid: c41ce27eee22846ec8107a1dc58ffae7, type: 3}
   gameHandler: {fileID: 0}
@@ -276,6 +277,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 0}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
 --- !u!95 &5955943457548409640
 Animator:
   serializedVersion: 4
@@ -401,11 +404,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0.6626
+      value: 0.3879
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0.672
+      value: 0.3355
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_LocalScale.x
@@ -449,11 +452,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.39246
+      value: 0.95
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.90321
+      value: 1.45
       objectReference: {fileID: 0}
     - target: {fileID: 3925699909776183564, guid: 7a067748ffeb044daa34df987b8727e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

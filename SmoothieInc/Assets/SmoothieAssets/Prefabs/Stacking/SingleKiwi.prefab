@@ -131,6 +131,7 @@ MonoBehaviour:
   isPouring: 0
   inBlender: 0
   canCut: 1
+  liqColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &997176167976923746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,3 +146,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SmoothieCam: {fileID: 0}
   objToGrab: {fileID: 0}
+  cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
+  cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
