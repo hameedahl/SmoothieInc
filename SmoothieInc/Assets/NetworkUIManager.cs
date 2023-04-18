@@ -56,7 +56,11 @@ public class NetworkUIManager : MonoBehaviour
   {
     Debug.Log("Client Conntected");
     truckUI.gameObject.SetActive(true);
-    gameObject.SetActive(false);
+    background.SetActive(false);
+    joinCode.SetActive(false);
+    closeButton.SetActive(false);
+    joinCode.SetActive(false);
+    joinCodeLabel.SetActive(false);
   }
 
   public void StartClient()
@@ -64,7 +68,10 @@ public class NetworkUIManager : MonoBehaviour
     NetworkManager.Singleton.StartClient();
     smoothieUI.gameObject.SetActive(true);
     testRelay.JoinRelay(joinCodeInput.text);
-    gameObject.SetActive(false);
+    background.SetActive(false);
+    clientButtonObject.SetActive(false);
+    joinCodeInputObject.SetActive(false);
+
     bnh.SmoothieStartServerRPC();
   }
 
