@@ -10,7 +10,7 @@ public class SpawnRange : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        range = GameObject.Find("Player").transform.Find("OrderFinder").GetChild(0).gameObject.GetComponent<Collider2D>();
+        range = GameObject.Find("Truck").transform.Find("Spawn Range").gameObject.GetComponent<Collider2D>();
     }
 
     void OnCollisionEnter2D(Collision2D col)
