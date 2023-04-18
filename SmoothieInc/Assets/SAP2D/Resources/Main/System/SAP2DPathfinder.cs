@@ -90,11 +90,11 @@ namespace SAP2D {
 
                 currentTile = FindNextTile(openList);
 
-                // if (currentTile == null)
-                // {
-                //     Debug.LogError("Path not found");
-                //     return null;
-                // }
+                if (currentTile == null)
+                {
+                    Debug.LogError("Path not found");
+                    return null;
+                }
             }
             return PathRecovery(startTile, targetTile);
         }
