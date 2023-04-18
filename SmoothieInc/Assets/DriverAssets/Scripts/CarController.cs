@@ -10,6 +10,8 @@ public class CarController : NetworkBehaviour
     public float normalAccelerationFactor = 30.0f;
     float accelerationFactor = 30.0f;
     public float nitroAccelerationFactor = 40.0f;
+
+    public ParticleSystem nitroObj;
     
     public float turnFactor = 3.5f;
     public float normalMaxSpeed = 20;
@@ -44,6 +46,7 @@ public class CarController : NetworkBehaviour
         {
             if(nitroCooldownTime <= 0)
             {
+                nitroObj.Play();               
                 nitro = true;
                 nitroCooldownTime = maxNitroCooldownTime;
                 nitroTime = 0;
@@ -72,6 +75,7 @@ public class CarController : NetworkBehaviour
                 nitro = false;
                 accelerationFactor = normalAccelerationFactor;
                 maxSpeed = normalMaxSpeed;
+                nitroObj.Stop();
             }
         }
         else
@@ -133,5 +137,26 @@ public class CarController : NetworkBehaviour
     {
         steeringInput = inputVector.x;
         accelerationInput = inputVector.y;
+    }
+
+    float GetLateralVelocity()
+    {
+        return Vector2.Dot(transform.right, rb.velocity);
+    }
+
+    public bool IsTireScreeching(out float lateralVelocity, out bool isBraking)
+    {
+        lateralVelocity = GetLateralVelocity();
+        isBraking = false;
+
+        if (accelerationInput < 0 && velocityVsUp > 0)
+        {
+            isBraking = true;
+            return true;
+        }
+        if (Mathf.Abs(GetLateralVelocity()) > 4.0f)
+            return true;
+        
+        return false;
     }
 }

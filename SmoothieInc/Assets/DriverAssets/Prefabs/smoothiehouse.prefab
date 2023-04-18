@@ -173,6 +173,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9052780609709004526}
+  - component: {fileID: 8331860769493025027}
   m_Layer: 0
   m_Name: smoothiehouse
   m_TagString: Untagged
@@ -197,3 +198,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &8331860769493025027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8568697167044119636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f835e060b32a4f5db1528fec2a26198, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: {fileID: 0}
+  current: {fileID: 4109242023940445736}

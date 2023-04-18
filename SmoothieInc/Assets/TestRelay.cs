@@ -74,14 +74,11 @@ public class TestRelay : MonoBehaviour
       // );
 
       NetworkManager.Singleton.StartClient();
-
-      bnh.SmoothieStartServerRPC();
+      
     } catch (RelayServiceException e) {
       Debug.Log(e);
     }
   }
-
-
 
 
 

@@ -15,6 +15,8 @@ public class FillCard : MonoBehaviour
     //public Sprite[] mixIns;
     //public Sprite[] toppings;
 
+    bool colorSet = false;
+
     [Header("Slots")]
     public Image solid1;
     public Image solid2;
@@ -43,22 +45,24 @@ public class FillCard : MonoBehaviour
 
     void Fill(int[] arr)
     {
-        // randomly set color of card
-        int ran = Random.Range(0, 3);
-        if(ran == 0)
+        if(!colorSet)
         {
-            GetComponent<Image>().color = new Color(Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1f, 1f);
+            // randomly set color of card
+            int ran = Random.Range(0, 3);
+            if(ran == 0)
+            {
+                GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f, 1f);
+            }
+            else if(ran == 2)
+            {
+                GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), 1f, Random.Range(0.5f, 1f), 1f);
+            }
+            else
+            {
+                GetComponent<Image>().color = new Color(1f, Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f);
+            }
+            colorSet = true;
         }
-        else if(ran == 2)
-        {
-            GetComponent<Image>().color = new Color(Random.Range(0.5f, 1f), 1f, Random.Range(0.5f, 1f), 1f);
-        }
-        else
-        {
-            GetComponent<Image>().color = new Color(1f, Random.Range(0.5f, 1f), Random.Range(0.5f, 1f), 1f);
-        }
-
-
 
         // this is very innefficient and i probably could have done it with
         // a for loop but i cannot be bothered (i will fix later maybe)

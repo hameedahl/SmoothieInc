@@ -11,6 +11,12 @@ public class BooleanNetworkHandler : NetworkBehaviour
 
     bool started = false;
 
+    // private NetworkVariable<bool> clientJoined = new NetworkVariable<bool>(
+    //   value:false,
+    //   NetworkVariableReadPermission.Everyone,
+    //   NetworkVariableWritePermission.Owner
+    // );
+
     private NetworkVariable<bool> arrivedNetworkVariable = new NetworkVariable<bool>(
       value:false,
       NetworkVariableReadPermission.Everyone,
@@ -249,6 +255,8 @@ public class BooleanNetworkHandler : NetworkBehaviour
       var clientId = serverRpcParams.Receive.SenderClientId;
       if (NetworkManager.ConnectedClients.ContainsKey(clientId))
       {
+          Debug.Log("HI");
+
           nuim.StartHost();
       }
     }
