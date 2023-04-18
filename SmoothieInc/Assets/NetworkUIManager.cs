@@ -95,13 +95,12 @@ public class NetworkUIManager : MonoBehaviour
     }
     if(StaticClass.CrossSceneInformation == "Driver")
     {
-      Debug.Log("Driver");
+      StartCoroutine(WaitThenCreate());
       NetworkManager.Singleton.StartHost();
       truckCamera.gameObject.SetActive(true);
       joinCode.SetActive(true);
       joinCodeLabel.SetActive(true);
       closeButton.SetActive(true);
-      testRelay.CreateRelay();
     }
     if(StaticClass.CrossSceneInformation == "Smoothie")
     {
@@ -109,6 +108,12 @@ public class NetworkUIManager : MonoBehaviour
       clientButtonObject.SetActive(true);
       joinCodeInputObject.SetActive(true);
     }
+  }
+
+  IEnumerator WaitThenCreate()
+  {
+    yield return new WaitForSeconds(1f);
+    testRelay.CreateRelay();
   }
 
 }
