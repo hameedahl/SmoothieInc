@@ -936,8 +936,8 @@ MonoBehaviour:
   smoothieCamera: {fileID: 915007746}
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
-  developerMode: 0
-  developerIsDriver: 1
+  developerMode: 1
+  developerIsDriver: 0
   testRelay: {fileID: 1586465724}
 --- !u!1 &167329872
 GameObject:

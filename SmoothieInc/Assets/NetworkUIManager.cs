@@ -95,6 +95,7 @@ public class NetworkUIManager : MonoBehaviour
       NetworkManager.Singleton.StartHost();
       truckCamera.gameObject.SetActive(true);
       joinCode.SetActive(true);
+      
       testRelay.CreateRelay();
     }
     if(StaticClass.CrossSceneInformation == "Smoothie")
