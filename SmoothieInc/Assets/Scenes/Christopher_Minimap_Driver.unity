@@ -940,8 +940,8 @@ MonoBehaviour:
   smoothieCamera: {fileID: 915007746}
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
-  developerMode: 0
-  developerIsDriver: 0
+  developerMode: 1
+  developerIsDriver: 1
   testRelay: {fileID: 1586465724}
 --- !u!1 &167329872
 GameObject:
@@ -15224,7 +15224,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7572873287896773079, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
       propertyPath: m_CullingMask.m_Bits
-      value: 311
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
