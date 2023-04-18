@@ -117,7 +117,6 @@ public class BlenderSlot : MonoBehaviour
     }
 
     public void startBlender() {
-        GameObject liquids = GameObject.FindGameObjectWithTag("BlenderLiq");
         if (!top.isEmpty && top.hasIce) {
             isBlending = true;
             animTop.Play("Blending-Top");
@@ -127,6 +126,8 @@ public class BlenderSlot : MonoBehaviour
                     Destroy(blenderItems[i]);
                     isFull[i] = false;
                 }
+                GameObject liquids = GameObject.FindGameObjectWithTag("BlenderLiq");
+
                 if (liquids)
                 {
                     Destroy(liquids);
