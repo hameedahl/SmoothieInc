@@ -33,6 +33,8 @@ public class CarController : NetworkBehaviour
 
     Rigidbody2D rb;
 
+    public AudioManager am;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
