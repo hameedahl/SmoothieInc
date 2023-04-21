@@ -26,6 +26,7 @@ public class MainMenu : MonoBehaviour
     [Header("Object References")]
     public Camera truckCamera;
     public Camera smoothieCamera;
+    public Camera menuCamera;
 
     public GameObject truckUI;
     public GameObject smoothieUI;
@@ -89,6 +90,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartHost()
     {
+        menuCamera.gameObject.SetActive(false);
         truckCamera.gameObject.SetActive(true);
         truckUI.gameObject.SetActive(true);
         toggleJoinMenu(false, false);
@@ -102,6 +104,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartClient()
     {
+        menuCamera.gameObject.SetActive(false);
         toggleJoinMenu(false, false);
         NetworkManager.Singleton.StartClient();
         smoothieCamera.gameObject.SetActive(true);
