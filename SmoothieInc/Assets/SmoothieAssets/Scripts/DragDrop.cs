@@ -53,15 +53,15 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+        //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        //Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
     }
        
 
     private void OnMouseExit()
     {
-        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-        Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
+        //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        //Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
     }
 
     private void OnMouseDown() {
@@ -92,8 +92,8 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseUp() {
-            Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-            Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+            //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+            //Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         
         isMoving = false;
         if (isFood) {
