@@ -249,15 +249,15 @@ public class BooleanNetworkHandler : NetworkBehaviour
       }
     }
 
-    [ServerRpc(RequireOwnership = false)]
-    public void SmoothieStartServerRPC(ServerRpcParams serverRpcParams = default)
-    {
-      var clientId = serverRpcParams.Receive.SenderClientId;
-      if (NetworkManager.ConnectedClients.ContainsKey(clientId))
-      {
-          Debug.Log("HI");
+    // [ServerRpc(RequireOwnership = false)]
+    // public void SmoothieStartServerRPC(ServerRpcParams serverRpcParams = default)
+    // {
+    //   var clientId = serverRpcParams.Receive.SenderClientId;
+    //   if (NetworkManager.ConnectedClients.ContainsKey(clientId))
+    //   {
+    //       Debug.Log("HI");
 
-          nuim.StartHost();
-      }
-    }
+    //       nuim.StartHost();
+    //   }
+    // }
 }

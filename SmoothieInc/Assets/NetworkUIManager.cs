@@ -34,46 +34,46 @@ public class NetworkUIManager : MonoBehaviour
 
   private void Awake()
   {
-    //  hostButton.onClick.AddListener(() => {NetworkManager.Singleton.StartHost();
-    //                                        truckCamera.gameObject.SetActive(true);
-    //                                        truckUI.gameObject.SetActive(true);
-    //                                        testRelay.CreateRelay();
-    //                                         });
+     hostButton.onClick.AddListener(() => {NetworkManager.Singleton.StartHost();
+                                           truckCamera.gameObject.SetActive(true);
+                                           truckUI.gameObject.SetActive(true);
+                                           testRelay.CreateRelay();
+                                            });
 
-    //  clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
-    //                                          smoothieCamera.gameObject.SetActive(true);
-    //                                          smoothieUI.gameObject.SetActive(true);
-    //                                          testRelay.JoinRelay(joinCodeInput.text);
-    //                                         });
+     clientButton.onClick.AddListener(() => {NetworkManager.Singleton.StartClient();
+                                             smoothieCamera.gameObject.SetActive(true);
+                                             smoothieUI.gameObject.SetActive(true);
+                                             testRelay.JoinRelay(joinCodeInput.text);
+                                            });
   }
 
   private void Start()
   {
-    StartCoroutine(waitThenStart());
+    // StartCoroutine(waitThenStart());
   }
 
-  public void StartHost()
-  {
-    Debug.Log("Client Conntected");
-    truckUI.gameObject.SetActive(true);
-    background.SetActive(false);
-    joinCode.SetActive(false);
-    closeButton.SetActive(false);
-    joinCode.SetActive(false);
-    joinCodeLabel.SetActive(false);
-  }
+  // public void StartHost()
+  // {
+  //   Debug.Log("Client Conntected");
+  //   truckUI.gameObject.SetActive(true);
+  //   background.SetActive(false);
+  //   joinCode.SetActive(false);
+  //   closeButton.SetActive(false);
+  //   joinCode.SetActive(false);
+  //   joinCodeLabel.SetActive(false);
+  // }
 
-  public void StartClient()
-  {
-    NetworkManager.Singleton.StartClient();
-    smoothieUI.gameObject.SetActive(true);
-    testRelay.JoinRelay(joinCodeInput.text);
-    background.SetActive(false);
-    clientButtonObject.SetActive(false);
-    joinCodeInputObject.SetActive(false);
+  // public void StartClient()
+  // {
+  //   NetworkManager.Singleton.StartClient();
+  //   smoothieUI.gameObject.SetActive(true);
+  //   testRelay.JoinRelay(joinCodeInput.text);
+  //   background.SetActive(false);
+  //   clientButtonObject.SetActive(false);
+  //   joinCodeInputObject.SetActive(false);
 
-    bnh.SmoothieStartServerRPC();
-  }
+  //   bnh.SmoothieStartServerRPC();
+  // }
 
   private void FixedUpdate()
   {
@@ -86,41 +86,41 @@ public class NetworkUIManager : MonoBehaviour
       clientButton.interactable = false;
   }
 
-  public IEnumerator waitThenStart()
-  {
-    yield return new WaitForSeconds(0.1f);
-    if(developerMode)
-    {
-      if(developerIsDriver)
-      {
-        StaticClass.CrossSceneInformation = "Driver";
-      }
-      else
-      {
-        StaticClass.CrossSceneInformation = "Smoothie";
-      }
-    }
-    if(StaticClass.CrossSceneInformation == "Driver")
-    {
-      StartCoroutine(WaitThenCreate());
-      NetworkManager.Singleton.StartHost();
-      truckCamera.gameObject.SetActive(true);
-      joinCode.SetActive(true);
-      joinCodeLabel.SetActive(true);
-      closeButton.SetActive(true);
-    }
-    if(StaticClass.CrossSceneInformation == "Smoothie")
-    {
-      smoothieCamera.gameObject.SetActive(true);
-      clientButtonObject.SetActive(true);
-      joinCodeInputObject.SetActive(true);
-    }
-  }
+  // public IEnumerator waitThenStart()
+  // {
+  //   yield return new WaitForSeconds(0.1f);
+  //   if(developerMode)
+  //   {
+  //     if(developerIsDriver)
+  //     {
+  //       StaticClass.CrossSceneInformation = "Driver";
+  //     }
+  //     else
+  //     {
+  //       StaticClass.CrossSceneInformation = "Smoothie";
+  //     }
+  //   }
+  //   if(StaticClass.CrossSceneInformation == "Driver")
+  //   {
+  //     StartCoroutine(WaitThenCreate());
+  //     NetworkManager.Singleton.StartHost();
+  //     truckCamera.gameObject.SetActive(true);
+  //     joinCode.SetActive(true);
+  //     joinCodeLabel.SetActive(true);
+  //     closeButton.SetActive(true);
+  //   }
+  //   if(StaticClass.CrossSceneInformation == "Smoothie")
+  //   {
+  //     smoothieCamera.gameObject.SetActive(true);
+  //     clientButtonObject.SetActive(true);
+  //     joinCodeInputObject.SetActive(true);
+  //   }
+  // }
 
-  IEnumerator WaitThenCreate()
-  {
-    yield return new WaitForSeconds(1f);
-    testRelay.CreateRelay();
-  }
+  // IEnumerator WaitThenCreate()
+  // {
+  //   yield return new WaitForSeconds(1f);
+  //   testRelay.CreateRelay();
+  // }
 
 }

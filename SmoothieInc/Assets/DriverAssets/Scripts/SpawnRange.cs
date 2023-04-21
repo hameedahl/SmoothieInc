@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnRange : MonoBehaviour
 {
     public Collider2D range;
-    public Collider2D current;
+    public MeshRenderer current;
 
     // Start is called before the first frame update
     void Start()
