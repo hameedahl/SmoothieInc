@@ -11,19 +11,20 @@ public class SpawnRange : MonoBehaviour
     void Start()
     {
         range = GameObject.Find("Truck").transform.Find("Spawn Range").gameObject.GetComponent<Collider2D>();
+        current.enabled = false;
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.collider == range)
+        if(col.GetComponent<Collider2D>() == range)
         {
             current.enabled = true;
         }
     }
 
-    void OnCollisionExit2D(Collision2D col)
+    void OnTriggerExit2D(Collider2D col)
     {
-        if(col.collider == range)
+        if(col.GetComponent<Collider2D>() == range)
         {
             current.enabled = false;
         }
