@@ -22,6 +22,7 @@ public class Cup : MonoBehaviour
     private GameObject strawSlot;
     public Sprite strawArt;
     public GameHandler gameHandler;
+    public bool isFinished = false;
 
 
     void Start() {
@@ -34,9 +35,9 @@ public class Cup : MonoBehaviour
 
     void Update() {
         finishCup();
-        if (isCovered && hasStraw) {
-            gameHandler.finishDrink();
-        }
+        //if (isCovered && hasStraw) { /* change to all drinks finished */
+        //    gameHandler.finishDrink();
+        //}
     }
 
     public void fillCup() {
@@ -60,6 +61,7 @@ public class Cup : MonoBehaviour
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
                 straw.SetActive(false);
                 hasStraw = true;
+                isFinished = true;
         }
     }
 }

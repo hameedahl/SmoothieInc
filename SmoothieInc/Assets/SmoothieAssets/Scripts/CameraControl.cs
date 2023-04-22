@@ -9,11 +9,12 @@ public class CameraControl : MonoBehaviour
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
    
-    public void MoveToNewStation(Transform newStation, Cup cup) {
+    public void MoveToNewStation(Transform newStation, GameObject tray) {
         transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z),
         ref velocity, speed);
         currentPosX = newStation.position.x;
-        cup.transform.position = new Vector3(17.59f, -1.45f, 0);
+        tray.transform.position = new Vector3(1015.6f, -3f, 0);
+        //this.fieldOfView = 30;
     }
 }
 

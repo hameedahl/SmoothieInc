@@ -18,6 +18,7 @@ TagManager:
   - FoodStack
   - BlenderLiq
   - Anchor
+  - Tray
   layers:
   - Default
   - TransparentFX
