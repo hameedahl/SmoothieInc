@@ -146,6 +146,11 @@ public class CarController : NetworkBehaviour
         return Vector2.Dot(transform.right, rb.velocity);
     }
 
+    public float GetVelocityMagnitude()
+    {
+        return rb.velocity.magnitude;
+    }
+
     public bool IsTireScreeching(out float lateralVelocity, out bool isBraking)
     {
         lateralVelocity = GetLateralVelocity();
