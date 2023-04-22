@@ -44,7 +44,6 @@ public class GameHandler : MonoBehaviour
     public int drinkCount = 0;
 
     public FillCard fillCard;
-
     public BooleanNetworkHandler bnh;
 
     [SerializeField] private Transform toppingStation;
@@ -52,6 +51,8 @@ public class GameHandler : MonoBehaviour
 
     public Camera camGo;
     private CameraControl cam;
+    public GameObject startBtn;
+    public GameObject stopBtn;
 
 
     // Start is called before the first frame update
@@ -143,7 +144,9 @@ public class GameHandler : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         cam.MoveToNewStation(toppingStation, tray);
-        //camGo.fieldOfView = 30;
+        yield return new WaitForSeconds(2);
+        camGo.orthographicSize = 2;
+        camGo.transform.position = new Vector3(1015.861f, -1.77f, -10);
         // inStation0 = false;
     }
 

@@ -7,6 +7,7 @@ public class TooltipHover : MonoBehaviour
 {
     public static TooltipHover _instance;
     public TextMeshProUGUI textComponent;
+
     private void Awake()
     {
         /* only one tooltip allowed at the same time */

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.Netcode;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEditor.VersionControl;
 
 public class MainMenu : MonoBehaviour
 {
@@ -25,8 +26,11 @@ public class MainMenu : MonoBehaviour
     public GameObject joinCodeDisplay;
     public GameObject joinMenuBackground;
     public GameObject closeButton;
-    
-    
+
+    [Header("Tutorial UI")]
+    public GameObject SmoothieTut;
+    private bool isSmoothieTut = false;
+
     [Header("Object References")]
     public Camera truckCamera;
     public Camera smoothieCamera;
@@ -52,6 +56,15 @@ public class MainMenu : MonoBehaviour
         toggleMainMenu(true);
     }
 
+    private void Update()
+    {
+        if (isSmoothieTut && (Input.GetKeyDown(KeyCode.Space)
+            || Input.GetKeyDown(KeyCode.Return)
+            || Input.GetKeyDown(KeyCode.Mouse0)))
+        {
+            StartClient();
+        }
+    }
     // enable or disable the join menu
     void toggleJoinMenu(bool enable, bool driver)
     {
@@ -111,10 +124,18 @@ public class MainMenu : MonoBehaviour
         toggleMainMenu(false);
     }
 
+    public void StartSmoothieTut()
+    {
+        toggleJoinMenu(false, false);
+        SmoothieTut.gameObject.SetActive(true);
+        isSmoothieTut = true;
+    }
+
     public void StartClient()
     {
+        StartSmoothieTut();
+        SmoothieTut.gameObject.SetActive(false);
         menuCamera.gameObject.SetActive(false);
-        toggleJoinMenu(false, false);
         NetworkManager.Singleton.StartClient();
         smoothieCamera.gameObject.SetActive(true);
         smoothieUI.gameObject.SetActive(true);
