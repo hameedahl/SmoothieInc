@@ -27,6 +27,7 @@ public class BlenderSlot : MonoBehaviour
     GameObject anchor;
     public GameObject liquid;
     private GameObject newLiquid;
+    private int blenderliqs;
 
 
 
@@ -59,9 +60,10 @@ public class BlenderSlot : MonoBehaviour
                     item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
                     itemInfo.isPouring = true;
                     top.isEmpty = false;
-                    // anim = item.GetComponent<Animator>();
+                // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
                     newLiquid = Instantiate(liquid);
+                    blenderliqs++;
                     pour(itemInfo, newLiquid);
                     // anim.Play("Pouring" + itemInfo.id);
                     addToOrder(itemInfo);
@@ -117,21 +119,26 @@ public class BlenderSlot : MonoBehaviour
     }
 
     public void startBlender() {
-        if (!top.isEmpty && top.hasIce) {
+        if (!top.isEmpty && top.hasIce)
+        {
             isBlending = true;
             animTop.Play("Blending-Top");
             animBottom.Play("Blending-Bottom");
-            for (int i = 0; i < blenderItems.Length; i++) { 
-                if (isFull[i]) { /* remove all items in the blender */
+            for (int i = 0; i < blenderItems.Length; i++)
+            {
+                if (isFull[i])
+                { /* remove all items in the blender */
                     Destroy(blenderItems[i]);
                     isFull[i] = false;
                 }
-                GameObject liquids = GameObject.FindGameObjectWithTag("BlenderLiq");
+            }
 
-                if (liquids)
-                {
-                    Destroy(liquids);
-                }
+            /* remove liquids */
+
+            for (int i = 0; i < blenderliqs; i++)
+            {
+
+                Destroy(GameObject.FindGameObjectsWithTag("BlenderLiq")[i]);
             }
         }
     }

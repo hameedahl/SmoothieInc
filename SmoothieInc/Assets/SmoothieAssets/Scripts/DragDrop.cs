@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -24,6 +25,8 @@ public class DragDrop : MonoBehaviour
 
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
+
+    public string message;
 
     // Start is called before the first frame update
     void Start() {
@@ -53,20 +56,24 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-        //Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+        TooltipHover._instance.SetAndShowTip(message);
+
     }
-       
+
 
     private void OnMouseExit()
     {
-        //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-        //Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
+        TooltipHover._instance.HideTip();
+
     }
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-         
+                
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
@@ -92,8 +99,8 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseUp() {
-            //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-            //Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+            Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+            Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         
         isMoving = false;
         if (isFood) {

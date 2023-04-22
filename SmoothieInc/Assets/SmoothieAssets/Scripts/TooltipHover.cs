@@ -29,7 +29,7 @@ public class TooltipHover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Input.mousePosition; /* follow mouse pos. */
+        //transform.position = Input.mousePosition; /* follow mouse pos. */
     }
 
     public void SetAndShowTip(string message)
