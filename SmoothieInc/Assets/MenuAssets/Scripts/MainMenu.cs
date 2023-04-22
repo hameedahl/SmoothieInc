@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Unity.Netcode;
+using UnityEngine.Audio;
 using TMPro;
 
 public class MainMenu : MonoBehaviour
 {
+    [Header("Mixers")]
+    public AudioMixer audioMixer;
+
     [Header("Main Menu UI")]
     public GameObject hostButton;
     public GameObject clientButton;
@@ -33,6 +37,10 @@ public class MainMenu : MonoBehaviour
 
     public TestRelay testRelay;
 
+    void Awake()
+    {
+        audioMixer.SetFloat("SFXVolume", -80.00f);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -94,6 +102,7 @@ public class MainMenu : MonoBehaviour
         truckCamera.gameObject.SetActive(true);
         truckUI.gameObject.SetActive(true);
         toggleJoinMenu(false, false);
+        audioMixer.SetFloat("SFXVolume", 1.0f);
     }
 
     public void StartClientMenu()

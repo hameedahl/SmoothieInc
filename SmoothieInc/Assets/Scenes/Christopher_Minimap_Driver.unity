@@ -2333,6 +2333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ccf3af6d25bd49f4828fabeff2af0c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioMixer: {fileID: 24100000, guid: e6e24a85af6f14152b9d63968fdd3177, type: 2}
   hostButton: {fileID: 739828337}
   clientButton: {fileID: 772551323}
   creditsButton: {fileID: 1248677872}
