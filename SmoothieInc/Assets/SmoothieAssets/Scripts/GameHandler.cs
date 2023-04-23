@@ -118,6 +118,7 @@ public class GameHandler : MonoBehaviour
         int score = 0;
         if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
             valuesArray = bnh.GetValuesArrayFromNetwork();
+            
         }
         return score;
     }
