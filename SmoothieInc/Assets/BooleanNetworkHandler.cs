@@ -233,7 +233,6 @@ public class BooleanNetworkHandler : NetworkBehaviour
 
     public int[] GetValuesArrayFromNetwork()
     {
-
       return tempValuesArray;
     }
 

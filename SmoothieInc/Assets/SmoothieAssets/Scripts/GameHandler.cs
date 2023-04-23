@@ -113,6 +113,13 @@ public class GameHandler : MonoBehaviour
         // } else (difficulty == 3) {
     }
 
+    public void getAccuracy()
+    {
+      if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
+        valuesArray = bnh.GetValuesArrayFromNetwork()
+      }
+    }
+
     public bool GetDrinkFinished()
     {
       return orderComplete;
@@ -126,6 +133,11 @@ public class GameHandler : MonoBehaviour
     public int[] GetValuesArray()
     {
       return valuesArray;
+    }
+
+    public void SetValuesArray(int[] order)
+    {
+      valuesArray = order;
     }
 
     public void completeOrder()
