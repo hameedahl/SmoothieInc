@@ -118,6 +118,7 @@ public class GameHandler : MonoBehaviour
       if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
         valuesArray = bnh.GetValuesArrayFromNetwork()
       }
+      //Update Accuracy RPC variable
     }
 
     public bool GetDrinkFinished()
