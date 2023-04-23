@@ -115,11 +115,11 @@ public class GameHandler : MonoBehaviour
 
     public int getAccuracy()
     {
-      if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
-        valuesArray = bnh.GetValuesArrayFromNetwork();
         int score = 0;
-      }
-      return score;
+        if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
+            valuesArray = bnh.GetValuesArrayFromNetwork();
+        }
+        return score;
     }
 
     public bool GetDrinkFinished()
