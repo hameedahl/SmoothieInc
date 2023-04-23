@@ -17,103 +17,103 @@ public class BooleanNetworkHandler : NetworkBehaviour
     //   NetworkVariableWritePermission.Owner
     // );
 
-    private NetworkVariable<bool> arrivedNetworkVariable = new NetworkVariable<bool>(
+    public NetworkVariable<bool> arrivedNetworkVariable = new NetworkVariable<bool>(
       value:false,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<bool> drinkFinishedNetworkVariable = new NetworkVariable<bool>(
+    public NetworkVariable<bool> drinkFinishedNetworkVariable = new NetworkVariable<bool>(
       value:false,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
-    private NetworkVariable<double> playerScoreNetworkVariable = new NetworkVariable<double>(
+    public NetworkVariable<double> playerScoreNetworkVariable = new NetworkVariable<double>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
-    private NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
+    public NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
       value:new Vector3(0,0,0),
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork0 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork0 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork1 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork1 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork2 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork2 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork3 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork3 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork4 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork4 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork5 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork5 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork6 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork6 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork7 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork7 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork8 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork8 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork9 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork9 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork10 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork10 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private NetworkVariable<int> valuesArrayNetwork11 = new NetworkVariable<int>(
+    public NetworkVariable<int> valuesArrayNetwork11 = new NetworkVariable<int>(
       value:0,
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
 
-    private TruckManager truckManager;
+    public TruckManager truckManager;
     public NetworkUIManager nuim;
-    private GameHandler gameHandler;
+    public GameHandler gameHandler;
     public Transform target;
 
     public int[] tempValuesArray = new int[12];
