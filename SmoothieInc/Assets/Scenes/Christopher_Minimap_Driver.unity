@@ -18578,6 +18578,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 293146914619723390, guid: 337096d3569d349949dce2ed147cbee8, type: 3}
+      propertyPath: GraphDrawers.Array.data[0].ScaleLvl
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 474682804803125183, guid: 337096d3569d349949dce2ed147cbee8, type: 3}
       propertyPath: m_IsActive
       value: 0
