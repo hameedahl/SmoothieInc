@@ -35,25 +35,31 @@ public class GameHandler : MonoBehaviour
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int> [arraySize];
     public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
     public int[] valuesArray = new int[arraySize];
-    private GameObject cup;
+    private GameObject tray;
     public double playerScore = 0;
     public double itemWeight;
     public bool orderComplete = false;
-    public bool drinkFinished = false;
 
     private int orderCount = 0;
-    public FillCard fillCard;
+    public int drinkCount = 0;
 
+    public FillCard fillCard;
     public BooleanNetworkHandler bnh;
 
     [SerializeField] private Transform toppingStation;
     [SerializeField] private Transform blendingStation;
+
+    public Camera camGo;
+    private CameraControl cam;
+    public GameObject startBtn;
+    public GameObject stopBtn;
 
 
     // Start is called before the first frame update
     void Start() {
         blendingStation = GameObject.FindGameObjectWithTag("Station0").transform;
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
+        cam = camGo.GetComponent<CameraControl>();
 
         for (int i = 0; i < arraySize; i++) {
             order[i] = new KeyValuePair<string, int>("", emptySlot);
@@ -66,26 +72,17 @@ public class GameHandler : MonoBehaviour
         {
             valuesArray[i] = order[i].Value;
         }
-
-
     }
 
-
-    public void pauseGame()
+    private void Update()
     {
-        StartCoroutine(GamePauser());
-    }
-
-    public IEnumerator GamePauser()
-    {
-        yield return new WaitForSeconds(1);
-        //cam.MoveToNewStation(toppingStation, cup.GetComponent<Cup>());
-       // inStation0 = false;
+        tray = GameObject.FindGameObjectWithTag("Tray");
     }
 
     public void generateOrder(int difficulty) {
         System.Random rand = new System.Random();
         if (difficulty == 1) {
+            drinkCount = 1;
             for (int i = 0; i < 3; i++) {
                 order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
                 orderCount++;
@@ -118,7 +115,7 @@ public class GameHandler : MonoBehaviour
 
     public bool GetDrinkFinished()
     {
-      return drinkFinished;
+      return orderComplete;
     }
 
     public double GetPlayerScore()
@@ -131,10 +128,27 @@ public class GameHandler : MonoBehaviour
       return valuesArray;
     }
 
-    public void finishDrink()
+    public void completeOrder()
     {
-        drinkFinished = true;
+        complete();
+        orderComplete = true;
         bnh.SetSmoothieServerRPC(true, playerScore);
     }
+
+    public void complete()
+    {
+        StartCoroutine(GameComplete());
+    }
+
+    public IEnumerator GameComplete()
+    {
+        yield return new WaitForSeconds(1);
+        cam.MoveToNewStation(toppingStation, tray);
+        yield return new WaitForSeconds(2);
+        camGo.orthographicSize = 2;
+        camGo.transform.position = new Vector3(1015.861f, -1.77f, -10);
+        // inStation0 = false;
+    }
+
 
 }

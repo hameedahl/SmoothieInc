@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 693063009806989935}
   - component: {fileID: 6020418081739035207}
   - component: {fileID: 6970595474753750320}
+  - component: {fileID: 2448824661587941159}
   m_Layer: 0
   m_Name: Cover
   m_TagString: Cover
@@ -44,7 +45,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.2469101, y: 0.33897805}
@@ -76,6 +77,28 @@ MonoBehaviour:
   objToGrab: {fileID: 0}
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
+  message: Cover
+--- !u!50 &2448824661587941159
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693063009806989934}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &693063010186938543
 GameObject:
   m_ObjectHideFlags: 0

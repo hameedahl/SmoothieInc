@@ -76,7 +76,7 @@ public class BlenderSlot : MonoBehaviour
                     return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-                        if (!isFull[i] && i != slots.Length - 1) { /* snap object into slot if close enough (don't add to liquid slot)*/
+                        if (!isFull[i] && i != slots.Length - 2) { /* snap object into slot if close enough (don't add to liquid slot)*/
                             item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
                             blenderItems[i] = item;
                             isFull[i] = true;

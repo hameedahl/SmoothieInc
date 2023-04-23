@@ -192,6 +192,7 @@ GameObject:
   - component: {fileID: 6517620238347053943}
   - component: {fileID: 5955943457548409640}
   - component: {fileID: 2884624831198657266}
+  - component: {fileID: -6537405502725611664}
   m_Layer: 0
   m_Name: Cup
   m_TagString: Cup
@@ -237,6 +238,7 @@ MonoBehaviour:
   coverArt: {fileID: 1095066861, guid: 712a1f4b09af34da0a665663b10cece4, type: 3}
   strawArt: {fileID: 21300000, guid: c41ce27eee22846ec8107a1dc58ffae7, type: 3}
   gameHandler: {fileID: 0}
+  isFinished: 0
 --- !u!61 &7809265443200847294
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -247,7 +249,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.03709072, y: -0.007418141}
@@ -279,6 +281,7 @@ MonoBehaviour:
   objToGrab: {fileID: 0}
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
+  message: Cup
 --- !u!95 &5955943457548409640
 Animator:
   serializedVersion: 4
@@ -351,6 +354,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!50 &-6537405502725611664
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7809265443200847290}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &7809265444653512374
 PrefabInstance:
   m_ObjectHideFlags: 0
