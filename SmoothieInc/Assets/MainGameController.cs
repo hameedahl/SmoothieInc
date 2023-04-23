@@ -28,7 +28,7 @@ public class MainGameController : MonoBehaviour
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             Debug.Log("BOTH ARE THERE");
-            Debug.Log(playScore);
+            Debug.Log(playerScore);
             Text scoreTextB = WinText.GetComponent<Text>();
             if (playerScore >= 80)
             {
