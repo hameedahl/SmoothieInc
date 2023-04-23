@@ -27,6 +27,8 @@ public class MainGameController : MonoBehaviour
             Debug.Log("Driver has arrived");
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
+            Debug.Log("BOTH ARE THERE");
+            Debug.Log(playScore);
             Text scoreTextB = WinText.GetComponent<Text>();
             if (playerScore >= 80)
             {
