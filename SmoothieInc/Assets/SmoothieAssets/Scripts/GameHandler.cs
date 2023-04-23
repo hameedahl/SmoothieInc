@@ -113,12 +113,13 @@ public class GameHandler : MonoBehaviour
         // } else (difficulty == 3) {
     }
 
-    public void getAccuracy()
+    public int getAccuracy()
     {
       if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
-        valuesArray = bnh.GetValuesArrayFromNetwork()
+        valuesArray = bnh.GetValuesArrayFromNetwork();
+        int score = 0;
       }
-      //Update Accuracy RPC variable
+      return score;
     }
 
     public bool GetDrinkFinished()
@@ -145,7 +146,7 @@ public class GameHandler : MonoBehaviour
     {
         complete();
         orderComplete = true;
-        bnh.SetSmoothieServerRPC(true, playerScore);
+        bnh.SetSmoothieServerRPC(true, getAccuracy());
     }
 
     public void complete()

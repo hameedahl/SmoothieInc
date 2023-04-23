@@ -39,4 +39,3 @@ public class MainGameController : MonoBehaviour
         }
         }
     }
-
