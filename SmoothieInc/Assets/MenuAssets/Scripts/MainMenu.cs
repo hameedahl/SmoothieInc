@@ -51,9 +51,18 @@ public class MainMenu : MonoBehaviour
     {
         // Hide Join Menu
         toggleJoinMenu(false, false);
-        
+
         // Show Main Menu
         toggleMainMenu(true);
+
+        // Add the callback for when a client connects
+        NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+    }
+
+    private void OnDestroy()
+    {
+        // Remove the callback when the script is destroyed
+        NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
     }
 
     private void Update()
@@ -164,5 +173,14 @@ public class MainMenu : MonoBehaviour
             Debug.Log("Hide Credits");
         }
 
+    }
+
+    private void OnClientConnected(ulong clientId)
+    {
+        if (NetworkManager.Singleton.IsHost)
+        {
+            // If the current instance is the host, close the join menu UI
+            toggleJoinMenu(false, false);
+        }
     }
 }
