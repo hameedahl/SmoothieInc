@@ -1231,6 +1231,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1961813692}
+  - {fileID: 1519929948}
   m_Father: {fileID: 1226605118}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2477,6 +2478,7 @@ RectTransform:
   - {fileID: 1721699596}
   - {fileID: 30735105}
   - {fileID: 341039168}
+  - {fileID: 306378685}
   m_Father: {fileID: 1226605118}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2787,6 +2789,141 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 305985489}
+  m_CullTransparentMesh: 1
+--- !u!1 &306378684
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 306378685}
+  - component: {fileID: 306378687}
+  - component: {fileID: 306378686}
+  m_Layer: 5
+  m_Name: WinText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &306378685
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306378684}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 296397826}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 200, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &306378686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306378684}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 2a677d0a64c2a400cae13d07e39f158d, type: 2}
+  m_sharedMaterial: {fileID: -7728161161582782159, guid: 2a677d0a64c2a400cae13d07e39f158d, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 36
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &306378687
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306378684}
   m_CullTransparentMesh: 1
 --- !u!1 &307970638
 GameObject:
@@ -3945,7 +4082,7 @@ RectTransform:
   m_Children:
   - {fileID: 1229437141}
   m_Father: {fileID: 1961813692}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -4422,7 +4559,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1961813692}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -8937,7 +9074,7 @@ RectTransform:
   m_Children:
   - {fileID: 919562162}
   m_Father: {fileID: 1961813692}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -10432,7 +10569,7 @@ RectTransform:
   m_Children:
   - {fileID: 1051145703}
   m_Father: {fileID: 1961813692}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -10799,7 +10936,41 @@ MonoBehaviour:
   truckManagerObject: {fileID: 399107415}
   gameHandlerObject: {fileID: 1652144661}
   fillCard: {fileID: 1739170484}
+  arrivedNetworkVariable:
+    m_InternalValue: 0
+  drinkFinishedNetworkVariable:
+    m_InternalValue: 0
+  playerScoreNetworkVariable:
+    m_InternalValue: 0
+  destinationPos:
+    m_InternalValue: {x: 0, y: 0, z: 0}
+  valuesArrayNetwork0:
+    m_InternalValue: 0
+  valuesArrayNetwork1:
+    m_InternalValue: 0
+  valuesArrayNetwork2:
+    m_InternalValue: 0
+  valuesArrayNetwork3:
+    m_InternalValue: 0
+  valuesArrayNetwork4:
+    m_InternalValue: 0
+  valuesArrayNetwork5:
+    m_InternalValue: 0
+  valuesArrayNetwork6:
+    m_InternalValue: 0
+  valuesArrayNetwork7:
+    m_InternalValue: 0
+  valuesArrayNetwork8:
+    m_InternalValue: 0
+  valuesArrayNetwork9:
+    m_InternalValue: 0
+  valuesArrayNetwork10:
+    m_InternalValue: 0
+  valuesArrayNetwork11:
+    m_InternalValue: 0
+  truckManager: {fileID: 0}
   nuim: {fileID: 150325404}
+  gameHandler: {fileID: 0}
   target: {fileID: 1093345849}
   tempValuesArray: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   valuesArray: 
@@ -12275,7 +12446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkHandler: {fileID: 1226185016}
-  WinText: {fileID: 1519929947}
+  WinText: {fileID: 306378686}
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
 --- !u!4 &1364502416
@@ -12791,15 +12962,15 @@ RectTransform:
   m_GameObject: {fileID: 1519929947}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8358726, y: 0.8358726, z: 0.8358726}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1961813692}
-  m_RootOrder: 2
+  m_Father: {fileID: 150325403}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: -18.685}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 409.2099, y: 325.2308}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1519929949
@@ -14031,7 +14202,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1961813692}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -16227,7 +16398,6 @@ RectTransform:
   m_Children:
   - {fileID: 1500957391}
   - {fileID: 10190693}
-  - {fileID: 1519929948}
   - {fileID: 1176113948}
   - {fileID: 475510661}
   - {fileID: 412913516}
