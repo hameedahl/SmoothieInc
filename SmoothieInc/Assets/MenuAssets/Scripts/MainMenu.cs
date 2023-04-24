@@ -179,8 +179,7 @@ public class MainMenu : MonoBehaviour
     {
         if (NetworkManager.Singleton.IsHost)
         {
-            // If the current instance is the host, close the join menu UI
-            toggleJoinMenu(false, false);
+            startHost();
         }
     }
 }
