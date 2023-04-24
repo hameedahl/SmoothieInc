@@ -179,7 +179,7 @@ public class MainMenu : MonoBehaviour
     {
         if (NetworkManager.Singleton.IsHost)
         {
-            startHost();
+            StartHost();
         }
     }
 }
