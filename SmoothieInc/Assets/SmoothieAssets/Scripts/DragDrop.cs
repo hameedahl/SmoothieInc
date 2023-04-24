@@ -77,13 +77,10 @@ public class DragDrop : MonoBehaviour
         Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
         Cursor.SetCursor(null, cursorOffset, CursorMode.ForceSoftware);
         TooltipHover._instance.HideTip();
-
-
     }
 
     private void OnMouseDown() {
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject()) {
-                
             Vector3 mousePos = MousePosition();
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;

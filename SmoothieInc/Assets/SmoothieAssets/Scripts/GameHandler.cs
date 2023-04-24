@@ -191,20 +191,21 @@ public class GameHandler : MonoBehaviour
         bnh.SetSmoothieServerRPC(true, getAccuracy());
     }
 
-    public void complete()
-    {
-        StartCoroutine(GameComplete());
-    }
 
-    public IEnumerator GameComplete()
-    {
-        yield return new WaitForSeconds(1);
-        cam.MoveToNewStation(toppingStation, tray);
-        yield return new WaitForSeconds(2);
-        camGo.orthographicSize = 2;
-        camGo.transform.position = new Vector3(1015.861f, -1.77f, -10);
-        // inStation0 = false;
-    }
+    //public void complete()
+    //{
+    //    StartCoroutine(GameComplete());
+    //}
+
+    //public IEnumerator GameComplete()
+    //{
+    //    yield return new WaitForSeconds(1);
+    //    cam.MoveToNewStation(toppingStation, tray);
+    //    yield return new WaitForSeconds(2);
+    //    camGo.orthographicSize = 2;
+    //    camGo.transform.position = new Vector3(1015.861f, -1.77f, -10);
+    //    // inStation0 = false;
+    //}
 
 
 }

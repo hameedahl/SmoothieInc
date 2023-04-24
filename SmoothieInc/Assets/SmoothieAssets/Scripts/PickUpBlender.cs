@@ -76,9 +76,7 @@ public class PickUpBlender : MonoBehaviour
         if (isPouring) {
             this.transform.eulerAngles = Vector3.forward / 90;
             anim.Play("Idle-Dirty-Top");
-            isEmpty = true;
-            isBlended = false;
-            isPouring = false;
+            resetTop();
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
         }
     }
@@ -111,5 +109,12 @@ public class PickUpBlender : MonoBehaviour
         mousePos = Input.mousePosition;
         mousePos = SmoothieCam.ScreenToWorldPoint(mousePos); /* align with camera */
         return mousePos;
+    }
+
+    public void resetTop() {
+        isEmpty = true;
+        isBlended = false;
+        isPouring = false;
+        hasIce = false;
     }
 }

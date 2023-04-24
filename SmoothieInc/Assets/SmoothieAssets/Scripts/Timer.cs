@@ -13,6 +13,7 @@ public class Timer : MonoBehaviour
 
     public void startTimer()
     {
+        level = 0;
         this.gameObject.SetActive(true);
         StartCoroutine(timer());
     }
@@ -35,7 +36,6 @@ public class Timer : MonoBehaviour
         //    level = 0;
         //}
         return (int) Mathf.RoundToInt(level);
-
     }
 
     public IEnumerator timer()

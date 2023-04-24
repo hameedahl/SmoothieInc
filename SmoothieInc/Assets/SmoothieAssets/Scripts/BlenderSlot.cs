@@ -112,8 +112,8 @@ public class BlenderSlot : MonoBehaviour
             int playerTime = timer.GetComponent<Timer>().stopTimer();
             top.isBlended = true;
             isBlending = false;
-            Debug.Log(playerTime);
             gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
+            playerTime = 0;
         }
     }
 
@@ -137,10 +137,11 @@ public class BlenderSlot : MonoBehaviour
 
             for (int i = 0; i < blenderliqs; i++)
             {
-
                 Destroy(GameObject.FindGameObjectsWithTag("BlenderLiq")[i]);
             }
         }
+        blenderliqs = 0;
+
     }
 
 
