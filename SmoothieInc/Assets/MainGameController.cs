@@ -13,6 +13,11 @@ public class MainGameController : MonoBehaviour
     bool sFinish = false;
     bool dFinish = false;
 
+    private void Start()
+    {
+        WinText.gameObject.SetActive(false);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -30,6 +35,7 @@ public class MainGameController : MonoBehaviour
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             Debug.Log("BOTH ARE THERE");
             Debug.Log(playerScore);
+            WinText.gameObject.SetActive(true);
             if (playerScore >= 80)
             {
                 WinText.text = "Arrived! Accuracy: " + playerScore + "% Great work!";

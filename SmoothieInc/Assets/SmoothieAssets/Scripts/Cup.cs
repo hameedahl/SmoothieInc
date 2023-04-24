@@ -43,6 +43,8 @@ public class Cup : MonoBehaviour
     public void fillCup() {
         isEmpty = false;
         anim.Play("Fill-Cup");
+        /* make button blink */
+        //gameHandler.complete();
     }
 
     private void finishCup() {

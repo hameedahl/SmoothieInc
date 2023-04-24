@@ -12,20 +12,20 @@ using Unity.VisualScripting;
 
 public class GameHandler : MonoBehaviour
 {
-    const int solidsRange = 10;
+    const int solidsRange = 13;
     const int solidsIndex = 4; /* end index */
 
-    const int liquidsRange = 5;
+    const int liquidsRange = 8;
     const int liquidsIndex = 7;
 
-    const int timeRange = 4;
-    const int timeIndex = 7;
+    const int timeRange = 2;
+    const int timeIndex = 8;
 
     const int cupsRange = 3; // S M L
-    const int cupsIndex = 8;
+    const int cupsIndex = 9;
 
     const int mixInRange = 4;
-    const int mixInIndex = 9;
+    const int mixInIndex = 10;
 
     const int toppingsRange = 5;
     const int toppingsIndex = 11;
@@ -96,8 +96,8 @@ public class GameHandler : MonoBehaviour
 
             }
 
-            //order[timeIndex] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
-            //    orderCount++;
+            order[timeIndex] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+            orderCount++;
 
             itemWeight = System.Math.Round(100.0 / orderCount, 2);
 
@@ -122,6 +122,10 @@ public class GameHandler : MonoBehaviour
             int[] playerOrderArr = playerOrdertoArr();
             checkOrder(0, solidsIndex, playerOrderArr);
             checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
+            checkOrder(liquidsIndex, timeIndex, playerOrderArr);
+            //checkOrder(timeIndex, cupsIndex, playerOrderArr);
+            //checkOrder(cupsIndex, mixInIndex, playerOrderArr);
+            //checkOrder(mixInIndex, toppingsIndex, playerOrderArr);
         }
         return (int) playerScore;
     }
@@ -183,7 +187,6 @@ public class GameHandler : MonoBehaviour
 
     public void completeOrder()
     {
-        complete();
         orderComplete = true;
         bnh.SetSmoothieServerRPC(true, getAccuracy());
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEditor.Progress;
 
 public class BlenderSlot : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class BlenderSlot : MonoBehaviour
     private GameObject newLiquid;
     private int blenderliqs;
 
+    public GameObject timer;
 
 
     void Start() {
@@ -60,12 +62,10 @@ public class BlenderSlot : MonoBehaviour
                     item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
                     itemInfo.isPouring = true;
                     top.isEmpty = false;
-                // anim = item.GetComponent<Animator>();
                     item.transform.eulerAngles = Vector3.forward * 90;
                     newLiquid = Instantiate(liquid);
                     blenderliqs++;
                     pour(itemInfo, newLiquid);
-                    // anim.Play("Pouring" + itemInfo.id);
                     addToOrder(itemInfo);
                     return true;
                 } else if (itemInfo.category == "Ice") {
@@ -73,7 +73,8 @@ public class BlenderSlot : MonoBehaviour
                     blenderItems[blenderItems.Length - 1] = item;
                     top.hasIce = true;
                     isFull[slots.Length - 1] = true;
-                    return true;
+                    Destroy(item.GetComponent<DragDrop>()); 
+                return true;
                 } else {
                     for (int i = 0; i < slots.Length; i++) { /* find next available slot */
                         if (!isFull[i] && i != slots.Length - 2) { /* snap object into slot if close enough (don't add to liquid slot)*/
@@ -88,7 +89,6 @@ public class BlenderSlot : MonoBehaviour
                             return true;
                         }
                     }
-                    //blenderIsFull = true;
                 }
         }
         return false;
@@ -100,21 +100,20 @@ public class BlenderSlot : MonoBehaviour
                 if (newPair.ToString() == gameHandler.order[i].ToString() &&
                     !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
                     gameHandler.playerOrder[i] = newPair;
-                   // gameHandler.playerScore += gameHandler.itemWeight;
                     return;
                 }
             }
-            //if (gameHandler.playerScore > 0)
-            //{
-            //    gameHandler.playerScore -= gameHandler.itemWeight;
-            //}
     }
 
     public void stopBlender() {
         if (isBlending) {
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
+            int playerTime = timer.GetComponent<Timer>().stopTimer();
             top.isBlended = true;
+            isBlending = false;
+            Debug.Log(playerTime);
+            gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
         }
     }
 
@@ -124,6 +123,7 @@ public class BlenderSlot : MonoBehaviour
             isBlending = true;
             animTop.Play("Blending-Top");
             animBottom.Play("Blending-Bottom");
+            timer.GetComponent<Timer>().startTimer();
             for (int i = 0; i < blenderItems.Length; i++)
             {
                 if (isFull[i])

@@ -8,6 +8,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField]  private float speed;
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
+    private bool inStation0 = true;
+
    
     public void MoveToNewStation(Transform newStation, GameObject tray) {
         transform.position = Vector3.SmoothDamp(transform.position, new Vector3(currentPosX, transform.position.y, transform.position.z),
