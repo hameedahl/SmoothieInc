@@ -55,13 +55,13 @@ public class MainMenu : MonoBehaviour
         // Show Main Menu
         toggleMainMenu(true);
 
-        // Add the callback for when a client connects
+        NetworkManager.Singleton.OnServerStarted += OnServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
     }
 
     private void OnDestroy()
     {
-        // Remove the callback when the script is destroyed
+        NetworkManager.Singleton.OnServerStarted -= OnServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback -= OnClientConnected;
     }
 
@@ -177,9 +177,18 @@ public class MainMenu : MonoBehaviour
 
     private void OnClientConnected(ulong clientId)
     {
-        if (NetworkManager.Singleton.IsHost)
+        if (NetworkManager.Singleton.IsHost && clientId != NetworkManager.Singleton.LocalClientId)
         {
             StartHost();
         }
     }
+
+    private void OnServerStarted()
+    {
+       if (NetworkManager.Singleton.IsHost)
+       {
+           Debug.Log("Waiting for client");
+       }
+   }
+
 }
