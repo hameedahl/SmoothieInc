@@ -12446,7 +12446,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   networkHandler: {fileID: 1226185016}
-  WinText: {fileID: 306378684}
+  WinText: {fileID: 306378686}
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
 --- !u!4 &1364502416

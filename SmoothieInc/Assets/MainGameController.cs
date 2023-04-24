@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class MainGameController : MonoBehaviour
 {
     public BooleanNetworkHandler networkHandler;
-    public GameObject WinText;
+    public TMP_Text WinText;
     public GameObject truckUI;
     public GameObject smoothieUI;
     bool sFinish = false;
@@ -29,14 +30,13 @@ public class MainGameController : MonoBehaviour
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             Debug.Log("BOTH ARE THERE");
             Debug.Log(playerScore);
-            Text scoreTextB = WinText.GetComponent<Text>();
             if (playerScore >= 80)
             {
-                scoreTextB.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
-                scoreTextB.color = Color.green;
+                WinText.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
+                WinText.color = Color.green;
             } else {
-                scoreTextB.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
-                scoreTextB.color = Color.red;
+                WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
+                WinText.color = Color.red;
             }
         }
         }
