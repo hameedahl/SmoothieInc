@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 
 /*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID,
@@ -32,13 +33,14 @@ public class GameHandler : MonoBehaviour
     const int arraySize = 12;
     const int emptySlot = -1;
 
-    public KeyValuePair<string, int>[] order = new KeyValuePair<string, int> [arraySize];
+    public KeyValuePair<string, int>[] order = new KeyValuePair<string, int>[arraySize];
     public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
     public int[] valuesArray = new int[arraySize];
     private GameObject tray;
     public double playerScore = 0;
-    public double itemWeight;
+    public double itemWeight = 0;
     public bool orderComplete = false;
+    bool inOrder = false;
 
     private int orderCount = 0;
     public int drinkCount = 0;
@@ -115,13 +117,49 @@ public class GameHandler : MonoBehaviour
 
     public int getAccuracy()
     {
-        int score = 0;
         if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
             valuesArray = bnh.GetValuesArrayFromNetwork();
-            
+            int[] playerOrderArr = playerOrdertoArr();
+            checkOrder(0, solidsIndex, playerOrderArr);
+            checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
         }
-        return score;
+        return (int) playerScore;
     }
+
+    private void checkOrder(int start, int end, int[] playerOrderArr)
+    {
+        for (int item = start; item < end; item++)
+        {
+            for (int orderItem = start; orderItem < end; orderItem++)
+            {
+                if (playerOrderArr[item] == valuesArray[orderItem])
+                {
+                    playerScore += itemWeight;
+                    inOrder = true;
+                }
+            }
+        }
+        lowerScore();
+    }
+
+    private void lowerScore()
+    {
+        if (!inOrder && playerScore > 0)
+        {
+            playerScore -= itemWeight;
+        }
+    }
+ 
+    private int[] playerOrdertoArr()
+    {
+         int[] playerOrderArr = new int[arraySize];
+         for (int i = 0; i < playerOrder.Length; i++)
+         {
+                playerOrderArr[i] = playerOrder[i].Value;
+         }
+         return playerOrderArr;
+    }
+
 
     public bool GetDrinkFinished()
     {

@@ -100,14 +100,14 @@ public class BlenderSlot : MonoBehaviour
                 if (newPair.ToString() == gameHandler.order[i].ToString() &&
                     !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
                     gameHandler.playerOrder[i] = newPair;
-                    gameHandler.playerScore += gameHandler.itemWeight;
+                   // gameHandler.playerScore += gameHandler.itemWeight;
                     return;
                 }
             }
-            if (gameHandler.playerScore > 0)
-            {
-                gameHandler.playerScore -= gameHandler.itemWeight;
-            }
+            //if (gameHandler.playerScore > 0)
+            //{
+            //    gameHandler.playerScore -= gameHandler.itemWeight;
+            //}
     }
 
     public void stopBlender() {
