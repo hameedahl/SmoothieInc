@@ -47,6 +47,8 @@ public class FillCard : MonoBehaviour
     {
         if(!colorSet)
         {
+            Debug.Log(arr[5]);
+
             // randomly set color of card
             int ran = Random.Range(0, 3);
             if(ran == 0)

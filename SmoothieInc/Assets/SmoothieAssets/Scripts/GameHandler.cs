@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     const int liquidsIndex = 7;
 
     const int timeRange = 2;
-    const int timeIndex = 8;
+    const int timeIndex = 7;
 
     const int cupsRange = 3; // S M L
     const int cupsIndex = 9;
