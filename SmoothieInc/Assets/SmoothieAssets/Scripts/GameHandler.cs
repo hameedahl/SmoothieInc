@@ -92,7 +92,7 @@ public class GameHandler : MonoBehaviour
     public void generateOrder(int difficulty) {
         System.Random rand = new System.Random();
         if (difficulty == 1) {
-            drinkCount = 4;
+            drinkCount = 1;
             for (int i = 0; i < 3; i++) {
                 order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
                 orderCount++;
