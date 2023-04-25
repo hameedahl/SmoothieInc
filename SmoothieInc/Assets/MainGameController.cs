@@ -10,11 +10,15 @@ public class MainGameController : MonoBehaviour
     public TMP_Text WinText;
     public GameObject truckUI;
     public GameObject smoothieUI;
+    public GameHandler gameHandler;
+
     bool sFinish = false;
     bool dFinish = false;
 
     private void Start()
     {
+        gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
+
         WinText.gameObject.SetActive(false);
     }
 
@@ -44,6 +48,7 @@ public class MainGameController : MonoBehaviour
                 WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
                 WinText.color = Color.red;
             }
-        }
+            gameHandler.newOrder(1);
         }
     }
+}

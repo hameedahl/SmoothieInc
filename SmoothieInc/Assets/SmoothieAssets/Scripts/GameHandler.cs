@@ -63,7 +63,7 @@ public class GameHandler : MonoBehaviour
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
         cam = camGo.GetComponent<CameraControl>();
 
-        newOrder();
+        newOrder(1);
 
 
     }
@@ -73,7 +73,7 @@ public class GameHandler : MonoBehaviour
        
     }
 
-    public void newOrder()
+    public void newOrder(int difficulty)
     {
         for (int i = 0; i < arraySize; i++)
         {
@@ -81,7 +81,7 @@ public class GameHandler : MonoBehaviour
             playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
         }
 
-        generateOrder(1);
+        generateOrder(difficulty);
 
         for (int i = 0; i < arraySize; i++)
         {
