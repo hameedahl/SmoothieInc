@@ -76,7 +76,9 @@ public class BlenderSlot : MonoBehaviour
                         Destroy(item.GetComponent<DragDrop>());
                         return true;
                     }
-                } else {
+                Destroy(item);
+              }
+            else {
                 //Debug.Log("no");
                 //if (blenderIsFull)
                 //{
