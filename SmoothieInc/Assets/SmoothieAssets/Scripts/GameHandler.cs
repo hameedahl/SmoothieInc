@@ -63,7 +63,20 @@ public class GameHandler : MonoBehaviour
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
         cam = camGo.GetComponent<CameraControl>();
 
-        for (int i = 0; i < arraySize; i++) {
+        newOrder();
+
+
+    }
+
+    private void Update()
+    {
+       
+    }
+
+    public void newOrder()
+    {
+        for (int i = 0; i < arraySize; i++)
+        {
             order[i] = new KeyValuePair<string, int>("", emptySlot);
             playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
         }
@@ -74,11 +87,6 @@ public class GameHandler : MonoBehaviour
         {
             valuesArray[i] = order[i].Value;
         }
-    }
-
-    private void Update()
-    {
-        tray = GameObject.FindGameObjectWithTag("Tray");
     }
 
     public void generateOrder(int difficulty) {
@@ -93,7 +101,6 @@ public class GameHandler : MonoBehaviour
             for (int i = solidsIndex; i < solidsIndex + 2; i++) {
                 order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
                 orderCount++;
-
             }
 
             order[timeIndex] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
@@ -190,22 +197,4 @@ public class GameHandler : MonoBehaviour
         orderComplete = true;
         bnh.SetSmoothieServerRPC(true, getAccuracy());
     }
-
-
-    //public void complete()
-    //{
-    //    StartCoroutine(GameComplete());
-    //}
-
-    //public IEnumerator GameComplete()
-    //{
-    //    yield return new WaitForSeconds(1);
-    //    cam.MoveToNewStation(toppingStation, tray);
-    //    yield return new WaitForSeconds(2);
-    //    camGo.orthographicSize = 2;
-    //    camGo.transform.position = new Vector3(1015.861f, -1.77f, -10);
-    //    // inStation0 = false;
-    //}
-
-
 }
