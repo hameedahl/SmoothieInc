@@ -75,6 +75,7 @@ public class GameHandler : MonoBehaviour
 
     public void newOrder(int difficulty)
     {
+        Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
         {
             order[i] = new KeyValuePair<string, int>("", emptySlot);
@@ -90,6 +91,7 @@ public class GameHandler : MonoBehaviour
     }
 
     public void generateOrder(int difficulty) {
+        orderComplete = false;
         System.Random rand = new System.Random();
         if (difficulty == 1) {
             drinkCount = 1;

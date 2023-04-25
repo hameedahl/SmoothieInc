@@ -20,6 +20,7 @@ public class TruckManager : MonoBehaviour
 
     public Vector3 NewOrder()
     {
+        arrived = false;
         if(host)
         {
             int diff = Random.Range(1,10);
@@ -39,7 +40,6 @@ public class TruckManager : MonoBehaviour
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(false);
             arrived = true;
             drivernet.Arrive();
-            NewOrder();
         }
     }
 

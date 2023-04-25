@@ -13239,6 +13239,8 @@ MonoBehaviour:
   WinText: {fileID: 306378686}
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
+  truckManager: {fileID: 7572873287942015406}
+  gameHandler: {fileID: 0}
 --- !u!4 &1364502416
 Transform:
   m_ObjectHideFlags: 0
@@ -22441,3 +22443,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7572873286991242972, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
   m_PrefabInstance: {fileID: 7572873287942015400}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7572873287942015406 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5929705593980775252, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
+  m_PrefabInstance: {fileID: 7572873287942015400}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399107415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbff57440aee440df9d980ba1ff7b706, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
