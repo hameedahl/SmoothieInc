@@ -39,8 +39,8 @@ public class Cup : MonoBehaviour
     void Update() {
         finishCup();
       //  pour();
-        putInTray();
-
+        //putInTray();
+//
         //if (isCovered && hasStraw) { /* change to all drinks finished */
         //    gameHandler.finishDrink();
         //}
@@ -57,15 +57,15 @@ public class Cup : MonoBehaviour
         cover = GameObject.FindGameObjectWithTag("Cover");
         straw = GameObject.FindGameObjectWithTag("Straw");
         /* if straw and cover are close to cup, finish this smoothie */
-        if (cover && !isEmpty && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= 1f &&
+        if (cover && !isEmpty && !isCovered && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= 1f &&
             Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= 1f) {
                 coverSlot.GetComponent<SpriteRenderer>().sprite = coverArt;
                 cover.SetActive(false);
                 isCovered = true;
         }
 
-        if (straw && isCovered && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .4f &&
-            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .4f) {
+        if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
+            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .8f) {
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
                 straw.SetActive(false);
                 hasStraw = true;
@@ -89,31 +89,5 @@ public class Cup : MonoBehaviour
     //    }
     //}
 
-    private void putInTray()
-    {
-        if (GameObject.FindGameObjectWithTag("Tray"))
-        {
-            tray = GameObject.FindGameObjectWithTag("Tray").GetComponent<Tray>();
-            trayGo = GameObject.FindGameObjectWithTag("Tray");
-        }
 
-        if (tray && isFinished &&
-            Mathf.Abs(transform.localPosition.x - trayGo.transform.localPosition.x) >= .5f &&
-            Mathf.Abs(transform.localPosition.x - trayGo.transform.localPosition.x) <= 2f &&
-            Mathf.Abs(transform.localPosition.y - trayGo.transform.localPosition.y) >= .4f &&
-            Mathf.Abs(transform.localPosition.y - trayGo.transform.localPosition.y) <= 1.5f)
-        {
-            for (int i = 0; i < gameHandler.drinkCount; i++)
-            { /* find next available slot */
-                if (!tray.isFull[i])
-                { /* snap object into slot if close enough (don't add to liquid slot)*/
-                    transform.position = new Vector3(tray.slots[i].transform.position.x, tray.slots[i].transform.position.y, tray.slots[i].transform.position.z);
-                    transform.parent = this.transform;
-                    tray.isFull[i] = true;
-                    Destroy(GetComponent<DragDrop>());
-                    (tray.drinks)++;
-                }
-            }
-        }
-    }
 }

@@ -82,25 +82,34 @@ public class PickUpBlender : MonoBehaviour
     }
 
     private void pour() {
-        if (GameObject.FindGameObjectWithTag("Cup"))
-        {
-            cup = GameObject.FindGameObjectWithTag("Cup").GetComponent<Cup>();
+        GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
+        int cupsSize = cups.Length;
 
-        }
+        //if ()
+        //{
+
+        //}
 
         /* check if item is close to cup */
         //Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
         //Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
-        if (cup && cup.isEmpty && !isEmpty && isBlended &&
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
-            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
-            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f) {
-                 //pourSlot = cup.transform.GetChild(0).gameObject;
+        for (int i = 0; i < cupsSize; i++) {
+            if (cups[i])
+            {
+                cup = cups[i].GetComponent<Cup>();
+            }
+
+            if (cup && cup.isEmpty && !isEmpty && isBlended &&
+                Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
+                Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
+                Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
+                Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f) {
+                //pourSlot = cup.transform.GetChild(0).gameObject;
                 this.transform.position = new Vector3(cup.pourSlot.transform.position.x, cup.pourSlot.transform.position.y, cup.pourSlot.transform.position.z);
                 this.transform.eulerAngles = Vector3.forward * 90;
                 cup.fillCup();
                 isPouring = true;
+            }
         }
     }
 
