@@ -216,6 +216,15 @@ public class BooleanNetworkHandler : NetworkBehaviour
       }
     }
 
+    public void ResetOrders()
+    {
+        if(IsHost)
+        {
+            arrivedNetworkVariable.Value = false;
+            drinkFinishedNetworkVariable.Value = false;
+        }
+    }
+
     public bool GetArrivedStatus()
     {
         return arrivedNetworkVariable.Value;
