@@ -9,6 +9,7 @@ public class CarSFXHandler : MonoBehaviour
     public AudioSource screechAS;
     public AudioSource engineAS;
     public AudioSource hitAS;
+    public AudioSource nitroAS;
 
     float enginePitch = 0.5f;
     float screechPitch = 0.5f;
@@ -60,6 +61,12 @@ public class CarSFXHandler : MonoBehaviour
         }
         else
             screechAS.volume = Mathf.Lerp(screechAS.volume, 0, Time.deltaTime * 10);
+    }
+
+    public void PlayNitro()
+    {
+        if (!nitroAS.isPlaying)
+            nitroAS.Play();
     }
 
     void OnCollisionEnter2D(Collision2D col)

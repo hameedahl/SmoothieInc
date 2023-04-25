@@ -26,6 +26,8 @@ public class MainMenu : MonoBehaviour
     public GameObject joinCodeDisplay;
     public GameObject joinMenuBackground;
     public GameObject closeButton;
+    public GameObject drivingControls;
+    public GameObject giveCodeDirections;
 
     [Header("Tutorial UI")]
     public GameObject SmoothieTut;
@@ -89,10 +91,14 @@ public class MainMenu : MonoBehaviour
             {
                 joinCodeDisplay.SetActive(enable);
                 closeButton.SetActive(enable);
+                drivingControls.SetActive(enable);
+                giveCodeDirections.SetActive(enable);
             }
         }
         else
         {
+            giveCodeDirections.SetActive(enable);
+            drivingControls.SetActive(enable);
             joinCodeInputBox.SetActive(enable);
             joinButton.SetActive(enable);
             joinCodeDisplay.SetActive(enable);

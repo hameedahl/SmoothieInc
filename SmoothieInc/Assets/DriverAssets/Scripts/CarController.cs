@@ -12,6 +12,7 @@ public class CarController : NetworkBehaviour
     public float nitroAccelerationFactor = 40.0f;
 
     public ParticleSystem nitroObj;
+    public CarSFXHandler audioSFX;
     
     public float turnFactor = 3.5f;
     public float normalMaxSpeed = 20;
@@ -48,7 +49,8 @@ public class CarController : NetworkBehaviour
         {
             if(nitroCooldownTime <= 0)
             {
-                nitroObj.Play();               
+                nitroObj.Play();   
+                audioSFX.PlayNitro();            
                 nitro = true;
                 nitroCooldownTime = maxNitroCooldownTime;
                 nitroTime = 0;
