@@ -23,7 +23,6 @@ public class BlenderSlot : MonoBehaviour
 
     GameObject blender;
     public bool blenderIsFull = false;
-
     private bool isBlending = false;
     GameObject anchor;
     public GameObject liquid;
@@ -57,7 +56,7 @@ public class BlenderSlot : MonoBehaviour
                         Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= 0f &&
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
-                if (itemInfo.category == "Liquids") {
+            if (itemInfo.category == "Liquids") {
                 /* put item in slot above blender */
                     item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
                     itemInfo.isPouring = true;
@@ -68,7 +67,7 @@ public class BlenderSlot : MonoBehaviour
                     pour(itemInfo, newLiquid);
                     addToOrder(itemInfo);
                     return true;
-                } else if (itemInfo.category == "Ice") {
+                } else if (itemInfo.category == "Ice" && !top.hasIce) {
                     item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
                     blenderItems[blenderItems.Length - 1] = item;
                     top.hasIce = true;
@@ -76,7 +75,14 @@ public class BlenderSlot : MonoBehaviour
                     Destroy(item.GetComponent<DragDrop>()); 
                 return true;
                 } else {
-                    for (int i = 0; i < slots.Length; i++) { /* find next available slot */
+                //Debug.Log("no");
+                //if (blenderIsFull)
+                //{
+                //    Destroy(item);
+                //    return false;
+                //}
+
+                for (int i = 0; i < slots.Length; i++) { /* find next available slot */
                         if (!isFull[i] && i != slots.Length - 2) { /* snap object into slot if close enough (don't add to liquid slot)*/
                             item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
                             blenderItems[i] = item;
@@ -89,6 +95,7 @@ public class BlenderSlot : MonoBehaviour
                             return true;
                         }
                     }
+                    blenderIsFull = true;
                 }
         }
         return false;
@@ -111,6 +118,7 @@ public class BlenderSlot : MonoBehaviour
             animBottom.Play("Idle-Bottom");
             int playerTime = timer.GetComponent<Timer>().stopTimer();
             top.isBlended = true;
+            blenderIsFull = false;
             isBlending = false;
             gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
             playerTime = 0;
@@ -118,7 +126,7 @@ public class BlenderSlot : MonoBehaviour
     }
 
     public void startBlender() {
-        if (!top.isEmpty && top.hasIce)
+        if (!top.isEmpty && top.hasIce && !isBlending)
         {
             isBlending = true;
             animTop.Play("Blending-Top");
