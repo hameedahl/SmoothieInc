@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using Unity.Burst.Intrinsics;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using static UnityEditor.Progress;
 
 public class BlenderSlot : MonoBehaviour
 {
@@ -67,13 +66,16 @@ public class BlenderSlot : MonoBehaviour
                     pour(itemInfo, newLiquid);
                     addToOrder(itemInfo);
                     return true;
-                } else if (itemInfo.category == "Ice" && !top.hasIce) {
-                    item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
-                    blenderItems[blenderItems.Length - 1] = item;
-                    top.hasIce = true;
-                    isFull[slots.Length - 1] = true;
-                    Destroy(item.GetComponent<DragDrop>()); 
-                return true;
+                } else if (itemInfo.category == "Ice") {
+                    if (!top.hasIce)
+                    {
+                        item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
+                        blenderItems[blenderItems.Length - 1] = item;
+                        top.hasIce = true;
+                        isFull[slots.Length - 1] = true;
+                        Destroy(item.GetComponent<DragDrop>());
+                        return true;
+                    }
                 } else {
                 //Debug.Log("no");
                 //if (blenderIsFull)

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using static Unity.Burst.Intrinsics.X86.Avx;
-using static UnityEditor.Progress;
 
 public class Tray : MonoBehaviour
 {
