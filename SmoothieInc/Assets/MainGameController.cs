@@ -49,9 +49,9 @@ public class MainGameController : MonoBehaviour
                 WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
                 WinText.color = Color.red;
             }
-            // gameHandler.newOrder(1);
-            // truckManager.NewOrder();
-            // networkHandler.ResetOrders();
+            gameHandler.newOrder(1);
+            truckManager.NewOrder();
+            networkHandler.ResetOrders();
         }
     }
 }

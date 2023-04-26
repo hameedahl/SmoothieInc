@@ -7,7 +7,7 @@ public class TruckManager : MonoBehaviour
     public bool arrived = false;
     public DriverNetwork drivernet;
     public OrderFinder of;
-
+    public BooleanNetworkHandler networkHandler;
     public GameObject dest;
     public Transform target;
 
@@ -20,7 +20,7 @@ public class TruckManager : MonoBehaviour
 
     public Vector3 NewOrder()
     {
-        arrived = false;
+        networkHandler.SetArrivedStatus(false);
         if(host)
         {
             int diff = Random.Range(1,10);
@@ -38,7 +38,7 @@ public class TruckManager : MonoBehaviour
         {
             Debug.Log("Arrived");
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(false);
-            arrived = true;
+            networkHandler.SetArrivedStatus(true);
             drivernet.Arrive();
         }
     }

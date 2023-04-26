@@ -168,8 +168,8 @@ public class BooleanNetworkHandler : NetworkBehaviour
             destinationPos.Value = truckManager.NewOrder();
           }
 
-          bool isTruckArrived = truckManager.GetArrivedStatus();
-          arrivedNetworkVariable.Value = isTruckArrived;
+          // bool isTruckArrived = truckManager.GetArrivedStatus();
+          // arrivedNetworkVariable.Value = isTruckArrived;
 
 
           // bool isDrinkFinished = gameHandler.GetDrinkFinished();
@@ -228,6 +228,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public bool GetArrivedStatus()
     {
         return arrivedNetworkVariable.Value;
+    }
+
+    public void SetArrivedStatus(bool arrived)
+    {
+        arrivedNetworkVariable.Value = arrived;
     }
 
     public bool GetDrinkFinishedStatus()
