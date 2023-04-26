@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     const int liquidsIndex = 7;
 
     const int timeRange = 2;
-    const int timeIndex = 7;
+    const int timeIndex = 8;
 
     const int cupsRange = 3; // S M L
     const int cupsIndex = 9;
@@ -105,7 +105,7 @@ public class GameHandler : MonoBehaviour
                 orderCount++;
             }
 
-            order[timeIndex] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+            order[timeIndex-1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
             orderCount++;
 
             itemWeight = System.Math.Round(100.0 / orderCount, 2);
