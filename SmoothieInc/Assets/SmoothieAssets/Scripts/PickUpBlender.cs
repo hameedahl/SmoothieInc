@@ -10,6 +10,7 @@ public class PickUpBlender : MonoBehaviour
     public bool isBlended = false;
     public bool isPouring = false;
     public bool hasIce = false;
+    public bool isDetached = false;
 
     private float startPosX;
     private float startPosY;
@@ -66,6 +67,7 @@ public class PickUpBlender : MonoBehaviour
             startPosY = mousePos.y - this.transform.localPosition.y;
             // canvasGroup.alpha = .6f; /* make transparent while drag */
             isMoving = true;
+            isDetached = true;
         }
     }
 
@@ -84,11 +86,6 @@ public class PickUpBlender : MonoBehaviour
     private void pour() {
         GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
         int cupsSize = cups.Length;
-
-        //if ()
-        //{
-
-        //}
 
         /* check if item is close to cup */
         //Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
@@ -125,5 +122,6 @@ public class PickUpBlender : MonoBehaviour
         isBlended = false;
         isPouring = false;
         hasIce = false;
+        isDetached = false;
     }
 }

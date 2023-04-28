@@ -55,55 +55,76 @@ public class BlenderSlot : MonoBehaviour
                         Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f && 
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= 0f &&
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) <= 3.3f) {
-            if (itemInfo.category == "Liquids") {
-                /* put item in slot above blender */
-                    item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
-                    itemInfo.isPouring = true;
-                    top.isEmpty = false;
-                    item.transform.eulerAngles = Vector3.forward * 90;
-                    newLiquid = Instantiate(liquid);
-                    blenderliqs++;
-                    pour(itemInfo, newLiquid);
-                    addToOrder(itemInfo);
-                    return true;
-                } else if (itemInfo.category == "Ice") {
-                    if (!top.hasIce)
-                    {
-                        item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
-                        blenderItems[blenderItems.Length - 1] = item;
-                        top.hasIce = true;
-                        isFull[slots.Length - 1] = true;
-                        Destroy(item.GetComponent<DragDrop>());
-                        return true;
-                    }
+            if (top.isDetached || isBlending) /* don't insert if blender is on or detached */
+            {
                 Destroy(item);
-              }
-            else {
-                //Debug.Log("no");
-                //if (blenderIsFull)
-                //{
-                //    Destroy(item);
-                //    return false;
-                //}
+                return false;
+            }
 
-                for (int i = 0; i < slots.Length; i++) { /* find next available slot */
-                        if (!isFull[i] && i != slots.Length - 2) { /* snap object into slot if close enough (don't add to liquid slot)*/
-                            item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
-                            blenderItems[i] = item;
-                            isFull[i] = true;
-                            itemInfo.inBlender = true;
-                            itemInfo.slotNum = i;
-                            top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                            addToOrder(itemInfo);
-                            Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
-                            return true;
-                        }
-                    }
-                    blenderIsFull = true;
+            if (itemInfo.category == "Liquids") {
+                insertLiq(item, itemInfo);
+                return true;
+            } else if (itemInfo.category == "Ice") {
+                if (!top.hasIce) {
+                    insertIce(item, itemInfo);
+                    return true;
                 }
+                Destroy(item);
+            } else {
+                bool addedFood = insertFood(item, itemInfo);
+                if (blenderIsFull ) 
+                {
+                    Destroy(item);
+                }
+                return addedFood;
+            }
         }
         return false;
     }
+
+    private void insertLiq(GameObject item, Food itemInfo)
+    {
+        /* put item in slot above blender */
+        item.transform.position = new Vector3(slots[slots.Length - 2].transform.position.x, slots[slots.Length - 2].transform.position.y, slots[slots.Length - 2].transform.position.z);
+        itemInfo.isPouring = true;
+        top.isEmpty = false;
+        item.transform.eulerAngles = Vector3.forward * 90;
+        newLiquid = Instantiate(liquid);
+        blenderliqs++;
+        pour(itemInfo, newLiquid);
+        addToOrder(itemInfo);
+    }
+
+    private void insertIce(GameObject item, Food itemInfo)
+    {
+        item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
+        blenderItems[blenderItems.Length - 1] = item;
+        top.hasIce = true;
+        isFull[slots.Length - 1] = true;
+        Destroy(item.GetComponent<DragDrop>());
+    }
+
+    private bool insertFood(GameObject item, Food itemInfo)
+    {
+        for (int i = 0; i < slots.Length; i++)
+        { /* find next available slot */
+            if (!isFull[i] && i != slots.Length - 2)
+            { /* snap object into slot if close enough (don't add to liquid slot)*/
+                item.transform.position = new Vector3(slots[i].transform.position.x, slots[i].transform.position.y, slots[i].transform.position.z);
+                blenderItems[i] = item;
+                isFull[i] = true;
+                itemInfo.inBlender = true;
+                itemInfo.slotNum = i;
+                top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
+                addToOrder(itemInfo);
+                Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
+                return true;
+            }
+        }
+        blenderIsFull = true;
+        return false;
+    }
+
 
     private void addToOrder(Food item) {
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
