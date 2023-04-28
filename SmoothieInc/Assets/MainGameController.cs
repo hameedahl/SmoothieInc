@@ -30,7 +30,6 @@ public class MainGameController : MonoBehaviour
         {
             sFinish = true;
             Debug.Log("Smoothie has finished");
-            networkHandler.SetSmoothieServerRPC(true, gameHandler.getAccuracy());
         }
         if (!dFinish && networkHandler.GetArrivedStatus())
         {
@@ -39,7 +38,6 @@ public class MainGameController : MonoBehaviour
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
         double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
-            gameHandler.completeOrder();
             Debug.Log("BOTH ARE THERE");
             Debug.Log(playerScore);
             WinText.gameObject.SetActive(true);
@@ -51,9 +49,9 @@ public class MainGameController : MonoBehaviour
                 WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
                 WinText.color = Color.red;
             }
+            networkHandler.ResetOrders();
             gameHandler.newOrder(1);
             truckManager.NewOrder();
-            networkHandler.ResetOrders();
         }
     }
 }

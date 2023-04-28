@@ -19,6 +19,7 @@ TagManager:
   - BlenderLiq
   - Anchor
   - Tray
+  - PauseMenuSlider
   layers:
   - Default
   - TransparentFX

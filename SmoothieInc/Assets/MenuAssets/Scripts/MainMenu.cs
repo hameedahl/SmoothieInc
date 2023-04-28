@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Unity.Netcode;
 using UnityEngine.Audio;
 using TMPro;
+using UnityEngine.SceneManagement;
 //using UnityEditor.VersionControl;
 
 public class MainMenu : MonoBehaviour
@@ -43,9 +44,22 @@ public class MainMenu : MonoBehaviour
 
     public TestRelay testRelay;
 
+    [Header("Pause Menu")]
+    public static bool GameisPaused = false;
+    public GameObject pauseMenuUI;
+    public static float volumeLevel = 1.0f;
+    private Slider sliderVolumeCtrl;
+
+    public GameObject currentUI;
     void Awake()
     {
         audioMixer.SetFloat("SFXVolume", -80.00f);
+        GameObject sliderTemp = GameObject.FindWithTag("PauseMenuSlider");
+        if (sliderTemp != null)
+        {
+            sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
+            sliderVolumeCtrl.value = volumeLevel;
+        }
     }
 
     // Start is called before the first frame update
@@ -59,6 +73,8 @@ public class MainMenu : MonoBehaviour
 
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
+
+        GameisPaused = false;
     }
 
     private void OnDestroy()
@@ -74,6 +90,18 @@ public class MainMenu : MonoBehaviour
             || Input.GetKeyDown(KeyCode.Mouse0)))
         {
             StartClient();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (GameisPaused)
+            {
+                Resume();
+            }
+            else
+            {
+                Pause();
+            }
         }
     }
     // enable or disable the join menu
@@ -195,6 +223,41 @@ public class MainMenu : MonoBehaviour
        {
            Debug.Log("Waiting for client");
        }
-   }
+    }
+
+    public void Pause()
+    {
+        pauseMenuUI.SetActive(true);
+        Time.timeScale = 0f;
+        GameisPaused = true;
+    }
+
+    public void Resume()
+    {
+        pauseMenuUI.SetActive(false);
+        Time.timeScale = 1f;
+        GameisPaused = false;
+    }
+
+    public void StartGame()
+    {
+        
+    }
+
+    public void RestartGame()
+    {
+        Time.timeScale = 1f;
+        toggleMainMenu(true);
+
+    }
+
+    public void QuitGame()
+    {
+        #if UNITY_EDITOR
+             UnityEditor.EditorApplication.isPlaying = false;
+        #else
+             Application.Quit();
+        #endif
+     }
 
 }

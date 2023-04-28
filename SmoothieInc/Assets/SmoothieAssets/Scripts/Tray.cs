@@ -27,15 +27,15 @@ public class Tray : MonoBehaviour
         putInTray();
         if (drinksInTray == gameHandler.drinkCount) /* all drinks are in tray */
         {
-            gameHandler.orderComplete = true;
+            //gameHandler.orderComplete = true;
 
             Debug.Log("Tray");
-            for (int w = 0; w < 12; w++)
-            {
-                Debug.Log(gameHandler.playerOrder[w].Value);
-            }
+            //for (int w = 0; w < 12; w++)
+            //{
+            //    Debug.Log(gameHandler.playerOrder[w].Value);
+            //}
            // gettingAcc = true;
-           // gameHandler.completeOrder();
+           gameHandler.completeOrder();
         }
     }
 

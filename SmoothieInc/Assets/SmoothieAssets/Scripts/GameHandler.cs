@@ -135,14 +135,14 @@ public class GameHandler : MonoBehaviour
     public int getAccuracy()
     {
         Debug.Log("acc");
-        for (int w = 0; w < 12; w++)
-        {
-            Debug.Log(playerOrder[w].Value);
-        }
-        
+        //for (int w = 0; w < 12; w++)
+        //{
+        //    Debug.Log(playerOrder[w].Value);
+        //}
+
 
         //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
-            valuesArray = bnh.GetValuesArrayFromNetwork();
+        //valuesArray = bnh.GetValuesArrayFromNetwork();
             int[] playerOrderArr = playerOrdertoArr();
             checkOrder(0, solidsIndex, playerOrderArr);
             checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
@@ -150,7 +150,7 @@ public class GameHandler : MonoBehaviour
             checkOrder(timeIndex, cupsIndex, playerOrderArr);
             //checkOrder(cupsIndex, mixInIndex, playerOrderArr);
             //checkOrder(mixInIndex, toppingsIndex, playerOrderArr);
-        //}
+      //  }
         return (int) playerScore;
     }
 
@@ -218,11 +218,19 @@ public class GameHandler : MonoBehaviour
     public void completeOrder()
     {
         Debug.Log("Complete");
+  
+
+        valuesArray = bnh.GetValuesArrayFromNetwork();
+        Debug.Log("Vals from bnh");
+
         for (int w = 0; w < 12; w++)
         {
-            Debug.Log(playerOrder[w].Value);
+            Debug.Log(valuesArray[w]);
         }
 
+        double points = getAccuracy();
+        Debug.Log(points);
+        bnh.SetSmoothieServerRPC(true, points);
     }
 
 }
