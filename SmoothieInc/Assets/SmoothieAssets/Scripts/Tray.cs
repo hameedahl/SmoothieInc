@@ -8,6 +8,7 @@ public class Tray : MonoBehaviour
 {
     private Cup cup;
     private GameObject cupGo;
+    public bool gettingAcc = false;
 
     public GameHandler gameHandler;
     public GameObject[] slots;
@@ -23,11 +24,19 @@ public class Tray : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        putInTray();
         if (drinksInTray == gameHandler.drinkCount) /* all drinks are in tray */
         {
-            gameHandler.completeOrder();
+            gameHandler.orderComplete = true;
+
+            Debug.Log("Tray");
+            for (int w = 0; w < 12; w++)
+            {
+                Debug.Log(gameHandler.playerOrder[w].Value);
+            }
+           // gettingAcc = true;
+           // gameHandler.completeOrder();
         }
-        putInTray();
     }
 
     private void putInTray()
@@ -62,6 +71,8 @@ public class Tray : MonoBehaviour
                 }
             }
         }
+
+
     }
 
 }

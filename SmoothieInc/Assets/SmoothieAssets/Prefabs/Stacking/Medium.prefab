@@ -194,7 +194,7 @@ GameObject:
   - component: {fileID: 2884624831198657266}
   - component: {fileID: -6537405502725611664}
   m_Layer: 0
-  m_Name: Cup
+  m_Name: Medium
   m_TagString: Cup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4c487127a1d4157bfe6b06c20077ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemId: 1
   slot: {fileID: 6492773182694500283}
   isEmpty: 1
   isCovered: 0
@@ -239,6 +240,8 @@ MonoBehaviour:
   strawArt: {fileID: 21300000, guid: c41ce27eee22846ec8107a1dc58ffae7, type: 3}
   gameHandler: {fileID: 0}
   isFinished: 0
+  tray: {fileID: 0}
+  trayGo: {fileID: 0}
 --- !u!61 &7809265443200847294
 BoxCollider2D:
   m_ObjectHideFlags: 0

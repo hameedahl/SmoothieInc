@@ -129,8 +129,9 @@ public class BlenderSlot : MonoBehaviour
     private void addToOrder(Food item) {
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
             for (int i = 0; i < gameHandler.order.Length; i++) {
-                if (newPair.ToString() == gameHandler.order[i].ToString() &&
-                    !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
+                if (gameHandler.playerOrder[i].Value == -1) { 
+                //    !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
+
                     gameHandler.playerOrder[i] = newPair;
                     return;
                 }

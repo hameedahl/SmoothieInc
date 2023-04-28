@@ -140,6 +140,12 @@ public class BooleanNetworkHandler : NetworkBehaviour
           valuesArrayNetwork10.Value = valuesArray[10];
           valuesArrayNetwork11.Value = valuesArray[11];
 
+            //Debug.Log("HIII");
+            //for (int i = 0; i < 12; i++)
+            //{
+            //    Debug.Log(valuesArray[i]);
+            //}
+
 
             tempValuesArray[0] = valuesArrayNetwork0.Value;
             tempValuesArray[1] = valuesArrayNetwork1.Value;
@@ -153,6 +159,10 @@ public class BooleanNetworkHandler : NetworkBehaviour
             tempValuesArray[9] = valuesArrayNetwork9.Value;
             tempValuesArray[10] = valuesArrayNetwork10.Value;
             tempValuesArray[11] = valuesArrayNetwork11.Value;
+            for (int i = 0; i < 12; i++)
+            {
+                Debug.Log(tempValuesArray[i]);
+            }
             fillCard.Initialize(tempValuesArray);
         }
     }

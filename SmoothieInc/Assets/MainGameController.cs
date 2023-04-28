@@ -26,11 +26,11 @@ public class MainGameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
         if (!sFinish && networkHandler.GetDrinkFinishedStatus())
         {
             sFinish = true;
             Debug.Log("Smoothie has finished");
+            networkHandler.SetSmoothieServerRPC(true, gameHandler.getAccuracy());
         }
         if (!dFinish && networkHandler.GetArrivedStatus())
         {
@@ -38,6 +38,8 @@ public class MainGameController : MonoBehaviour
             Debug.Log("Driver has arrived");
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
+        double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
+            gameHandler.completeOrder();
             Debug.Log("BOTH ARE THERE");
             Debug.Log(playerScore);
             WinText.gameObject.SetActive(true);

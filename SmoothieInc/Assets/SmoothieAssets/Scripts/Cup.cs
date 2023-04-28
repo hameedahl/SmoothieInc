@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static Unity.Burst.Intrinsics.X86.Avx;
+using static UnityEditor.Progress;
 
 
 public class Cup : MonoBehaviour
 {
+    public int itemId;
     public GameObject slot;
     public bool isEmpty = true;
     private Animator anim;
@@ -38,19 +40,11 @@ public class Cup : MonoBehaviour
 
     void Update() {
         finishCup();
-      //  pour();
-        //putInTray();
-//
-        //if (isCovered && hasStraw) { /* change to all drinks finished */
-        //    gameHandler.finishDrink();
-        //}
     }
 
     public void fillCup() {
         isEmpty = false;
         anim.Play("Fill-Cup");
-        /* make button blink */
-        //gameHandler.complete();
     }
 
     private void finishCup() {
@@ -66,28 +60,13 @@ public class Cup : MonoBehaviour
 
         if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
             Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .8f) {
+                KeyValuePair<string, int> newPair = new KeyValuePair<string, int>("Size", itemId);
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
                 straw.SetActive(false);
                 hasStraw = true;
+                gameHandler.playerOrder[8] = newPair;
                 isFinished = true;
         }
     }
-
-    //public void pour()
-    //{
-    //    if (isEmpty && !blender.isEmpty && blender.isBlended &&
-    //        Mathf.Abs(transform.localPosition.x - blender.transform.localPosition.x) >= 1000f &&
-    //        Mathf.Abs(transform.localPosition.x - blender.transform.localPosition.x) <= 1003f &&
-    //        Mathf.Abs(transform.localPosition.y - blender.transform.localPosition.y) >= .5f &&
-    //        Mathf.Abs(transform.localPosition.y - blender.transform.localPosition.y) <= 4f)
-    //    {
-    //        //pourSlot = cup.transform.GetChild(0).gameObject;
-    //        blender.transform.position = new Vector3(pourSlot.transform.position.x, pourSlot.transform.position.y, pourSlot.transform.position.z);
-    //        blender.transform.eulerAngles = Vector3.forward * 90;
-    //        fillCup();
-    //        blender.isPouring = true;
-    //    }
-    //}
-
 
 }

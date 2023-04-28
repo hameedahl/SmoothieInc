@@ -11,7 +11,7 @@ public class FillCard : MonoBehaviour
     public Sprite[] solids;
     public Sprite[] liquids;
     public Sprite[] blendTimes;
-    //public Sprite[] cupSizes;
+    public Sprite[] cupSizes;
     //public Sprite[] mixIns;
     //public Sprite[] toppings;
 
@@ -117,11 +117,11 @@ public class FillCard : MonoBehaviour
         else
             blendTime.sprite = blendTimes[arr[7]];
 
-        //// Cup Size
-        //if(arr[8] == -1)
-        //    cupSize.sprite = empty;
-        //else
-        //    cupSize.sprite = cupSizes[arr[8]];
+        // Cup Size
+        if (arr[8] == -1)
+            cupSize.sprite = empty;
+        else
+            cupSize.sprite = cupSizes[arr[8]];
 
         //// Mix-In
         //if(arr[9] == -1)

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using static UnityEditor.Progress;
 
 
 /*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID,
@@ -44,6 +45,7 @@ public class GameHandler : MonoBehaviour
 
     private int orderCount = 0;
     public int drinkCount = 0;
+    public bool levelCompleted = false;
 
     public FillCard fillCard;
     public BooleanNetworkHandler bnh;
@@ -70,7 +72,10 @@ public class GameHandler : MonoBehaviour
 
     private void Update()
     {
-       
+       //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus())
+       //{
+
+       //}
     }
 
     public void newOrder(int difficulty)
@@ -95,22 +100,23 @@ public class GameHandler : MonoBehaviour
         System.Random rand = new System.Random();
         if (difficulty == 1) {
             drinkCount = 1;
-            for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < solidsIndex; i++) {
                 order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
                 orderCount++;
             }
 
-            for (int i = solidsIndex; i < solidsIndex + 2; i++) {
+            for (int i = solidsIndex; i < liquidsIndex; i++) {
                 order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
                 orderCount++;
             }
 
-            order[timeIndex-1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+            order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
             orderCount++;
 
-            itemWeight = System.Math.Round(100.0 / orderCount, 2);
+            order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
+            orderCount++;
 
-            // order[cupsIndex] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
+
 
             // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", rand.Next(0, mixInIndex));
 
@@ -121,21 +127,30 @@ public class GameHandler : MonoBehaviour
 
         // else if (difficulty == 2) {
 
-        // } else (difficulty == 3) {
+        // } else (difficulty == 3) {}
+        itemWeight = System.Math.Round(100.0 / orderCount, 2);
+
     }
 
     public int getAccuracy()
     {
-        if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
+        Debug.Log("acc");
+        for (int w = 0; w < 12; w++)
+        {
+            Debug.Log(playerOrder[w].Value);
+        }
+        
+
+        //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
             valuesArray = bnh.GetValuesArrayFromNetwork();
             int[] playerOrderArr = playerOrdertoArr();
             checkOrder(0, solidsIndex, playerOrderArr);
             checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
             checkOrder(liquidsIndex, timeIndex, playerOrderArr);
-            //checkOrder(timeIndex, cupsIndex, playerOrderArr);
+            checkOrder(timeIndex, cupsIndex, playerOrderArr);
             //checkOrder(cupsIndex, mixInIndex, playerOrderArr);
             //checkOrder(mixInIndex, toppingsIndex, playerOrderArr);
-        }
+        //}
         return (int) playerScore;
     }
 
@@ -145,7 +160,10 @@ public class GameHandler : MonoBehaviour
         {
             for (int orderItem = start; orderItem < end; orderItem++)
             {
-                if (playerOrderArr[item] == valuesArray[orderItem])
+                Debug.Log("Comparing");
+                Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
+
+                if (playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
                 {
                     playerScore += itemWeight;
                     inOrder = true;
@@ -166,11 +184,14 @@ public class GameHandler : MonoBehaviour
     private int[] playerOrdertoArr()
     {
          int[] playerOrderArr = new int[arraySize];
-         for (int i = 0; i < playerOrder.Length; i++)
-         {
-                playerOrderArr[i] = playerOrder[i].Value;
-         }
-         return playerOrderArr;
+
+        for (int i = 0; i < playerOrder.Length; i++)
+        {
+            playerOrderArr[i] = playerOrder[i].Value;
+        }
+
+
+        return playerOrderArr;
     }
 
 
@@ -196,7 +217,12 @@ public class GameHandler : MonoBehaviour
 
     public void completeOrder()
     {
-        orderComplete = true;
-        bnh.SetSmoothieServerRPC(true, getAccuracy());
+        Debug.Log("Complete");
+        for (int w = 0; w < 12; w++)
+        {
+            Debug.Log(playerOrder[w].Value);
+        }
+
     }
+
 }
