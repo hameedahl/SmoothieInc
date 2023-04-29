@@ -11127,6 +11127,7 @@ PrefabInstance:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e45b8b26ca241400d9036f41407b2f22, type: 3}
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &878787889
 GameObject:
   m_ObjectHideFlags: 0
@@ -11262,6 +11263,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 878787889}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of d82f4f9 (added restart button)
 =======
 >>>>>>> parent of d82f4f9 (added restart button)
 --- !u!1 &886569604
@@ -13820,7 +13823,11 @@ RectTransform:
   - {fileID: 1516798829}
   - {fileID: 1417475556}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 1793041239}
+=======
+  - {fileID: 132834776}
+>>>>>>> parent of d82f4f9 (added restart button)
 =======
   - {fileID: 132834776}
 >>>>>>> parent of d82f4f9 (added restart button)
@@ -20083,7 +20090,11 @@ RectTransform:
   - {fileID: 316092216}
   - {fileID: 1191890407}
 <<<<<<< HEAD
+<<<<<<< HEAD
   - {fileID: 878787890}
+=======
+  - {fileID: 97949711}
+>>>>>>> parent of d82f4f9 (added restart button)
 =======
   - {fileID: 97949711}
 >>>>>>> parent of d82f4f9 (added restart button)
@@ -23192,6 +23203,7 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &1793041238
 GameObject:
   m_ObjectHideFlags: 0
@@ -23327,6 +23339,8 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793041238}
   m_CullTransparentMesh: 1
+=======
+>>>>>>> parent of d82f4f9 (added restart button)
 =======
 >>>>>>> parent of d82f4f9 (added restart button)
 --- !u!1 &1797652892
