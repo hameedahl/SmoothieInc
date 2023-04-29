@@ -95,8 +95,8 @@ public class MainMenu : MonoBehaviour
             || Input.GetKeyDown(KeyCode.Mouse0)))
         {
             tutSlide++;
-            if (tutSlide == 4) {
-                isSmoothieTut = false;
+            if (tutSlide == 4)
+            {
                 StartClient();
             } else {
                 StartSmoothieTut(tutSlide);
@@ -199,12 +199,16 @@ public class MainMenu : MonoBehaviour
 
     public void StartClient()
     {
-        SmoothieTut3.gameObject.SetActive(false);
-        menuCamera.gameObject.SetActive(false);
-        NetworkManager.Singleton.StartClient();
-        smoothieCamera.gameObject.SetActive(true);
-        smoothieUI.gameObject.SetActive(true);
-        testRelay.JoinRelay(joinCodeInput.text);
+        if (!isSmoothieTut) {
+            StartSmoothieTut(0);
+        } else {
+            SmoothieTut3.gameObject.SetActive(false);
+            menuCamera.gameObject.SetActive(false);
+            NetworkManager.Singleton.StartClient();
+            smoothieCamera.gameObject.SetActive(true);
+            smoothieUI.gameObject.SetActive(true);
+            testRelay.JoinRelay(joinCodeInput.text);
+        }
     }
 
     private void FixedUpdate()
@@ -269,9 +273,7 @@ public class MainMenu : MonoBehaviour
     public void RestartGame()
     {
         Time.timeScale = 1f;
-        pauseMenuUI.SetActive(false);
         toggleMainMenu(true);
-        /* disconnect relay */
 
     }
 
