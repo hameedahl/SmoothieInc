@@ -8,10 +8,10 @@ using UnityEngine.EventSystems;
 public class BlenderSlot : MonoBehaviour
 {
     [Header("Audio Sources")]
-    public AudioSource screechAS;
-    public AudioSource engineAS;
-    public AudioSource hitAS;
-    public AudioSource nitroAS;
+    //public AudioSource screechAS;
+    //public AudioSource engineAS;
+    //public AudioSource hitAS;
+    //public AudioSource nitroAS;
 
     public GameObject[] slots;
     public GameObject[] blenderItems;
@@ -136,8 +136,6 @@ public class BlenderSlot : MonoBehaviour
         KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
             for (int i = 0; i < gameHandler.order.Length; i++) {
                 if (gameHandler.playerOrder[i].Value == -1) { 
-                //    !Array.Exists(gameHandler.playerOrder, elem => elem.ToString() == newPair.ToString())) {
-
                     gameHandler.playerOrder[i] = newPair;
                     return;
                 }
@@ -150,11 +148,16 @@ public class BlenderSlot : MonoBehaviour
             animBottom.Play("Idle-Bottom");
             int playerTime = timer.GetComponent<Timer>().stopTimer();
             top.isBlended = true;
-            blenderIsFull = false;
-            isBlending = false;
+            resetBlender();
             gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
             playerTime = 0;
         }
+    }
+
+    public void resetBlender()
+    {
+        blenderIsFull = false;
+        isBlending = false;
     }
 
     public void startBlender() {
@@ -164,24 +167,27 @@ public class BlenderSlot : MonoBehaviour
             animTop.Play("Blending-Top");
             animBottom.Play("Blending-Bottom");
             timer.GetComponent<Timer>().startTimer();
-            for (int i = 0; i < blenderItems.Length; i++)
-            {
-                if (isFull[i])
-                { /* remove all items in the blender */
-                    Destroy(blenderItems[i]);
-                    isFull[i] = false;
-                }
-            }
+            emptyBlender();
+        }
+    }
 
-            /* remove liquids */
-
-            for (int i = 0; i < blenderliqs; i++)
-            {
-                Destroy(GameObject.FindGameObjectsWithTag("BlenderLiq")[i]);
+    public void emptyBlender()
+    {
+        for (int i = 0; i < blenderItems.Length; i++)
+        {
+            if (isFull[i])
+            { /* remove all items in the blender */
+                Destroy(blenderItems[i]);
+                isFull[i] = false;
             }
         }
-        blenderliqs = 0;
 
+        for (int i = 0; i < blenderliqs; i++)
+        {
+            /* remove liquids */
+            Destroy(GameObject.FindGameObjectsWithTag("BlenderLiq")[i]);
+        }
+        blenderliqs = 0;
     }
 
 
@@ -201,6 +207,23 @@ public class BlenderSlot : MonoBehaviour
         {
             anchor.transform.localScale = new Vector3(.9f, yVal += 1);
             yield return new WaitForSeconds(.5f);
+        }
+    }
+
+    public void restartSmoothie()
+    {
+        if (!isBlending)
+        {
+            emptyBlender(); /* clear blender */
+            /* start player arr over */
+            for (int i = 0; i < gameHandler.playerOrder.Length; i++)
+            {
+                gameHandler.playerOrder[i] = new KeyValuePair<string, int>("", -1);
+            }
+            resetBlender();
+            top.resetTop();
+            animTop.Play("Idle-Empty-Top");
+            animBottom.Play("Idle-Bottom");
         }
     }
 }
