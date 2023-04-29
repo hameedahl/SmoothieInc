@@ -97,8 +97,11 @@ public class MainMenu : MonoBehaviour
             tutSlide++;
             if (tutSlide == 4)
             {
+                isSmoothieTut = false;
                 StartClient();
-            } else {
+            }
+            else
+            {
                 StartSmoothieTut(tutSlide);
             }
         }
@@ -119,9 +122,9 @@ public class MainMenu : MonoBehaviour
     void toggleJoinMenu(bool enable, bool driver)
     {
         joinMenuBackground.SetActive(enable);
-        if(enable)
+        if (enable)
         {
-            if(!driver)
+            if (!driver)
             {
                 joinCodeInputBox.SetActive(enable);
                 joinButton.SetActive(enable);
@@ -185,13 +188,19 @@ public class MainMenu : MonoBehaviour
         {
             toggleJoinMenu(false, false);
             SmoothieTut0.gameObject.SetActive(true);
-        } else if (slideNum == 1) {
+        }
+        else if (slideNum == 1)
+        {
             SmoothieTut0.gameObject.SetActive(false);
             SmoothieTut1.gameObject.SetActive(true);
-        } else if (slideNum == 2) {
+        }
+        else if (slideNum == 2)
+        {
             SmoothieTut1.gameObject.SetActive(false);
             SmoothieTut2.gameObject.SetActive(true);
-        } else {
+        }
+        else
+        {
             SmoothieTut2.gameObject.SetActive(false);
             SmoothieTut3.gameObject.SetActive(true);
         }
@@ -199,23 +208,19 @@ public class MainMenu : MonoBehaviour
 
     public void StartClient()
     {
-        if (!isSmoothieTut) {
-            StartSmoothieTut(0);
-        } else {
-            SmoothieTut3.gameObject.SetActive(false);
-            menuCamera.gameObject.SetActive(false);
-            NetworkManager.Singleton.StartClient();
-            smoothieCamera.gameObject.SetActive(true);
-            smoothieUI.gameObject.SetActive(true);
-            testRelay.JoinRelay(joinCodeInput.text);
-        }
+        SmoothieTut3.gameObject.SetActive(false);
+        menuCamera.gameObject.SetActive(false);
+        NetworkManager.Singleton.StartClient();
+        smoothieCamera.gameObject.SetActive(true);
+        smoothieUI.gameObject.SetActive(true);
+        testRelay.JoinRelay(joinCodeInput.text);
     }
 
     private void FixedUpdate()
     {
-        if(joinCodeInput.text.Length >= 6)
+        if (joinCodeInput.text.Length >= 6)
         {
-            joinCodeInput.text = joinCodeInput.text.Substring(0,6);
+            joinCodeInput.text = joinCodeInput.text.Substring(0, 6);
             joinButton.GetComponent<Button>().interactable = true;
         }
         else
@@ -224,11 +229,11 @@ public class MainMenu : MonoBehaviour
 
     public void toggleCredits(bool enable)
     {
-        if(enable)
+        if (enable)
         {
             Debug.Log("Show Credits");
         }
-        if(!enable)
+        if (!enable)
         {
             Debug.Log("Hide Credits");
         }
@@ -245,10 +250,10 @@ public class MainMenu : MonoBehaviour
 
     private void OnServerStarted()
     {
-       if (NetworkManager.Singleton.IsHost)
-       {
-           Debug.Log("Waiting for client");
-       }
+        if (NetworkManager.Singleton.IsHost)
+        {
+            Debug.Log("Waiting for client");
+        }
     }
 
     public void Pause()
@@ -267,23 +272,25 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        
+
     }
 
     public void RestartGame()
     {
         Time.timeScale = 1f;
+        pauseMenuUI.SetActive(false);
         toggleMainMenu(true);
+        /* disconnect relay */
 
     }
 
     public void QuitGame()
     {
-        #if UNITY_EDITOR
-             UnityEditor.EditorApplication.isPlaying = false;
-        #else
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
              Application.Quit();
-        #endif
-     }
+#endif
+    }
 
 }
