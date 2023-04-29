@@ -3053,6 +3053,7 @@ MonoBehaviour:
   smoothieUI: {fileID: 534812408}
   testRelay: {fileID: 1586465724}
   pauseMenuUI: {fileID: 2064714093}
+  currentUI: {fileID: 0}
 --- !u!1 &298603113
 GameObject:
   m_ObjectHideFlags: 0
@@ -6933,7 +6934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 731201160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1020.23, y: -1.66, z: 0}
+  m_LocalPosition: {x: 1010.97, y: -1.66, z: 0}
   m_LocalScale: {x: 2.508009, y: 2.508009, z: 2.508009}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -19922,7 +19923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2001479411}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1011.29, y: -1.33, z: 0}
+  m_LocalPosition: {x: 1020.62, y: -1.59, z: 0}
   m_LocalScale: {x: 1.0238335, y: 1.0238335, z: 1.0238335}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20864,7 +20865,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2034031318}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1018.81, y: -1.35, z: -0.04317}
+  m_LocalPosition: {x: 1012.26, y: -1.35, z: -0.04317}
   m_LocalScale: {x: 1.8728954, y: 1.8728954, z: 1.8728954}
   m_ConstrainProportionsScale: 0
   m_Children: []
