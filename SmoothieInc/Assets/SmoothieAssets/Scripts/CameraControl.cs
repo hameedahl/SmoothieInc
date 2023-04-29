@@ -12,7 +12,7 @@ public class CameraControl : MonoBehaviour
     public Camera cam;
     public GameObject lBtn;
     public GameObject rBtn;
-    private float upperBound = 1015.78f;
+    private float upperBound = 1008.66f;
     private float lowerBound = 997.97f;
     private float currPos = 997.97f;
 
@@ -24,7 +24,7 @@ public class CameraControl : MonoBehaviour
 
     public void MoveToNewStation() {
         if (EventSystem.current.currentSelectedGameObject == rBtn && currPos < upperBound) {
-            currPos += 5;
+            currPos += 6;
             if (currPos > upperBound) {
                 currPos = upperBound;
             }

@@ -31,7 +31,12 @@ public class MainMenu : MonoBehaviour
     public GameObject giveCodeDirections;
 
     [Header("Tutorial UI")]
-    public GameObject SmoothieTut;
+    public GameObject SmoothieTut0;
+    public GameObject SmoothieTut1;
+    public GameObject SmoothieTut2;
+    public GameObject SmoothieTut3;
+
+    private int tutSlide = 0;
     private bool isSmoothieTut = false;
 
     [Header("Object References")]
@@ -49,8 +54,8 @@ public class MainMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public static float volumeLevel = 1.0f;
     private Slider sliderVolumeCtrl;
-
     public GameObject currentUI;
+
     void Awake()
     {
         audioMixer.SetFloat("SFXVolume", -80.00f);
@@ -89,7 +94,13 @@ public class MainMenu : MonoBehaviour
             || Input.GetKeyDown(KeyCode.Return)
             || Input.GetKeyDown(KeyCode.Mouse0)))
         {
-            StartClient();
+            tutSlide++;
+            if (tutSlide == 4)
+            {
+                StartClient();
+            } else {
+                StartSmoothieTut(tutSlide);
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -167,22 +178,37 @@ public class MainMenu : MonoBehaviour
         toggleMainMenu(false);
     }
 
-    public void StartSmoothieTut()
+    public void StartSmoothieTut(int slideNum)
     {
-        toggleJoinMenu(false, false);
-        SmoothieTut.gameObject.SetActive(true);
         isSmoothieTut = true;
+        if (slideNum == 0)
+        {
+            toggleJoinMenu(false, false);
+            SmoothieTut0.gameObject.SetActive(true);
+        } else if (slideNum == 1) {
+            SmoothieTut0.gameObject.SetActive(false);
+            SmoothieTut1.gameObject.SetActive(true);
+        } else if (slideNum == 2) {
+            SmoothieTut1.gameObject.SetActive(false);
+            SmoothieTut2.gameObject.SetActive(true);
+        } else {
+            SmoothieTut2.gameObject.SetActive(false);
+            SmoothieTut3.gameObject.SetActive(true);
+        }
     }
 
     public void StartClient()
     {
-        StartSmoothieTut();
-        SmoothieTut.gameObject.SetActive(false);
-        menuCamera.gameObject.SetActive(false);
-        NetworkManager.Singleton.StartClient();
-        smoothieCamera.gameObject.SetActive(true);
-        smoothieUI.gameObject.SetActive(true);
-        testRelay.JoinRelay(joinCodeInput.text);
+        if (!isSmoothieTut) {
+            StartSmoothieTut(0);
+        } else {
+            SmoothieTut3.gameObject.SetActive(false);
+            menuCamera.gameObject.SetActive(false);
+            NetworkManager.Singleton.StartClient();
+            smoothieCamera.gameObject.SetActive(true);
+            smoothieUI.gameObject.SetActive(true);
+            testRelay.JoinRelay(joinCodeInput.text);
+        }
     }
 
     private void FixedUpdate()

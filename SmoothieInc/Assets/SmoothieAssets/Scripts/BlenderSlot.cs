@@ -7,6 +7,12 @@ using UnityEngine.EventSystems;
 
 public class BlenderSlot : MonoBehaviour
 {
+    [Header("Audio Sources")]
+    public AudioSource screechAS;
+    public AudioSource engineAS;
+    public AudioSource hitAS;
+    public AudioSource nitroAS;
+
     public GameObject[] slots;
     public GameObject[] blenderItems;
 
