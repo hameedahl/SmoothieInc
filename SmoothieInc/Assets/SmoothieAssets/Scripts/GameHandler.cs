@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
-using static UnityEditor.Progress;
 using UnityEngine.XR;
 
 
@@ -152,7 +151,7 @@ public class GameHandler : MonoBehaviour
 
     public void generateLiquids(System.Random rand, int count)
     {
-        for (int i = solidsIndex; i < count; i++)
+        for (int i = solidsIndex; i < solidsIndex + count; i++)
         {
             order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
             orderCount++;
@@ -190,7 +189,7 @@ public class GameHandler : MonoBehaviour
                 //Debug.Log("Comparing");
                 //Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
 
-                if (playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
+                if (playerOrderArr[item] != -1 && playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
                 {
                     playerScore += itemWeight;
                     inOrder = true;

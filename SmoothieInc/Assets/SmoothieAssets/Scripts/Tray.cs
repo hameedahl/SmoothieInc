@@ -14,6 +14,7 @@ public class Tray : MonoBehaviour
     public GameObject[] slots;
     public bool[] isFull;
     public int drinksInTray = 0;
+    public bool accCalculated = false;
 
     // Start is called before the first frame update
     void Start()
@@ -25,11 +26,12 @@ public class Tray : MonoBehaviour
     void Update()
     {
         putInTray();
-        if (drinksInTray == gameHandler.drinkCount) /* all drinks are in tray */
+        if (drinksInTray == gameHandler.drinkCount && !accCalculated) /* all drinks are in tray */
         {
             //gameHandler.orderComplete = true;
 
             Debug.Log("Tray");
+            accCalculated = true;
             //for (int w = 0; w < 12; w++)
             //{
             //    Debug.Log(gameHandler.playerOrder[w].Value);
