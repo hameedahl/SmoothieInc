@@ -50,7 +50,7 @@ public class MainGameController : MonoBehaviour
                 WinText.color = Color.red;
             }
             networkHandler.ResetOrders();
-            gameHandler.newOrder(1);
+            gameHandler.newOrder();
             truckManager.NewOrder();
         }
     }

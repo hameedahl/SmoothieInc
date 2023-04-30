@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using static UnityEditor.Progress;
+using UnityEngine.XR;
 
 
 /*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID,
@@ -33,6 +34,10 @@ public class GameHandler : MonoBehaviour
 
     const int arraySize = 12;
     const int emptySlot = -1;
+
+    public int difficulty = 1;
+
+
 
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int>[arraySize];
     public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
@@ -65,9 +70,7 @@ public class GameHandler : MonoBehaviour
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
         cam = camGo.GetComponent<CameraControl>();
 
-        newOrder(1);
-
-
+        newOrder();
     }
 
     private void Update()
@@ -78,7 +81,7 @@ public class GameHandler : MonoBehaviour
        //}
     }
 
-    public void newOrder(int difficulty)
+    public void newOrder()
     {
         Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
@@ -87,7 +90,7 @@ public class GameHandler : MonoBehaviour
             playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
         }
 
-        generateOrder(difficulty);
+        generateOrder();
 
         for (int i = 0; i < arraySize; i++)
         {
@@ -95,41 +98,65 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void generateOrder(int difficulty) {
+    public void generateOrder() {
         orderComplete = false;
         System.Random rand = new System.Random();
         if (difficulty == 1) {
             drinkCount = 1;
-            for (int i = 0; i < solidsIndex; i++) {
-                order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
-                orderCount++;
-            }
-
-            for (int i = solidsIndex; i < liquidsIndex; i++) {
-                order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
-                orderCount++;
-            }
-
-            order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
-            orderCount++;
-
-            order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
-            orderCount++;
-
-
-
-            // order[mixInIndex] = new KeyValuePair<string, int>("MixIn", rand.Next(0, mixInIndex));
-
-            // for (int i = mixInIndex + 1; i < toppingsIndex + 1; i++) {
-            //     order[i] = new KeyValuePair<string, int>("Toppings", rand.Next(0, toppingsRange));
-            // }
+            generateSolids(rand, 2);
+            generateLiquids(rand, 1);
+        } else if (difficulty == 2) {
+            drinkCount = 1;
+            generateSolids(rand, 3);
+            generateLiquids(rand, 2);
+        } else if (difficulty == 3) {
+            drinkCount = 1;
+            generateSolids(rand, 4);
+            generateLiquids(rand, 3);
+        } else if (difficulty == 4) {
+            //drinkCount = 2;
+            //generateSolids(rand, 4);
+            //generateLiquids(rand, 3);
+            //order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+            //orderCount++;
+            //order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
+            //orderCount++;
+            //generateSolids(rand, 4);
+            //generateLiquids(rand, 3);
+        } else {
+            //drinkCount = 4;
+            //generateSolids(rand, 4);
+            //generateLiquids(rand, 3);
+            //generateSolids(rand, 4);
+            //generateLiquids(rand, 3);
         }
 
-        // else if (difficulty == 2) {
+        order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+        orderCount++;
 
-        // } else (difficulty == 3) {}
+        order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
+        orderCount++;
+
         itemWeight = System.Math.Round(100.0 / orderCount, 2);
+        difficulty++;
+    }
 
+    public void generateSolids(System.Random rand, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
+            orderCount++;
+        }
+    }
+
+    public void generateLiquids(System.Random rand, int count)
+    {
+        for (int i = solidsIndex; i < count; i++)
+        {
+            order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
+            orderCount++;
+        }
     }
 
     public int getAccuracy()
