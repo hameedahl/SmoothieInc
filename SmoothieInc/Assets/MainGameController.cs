@@ -12,9 +12,14 @@ public class MainGameController : MonoBehaviour
     public GameObject smoothieUI;
     public TruckManager truckManager;
     public GameHandler gameHandler;
+    public GameObject winScreen;
+    public TMP_Text accuracyText;
+    public GameObject nextLevelButton;
 
     bool sFinish = false;
     bool dFinish = false;
+
+    bool finished = false;
 
     private void Start()
     {
@@ -40,18 +45,39 @@ public class MainGameController : MonoBehaviour
         double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
             Debug.Log("BOTH ARE THERE");
             Debug.Log(playerScore);
-            WinText.gameObject.SetActive(true);
-            if (playerScore >= 80)
+            
+            winScreen.gameObject.SetActive(true);
+            accuracyText.text = playerScore + "%";
+
+            if(!networkHandler.GetHostStatus())
             {
-                WinText.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
-                WinText.color = Color.green;
-            } else {
-                WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
-                WinText.color = Color.red;
+                nextLevelButton.SetActive(false);
             }
-            //networkHandler.ResetOrders();
-            //gameHandler.newOrder();
-            //truckManager.NewOrder();
+            finished = true;
+            
+            // WinText.gameObject.SetActive(true);
+            // if (playerScore >= 80)
+            // {
+            //     WinText.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
+            //     WinText.color = Color.green;
+            // } else {
+            //     WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
+            //     WinText.color = Color.red;
+            // }
         }
+
+        if(finished && !networkHandler.GetArrivedStatus())
+        {
+            winScreen.SetActive(false);
+        }
+    }
+
+    public void NewOrders()
+    {
+        int difficulty = Random.Range(1,3);
+        networkHandler.ResetOrders();
+        gameHandler.newOrder(difficulty);
+        truckManager.NewOrder(difficulty);
+        winScreen.SetActive(false);
     }
 }

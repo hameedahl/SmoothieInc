@@ -18,12 +18,12 @@ public class TruckManager : MonoBehaviour
         //StartCoroutine(WaitOrder());
     }
 
-    public Vector3 NewOrder()
+    public Vector3 NewOrder(int diff)
     {
         networkHandler.SetArrivedStatus(false);
         if(host)
         {
-            int diff = Random.Range(1,10);
+            //int diff = Random.Range(1,10);
             dest = of.Find(diff);
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
             target.position = dest.transform.GetChild(0).position;
@@ -43,11 +43,11 @@ public class TruckManager : MonoBehaviour
         }
     }
 
-    public IEnumerator WaitOrder()
-    {
-        yield return new WaitForSeconds(0.1f);
-        NewOrder();
-    }
+    // public IEnumerator WaitOrder()
+    // {
+    //     yield return new WaitForSeconds(0.1f);
+    //     NewOrder();
+    // }
 
     public bool GetArrivedStatus()
     {

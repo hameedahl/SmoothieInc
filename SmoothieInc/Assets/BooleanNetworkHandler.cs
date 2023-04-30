@@ -119,8 +119,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public int[] tempValuesArray = new int[12];
     public int[] valuesArray;
 
+    int diff = 3;
+
     private void Start()
     {
+        diff = Random.Range(1,3);
         truckManager = truckManagerObject.GetComponent<TruckManager>();
         gameHandler = gameHandlerObject.GetComponent<GameHandler>();
 
@@ -166,7 +169,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
           {
             started = true;
             truckManager.host = true;
-            destinationPos.Value = truckManager.NewOrder();
+            destinationPos.Value = truckManager.NewOrder(3);
           }
 
           // bool isTruckArrived = truckManager.GetArrivedStatus();
@@ -250,6 +253,18 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public double GetPlayerScoreStatus()
     {
         return playerScoreNetworkVariable.Value;
+    }
+
+    public bool GetHostStatus()
+    {
+      if(IsHost)
+      {
+        return true;
+      }
+      else
+      {
+        return false;
+      }
     }
 
     public int[] GetValuesArrayFromNetwork()

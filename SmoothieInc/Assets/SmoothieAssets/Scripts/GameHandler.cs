@@ -34,7 +34,7 @@ public class GameHandler : MonoBehaviour
     const int arraySize = 12;
     const int emptySlot = -1;
 
-    public int difficulty = 1;
+    //public int difficulty = 1;
 
 
 
@@ -69,7 +69,7 @@ public class GameHandler : MonoBehaviour
         toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
         cam = camGo.GetComponent<CameraControl>();
 
-        newOrder();
+        newOrder(1);
     }
 
     private void Update()
@@ -80,7 +80,7 @@ public class GameHandler : MonoBehaviour
        //}
     }
 
-    public void newOrder()
+    public void newOrder(int difficulty)
     {
         Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
@@ -89,7 +89,7 @@ public class GameHandler : MonoBehaviour
             playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
         }
 
-        generateOrder();
+        generateOrder(difficulty);
 
         for (int i = 0; i < arraySize; i++)
         {
@@ -97,7 +97,7 @@ public class GameHandler : MonoBehaviour
         }
     }
 
-    public void generateOrder() {
+    public void generateOrder(int difficulty) {
         orderComplete = false;
         System.Random rand = new System.Random();
         if (difficulty == 1) {
