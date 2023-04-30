@@ -9,12 +9,8 @@ public class Door : MonoBehaviour
     public GameObject closed_door;
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
-    //public AudioManager audioMan;
-
-    void Start() {
-        //open_door.SetActive(false);
-        //audioMan = gameObject.Find("Audio Manager").GetComponent<AudioManager>();
-    }
+    public AudioSource doorOpening;
+    public AudioSource doorClosing;
 
     private void OnMouseEnter()
     {
@@ -39,13 +35,13 @@ public class Door : MonoBehaviour
             {
                 open_door.SetActive(false);
                 closed_door.SetActive(true);
-                //audioMan.Play("Fridge-Close");
+                doorClosing.Play();
             }
             else
             {
                 closed_door.SetActive(false);
                 open_door.SetActive(true);
-                //audioMan.Play("Fridge-Open");
+                doorOpening.Play();
             }
         }
     }

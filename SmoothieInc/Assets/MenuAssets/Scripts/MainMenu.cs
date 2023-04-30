@@ -46,6 +46,9 @@ public class MainMenu : MonoBehaviour
 
     public GameObject truckUI;
     public GameObject smoothieUI;
+    public GameObject smoothieMusicGO;
+    private AudioSource smoothieMusic;
+
 
     public TestRelay testRelay;
 
@@ -65,6 +68,7 @@ public class MainMenu : MonoBehaviour
             sliderVolumeCtrl = sliderTemp.GetComponent<Slider>();
             sliderVolumeCtrl.value = volumeLevel;
         }
+        smoothieMusic = smoothieMusicGO.GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -183,6 +187,11 @@ public class MainMenu : MonoBehaviour
 
     public void StartSmoothieTut(int slideNum)
     {
+        if (!smoothieMusic.isPlaying)
+        {
+            smoothieMusic.Play();
+        }
+
         isSmoothieTut = true;
         if (slideNum == 0)
         {

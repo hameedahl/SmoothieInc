@@ -8,8 +8,13 @@ using UnityEngine.EventSystems;
 public class BlenderSlot : MonoBehaviour
 {
     [Header("Audio Sources")]
-    //public AudioSource screechAS;
-    //public AudioSource engineAS;
+    public AudioSource blenderOn;
+    public AudioSource blenderOff;
+    public AudioSource openBlender;
+    public AudioSource closeBlender;
+    public AudioSource blenderMixing;
+    public AudioSource iceDropped;
+
     //public AudioSource hitAS;
     //public AudioSource nitroAS;
 
@@ -116,6 +121,7 @@ public class BlenderSlot : MonoBehaviour
         item.transform.position = new Vector3(slots[slots.Length - 1].transform.position.x, slots[slots.Length - 1].transform.position.y, slots[slots.Length - 1].transform.position.z);
         blenderItems[blenderItems.Length - 1] = item;
         top.hasIce = true;
+        iceDropped.Play();
         isFull[slots.Length - 1] = true;
         Destroy(item.GetComponent<DragDrop>());
     }
@@ -166,6 +172,10 @@ public class BlenderSlot : MonoBehaviour
             resetBlender();
             gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
             playerTime = 0;
+            if (blenderMixing.isPlaying) {
+                blenderMixing.Stop();
+                blenderOff.Play();
+            }
         }
     }
 
@@ -184,6 +194,10 @@ public class BlenderSlot : MonoBehaviour
             animBottom.Play("Blending-Bottom");
             timer.GetComponent<Timer>().startTimer();
             emptyBlender();
+            if (!blenderOn.isPlaying) {
+                blenderOn.Play();
+                blenderMixing.Play();
+            }
         }
     }
 
