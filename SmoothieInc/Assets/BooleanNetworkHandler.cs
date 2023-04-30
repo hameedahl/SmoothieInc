@@ -141,24 +141,21 @@ public class BooleanNetworkHandler : NetworkBehaviour
           valuesArrayNetwork11.Value = valuesArray[11];
 
             //Debug.Log("HIII");
-
-
-
-            tempValuesArray[0] = valuesArrayNetwork0.Value;
-            tempValuesArray[1] = valuesArrayNetwork1.Value;
-            tempValuesArray[2] = valuesArrayNetwork2.Value;
-            tempValuesArray[3] = valuesArrayNetwork3.Value;
-            tempValuesArray[4] = valuesArrayNetwork4.Value;
-            tempValuesArray[5] = valuesArrayNetwork5.Value;
-            tempValuesArray[6] = valuesArrayNetwork6.Value;
-            tempValuesArray[7] = valuesArrayNetwork7.Value;
-            tempValuesArray[8] = valuesArrayNetwork8.Value;
-            tempValuesArray[9] = valuesArrayNetwork9.Value;
-            tempValuesArray[10] = valuesArrayNetwork10.Value;
-            tempValuesArray[11] = valuesArrayNetwork11.Value;
-
-            fillCard.Initialize(tempValuesArray);
         }
+        tempValuesArray[0] = valuesArrayNetwork0.Value;
+        tempValuesArray[1] = valuesArrayNetwork1.Value;
+        tempValuesArray[2] = valuesArrayNetwork2.Value;
+        tempValuesArray[3] = valuesArrayNetwork3.Value;
+        tempValuesArray[4] = valuesArrayNetwork4.Value;
+        tempValuesArray[5] = valuesArrayNetwork5.Value;
+        tempValuesArray[6] = valuesArrayNetwork6.Value;
+        tempValuesArray[7] = valuesArrayNetwork7.Value;
+        tempValuesArray[8] = valuesArrayNetwork8.Value;
+        tempValuesArray[9] = valuesArrayNetwork9.Value;
+        tempValuesArray[10] = valuesArrayNetwork10.Value;
+        tempValuesArray[11] = valuesArrayNetwork11.Value;
+
+        fillCard.Initialize(tempValuesArray);
     }
 
     private void Update()
@@ -197,27 +194,33 @@ public class BooleanNetworkHandler : NetworkBehaviour
           valuesArrayNetwork10.Value = valuesArray[10];
           valuesArrayNetwork11.Value = valuesArray[11];
 
-          tempValuesArray[0] = valuesArrayNetwork0.Value;
-          tempValuesArray[1] = valuesArrayNetwork1.Value;
-          tempValuesArray[2] = valuesArrayNetwork2.Value;
-          tempValuesArray[3] = valuesArrayNetwork3.Value;
-          tempValuesArray[4] = valuesArrayNetwork4.Value;
-          tempValuesArray[5] = valuesArrayNetwork5.Value;
-          tempValuesArray[6] = valuesArrayNetwork6.Value;
-          tempValuesArray[7] = valuesArrayNetwork7.Value;
-          tempValuesArray[8] = valuesArrayNetwork8.Value;
-          tempValuesArray[9] = valuesArrayNetwork9.Value;
-          tempValuesArray[10] = valuesArrayNetwork10.Value;
-          tempValuesArray[11] = valuesArrayNetwork11.Value;
+            Debug.Log("starting");
+            for (int i = 0; i < 12; i++)
+            {
+                Debug.Log(tempValuesArray[i]);
+            }
 
-          fillCard.Initialize(tempValuesArray);
-
-      }
+        }
       else
       {
         if(destinationPos.Value.x != 0)
           target.position = destinationPos.Value;
       }
+
+        tempValuesArray[0] = valuesArrayNetwork0.Value;
+        tempValuesArray[1] = valuesArrayNetwork1.Value;
+        tempValuesArray[2] = valuesArrayNetwork2.Value;
+        tempValuesArray[3] = valuesArrayNetwork3.Value;
+        tempValuesArray[4] = valuesArrayNetwork4.Value;
+        tempValuesArray[5] = valuesArrayNetwork5.Value;
+        tempValuesArray[6] = valuesArrayNetwork6.Value;
+        tempValuesArray[7] = valuesArrayNetwork7.Value;
+        tempValuesArray[8] = valuesArrayNetwork8.Value;
+        tempValuesArray[9] = valuesArrayNetwork9.Value;
+        tempValuesArray[10] = valuesArrayNetwork10.Value;
+        tempValuesArray[11] = valuesArrayNetwork11.Value;
+
+        fillCard.Initialize(tempValuesArray);
     }
 
     public void ResetOrders()

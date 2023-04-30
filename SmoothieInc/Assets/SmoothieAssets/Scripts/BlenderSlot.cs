@@ -156,9 +156,17 @@ public class BlenderSlot : MonoBehaviour
             if (gameHandler.playerOrder[i].Value == -1)
             {
                 gameHandler.playerOrder[i] = newPair;
+                Debug.Log("Adding");
+                //for (int w = 0; w < 12; w++)
+               // {
+                    Debug.Log(gameHandler.playerOrder[i].Value);
+               // }
                 return;
             }
         }
+
+
+
     }
 
     public void stopBlender()

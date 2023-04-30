@@ -161,16 +161,16 @@ public class GameHandler : MonoBehaviour
 
     public int getAccuracy()
     {
-        Debug.Log("acc");
-        //for (int w = 0; w < 12; w++)
-        //{
-        //    Debug.Log(playerOrder[w].Value);
-        //}
+        Debug.Log("player");
+        for (int w = 0; w < 12; w++)
+        {
+            Debug.Log(playerOrder[w].Value);
+        }
 
 
         //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
         //valuesArray = bnh.GetValuesArrayFromNetwork();
-            int[] playerOrderArr = playerOrdertoArr();
+        int[] playerOrderArr = playerOrdertoArr();
             checkOrder(0, solidsIndex, playerOrderArr);
             checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
             checkOrder(liquidsIndex, timeIndex, playerOrderArr);
@@ -187,8 +187,8 @@ public class GameHandler : MonoBehaviour
         {
             for (int orderItem = start; orderItem < end; orderItem++)
             {
-                Debug.Log("Comparing");
-                Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
+                //Debug.Log("Comparing");
+                //Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
 
                 if (playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
                 {
@@ -244,7 +244,7 @@ public class GameHandler : MonoBehaviour
 
     public void completeOrder()
     {
-        Debug.Log("Complete");
+        //Debug.Log("Complete");
   
 
         valuesArray = bnh.GetValuesArrayFromNetwork();
