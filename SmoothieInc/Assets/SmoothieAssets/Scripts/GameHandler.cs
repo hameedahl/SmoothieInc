@@ -35,8 +35,7 @@ public class GameHandler : MonoBehaviour
     const int emptySlot = -1;
 
     //public int difficulty = 1;
-
-
+    public float blenderLevel = 0;
 
     public KeyValuePair<string, int>[] order = new KeyValuePair<string, int>[arraySize];
     public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
@@ -70,14 +69,6 @@ public class GameHandler : MonoBehaviour
         cam = camGo.GetComponent<CameraControl>();
 
         newOrder(1);
-    }
-
-    private void Update()
-    {
-       //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus())
-       //{
-
-       //}
     }
 
     public void newOrder(int difficulty)
@@ -166,17 +157,11 @@ public class GameHandler : MonoBehaviour
             Debug.Log(playerOrder[w].Value);
         }
 
-
-        //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
-        //valuesArray = bnh.GetValuesArrayFromNetwork();
         int[] playerOrderArr = playerOrdertoArr();
-            checkOrder(0, solidsIndex, playerOrderArr);
-            checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
-            checkOrder(liquidsIndex, timeIndex, playerOrderArr);
-            checkOrder(timeIndex, cupsIndex, playerOrderArr);
-            //checkOrder(cupsIndex, mixInIndex, playerOrderArr);
-            //checkOrder(mixInIndex, toppingsIndex, playerOrderArr);
-      //  }
+        checkOrder(0, solidsIndex, playerOrderArr);
+        checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
+        checkBlendTime(playerOrderArr);
+        checkOrder(timeIndex, cupsIndex, playerOrderArr);
         return (int) playerScore;
     }
 
@@ -186,9 +171,6 @@ public class GameHandler : MonoBehaviour
         {
             for (int orderItem = start; orderItem < end; orderItem++)
             {
-                //Debug.Log("Comparing");
-                //Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
-
                 if (playerOrderArr[item] != -1 && playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
                 {
                     playerScore += itemWeight;
@@ -197,6 +179,11 @@ public class GameHandler : MonoBehaviour
             }
         }
         lowerScore();
+    }
+
+    private void checkBlendTime(int[] playerOrderArr)
+    {
+        playerScore += (blenderLevel / valuesArray[7]) * itemWeight;
     }
 
     private void lowerScore()
@@ -209,13 +196,12 @@ public class GameHandler : MonoBehaviour
  
     private int[] playerOrdertoArr()
     {
-         int[] playerOrderArr = new int[arraySize];
+        int[] playerOrderArr = new int[arraySize];
 
         for (int i = 0; i < playerOrder.Length; i++)
         {
             playerOrderArr[i] = playerOrder[i].Value;
         }
-
 
         return playerOrderArr;
     }

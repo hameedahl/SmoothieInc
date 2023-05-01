@@ -58,6 +58,8 @@ public class MainMenu : MonoBehaviour
     public static float volumeLevel = 1.0f;
     private Slider sliderVolumeCtrl;
     public GameObject currentUI;
+    public GameObject credits;
+
 
     void Awake()
     {
@@ -240,11 +242,13 @@ public class MainMenu : MonoBehaviour
     {
         if (enable)
         {
-            Debug.Log("Show Credits");
+            credits.SetActive(true);
+
         }
         if (!enable)
         {
-            Debug.Log("Hide Credits");
+            credits.SetActive(false);
+
         }
 
     }
@@ -284,14 +288,14 @@ public class MainMenu : MonoBehaviour
 
     }
 
-    public void RestartGame()
-    {
-        Time.timeScale = 1f;
-        pauseMenuUI.SetActive(false);
-        toggleMainMenu(true);
-        /* disconnect relay */
+    //public void RestartGame()
+    //{
+    //    Time.timeScale = 1f;
+    //    pauseMenuUI.SetActive(false);
+    //    toggleMainMenu(true);
+    //    /* disconnect relay */
 
-    }
+    //}
 
     public void QuitGame()
     {
