@@ -57,7 +57,6 @@ public class BlenderSlot : MonoBehaviour
 
     private void Update()
     {
-
     }
 
     public bool addedToSlot(GameObject item)
@@ -80,7 +79,13 @@ public class BlenderSlot : MonoBehaviour
 
             if (itemInfo.category == "Liquids")
             {
+                if (!liquidPouring.isPlaying)
+                {
+                    liquidPouring.Play();
+                }
                 insertLiq(item, itemInfo);
+                //liquidPouring.Stop();
+
                 return true;
             }
             else if (itemInfo.category == "Ice")
@@ -112,10 +117,6 @@ public class BlenderSlot : MonoBehaviour
         itemInfo.isPouring = true;
         top.isEmpty = false;
         item.transform.eulerAngles = Vector3.forward * 90;
-        if (!liquidPouring.isPlaying)
-        {
-            liquidPouring.Play();
-        }
         newLiquid = Instantiate(liquid);
         blenderliqs++;
         pour(itemInfo, newLiquid);
@@ -163,17 +164,9 @@ public class BlenderSlot : MonoBehaviour
             if (gameHandler.playerOrder[i].Value == -1)
             {
                 gameHandler.playerOrder[i] = newPair;
-               // Debug.Log("Adding");
-               // //for (int w = 0; w < 12; w++)
-               //// {
-               //     Debug.Log(gameHandler.playerOrder[i].Value);
-               //// }
                 return;
             }
         }
-
-
-
     }
 
     public void stopBlender()
@@ -253,6 +246,7 @@ public class BlenderSlot : MonoBehaviour
             anchor.transform.localScale = new Vector3(.9f, yVal += 1);
             yield return new WaitForSeconds(.5f);
         }
+        liquidPouring.Stop();
     }
 
     public void restartSmoothie()

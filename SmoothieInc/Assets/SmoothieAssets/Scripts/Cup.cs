@@ -38,6 +38,7 @@ public class Cup : MonoBehaviour
         strawSlot = this.transform.GetChild(2).gameObject;
         gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         blender = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<PickUpBlender>();
+        //blender.
     }
 
     void Update() {

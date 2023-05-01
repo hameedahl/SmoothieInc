@@ -71,7 +71,6 @@ public class DragDrop : MonoBehaviour
 
     }
 
-
     private void OnMouseExit()
     {
         Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
@@ -144,7 +143,6 @@ public class DragDrop : MonoBehaviour
         if (foodInfo.isPouring) {
             this.transform.eulerAngles = Vector3.forward / 90;
             foodInfo.isPouring = false;
-            liquidPouring.Stop();
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
         }
     }
