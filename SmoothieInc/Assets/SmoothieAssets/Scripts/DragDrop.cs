@@ -27,9 +27,6 @@ public class DragDrop : MonoBehaviour
 
     public string message;
 
-    [Header("Audio Sources")]
-    public AudioSource liquidPouring;
-
     // Start is called before the first frame update
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */

@@ -71,8 +71,7 @@ public class Cup : MonoBehaviour
                 hasStraw = true;
                 gameHandler.playerOrder[8] = newPair;
                 isFinished = true;
-                //strawSound.Play();
-
+                strawSound.Play();
         }
     }
 

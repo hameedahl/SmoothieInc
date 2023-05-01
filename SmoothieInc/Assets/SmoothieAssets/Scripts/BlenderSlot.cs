@@ -84,8 +84,6 @@ public class BlenderSlot : MonoBehaviour
                     liquidPouring.Play();
                 }
                 insertLiq(item, itemInfo);
-                //liquidPouring.Stop();
-
                 return true;
             }
             else if (itemInfo.category == "Ice")
@@ -145,7 +143,7 @@ public class BlenderSlot : MonoBehaviour
                 itemInfo.inBlender = true;
                 itemInfo.slotNum = i;
                 top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                //foodDropped.Play();
+                foodDropped.Play();
                 addToOrder(itemInfo);
                 Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
                 return true;

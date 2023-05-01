@@ -30,16 +30,8 @@ public class Tray : MonoBehaviour
         putInTray();
         if (drinksInTray == gameHandler.drinkCount && !accCalculated) /* all drinks are in tray */
         {
-            //gameHandler.orderComplete = true;
-
-            Debug.Log("Tray");
             accCalculated = true;
-            //for (int w = 0; w < 12; w++)
-            //{
-            //    Debug.Log(gameHandler.playerOrder[w].Value);
-            //}
-           // gettingAcc = true;
-           gameHandler.completeOrder();
+            gameHandler.completeOrder();
         }
     }
 
@@ -67,7 +59,7 @@ public class Tray : MonoBehaviour
                     { /* snap object into slot if close enough (don't add to liquid slot)*/
                         cups[i].transform.position = new Vector3(slots[j].transform.position.x, slots[j].transform.position.y, slots[j].transform.position.z);
                         cups[i].transform.parent = this.transform;
-                        //intray.Play();
+                        intray.Play();
                         isFull[j] = true;
                         Destroy(cups[i].GetComponent<DragDrop>());
                         drinksInTray++;
