@@ -25,7 +25,6 @@ public class StartStopBtns : MonoBehaviour
     private void OnMouseOver()
     {
         darkenColor();
-        Debug.Log("yep");
     }
 
     private void OnMouseDown()

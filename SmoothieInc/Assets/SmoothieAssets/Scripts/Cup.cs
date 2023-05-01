@@ -13,6 +13,9 @@ public class Cup : MonoBehaviour
     private Animator anim;
     public bool isCovered = false;
     public bool hasStraw = false;
+    public AudioSource pourSmoothie;
+    public AudioSource coverSound;
+    public AudioSource strawSound;
 
     private GameObject cover;
     private GameObject coverSlot;
@@ -44,6 +47,7 @@ public class Cup : MonoBehaviour
     public void fillCup() {
         isEmpty = false;
         anim.Play("Fill-Cup");
+        pourSmoothie.Play();
     }
 
     private void finishCup() {
@@ -55,6 +59,7 @@ public class Cup : MonoBehaviour
                 coverSlot.GetComponent<SpriteRenderer>().sprite = coverArt;
                 cover.SetActive(false);
                 isCovered = true;
+                //coverSound.Play();
         }
 
         if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
@@ -65,6 +70,8 @@ public class Cup : MonoBehaviour
                 hasStraw = true;
                 gameHandler.playerOrder[8] = newPair;
                 isFinished = true;
+                //strawSound.Play();
+
         }
     }
 
