@@ -38,7 +38,6 @@ public class Cup : MonoBehaviour
         strawSlot = this.transform.GetChild(2).gameObject;
         gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
         blender = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<PickUpBlender>();
-        //blender.
     }
 
     void Update() {
@@ -65,11 +64,10 @@ public class Cup : MonoBehaviour
 
         if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
             Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .8f) {
-                KeyValuePair<string, int> newPair = new KeyValuePair<string, int>("Size", itemId);
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
                 straw.SetActive(false);
                 hasStraw = true;
-                gameHandler.playerOrder[8] = newPair;
+                gameHandler.playerOrder[8] = itemId;
                 isFinished = true;
                 strawSound.Play();
         }

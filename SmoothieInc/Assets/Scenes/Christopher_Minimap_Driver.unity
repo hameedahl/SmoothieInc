@@ -324,7 +324,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Pineapples
-  liquidPouring: {fileID: 0}
 --- !u!114 &15912638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3076,7 +3075,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Pomegranates
-  liquidPouring: {fileID: 0}
 --- !u!114 &281206874
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3275,6 +3273,7 @@ MonoBehaviour:
   testRelay: {fileID: 1586465724}
   pauseMenuUI: {fileID: 2064714093}
   currentUI: {fileID: 0}
+  credits: {fileID: 0}
 --- !u!1 &298603113
 GameObject:
   m_ObjectHideFlags: 0
@@ -6636,7 +6635,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: 
-  liquidPouring: {fileID: 0}
 --- !u!114 &513878735
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7407,7 +7405,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Peanut Butter
-  liquidPouring: {fileID: 0}
 --- !u!114 &589191642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8416,7 +8413,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Covers
-  liquidPouring: {fileID: 0}
 --- !u!1 &739828337
 GameObject:
   m_ObjectHideFlags: 0
@@ -9495,7 +9491,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Oat Milk
-  liquidPouring: {fileID: 0}
 --- !u!114 &791006505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10153,7 +10148,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Cucumbers
-  liquidPouring: {fileID: 0}
 --- !u!114 &863280848
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11044,7 +11038,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Medium Cups
-  liquidPouring: {fileID: 0}
 --- !u!212 &917167541
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12709,7 +12702,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Apple Juice
-  liquidPouring: {fileID: 0}
 --- !u!114 &1013763122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14677,7 +14669,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Almond Butter
-  liquidPouring: {fileID: 0}
 --- !u!114 &1198690794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19780,6 +19771,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blenderLevel: 0
+  order: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  playerOrder: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   valuesArray: 000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   playerScore: 0
   itemWeight: 0
@@ -20514,7 +20507,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Apples
-  liquidPouring: {fileID: 0}
 --- !u!114 &1710516540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23518,7 +23510,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Small Cups
-  liquidPouring: {fileID: 0}
 --- !u!212 &1971580468
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23795,7 +23786,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Trays
-  liquidPouring: {fileID: 0}
 --- !u!212 &2001479414
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -23954,7 +23944,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Honey
-  liquidPouring: {fileID: 0}
 --- !u!114 &2005809968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25010,7 +24999,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Straws
-  liquidPouring: {fileID: 0}
 --- !u!61 &2034031323
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -25272,7 +25260,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: 
-  liquidPouring: {fileID: 0}
 --- !u!50 &2068167003
 Rigidbody2D:
   serializedVersion: 4
@@ -25829,7 +25816,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Large Cups
-  liquidPouring: {fileID: 0}
 --- !u!1001 &2116843132
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26626,7 +26612,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Cherries
-  liquidPouring: {fileID: 0}
 --- !u!114 &2119831147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26909,7 +26894,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Avocados
-  liquidPouring: {fileID: 0}
 --- !u!114 &2128485471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27474,7 +27458,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Caramel
-  liquidPouring: {fileID: 0}
 --- !u!114 &230406838939849171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27991,7 +27974,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Almond Milk
-  liquidPouring: {fileID: 0}
 --- !u!114 &2820722885432322726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28009,7 +27991,6 @@ MonoBehaviour:
   cursorHand: {fileID: 2800000, guid: 367322e3f1ae941d2b421d47741cca19, type: 3}
   cursorGrab: {fileID: 2800000, guid: 1b241adb0c22749a986eb593252c0d50, type: 3}
   message: Orange Juice
-  liquidPouring: {fileID: 0}
 --- !u!50 &2956677499576031955
 Rigidbody2D:
   serializedVersion: 4

@@ -269,10 +269,6 @@ public class BooleanNetworkHandler : NetworkBehaviour
 
     public int[] GetValuesArrayFromNetwork()
     {
-        for (int i = 0; i < 12; i++)
-        {
-            Debug.Log(tempValuesArray[i]);
-        }
         return tempValuesArray;
     }
 

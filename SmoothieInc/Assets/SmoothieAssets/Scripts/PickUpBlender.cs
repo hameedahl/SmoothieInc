@@ -87,9 +87,6 @@ public class PickUpBlender : MonoBehaviour
         GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
         int cupsSize = cups.Length;
 
-        /* check if item is close to cup */
-        //Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
-        //Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
         for (int i = 0; i < cupsSize; i++) {
             if (cups[i])
             {

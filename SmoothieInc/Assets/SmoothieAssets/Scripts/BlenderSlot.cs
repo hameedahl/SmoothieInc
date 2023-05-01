@@ -118,7 +118,7 @@ public class BlenderSlot : MonoBehaviour
         newLiquid = Instantiate(liquid);
         blenderliqs++;
         pour(itemInfo, newLiquid);
-        addToOrder(itemInfo);
+        gameHandler.addToOrder(itemInfo);
     }
 
     private void insertIce(GameObject item, Food itemInfo)
@@ -144,7 +144,7 @@ public class BlenderSlot : MonoBehaviour
                 itemInfo.slotNum = i;
                 top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
                 foodDropped.Play();
-                addToOrder(itemInfo);
+                gameHandler.addToOrder(itemInfo);
                 Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
                 return true;
             }
@@ -154,18 +154,7 @@ public class BlenderSlot : MonoBehaviour
     }
 
 
-    private void addToOrder(Food item)
-    {
-        KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
-        for (int i = 0; i < gameHandler.order.Length; i++)
-        {
-            if (gameHandler.playerOrder[i].Value == -1)
-            {
-                gameHandler.playerOrder[i] = newPair;
-                return;
-            }
-        }
-    }
+
 
     public void stopBlender()
     {
@@ -258,7 +247,7 @@ public class BlenderSlot : MonoBehaviour
             /* start player arr over */
             for (int i = 0; i < gameHandler.playerOrder.Length; i++)
             {
-                gameHandler.playerOrder[i] = new KeyValuePair<string, int>("", -1);
+                gameHandler.playerOrder[i] = -1;
             }
             resetBlender();
             top.resetTop();
