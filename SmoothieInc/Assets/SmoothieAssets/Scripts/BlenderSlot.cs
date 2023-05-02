@@ -162,13 +162,9 @@ public class BlenderSlot : MonoBehaviour
         {
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
-            //double playerTime = timer.GetComponent<Timer>().stopTimer();
             timer.GetComponent<Timer>().stopTimer();
-
             top.isBlended = true;
             resetBlender();
-            //gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", (int) playerTime); /* store blend time */
-            //playerTime = 0;
             if (blenderMixing.isPlaying) {
                 blenderMixing.Stop();
                 blenderOff.Play();

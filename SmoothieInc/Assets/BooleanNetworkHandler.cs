@@ -196,13 +196,6 @@ public class BooleanNetworkHandler : NetworkBehaviour
           valuesArrayNetwork9.Value = valuesArray[9];
           valuesArrayNetwork10.Value = valuesArray[10];
           valuesArrayNetwork11.Value = valuesArray[11];
-
-            Debug.Log("starting");
-            for (int i = 0; i < 12; i++)
-            {
-                Debug.Log(tempValuesArray[i]);
-            }
-
         }
       else
       {

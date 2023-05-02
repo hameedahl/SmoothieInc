@@ -25,6 +25,8 @@ public class PickUpBlender : MonoBehaviour
 
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
+    public GameHandler gameHandler;
+
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */

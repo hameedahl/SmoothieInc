@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c4c487127a1d4157bfe6b06c20077ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemId: 3
+  itemId: 2
   slot: {fileID: 6492773182694500283}
   isEmpty: 1
   isCovered: 0

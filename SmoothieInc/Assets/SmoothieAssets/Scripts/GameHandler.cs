@@ -135,7 +135,7 @@ public class GameHandler : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            order[i] = rand.Next(0, solidsRange);
+            order[i] = rand.Next(0, solidsRange+1);
             orderCount++;
         }
     }
@@ -144,7 +144,7 @@ public class GameHandler : MonoBehaviour
     {
         for (int i = solidsIndex; i < solidsIndex + count; i++)
         {
-            order[i] = rand.Next(0, liquidsRange);
+            order[i] = rand.Next(0, liquidsRange+1);
             orderCount++;
         }
     }
@@ -171,6 +171,7 @@ public class GameHandler : MonoBehaviour
         checkOrder(timeIndex, cupsIndex);
         Debug.Log("ScoreC " + playerScore);
 
+        if (playerScore > 100) { playerScore = 100; }
         return (int) playerScore;
     }
     private void checkOrder(int start, int end)
@@ -193,10 +194,10 @@ public class GameHandler : MonoBehaviour
 
     private void checkBlendTime()
     {
-        playerScore += (blenderLevel / (valuesArray[7] + 1)) * itemWeight;
-        Debug.Log("BlenderV " + (valuesArray[7] +1));
-        Debug.Log("Blender " + (blenderLevel / (valuesArray[7] + 1)));
-        Debug.Log("Blender " + (blenderLevel / (valuesArray[7] + 1)) * itemWeight);
+        playerScore += (blenderLevel / (valuesArray[7])) * itemWeight;
+        Debug.Log("BlenderV " + (valuesArray[7]));
+        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])));
+        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])) * itemWeight);
     }
 
     private void lowerScore()
@@ -252,12 +253,12 @@ public class GameHandler : MonoBehaviour
 
     public void completeOrder()
     {
-  
-
         valuesArray = bnh.GetValuesArrayFromNetwork();
-      
-
         double points = getAccuracy();
+        for (int i = 0; i < playerOrder.Length; i++)
+        {
+            playerOrder[i] = -1;
+        }
         Debug.Log(points);
         bnh.SetSmoothieServerRPC(true, points);
     }

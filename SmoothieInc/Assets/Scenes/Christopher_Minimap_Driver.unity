@@ -12828,7 +12828,7 @@ SpriteRenderer:
   m_Size: {x: 8.35, y: 7.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1022796363
@@ -21306,13 +21306,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1d6efa9f4e32846da80e918572822dbc, type: 3}
   - {fileID: 21300000, guid: 03dd8393566df4ba0ae9f4647480b6b4, type: 3}
   blendTimes:
+  - {fileID: 0}
   - {fileID: 21300000, guid: a9c0e44f0506543fea1c1e89f7d17a26, type: 3}
   - {fileID: 21300000, guid: b16516ad89dc74425b70651bae3f6cc2, type: 3}
   - {fileID: 21300000, guid: f45c5e097bcb04171be9fa76a0ab38c5, type: 3}
   cupSizes:
+  - {fileID: 21300000, guid: c0d45c4ae44684fd790a293fb6b65c56, type: 3}
   - {fileID: 21300000, guid: 5d8fa2fecb51441b083dca79f3b0aab8, type: 3}
-  - {fileID: 21300000, guid: 5d8fa2fecb51441b083dca79f3b0aab8, type: 3}
-  - {fileID: 21300000, guid: 5d8fa2fecb51441b083dca79f3b0aab8, type: 3}
+  - {fileID: 21300000, guid: 44531589e2a534667af46157086f04bd, type: 3}
   solid1: {fileID: 247912566}
   solid2: {fileID: 1232862083}
   solid3: {fileID: 1751250677}
@@ -26247,6 +26248,10 @@ PrefabInstance:
       propertyPath: SmoothieCam
       value: 
       objectReference: {fileID: 915007746}
+    - target: {fileID: 8012040554185719375, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
+      propertyPath: gameHandler
+      value: 
+      objectReference: {fileID: 1652144662}
     - target: {fileID: 8511882049257395297, guid: 0b1e1a455643944d2b839713135ecaec, type: 3}
       propertyPath: m_Name
       value: Sprite MaskR

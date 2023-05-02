@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public void startTimer()
     {
         level = 0;
+        time.transform.localScale = new Vector3(level, time.transform.localScale.y);
         this.gameObject.SetActive(true);
         StartCoroutine(timer());
     }

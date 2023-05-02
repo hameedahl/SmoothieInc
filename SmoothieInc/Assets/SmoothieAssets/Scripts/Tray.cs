@@ -62,14 +62,12 @@ public class Tray : MonoBehaviour
                         intray.Play();
                         isFull[j] = true;
                         Destroy(cups[i].GetComponent<DragDrop>());
+                        gameObject.tag = "PlayerTray";
                         drinksInTray++;
                         break;
                     }
                 }
             }
         }
-
-
     }
-
 }
