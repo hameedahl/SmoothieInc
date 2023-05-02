@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
-using TMPro;
 
 public class MatchTimer : NetworkBehaviour
 {
@@ -14,8 +13,8 @@ public class MatchTimer : NetworkBehaviour
     NetworkVariableWritePermission.Owner
   );
 
-    public TextMeshProUGUI RemainingTimeText;
-
+    public Text RemainingTimeText;
+    
     private void Update() {
       if (IsHost) {
         RemainingTime.Value -= Time.deltaTime;
