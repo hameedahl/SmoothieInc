@@ -9,7 +9,7 @@ public class MatchTimer : NetworkBehaviour
 {
 
   public NetworkVariable<float> RemainingTime = new NetworkVariable<float>(
-    value:10.0f,
+    value:60.0f,
     NetworkVariableReadPermission.Everyone,
     NetworkVariableWritePermission.Owner
   );
@@ -19,7 +19,7 @@ public class MatchTimer : NetworkBehaviour
 
     public GameObject LoseScreen;
 
-    private bool isTimerStarted = false;
+    public bool isTimerStarted = false;
 
 
     private void Update() {
@@ -61,7 +61,9 @@ public class MatchTimer : NetworkBehaviour
 
     public void ResetTimer()
     {
-      RemainingTime.Value = 10.0f;
+      if(IsHost) {
+        RemainingTime.Value = 60.0f;
+      }
     }
 
     public void StartTimer()
