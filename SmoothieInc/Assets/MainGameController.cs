@@ -15,6 +15,8 @@ public class MainGameController : MonoBehaviour
     public GameObject winScreen;
     public TMP_Text accuracyText;
     public GameObject nextLevelButton;
+    public MatchTimer matchTimer;
+
 
     bool sFinish = false;
     bool dFinish = false;
@@ -44,7 +46,7 @@ public class MainGameController : MonoBehaviour
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
         double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
             Debug.Log("BOTH ARE THERE");
-            
+
             winScreen.gameObject.SetActive(true);
             accuracyText.text = playerScore + "%";
 
@@ -52,6 +54,9 @@ public class MainGameController : MonoBehaviour
             {
                 nextLevelButton.SetActive(false);
             }
+
+            matchTimer.ResetTimer();
+
             finished = true;
         }
 
@@ -67,11 +72,17 @@ public class MainGameController : MonoBehaviour
         GameObject tray = GameObject.FindGameObjectWithTag("PlayerTray");
         Destroy(tray);
         sFinish = false;
-        dFinish = false; 
+        dFinish = false;
         int difficulty = Random.Range(1,3);
         networkHandler.ResetOrders();
         gameHandler.newOrder(difficulty);
         truckManager.NewOrder(difficulty);
         winScreen.SetActive(false);
     }
-}
+
+    public void StartGame()
+    {
+      matchTimer.StartTimer();
+    }
+
+  }

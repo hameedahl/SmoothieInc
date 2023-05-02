@@ -49,6 +49,8 @@ public class MainMenu : MonoBehaviour
     public GameObject smoothieMusicGO;
     private AudioSource smoothieMusic;
 
+    public MainGameController mainGameController;
+
 
     public TestRelay testRelay;
 
@@ -259,6 +261,9 @@ public class MainMenu : MonoBehaviour
         {
             StartHost();
         }
+
+        mainGameController.StartGame();
+        
     }
 
     private void OnServerStarted()
