@@ -24,9 +24,12 @@ public class TruckManager : MonoBehaviour
         if(host)
         {
             //int diff = Random.Range(1,10);
+            of.EnableCol();
             dest = of.Find(diff);
+            of.DisableCol();
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
             target.position = dest.transform.GetChild(0).position;
+            networkHandler.SetDestination(dest.transform.GetChild(0).position);
             return dest.transform.GetChild(0).position;
         }
         return new Vector3(0,0,0);

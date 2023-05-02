@@ -22,7 +22,6 @@ public class OrderFinder : MonoBehaviour
     {
         List<GameObject> maxDif = transform.GetChild(difficulty).gameObject.GetComponent<TouchingDestinations>().GetDestinations();
         List<GameObject> minDif = transform.GetChild(difficulty - 1).gameObject.GetComponent<TouchingDestinations>().GetDestinations();
-        
 
         GameObject worstCaseObj = destinationList.GetChild(0).gameObject;
         int worstCaseDif = -1;
@@ -50,7 +49,24 @@ public class OrderFinder : MonoBehaviour
                 }
             }
         }
+
         Debug.Log("Worst Case " + worstCaseObj.name + " with original difficulty " + difficulty + " and worse case difficulty " + worstCaseDif);
         return worstCaseObj;
+    }
+
+    public void EnableCol()
+    {
+        for(int i = 0; i < 11; i++)
+        {
+            transform.GetChild(i).gameObject.GetComponent<Collider2D>().enabled = true;
+        }
+    }
+
+    public void DisableCol()
+    {
+        for(int i = 0; i < 11; i++)
+        {
+            transform.GetChild(i).gameObject.GetComponent<Collider2D>().enabled = false;
+        }
     }
 }
