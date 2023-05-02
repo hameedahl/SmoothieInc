@@ -24,7 +24,6 @@ public class TruckManager : MonoBehaviour
         if(host)
         {
             //int diff = Random.Range(1,10);
-            of.EnableCol();
             dest = of.Find(diff);
             of.DisableCol();
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
@@ -40,6 +39,7 @@ public class TruckManager : MonoBehaviour
         if(col.tag == "Destination" && col.gameObject.transform.parent.gameObject == dest)
         {
             Debug.Log("Arrived");
+            of.EnableCol();
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(false);
             networkHandler.SetArrivedStatus(true);
             drivernet.Arrive();
