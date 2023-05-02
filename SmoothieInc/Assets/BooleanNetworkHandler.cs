@@ -228,6 +228,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
         }
     }
 
+    public void SetDestination(Vector3 pos)
+    {
+      destinationPos.Value = pos;
+    }
+    
     public bool GetArrivedStatus()
     {
         return arrivedNetworkVariable.Value;
