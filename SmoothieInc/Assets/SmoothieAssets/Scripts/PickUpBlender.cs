@@ -25,6 +25,8 @@ public class PickUpBlender : MonoBehaviour
 
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
+    public GameHandler gameHandler;
+
 
     void Start() {
         resetPos = this.transform.localPosition; /* get original pos of object */
@@ -87,9 +89,6 @@ public class PickUpBlender : MonoBehaviour
         GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
         int cupsSize = cups.Length;
 
-        /* check if item is close to cup */
-        //Debug.Log(cup.transform.localPosition.x - this.transform.localPosition.x);
-        //Debug.Log(cup.transform.localPosition.y - this.transform.localPosition.y);
         for (int i = 0; i < cupsSize; i++) {
             if (cups[i])
             {

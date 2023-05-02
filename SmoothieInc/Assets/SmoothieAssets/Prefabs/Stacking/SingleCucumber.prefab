@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slotNum: 0
-  id: 2
+  id: 12
   category: Solids
   isPouring: 0
   inBlender: 0

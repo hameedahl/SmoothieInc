@@ -33,8 +33,6 @@ public class DragDrop : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Blender-Top"))  {
             blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
         }
-        //Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-        //Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
     }
 
     void Update() {
@@ -70,7 +68,6 @@ public class DragDrop : MonoBehaviour
 
     }
 
-
     private void OnMouseExit()
     {
         Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
@@ -84,8 +81,6 @@ public class DragDrop : MonoBehaviour
             /* get mouse positions and move object */
             startPosX = mousePos.x - this.transform.localPosition.x;
             startPosY = mousePos.y - this.transform.localPosition.y;
-            /* make transparent while drag */
-            // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, .5f);
 
             if (this.tag == "Food") {
                 foodInfo = this.GetComponent<Food>();
@@ -114,11 +109,6 @@ public class DragDrop : MonoBehaviour
                if (blenderTop.blenderIsFull) { /* returns false if not close enough or if filled up */
                     Destroy(gameObject);
                 }
-
-
-                /* reset to starting position if not inserted */
-                //Destroy(gameObject);
-                //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
             }
         } else if (isFoodStack) {
             /* insert item into available slot if close to blender */
@@ -135,7 +125,6 @@ public class DragDrop : MonoBehaviour
                 }
             }
         }
-        // this.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
     }
 
     private Vector3 MousePosition() {

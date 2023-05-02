@@ -9,14 +9,16 @@ public class BlenderSlot : MonoBehaviour
 {
     [Header("Audio Sources")]
     public AudioSource blenderOn;
+    public AudioSource buttonClick;
     public AudioSource blenderOff;
     public AudioSource openBlender;
     public AudioSource closeBlender;
     public AudioSource blenderMixing;
     public AudioSource iceDropped;
+    public AudioSource liquidPouring;
+    public AudioSource foodDropped;
+    public AudioSource restartSound;
 
-    //public AudioSource hitAS;
-    //public AudioSource nitroAS;
 
     public GameObject[] slots;
     public GameObject[] blenderItems;
@@ -55,7 +57,6 @@ public class BlenderSlot : MonoBehaviour
 
     private void Update()
     {
-
     }
 
     public bool addedToSlot(GameObject item)
@@ -78,6 +79,10 @@ public class BlenderSlot : MonoBehaviour
 
             if (itemInfo.category == "Liquids")
             {
+                if (!liquidPouring.isPlaying)
+                {
+                    liquidPouring.Play();
+                }
                 insertLiq(item, itemInfo);
                 return true;
             }
@@ -113,7 +118,7 @@ public class BlenderSlot : MonoBehaviour
         newLiquid = Instantiate(liquid);
         blenderliqs++;
         pour(itemInfo, newLiquid);
-        addToOrder(itemInfo);
+        gameHandler.addToOrder(itemInfo);
     }
 
     private void insertIce(GameObject item, Food itemInfo)
@@ -138,7 +143,8 @@ public class BlenderSlot : MonoBehaviour
                 itemInfo.inBlender = true;
                 itemInfo.slotNum = i;
                 top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
-                addToOrder(itemInfo);
+                foodDropped.Play();
+                gameHandler.addToOrder(itemInfo);
                 Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
                 return true;
             }
@@ -148,26 +154,7 @@ public class BlenderSlot : MonoBehaviour
     }
 
 
-    private void addToOrder(Food item)
-    {
-        KeyValuePair<string, int> newPair = new KeyValuePair<string, int>(item.category, item.id);
-        for (int i = 0; i < gameHandler.order.Length; i++)
-        {
-            if (gameHandler.playerOrder[i].Value == -1)
-            {
-                gameHandler.playerOrder[i] = newPair;
-                Debug.Log("Adding");
-                //for (int w = 0; w < 12; w++)
-               // {
-                    Debug.Log(gameHandler.playerOrder[i].Value);
-               // }
-                return;
-            }
-        }
 
-
-
-    }
 
     public void stopBlender()
     {
@@ -175,15 +162,14 @@ public class BlenderSlot : MonoBehaviour
         {
             animTop.Play("Idle-Blended-Top");
             animBottom.Play("Idle-Bottom");
-            int playerTime = timer.GetComponent<Timer>().stopTimer();
+            timer.GetComponent<Timer>().stopTimer();
             top.isBlended = true;
             resetBlender();
-            gameHandler.playerOrder[7] = new KeyValuePair<string, int>("Time", playerTime); /* store blend time */
-            playerTime = 0;
             if (blenderMixing.isPlaying) {
                 blenderMixing.Stop();
                 blenderOff.Play();
             }
+            buttonClick.Play();
         }
     }
 
@@ -206,6 +192,7 @@ public class BlenderSlot : MonoBehaviour
                 blenderOn.Play();
                 blenderMixing.Play();
             }
+            buttonClick.Play();
         }
     }
 
@@ -232,8 +219,6 @@ public class BlenderSlot : MonoBehaviour
     public void pour(Food item, GameObject liquid)
     {
         SpriteRenderer sprite = liquid.GetComponentInChildren<SpriteRenderer>();
-        //anchor = GameObject.FindGameObjectWithTag("Anchor");
-        // SpriteRenderer sprite = GameObject.FindGameObjectWithTag("BlenderLiq").GetComponent<SpriteRenderer>();
         sprite.color = new Color(item.liqColor.r, item.liqColor.g, item.liqColor.b);
         StartCoroutine(pouring(0, item, liquid));
     }
@@ -246,17 +231,19 @@ public class BlenderSlot : MonoBehaviour
             anchor.transform.localScale = new Vector3(.9f, yVal += 1);
             yield return new WaitForSeconds(.5f);
         }
+        liquidPouring.Stop();
     }
 
     public void restartSmoothie()
     {
         if (!isBlending)
         {
+            //restartSound.Play();
             emptyBlender(); /* clear blender */
             /* start player arr over */
             for (int i = 0; i < gameHandler.playerOrder.Length; i++)
             {
-                gameHandler.playerOrder[i] = new KeyValuePair<string, int>("", -1);
+                gameHandler.playerOrder[i] = -1;
             }
             resetBlender();
             top.resetTop();

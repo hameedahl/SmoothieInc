@@ -44,7 +44,6 @@ public class MainGameController : MonoBehaviour
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
         double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
             Debug.Log("BOTH ARE THERE");
-            Debug.Log(playerScore);
             
             winScreen.gameObject.SetActive(true);
             accuracyText.text = playerScore + "%";
@@ -54,16 +53,6 @@ public class MainGameController : MonoBehaviour
                 nextLevelButton.SetActive(false);
             }
             finished = true;
-            
-            // WinText.gameObject.SetActive(true);
-            // if (playerScore >= 80)
-            // {
-            //     WinText.text = "Arrived! Accuracy: " + playerScore + "% Great work!";
-            //     WinText.color = Color.green;
-            // } else {
-            //     WinText.text = "Arrived! Accuracy: " + playerScore + "%  Let's go for 80% next time!";
-            //     WinText.color = Color.red;
-            // }
         }
 
         if(finished && !networkHandler.GetArrivedStatus())
@@ -74,6 +63,11 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
+        /* destory old drink tray */
+        GameObject tray = GameObject.FindGameObjectWithTag("PlayerTray");
+        Destroy(tray);
+        sFinish = false;
+        dFinish = false; 
         int difficulty = Random.Range(1,3);
         networkHandler.ResetOrders();
         gameHandler.newOrder(difficulty);

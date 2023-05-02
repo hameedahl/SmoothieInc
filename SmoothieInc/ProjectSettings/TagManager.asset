@@ -20,6 +20,7 @@ TagManager:
   - Anchor
   - Tray
   - PauseMenuSlider
+  - PlayerTray
   layers:
   - Default
   - TransparentFX

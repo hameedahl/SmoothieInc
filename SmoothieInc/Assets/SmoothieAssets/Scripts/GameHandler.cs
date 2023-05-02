@@ -19,7 +19,7 @@ public class GameHandler : MonoBehaviour
     const int liquidsRange = 8;
     const int liquidsIndex = 7;
 
-    const int timeRange = 2;
+    const int timeRange = 3;
     const int timeIndex = 8;
 
     const int cupsRange = 3; // S M L
@@ -35,11 +35,10 @@ public class GameHandler : MonoBehaviour
     const int emptySlot = -1;
 
     //public int difficulty = 1;
+    public double blenderLevel = 0;
 
-
-
-    public KeyValuePair<string, int>[] order = new KeyValuePair<string, int>[arraySize];
-    public KeyValuePair<string, int>[] playerOrder = new KeyValuePair<string, int>[arraySize];
+    public int[] order = new int[arraySize];
+    public int[] playerOrder = new int[arraySize];
     public int[] valuesArray = new int[arraySize];
     private GameObject tray;
     public double playerScore = 0;
@@ -72,28 +71,20 @@ public class GameHandler : MonoBehaviour
         newOrder(1);
     }
 
-    private void Update()
-    {
-       //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus())
-       //{
-
-       //}
-    }
-
     public void newOrder(int difficulty)
     {
         Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
         {
-            order[i] = new KeyValuePair<string, int>("", emptySlot);
-            playerOrder[i] = new KeyValuePair<string, int>("", emptySlot);
+            order[i] = emptySlot;
+            playerOrder[i] = emptySlot;
         }
 
         generateOrder(difficulty);
 
         for (int i = 0; i < arraySize; i++)
         {
-            valuesArray[i] = order[i].Value;
+            valuesArray[i] = order[i];
         }
     }
 
@@ -130,10 +121,10 @@ public class GameHandler : MonoBehaviour
             //generateLiquids(rand, 3);
         }
 
-        order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
+        order[timeIndex - 1] = rand.Next(1, timeRange+1);
         orderCount++;
 
-        order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
+        order[cupsIndex - 1] = rand.Next(0, cupsRange);
         orderCount++;
 
         itemWeight = System.Math.Round(100.0 / orderCount, 2);
@@ -144,7 +135,7 @@ public class GameHandler : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
-            order[i] = new KeyValuePair<string, int>("Solids", rand.Next(0, solidsRange));
+            order[i] = rand.Next(0, solidsRange+1);
             orderCount++;
         }
     }
@@ -153,7 +144,7 @@ public class GameHandler : MonoBehaviour
     {
         for (int i = solidsIndex; i < solidsIndex + count; i++)
         {
-            order[i] = new KeyValuePair<string, int>("Liquids", rand.Next(0, liquidsRange));
+            order[i] = rand.Next(0, liquidsRange+1);
             orderCount++;
         }
     }
@@ -161,65 +152,84 @@ public class GameHandler : MonoBehaviour
     public int getAccuracy()
     {
         Debug.Log("player");
-        for (int w = 0; w < 12; w++)
-        {
-            Debug.Log(playerOrder[w].Value);
-        }
+        Debug.Log("Solid: " + playerOrder[0]);
+        Debug.Log("Solid: " + playerOrder[1]);
+        Debug.Log("Solid: " + playerOrder[2]);
+        Debug.Log("Solid: " + playerOrder[3]);
+        Debug.Log("Liq: " + playerOrder[4]);
+        Debug.Log("Liq: " + playerOrder[5]);
+        Debug.Log("Liq: " + playerOrder[6]);
+        Debug.Log("size: " + playerOrder[8]);
+        Debug.Log("-----");
 
+        checkOrder(0, solidsIndex);
+        Debug.Log("ScoreS " + playerScore);
+        checkOrder(solidsIndex, liquidsIndex);
+        Debug.Log("ScoreL " + playerScore);
+        checkBlendTime();
+        Debug.Log("ScoreB " + playerScore);
+        checkOrder(timeIndex, cupsIndex);
+        Debug.Log("ScoreC " + playerScore);
 
-        //if (bnh.GetArrivedStatus() && bnh.GetDrinkFinishedStatus()) {
-        //valuesArray = bnh.GetValuesArrayFromNetwork();
-        int[] playerOrderArr = playerOrdertoArr();
-            checkOrder(0, solidsIndex, playerOrderArr);
-            checkOrder(solidsIndex, liquidsIndex, playerOrderArr);
-            checkOrder(liquidsIndex, timeIndex, playerOrderArr);
-            checkOrder(timeIndex, cupsIndex, playerOrderArr);
-            //checkOrder(cupsIndex, mixInIndex, playerOrderArr);
-            //checkOrder(mixInIndex, toppingsIndex, playerOrderArr);
-      //  }
+        if (playerScore > 100) { playerScore = 100; }
         return (int) playerScore;
     }
-
-    private void checkOrder(int start, int end, int[] playerOrderArr)
+    private void checkOrder(int start, int end)
     {
         for (int item = start; item < end; item++)
         {
             for (int orderItem = start; orderItem < end; orderItem++)
             {
-                //Debug.Log("Comparing");
-                //Debug.Log(playerOrderArr[item] + " with " + valuesArray[orderItem]);
-
-                if (playerOrderArr[item] != -1 && playerOrderArr[item] == valuesArray[orderItem] && playerScore < 100)
+                if (playerOrder[item] != -1 && playerOrder[item] == valuesArray[orderItem] && playerScore < 100)
                 {
                     playerScore += itemWeight;
+                    Debug.Log(playerScore);
                     inOrder = true;
+                    break;
                 }
             }
         }
         lowerScore();
     }
 
+    private void checkBlendTime()
+    {
+        playerScore += (blenderLevel / (valuesArray[7])) * itemWeight;
+        Debug.Log("BlenderV " + (valuesArray[7]));
+        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])));
+        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])) * itemWeight);
+    }
+
     private void lowerScore()
     {
-        if (!inOrder && playerScore > 0)
+        if (!inOrder && (playerScore - itemWeight) > 0)
         {
             playerScore -= itemWeight;
         }
     }
- 
-    private int[] playerOrdertoArr()
+
+    public void addToOrder(Food item)
     {
-         int[] playerOrderArr = new int[arraySize];
-
-        for (int i = 0; i < playerOrder.Length; i++)
-        {
-            playerOrderArr[i] = playerOrder[i].Value;
+        if (item.category == "Solids") {
+            for (int i = 0; i < solidsIndex; i++)
+            {
+                if (playerOrder[i] == -1)
+                {
+                    playerOrder[i] = item.id;
+                    return;
+                }
+            }
+        } else if (item.category == "Liquids") {
+            for (int i = solidsIndex; i < liquidsIndex; i++)
+            {
+                if (playerOrder[i] == -1)
+                {
+                    playerOrder[i] = item.id;
+                    return;
+                }
+            }
         }
-
-
-        return playerOrderArr;
     }
-
 
     public bool GetDrinkFinished()
     {
@@ -243,18 +253,12 @@ public class GameHandler : MonoBehaviour
 
     public void completeOrder()
     {
-        //Debug.Log("Complete");
-  
-
         valuesArray = bnh.GetValuesArrayFromNetwork();
-        Debug.Log("Vals from bnh");
-
-        for (int w = 0; w < 12; w++)
-        {
-            Debug.Log(valuesArray[w]);
-        }
-
         double points = getAccuracy();
+        for (int i = 0; i < playerOrder.Length; i++)
+        {
+            playerOrder[i] = -1;
+        }
         Debug.Log(points);
         bnh.SetSmoothieServerRPC(true, points);
     }
