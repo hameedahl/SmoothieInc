@@ -3405,6 +3405,7 @@ MonoBehaviour:
   truckUI: {fileID: 961049516}
   smoothieUI: {fileID: 534812408}
   smoothieMusicGO: {fileID: 58798270}
+  mainGameController: {fileID: 1364502415}
   testRelay: {fileID: 1586465724}
   pauseMenuUI: {fileID: 2064714093}
   currentUI: {fileID: 0}
