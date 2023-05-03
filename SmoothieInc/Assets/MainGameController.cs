@@ -69,8 +69,7 @@ public class MainGameController : MonoBehaviour
     public void NewOrders()
     {
         /* destory old drink tray */
-        GameObject tray = GameObject.FindGameObjectWithTag("PlayerTray");
-        Destroy(tray);
+        Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
         sFinish = false;
         dFinish = false;
         int difficulty = Random.Range(1,3);
