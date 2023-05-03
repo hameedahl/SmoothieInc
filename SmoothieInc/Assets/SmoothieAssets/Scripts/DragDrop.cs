@@ -56,15 +56,13 @@ public class DragDrop : MonoBehaviour
         Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
         Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         /* object name displayed when e is pressed */
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TooltipHover._instance.SetAndShowTip(message);
-        }
+        TooltipHover._instance.SetAndShowTip(message);
+        
 
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            TooltipHover._instance.HideTip();
-        }
+        //if (Input.GetKeyUp(KeyCode.E))
+        //{
+        //    TooltipHover._instance.HideTip();
+        //}
 
     }
 

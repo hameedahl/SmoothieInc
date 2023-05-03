@@ -13,6 +13,6 @@ public class Trash : MonoBehaviour
 
         //}
         Destroy(collision.gameObject);
-       // trash.Play();
+        trash.Play();
     }
 }

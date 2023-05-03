@@ -63,7 +63,7 @@ public class Cup : MonoBehaviour
         }
 
         if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
-            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= .8f) {
+            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= 1f) {
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
                 straw.SetActive(false);
                 hasStraw = true;

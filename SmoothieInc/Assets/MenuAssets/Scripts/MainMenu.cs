@@ -12,6 +12,7 @@ public class MainMenu : MonoBehaviour
 {
     [Header("Mixers")]
     public AudioMixer audioMixer;
+    public AudioMixer smoothieMixer;
 
     [Header("Main Menu UI")]
     public GameObject hostButton;
@@ -99,8 +100,7 @@ public class MainMenu : MonoBehaviour
     private void Update()
     {
         if (isSmoothieTut && (Input.GetKeyDown(KeyCode.Space)
-            || Input.GetKeyDown(KeyCode.Return)
-            || Input.GetKeyDown(KeyCode.Mouse0)))
+            || Input.GetKeyDown(KeyCode.Return)))
         {
             tutSlide++;
             if (tutSlide == 4)
@@ -245,11 +245,15 @@ public class MainMenu : MonoBehaviour
         if (enable)
         {
             credits.SetActive(true);
+            Time.timeScale = 0f;
+            GameisPaused = true;
 
         }
         if (!enable)
         {
             credits.SetActive(false);
+            Time.timeScale = 1f;
+            GameisPaused = false;
 
         }
 
@@ -287,19 +291,23 @@ public class MainMenu : MonoBehaviour
         GameisPaused = false;
     }
 
+    public void CreditsBack()
+    {
+        credits.SetActive(false);
+        Time.timeScale = 1f;
+        GameisPaused = false;
+    }
+
     public void StartGame()
     {
 
     }
 
-    //public void RestartGame()
-    //{
-    //    Time.timeScale = 1f;
-    //    pauseMenuUI.SetActive(false);
-    //    toggleMainMenu(true);
-    //    /* disconnect relay */
-
-    //}
+    public void SetLevel(float sliderValue)
+    {
+        smoothieMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+        volumeLevel = sliderValue;
+    }
 
     public void QuitGame()
     {
