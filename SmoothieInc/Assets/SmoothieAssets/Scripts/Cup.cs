@@ -51,25 +51,37 @@ public class Cup : MonoBehaviour
     }
 
     private void finishCup() {
-        cover = GameObject.FindGameObjectWithTag("Cover");
-        straw = GameObject.FindGameObjectWithTag("Straw");
-        /* if straw and cover are close to cup, finish this smoothie */
-        if (cover && !isEmpty && !isCovered && Mathf.Abs(cover.transform.localPosition.x - this.transform.localPosition.x) <= 1f &&
-            Mathf.Abs(cover.transform.localPosition.y - this.transform.localPosition.y) <= 1f) {
+        GameObject[] covers = GameObject.FindGameObjectsWithTag("Cover");
+        int coverSize = covers.Length;
+
+        GameObject[] straw = GameObject.FindGameObjectsWithTag("Straw");
+        int strawSize = straw.Length;
+
+        for (int i = 0; i < coverSize; i++)
+        {
+            ///* if straw and cover are close to cup, finish this smoothie */
+            if (covers[i] && !isEmpty && !isCovered && Mathf.Abs(covers[i].transform.localPosition.x - this.transform.localPosition.x) <= 1f &&
+                Mathf.Abs(covers[i].transform.localPosition.y - this.transform.localPosition.y) <= 1f)
+            {
                 coverSlot.GetComponent<SpriteRenderer>().sprite = coverArt;
-                cover.SetActive(false);
+                covers[i].SetActive(false);
                 isCovered = true;
                 //coverSound.Play();
+            }
         }
 
-        if (straw && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw.transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
-            Mathf.Abs(straw.transform.localPosition.y - this.transform.localPosition.y) <= 1f) {
+        for (int i = 0; i < strawSize; i++)
+        {
+            if (straw[i] && isCovered && !hasStraw && !isEmpty && Mathf.Abs(straw[i].transform.localPosition.x - this.transform.localPosition.x) <= .8f &&
+                Mathf.Abs(straw[i].transform.localPosition.y - this.transform.localPosition.y) <= 1f)
+            {
                 strawSlot.GetComponent<SpriteRenderer>().sprite = strawArt;
-                straw.SetActive(false);
+                straw[i].SetActive(false);
                 hasStraw = true;
                 gameHandler.playerOrder[8] = itemId;
                 isFinished = true;
                 strawSound.Play();
+            }
         }
     }
 

@@ -57,13 +57,6 @@ public class DragDrop : MonoBehaviour
         Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         /* object name displayed when e is pressed */
         TooltipHover._instance.SetAndShowTip(message);
-        
-
-        //if (Input.GetKeyUp(KeyCode.E))
-        //{
-        //    TooltipHover._instance.HideTip();
-        //}
-
     }
 
     private void OnMouseExit()
@@ -106,7 +99,8 @@ public class DragDrop : MonoBehaviour
             if (!blenderTop.addedToSlot(this.gameObject)) {
                if (blenderTop.blenderIsFull) { /* returns false if not close enough or if filled up */
                     Destroy(gameObject);
-                }
+               } 
+               
             }
         } else if (isFoodStack) {
             /* insert item into available slot if close to blender */

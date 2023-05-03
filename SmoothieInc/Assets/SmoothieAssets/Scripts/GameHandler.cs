@@ -194,10 +194,13 @@ public class GameHandler : MonoBehaviour
 
     private void checkBlendTime()
     {
-        playerScore += (blenderLevel / (valuesArray[7])) * itemWeight;
-        Debug.Log("BlenderV " + (valuesArray[7]));
-        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])));
-        Debug.Log("Blender " + (blenderLevel / (valuesArray[7])) * itemWeight);
+        if (blenderLevel != 0 && valuesArray[7] != 0)
+        {
+            playerScore += (blenderLevel / (valuesArray[7])) * itemWeight;
+            Debug.Log("BlenderV " + (valuesArray[7]));
+            Debug.Log("Blender " + (blenderLevel / (valuesArray[7])));
+            Debug.Log("Blender " + (blenderLevel / (valuesArray[7])) * itemWeight);
+        }
     }
 
     private void lowerScore()
