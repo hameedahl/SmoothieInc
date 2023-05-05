@@ -50,6 +50,8 @@ public class GameHandler : MonoBehaviour
     public TMP_Text tipText;
     public double maxTip = 0;
     public double totalTip = 0;
+    public double tripTip = 0;
+
 
     public bool isFirstRound = true;
     public SmoothieTut smoothieTut;
@@ -183,7 +185,8 @@ public class GameHandler : MonoBehaviour
     public void getTip()
     {
         double percent = playerScore / 100;
-        totalTip += (maxTip * percent);
+        tripTip = (maxTip * percent);
+        totalTip += tripTip;
     }
 
     private void checkOrder(int start, int end)

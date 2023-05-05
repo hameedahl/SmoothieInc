@@ -16,6 +16,8 @@ public class MainGameController : MonoBehaviour
     public TMP_Text accuracyText;
     public TMP_Text timeText;
     public TMP_Text tipText;
+    public TMP_Text tipTextSmoothie;
+
 
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
@@ -53,6 +55,8 @@ public class MainGameController : MonoBehaviour
             winScreen.gameObject.SetActive(true);
             accuracyText.text = playerScore + "%";
             timeText.text = matchTimer.RemainingTimeText.text;
+            tipText.text = "$" + gameHandler.tripTip.ToString();
+            tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
 
             if (!networkHandler.GetHostStatus())
             {

@@ -91,29 +91,26 @@ public class DragDrop : MonoBehaviour
     }
 
     private void OnMouseUp() {
-            Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-            Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         
         isMoving = false;
         if (isFood) {
             if (!blenderTop.addedToSlot(this.gameObject)) {
-               if (blenderTop.blenderIsFull) { /* returns false if not close enough or if filled up */
+                if (foodInfo.category == "Liquids") {
+                    /* reset to starting position if not inserted */
+                    this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+                } else { /* returns false if not close enough or if filled up */
                     Destroy(gameObject);
-               } 
-               
+                }
             }
-        } else if (isFoodStack) {
+        }
+        else if (isFoodStack) {
             /* insert item into available slot if close to blender */
-            if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
+            if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Tray" && singleObj.tag != "Straw") {
                 if (!blenderTop.addedToSlot(singleObj))
                 {
-                    if (blenderTop.blenderIsFull)
-                    { /* returns false if not close enough or if filled up */
-                        Destroy(singleObj);
-                    }
-                    /* reset to starting position if not inserted */
-                    //Destroy(singleObj);
-                    //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+                    Destroy(singleObj);
                 }
             }
         }

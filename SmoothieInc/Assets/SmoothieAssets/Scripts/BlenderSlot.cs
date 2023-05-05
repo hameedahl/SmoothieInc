@@ -101,6 +101,7 @@ public class BlenderSlot : MonoBehaviour
                 return addedFood;
             }
         }
+
         return false;
     }
 
