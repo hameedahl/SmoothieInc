@@ -54,17 +54,11 @@ public class BlenderSlot : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-    }
 
     public bool addedToSlot(GameObject item)
     {
         itemInfo = item.GetComponent<Food>();
         /* check if item is close to blender */
-        //Debug.Log(item.transform.localPosition.x - blender.transform.localPosition.x);
-        //Debug.Log(item.transform.localPosition.y - blender.transform.localPosition.y);
-
         if (item && Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) >= 0 &&
                         Mathf.Abs(item.transform.localPosition.x - blender.transform.localPosition.x) <= 2f &&
                         Mathf.Abs(item.transform.localPosition.y - blender.transform.localPosition.y) >= 0f &&
@@ -72,6 +66,7 @@ public class BlenderSlot : MonoBehaviour
         {
             if (top.isDetached || isBlending) /* don't insert if blender is on or detached */
             {
+                gameHandler.smoothieTut.writeToScreen("This smoothie has already been blended.");
                 Destroy(item);
                 return false;
             }
@@ -90,7 +85,7 @@ public class BlenderSlot : MonoBehaviour
                 if (!top.hasIce)
                 {
                     insertIce(item, itemInfo);
-                    gameHandler.smoothieTut.addFood();
+                    gameHandler.smoothieTut.writeToScreen("Add the ingredients from the driver into the blender.");
                     return true;
                 }
                 Destroy(item);
@@ -142,7 +137,9 @@ public class BlenderSlot : MonoBehaviour
                 isFull[i] = true;
                 itemInfo.inBlender = true;
                 itemInfo.slotNum = i;
-                top.gameObject.GetComponent<PickUpBlender>().isEmpty = false;
+                top.isEmpty = false;
+                gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in. ");
+
                 foodDropped.Play();
                 gameHandler.addToOrder(itemInfo);
                 Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */
@@ -154,10 +151,9 @@ public class BlenderSlot : MonoBehaviour
     }
 
 
-
-
     public void stopBlender()
     {
+        buttonClick.Play();
         if (isBlending)
         {
             animTop.Play("Idle-Blended-Top");
@@ -169,7 +165,10 @@ public class BlenderSlot : MonoBehaviour
                 blenderMixing.Stop();
                 blenderOff.Play();
             }
-            buttonClick.Play();
+            gameHandler.smoothieTut.writeToScreen("Move to the right and pour the smoothie into a cup.");
+        }
+        else {
+            gameHandler.smoothieTut.writeToScreen("The blender must be on to stop it.");
         }
     }
 
@@ -181,19 +180,30 @@ public class BlenderSlot : MonoBehaviour
 
     public void startBlender()
     {
-        if (!top.isEmpty && top.hasIce && !isBlending)
-        {
-            isBlending = true;
-            animTop.Play("Blending-Top");
-            animBottom.Play("Blending-Bottom");
-            timer.GetComponent<Timer>().startTimer();
-            emptyBlender();
-            if (!blenderOn.isPlaying) {
-                blenderOn.Play();
-                blenderMixing.Play();
-            }
-            buttonClick.Play();
+        buttonClick.Play();
+
+        if (!top.hasIce) {
+            gameHandler.smoothieTut.writeToScreen("Add ice to the blender before turning it on.");
+            return;
+        } else if (isBlending) {
+            gameHandler.smoothieTut.writeToScreen("The blender is already on.");
+            return;
+        } else if (top.isEmpty) {
+            gameHandler.smoothieTut.writeToScreen("Add ingredients to the blender before turning it on.");
+            return;
         }
+
+        isBlending = true;
+        animTop.Play("Blending-Top");
+        animBottom.Play("Blending-Bottom");
+        timer.GetComponent<Timer>().startTimer();
+        emptyBlender();
+        if (!blenderOn.isPlaying) {
+            blenderOn.Play();
+            blenderMixing.Play();
+        }
+        gameHandler.smoothieTut.writeToScreen("Ask the driver for the blend time and press 'stop' once the bar gets to the correct level.");
+
     }
 
     public void emptyBlender()

@@ -48,6 +48,7 @@ public class Cup : MonoBehaviour
         isEmpty = false;
         anim.Play("Fill-Cup");
         pourSmoothie.Play();
+        gameHandler.smoothieTut.writeToScreen("Cover the cup.");
     }
 
     private void finishCup() {
@@ -66,6 +67,8 @@ public class Cup : MonoBehaviour
                 coverSlot.GetComponent<SpriteRenderer>().sprite = coverArt;
                 covers[i].SetActive(false);
                 isCovered = true;
+                gameHandler.smoothieTut.writeToScreen("Add a straw.");
+
                 //coverSound.Play();
             }
         }
@@ -80,6 +83,7 @@ public class Cup : MonoBehaviour
                 hasStraw = true;
                 gameHandler.playerOrder[8] = itemId;
                 isFinished = true;
+                gameHandler.smoothieTut.writeToScreen("Put the smoothie in a tray.");
                 strawSound.Play();
             }
         }

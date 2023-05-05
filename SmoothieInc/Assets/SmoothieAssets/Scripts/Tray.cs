@@ -30,6 +30,8 @@ public class Tray : MonoBehaviour
         putInTray();
         if (drinksInTray == gameHandler.drinkCount && !accCalculated) /* all drinks are in tray */
         {
+            gameHandler.smoothieTut.writeToScreen("Smoothie completed!");
+
             accCalculated = true;
             gameHandler.completeOrder();
         }
