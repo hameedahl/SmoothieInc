@@ -96,6 +96,7 @@ public class BlenderSlot : MonoBehaviour
                 if (blenderIsFull)
                 {
                     Destroy(item);
+                    gameHandler.smoothieTut.writeToScreen("The blender is full.");
                 }
                 return addedFood;
             }
@@ -114,6 +115,7 @@ public class BlenderSlot : MonoBehaviour
         blenderliqs++;
         pour(itemInfo, newLiquid);
         gameHandler.addToOrder(itemInfo);
+        gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in. ");
     }
 
     private void insertIce(GameObject item, Food itemInfo)
@@ -138,8 +140,7 @@ public class BlenderSlot : MonoBehaviour
                 itemInfo.inBlender = true;
                 itemInfo.slotNum = i;
                 top.isEmpty = false;
-                gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in. ");
-
+                gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in.");
                 foodDropped.Play();
                 gameHandler.addToOrder(itemInfo);
                 Destroy(item.GetComponent<DragDrop>()); /* object is no longer draggable */

@@ -72,7 +72,7 @@ public class GameHandler : MonoBehaviour
 
         smoothieTut.writeToScreen("Open the cooler and add ice to the blender.");
         /* update tip */
-        tipText.text = "Tip: $" + totalTip;
+        tipText.text = "$" + totalTip;
 
         Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
