@@ -19,16 +19,16 @@ public class BlenderSlot : MonoBehaviour
     public AudioSource foodDropped;
     public AudioSource restartSound;
 
-
     public GameObject[] slots;
     public GameObject[] blenderItems;
 
     public bool[] isFull;
-    private Animator anim;
     private Animator animBottom;
     private Animator animTop;
 
     public GameHandler gameHandler;
+    public GameHandler smoothieTips;
+
     public GameObject bottom;
     private PickUpBlender top;
     Food itemInfo;

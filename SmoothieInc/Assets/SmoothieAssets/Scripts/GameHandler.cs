@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
-using UnityEngine.XR;
+using TMPro;
+
 
 
 /*  [SOLID_ID, SOLID_ID, SOLID_ID, SOLID_ID,
@@ -25,16 +26,9 @@ public class GameHandler : MonoBehaviour
     const int cupsRange = 3; // S M L
     const int cupsIndex = 9;
 
-    const int mixInRange = 4;
-    const int mixInIndex = 10;
-
-    const int toppingsRange = 5;
-    const int toppingsIndex = 11;
-
     const int arraySize = 12;
     const int emptySlot = -1;
 
-    //public int difficulty = 1;
     public double blenderLevel = 0;
 
     public int[] order = new int[arraySize];
@@ -53,26 +47,29 @@ public class GameHandler : MonoBehaviour
     public FillCard fillCard;
     public BooleanNetworkHandler bnh;
 
-    [SerializeField] private Transform toppingStation;
-    [SerializeField] private Transform blendingStation;
+    public TMP_Text tipText;
+    public double maxTip = 0;
+    public double totalTip = 0;
 
-    public Camera camGo;
-    private CameraControl cam;
-    public GameObject startBtn;
-    public GameObject stopBtn;
+    public bool isFirstRound = true;
 
 
     // Start is called before the first frame update
     void Start() {
-        blendingStation = GameObject.FindGameObjectWithTag("Station0").transform;
-        toppingStation = GameObject.FindGameObjectWithTag("Station1").transform;
-        cam = camGo.GetComponent<CameraControl>();
-
         newOrder(1);
     }
 
     public void newOrder(int difficulty)
     {
+        /* destory old drink tray */
+        if (GameObject.FindGameObjectWithTag("PlayerTray") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
+        }
+
+        /* update tip */
+        tipText.text = "Tip: $" + totalTip;
+
         Debug.Log("Generating New Order");
         for (int i = 0; i < arraySize; i++)
         {
@@ -93,14 +90,17 @@ public class GameHandler : MonoBehaviour
         System.Random rand = new System.Random();
         if (difficulty == 1) {
             drinkCount = 1;
+            maxTip = 5;
             generateSolids(rand, 2);
             generateLiquids(rand, 1);
         } else if (difficulty == 2) {
             drinkCount = 1;
+            maxTip = 6;
             generateSolids(rand, 3);
             generateLiquids(rand, 2);
         } else if (difficulty == 3) {
             drinkCount = 1;
+            maxTip = 10;
             generateSolids(rand, 4);
             generateLiquids(rand, 3);
         } else if (difficulty == 4) {
@@ -151,29 +151,37 @@ public class GameHandler : MonoBehaviour
 
     public int getAccuracy()
     {
-        Debug.Log("player");
-        Debug.Log("Solid: " + playerOrder[0]);
-        Debug.Log("Solid: " + playerOrder[1]);
-        Debug.Log("Solid: " + playerOrder[2]);
-        Debug.Log("Solid: " + playerOrder[3]);
-        Debug.Log("Liq: " + playerOrder[4]);
-        Debug.Log("Liq: " + playerOrder[5]);
-        Debug.Log("Liq: " + playerOrder[6]);
-        Debug.Log("size: " + playerOrder[8]);
-        Debug.Log("-----");
+        //Debug.Log("player");
+        //Debug.Log("Solid: " + playerOrder[0]);
+        //Debug.Log("Solid: " + playerOrder[1]);
+        //Debug.Log("Solid: " + playerOrder[2]);
+        //Debug.Log("Solid: " + playerOrder[3]);
+        //Debug.Log("Liq: " + playerOrder[4]);
+        //Debug.Log("Liq: " + playerOrder[5]);
+        //Debug.Log("Liq: " + playerOrder[6]);
+        //Debug.Log("size: " + playerOrder[8]);
+        //Debug.Log("-----");
 
         checkOrder(0, solidsIndex);
-        Debug.Log("ScoreS " + playerScore);
+        //Debug.Log("ScoreS " + playerScore);
         checkOrder(solidsIndex, liquidsIndex);
-        Debug.Log("ScoreL " + playerScore);
+        //Debug.Log("ScoreL " + playerScore);
         checkBlendTime();
-        Debug.Log("ScoreB " + playerScore);
+        //Debug.Log("ScoreB " + playerScore);
         checkOrder(timeIndex, cupsIndex);
-        Debug.Log("ScoreC " + playerScore);
+        //Debug.Log("ScoreC " + playerScore);
 
         if (playerScore > 100) { playerScore = 100; }
+        getTip();
         return (int) playerScore;
     }
+
+    public void getTip()
+    {
+        double percent = playerScore / 100;
+        totalTip += (maxTip * percent);
+    }
+
     private void checkOrder(int start, int end)
     {
         for (int item = start; item < end; item++)

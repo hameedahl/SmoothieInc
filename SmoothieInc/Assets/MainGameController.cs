@@ -14,6 +14,9 @@ public class MainGameController : MonoBehaviour
     public GameHandler gameHandler;
     public GameObject winScreen;
     public TMP_Text accuracyText;
+    public TMP_Text timeText;
+    public TMP_Text tipText;
+
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
 
@@ -49,13 +52,13 @@ public class MainGameController : MonoBehaviour
 
             winScreen.gameObject.SetActive(true);
             accuracyText.text = playerScore + "%";
+            timeText.text = matchTimer.RemainingTimeText.text;
 
-            if(!networkHandler.GetHostStatus())
+            if (!networkHandler.GetHostStatus())
             {
                 nextLevelButton.SetActive(false);
             }
 
-            matchTimer.ResetTimer();
 
             finished = true;
         }
@@ -68,8 +71,7 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
-        /* destory old drink tray */
-        Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
+        gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
         sFinish = false;
         dFinish = false;
         int difficulty = Random.Range(1,3);
@@ -77,6 +79,8 @@ public class MainGameController : MonoBehaviour
         gameHandler.newOrder(difficulty);
         truckManager.NewOrder(difficulty);
         winScreen.SetActive(false);
+        matchTimer.ResetTimer();
+
     }
 
     public void StartGame()
