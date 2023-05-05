@@ -4,10 +4,10 @@ using UnityEngine;
 using TMPro;
 
 
-public class SmoothieTips : MonoBehaviour
+public class SmoothieTut : MonoBehaviour
 {
     public GameHandler gameHandler;
-    public TMP_Text text;
+    public TMP_Text tutText;
 
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,15 @@ public class SmoothieTips : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void startTut()
+    {
+        tutText.text = "Open the cooler and add ice to the blender.";
+    }
+
+    public void addFood()
+    {
+        tutText.text = "Add the ingredients from the driver into the blender.";
     }
 }

@@ -27,7 +27,6 @@ public class BlenderSlot : MonoBehaviour
     private Animator animTop;
 
     public GameHandler gameHandler;
-    public GameHandler smoothieTips;
 
     public GameObject bottom;
     private PickUpBlender top;
@@ -91,6 +90,7 @@ public class BlenderSlot : MonoBehaviour
                 if (!top.hasIce)
                 {
                     insertIce(item, itemInfo);
+                    gameHandler.smoothieTut.addFood();
                     return true;
                 }
                 Destroy(item);

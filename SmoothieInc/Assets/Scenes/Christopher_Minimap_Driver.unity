@@ -2663,7 +2663,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameHandler: {fileID: 1652144662}
-  text: {fileID: 1126126846}
+  tutText: {fileID: 1126126846}
 --- !u!4 &231363866
 Transform:
   m_ObjectHideFlags: 0
@@ -6976,7 +6976,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &534812409
 Transform:
   m_ObjectHideFlags: 0
@@ -21077,6 +21077,7 @@ MonoBehaviour:
   maxTip: 0
   totalTip: 0
   isFirstRound: 1
+  smoothieTut: {fileID: 231363865}
 --- !u!4 &1652144663
 Transform:
   m_ObjectHideFlags: 0

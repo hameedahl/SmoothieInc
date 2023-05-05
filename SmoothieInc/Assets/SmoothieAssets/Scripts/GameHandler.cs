@@ -52,6 +52,9 @@ public class GameHandler : MonoBehaviour
     public double totalTip = 0;
 
     public bool isFirstRound = true;
+    public SmoothieTut smoothieTut;
+
+
 
 
     // Start is called before the first frame update
@@ -67,6 +70,7 @@ public class GameHandler : MonoBehaviour
             Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
         }
 
+        if (isFirstRound) { smoothieTut.startTut(); }
         /* update tip */
         tipText.text = "Tip: $" + totalTip;
 
