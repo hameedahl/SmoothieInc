@@ -157,25 +157,10 @@ public class GameHandler : MonoBehaviour
 
     public int getAccuracy()
     {
-        //Debug.Log("player");
-        //Debug.Log("Solid: " + playerOrder[0]);
-        //Debug.Log("Solid: " + playerOrder[1]);
-        //Debug.Log("Solid: " + playerOrder[2]);
-        //Debug.Log("Solid: " + playerOrder[3]);
-        //Debug.Log("Liq: " + playerOrder[4]);
-        //Debug.Log("Liq: " + playerOrder[5]);
-        //Debug.Log("Liq: " + playerOrder[6]);
-        //Debug.Log("size: " + playerOrder[8]);
-        //Debug.Log("-----");
-
         checkOrder(0, solidsIndex);
-        //Debug.Log("ScoreS " + playerScore);
         checkOrder(solidsIndex, liquidsIndex);
-        //Debug.Log("ScoreL " + playerScore);
         checkBlendTime();
-        //Debug.Log("ScoreB " + playerScore);
         checkOrder(timeIndex, cupsIndex);
-        //Debug.Log("ScoreC " + playerScore);
 
         if (playerScore > 100) { playerScore = 100; }
         getTip();
