@@ -82,24 +82,41 @@ public class DragDrop : MonoBehaviour
                 isFoodStack = true;
                 isFood = false;
 
-                if (objToGrab.tag == "LCup" || objToGrab.tag == "MCup" || objToGrab.tag == "SCup" || objToGrab.tag == "Tray"
-                    || objToGrab.tag == "Cover" || objToGrab.tag == "Straw") {
+                if (objToGrab.tag == "LCup")
+                {
                     if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
                     { /* only have one of each of drink stuff */
-
-                        singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
-                        singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
-                        foodInfo = singleObj.GetComponent<Food>();
+                        newItem();
+                    }
+                } else if (objToGrab.tag == "MCup") {
+                    if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
+                    { /* only have one of each of drink stuff */
+                        newItem();
+                    }
+                } else if (objToGrab.tag == "SCup") {
+                    if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
+                    { /* only have one of each of drink stuff */
+                        newItem();
+                    }
+                }else if (objToGrab.tag == "Tray" || objToGrab.tag == "Cover" || objToGrab.tag == "Straw") {
+                    if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
+                    { /* only have one of each of drink stuff */
+                        newItem();
                     }
                 } else {
-                    singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
-                    singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
-                    foodInfo = singleObj.GetComponent<Food>();
+                    newItem();
                 }
             }
             isMoving = true;
 
         }
+    }
+
+    public void newItem()
+    {
+        singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
+        singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+        foodInfo = singleObj.GetComponent<Food>();
     }
 
     private void OnMouseUp() {
@@ -119,7 +136,7 @@ public class DragDrop : MonoBehaviour
         }
         else if (isFoodStack) {
             /* insert item into available slot if close to blender */
-            if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Tray" && singleObj.tag != "Straw") {
+            if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "LCup" && singleObj.tag != "MCup" && singleObj.tag != "SCup" && singleObj.tag != "Tray" && singleObj.tag != "Straw") {
                 if (!blenderTop.addedToSlot(singleObj))
                 {
                     Destroy(singleObj);

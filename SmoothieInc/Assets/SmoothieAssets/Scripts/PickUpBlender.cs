@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class PickUpBlender : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class PickUpBlender : MonoBehaviour
     public bool isPouring = false;
     public bool hasIce = false;
     public bool isDetached = false;
+    public bool foundCup = false;
 
     private float startPosX;
     private float startPosY;
@@ -26,6 +28,7 @@ public class PickUpBlender : MonoBehaviour
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
     public GameHandler gameHandler;
+
 
 
     void Start() {
@@ -86,25 +89,62 @@ public class PickUpBlender : MonoBehaviour
     }
 
     private void pour() {
-        GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
-        int cupsSize = cups.Length;
+        //GameObject[] cups = GameObject.FindGameObjectsWithTag("Cup");
+        //int cupsSize = cups.Length;
 
-        for (int i = 0; i < cupsSize; i++) {
-            if (cups[i])
-            {
-                cup = cups[i].GetComponent<Cup>();
-            }
+        //for (int i = 0; i < cupsSize; i++) {
+        //    if (cups[i])
+        //    {
+        //        cup = cups[i].GetComponent<Cup>();
+        //    }
 
-            if (cup && cup.isEmpty && !isEmpty && isBlended &&
-                Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
-                Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
-                Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
-                Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f) {
-                this.transform.position = new Vector3(cup.pourSlot.transform.position.x, cup.pourSlot.transform.position.y, cup.pourSlot.transform.position.z);
-                this.transform.eulerAngles = Vector3.forward * 90;
-                cup.fillCup();
-                isPouring = true;
-            }
+        //    if (cup && cup.isEmpty && !isEmpty && isBlended &&
+        //        Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
+        //        Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
+        //        Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
+        //        Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f) {
+        //        this.transform.position = new Vector3(cup.pourSlot.transform.position.x, cup.pourSlot.transform.position.y, cup.pourSlot.transform.position.z);
+        //        this.transform.eulerAngles = Vector3.forward * 90;
+        //        cup.fillCup();
+        //        isPouring = true;
+        //        break;
+        //    }
+        //}
+        GameObject cupL = GameObject.FindGameObjectWithTag("LCup");
+        if (cupL && !foundCup)
+        {
+            filledCup(cupL);
+        }
+        GameObject cupM = GameObject.FindGameObjectWithTag("MCup");
+        if (cupM && !foundCup)
+        {
+            filledCup(cupM);
+        }
+        GameObject cupS = GameObject.FindGameObjectWithTag("SCup");
+        if (cupS && !foundCup)
+        {
+            filledCup(cupS);
+        }
+
+    
+
+    }
+
+    public void filledCup(GameObject cupGo)
+    {
+        cup = cupGo.GetComponent<Cup>();
+
+        if (cup && cup.isEmpty && !isEmpty && isBlended &&
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) >= 1000f &&
+            Mathf.Abs(cup.transform.localPosition.x - this.transform.localPosition.x) <= 1003f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) >= .5f &&
+            Mathf.Abs(cup.transform.localPosition.y - this.transform.localPosition.y) <= 4f)
+        {
+            this.transform.position = new Vector3(cup.pourSlot.transform.position.x, cup.pourSlot.transform.position.y, cup.pourSlot.transform.position.z);
+            this.transform.eulerAngles = Vector3.forward * 90;
+            cup.fillCup();
+            isPouring = true;
+            foundCup = true;
         }
     }
 

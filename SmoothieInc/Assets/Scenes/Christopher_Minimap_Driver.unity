@@ -19232,6 +19232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Protein
       objectReference: {fileID: 0}
+    - target: {fileID: 6122137188586542152, guid: 7648c6f001f074a6da0ccd3403803ae3, type: 3}
+      propertyPath: m_TagString
+      value: Food
+      objectReference: {fileID: 0}
     - target: {fileID: 6122137188586542154, guid: 7648c6f001f074a6da0ccd3403803ae3, type: 3}
       propertyPath: id
       value: 8

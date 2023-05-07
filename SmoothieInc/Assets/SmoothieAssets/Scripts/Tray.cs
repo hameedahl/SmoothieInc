@@ -73,11 +73,20 @@ public class Tray : MonoBehaviour
         //}
 
         GameObject cupL = GameObject.FindGameObjectWithTag("LCup");
-        checkCup(cupL);
+        if (cupL)
+        {
+            checkCup(cupL);
+        }
         GameObject cupM = GameObject.FindGameObjectWithTag("MCup");
-        checkCup(cupM);
+        if (cupM)
+        {
+            checkCup(cupM);
+        }
         GameObject cupS = GameObject.FindGameObjectWithTag("SCup");
-        checkCup(cupS);
+        if (cupS)
+        {
+            checkCup(cupS);
+        }
 
     }
 
