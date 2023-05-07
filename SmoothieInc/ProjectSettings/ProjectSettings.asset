@@ -133,7 +133,7 @@ PlayerSettings:
     5:4: 0
     16:10: 0
     16:9: 1
-    Others: 0
+    Others: 1
   bundleVersion: 1.0
   preloadedAssets: []
   metroInputSource: 0
@@ -710,11 +710,11 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 18800c85-7eb9-4bad-adbd-ac295e53a83d
+  cloudProjectId: 04d16c32-6e49-4f40-b0d5-9215dd8d2317
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
   projectName: SmoothieInc (2)
-  organizationId: hameedah_l
+  organizationId: rorymy3
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
