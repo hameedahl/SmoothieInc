@@ -116,7 +116,7 @@ public class BlenderSlot : MonoBehaviour
         blenderliqs++;
         pour(itemInfo, newLiquid);
         gameHandler.addToOrder(itemInfo);
-        gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in. ");
+        gameHandler.smoothieTut.writeToScreen("Press 'start' on the blender once all ingredients are added in.");
     }
 
     private void insertIce(GameObject item, Food itemInfo)
