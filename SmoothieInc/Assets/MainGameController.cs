@@ -40,7 +40,7 @@ public class MainGameController : MonoBehaviour
     public Text loseText;
     public GameObject fullStar;
     public int difficulty = 1;
-
+    public float[] gameTimes = new float[6];
 
 
     private void Start()
@@ -48,6 +48,13 @@ public class MainGameController : MonoBehaviour
         gameHandler = GameObject.FindGameObjectWithTag("GameHandler").GetComponent<GameHandler>();
 
         WinText.gameObject.SetActive(false);
+
+        gameTimes[0] = -1f;
+        gameTimes[1] = 90.0f;
+        gameTimes[2] = 90.0f;
+        gameTimes[3] = 90.0f;
+        gameTimes[4] = 75.0f;
+        gameTimes[5] = 60.0f;
     }
 
     // Update is called once per frame
@@ -105,14 +112,15 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
-        matchTimer.ResetTimer();
-        StartGame();
+        difficulty++;
+        matchTimer.ResetTimer(gameTimes[difficulty]);
+        StartGame(gameTimes[difficulty]);
         gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
         sFinish = false;
         dFinish = false;
         //int difficulty = Random.Range(1,3);
-        difficulty++;
-        if (difficulty != 4)
+
+        if (difficulty != 6)
         {
             networkHandler.ResetOrders();
             gameHandler.newOrder(difficulty);
@@ -152,12 +160,11 @@ public class MainGameController : MonoBehaviour
         int minutes = 0;
         int seconds = 60 - Mathf.FloorToInt(matchTimer.RemainingTime.Value % 60);
         finishTime = $"{minutes:0}:{seconds:D2}";
-
     }
 
-    public void StartGame()
+    public void StartGame(float time)
     {
-        matchTimer.StartTimer();
+        matchTimer.StartTimer(time);
     }
 
     public void BestTime()

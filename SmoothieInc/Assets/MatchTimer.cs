@@ -64,17 +64,17 @@ public class MatchTimer : NetworkBehaviour
         loseText.text = "Looks like your customer is upset because they had to wait a long time. They're asking for a free smoothie to make up for it.";
     }
 
-    public void ResetTimer()
+    public void ResetTimer(float time)
     {
         if (IsHost) {
-            RemainingTime.Value = 60.0f;
+            RemainingTime.Value = time;
         }
     }
 
-    public void StartTimer()
+    public void StartTimer(float time)
     {
-      isTimerStarted = true;
-
+        isTimerStarted = true;
+        RemainingTime.Value = time;
     }
 
 

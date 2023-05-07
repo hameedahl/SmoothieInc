@@ -64,6 +64,12 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableWritePermission.Owner
     );
 
+    public NetworkVariable<double> playerBestTimeNetworkVariable = new NetworkVariable<double>(
+      value: 0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
     public NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
       value:new Vector3(0,0,0),
       NetworkVariableReadPermission.Everyone,
@@ -319,6 +325,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
         return playerTotalMoneyNetworkVariable.Value;
     }
 
+    public double GetBestTime()
+    {
+        return playerBestTimeNetworkVariable.Value;
+    }
+
     public bool GetHostStatus()
     {
       if(IsHost)
@@ -348,7 +359,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
           playerTipNetworkVariable.Value = tip;
           playerBestScoreNetworkVariable.Value = bestScore;
           playerTotalMoneyNetworkVariable.Value = totalMoney;
-
+          //playerBestTimeNetworkVariable.Value = bestTime;
         }
     }
 
