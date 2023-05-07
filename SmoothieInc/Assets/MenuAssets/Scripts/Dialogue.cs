@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
     public GameObject driverArt;
     public GameObject smoothieArt;
 
+    public MainMenu menu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,7 +41,7 @@ public class Dialogue : MonoBehaviour
 
             dialogue[0].SetActive(true);
         }
-        if(slideNum == 1)
+        else if(slideNum == 1)
         {
             // set smoothie art innactive
             smoothieArt.SetActive(false);
@@ -48,6 +50,11 @@ public class Dialogue : MonoBehaviour
 
             dialogue[0].SetActive(false);
             dialogue[1].SetActive(true);
+        }
+        else
+        {
+            menu.StartMenu();
+            gameObject.SetActive(false);
         }
 
     }

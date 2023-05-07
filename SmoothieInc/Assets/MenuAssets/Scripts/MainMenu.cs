@@ -52,6 +52,7 @@ public class MainMenu : MonoBehaviour
 
     public MainGameController mainGameController;
 
+    public GameObject dialogueMenu;
 
     public TestRelay testRelay;
 
@@ -83,12 +84,20 @@ public class MainMenu : MonoBehaviour
         toggleJoinMenu(false, false);
 
         // Show Main Menu
-        toggleMainMenu(true);
+        toggleMainMenu(false);
+
+        dialogueMenu.SetActive(true);
 
         NetworkManager.Singleton.OnServerStarted += OnServerStarted;
         NetworkManager.Singleton.OnClientConnectedCallback += OnClientConnected;
 
         GameisPaused = false;
+    }
+
+    public void StartMenu()
+    {
+        // Show Main Menu
+        toggleMainMenu(true);
     }
 
     private void OnDestroy()
