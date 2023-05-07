@@ -19238,6 +19238,14 @@ MonoBehaviour:
   dialogue:
   - {fileID: 1498944927}
   - {fileID: 1847173079}
+  - {fileID: 1455516876}
+  - {fileID: 41444415}
+  - {fileID: 3317331}
+  - {fileID: 1317505092}
+  - {fileID: 1615308268}
+  - {fileID: 1432023640}
+  - {fileID: 958327987}
+  - {fileID: 131409791}
   driverArt: {fileID: 226098708}
   smoothieArt: {fileID: 1088322717}
   menu: {fileID: 296397830}
