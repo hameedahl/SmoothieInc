@@ -122,7 +122,7 @@ public class MainGameController : MonoBehaviour
     {
         finalWinScreen.SetActive(true);
         winTime.text = bestTime;
-        winAccuracy.text = "%" + gameHandler.bestPlayerScore;
+        winAccuracy.text = gameHandler.bestPlayerScore + "%";
         winMoney.text = "$" + gameHandler.totalTip;
     }
 
