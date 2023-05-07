@@ -36,6 +36,8 @@ public class GameHandler : MonoBehaviour
     public int[] valuesArray = new int[arraySize];
     private GameObject tray;
     public double playerScore = 0;
+    public double bestPlayerScore = 0;
+    
     public double itemWeight = 0;
     public bool orderComplete = false;
     bool inOrder = false;
@@ -164,6 +166,12 @@ public class GameHandler : MonoBehaviour
 
         if (playerScore > 100) { playerScore = 100; }
         getTip();
+        if (isFirstRound)
+        {
+            bestPlayerScore = playerScore;
+        } else {
+            BestScore();
+        }
         return (int) playerScore;
     }
 
@@ -231,6 +239,14 @@ public class GameHandler : MonoBehaviour
                     return;
                 }
             }
+        }
+    }
+
+    public void BestScore()
+    {
+        if (bestPlayerScore < playerScore)
+        {
+            bestPlayerScore = playerScore;
         }
     }
 

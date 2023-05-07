@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.UIElements;
 
 public class MainGameController : MonoBehaviour
 {
@@ -13,20 +15,27 @@ public class MainGameController : MonoBehaviour
     public TruckManager truckManager;
     public GameHandler gameHandler;
     public GameObject winScreen;
+
     public TMP_Text accuracyText;
     public TMP_Text timeText;
     public TMP_Text tipText;
     public TMP_Text tipTextSmoothie;
 
-
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
-
+    public string finishTime;
+    public string bestTime = "01:00";
 
     bool sFinish = false;
     bool dFinish = false;
 
     bool finished = false;
+
+
+    public GameObject finalWinScreen;
+    public TMP_Text winTime;
+    public TMP_Text winAccuracy;
+    public TMP_Text winMoney;
 
     private void Start()
     {
@@ -54,7 +63,14 @@ public class MainGameController : MonoBehaviour
 
             winScreen.gameObject.SetActive(true);
             accuracyText.text = playerScore + "%";
-            timeText.text = matchTimer.RemainingTimeText.text;
+            finishTime = matchTimer.RemainingTimeText.text;
+            timeText.text = finishTime;
+            if (gameHandler.isFirstRound)
+            {
+                bestTime = finishTime;
+            } else {
+                BestTime();
+            }
             tipText.text = "$" + gameHandler.tripTip.ToString();
             tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
 
@@ -75,21 +91,41 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
-        gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
-        sFinish = false;
-        dFinish = false;
-        int difficulty = Random.Range(1,3);
-        networkHandler.ResetOrders();
-        gameHandler.newOrder(difficulty);
-        truckManager.NewOrder(difficulty);
-        winScreen.SetActive(false);
-        matchTimer.ResetTimer();
+        finalWinScreen.SetActive(true);
+        winTime.text = bestTime;
+        winAccuracy.text = "%" + gameHandler.bestPlayerScore;
+        winMoney.text = "$" + gameHandler.totalTip;
 
-    }
+    //gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
+    //sFinish = false;
+    //dFinish = false;
+    ////int difficulty = Random.Range(1,3);
+    //int difficulty = 1;
+
+    //networkHandler.ResetOrders();
+    //gameHandler.newOrder(difficulty);
+    //truckManager.NewOrder(difficulty);
+    //winScreen.SetActive(false);
+    //matchTimer.ResetTimer();
+
+}
 
     public void StartGame()
     {
       matchTimer.StartTimer();
     }
 
-  }
+    public void BestTime()
+    {
+        bestTime.Remove(2, 1);
+        finishTime.Remove(2, 1);
+        Debug.Log(System.Int32.Parse(bestTime));
+        Debug.Log(System.Int32.Parse(finishTime));
+
+        if (System.Int32.Parse(bestTime) > System.Int32.Parse(finishTime))
+        {
+            bestTime = finishTime;
+        }
+    }
+
+}
