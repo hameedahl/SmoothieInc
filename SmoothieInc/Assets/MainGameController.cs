@@ -36,6 +36,12 @@ public class MainGameController : MonoBehaviour
     public TMP_Text winTime;
     public TMP_Text winAccuracy;
     public TMP_Text winMoney;
+    public GameObject LoseScreen;
+    public Text loseText;
+    public GameObject fullStar;
+    public int difficulty = 1;
+
+
 
     private void Start()
     {
@@ -50,37 +56,40 @@ public class MainGameController : MonoBehaviour
         if (!sFinish && networkHandler.GetDrinkFinishedStatus())
         {
             sFinish = true;
-            Debug.Log("Smoothie has finished");
         }
         if (!dFinish && networkHandler.GetArrivedStatus())
         {
             dFinish = true;
-            Debug.Log("Driver has arrived");
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
-        double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
-            Debug.Log("BOTH ARE THERE");
-
-            winScreen.gameObject.SetActive(true);
-            accuracyText.text = playerScore + "%";
-            finishTime = matchTimer.RemainingTimeText.text;
-            timeText.text = finishTime;
-            if (gameHandler.isFirstRound)
+            double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
+            matchTimer.isTimerStarted = false; /* pause timer */
+            if (!badSmoothie())
             {
-                bestTime = finishTime;
-            } else {
-                BestTime();
+                winScreen.gameObject.SetActive(true);
+                accuracyText.text = playerScore + "%";
+                finishTime = matchTimer.RemainingTimeText.text;
+                timeText.text = finishTime;
+                if (gameHandler.isFirstRound)
+                {
+                    bestTime = finishTime;
+                }
+                else
+                {
+                    BestTime();
+                }
+
+                tipText.text = "$" + gameHandler.tripTip.ToString();
+                tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
+
+                if (!networkHandler.GetHostStatus())
+                {
+                    nextLevelButton.SetActive(false);
+                }
+
+
+                finished = true;
             }
-            tipText.text = "$" + gameHandler.tripTip.ToString();
-            tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
-
-            if (!networkHandler.GetHostStatus())
-            {
-                nextLevelButton.SetActive(false);
-            }
-
-
-            finished = true;
         }
 
         if(finished && !networkHandler.GetArrivedStatus())
@@ -91,24 +100,44 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
+        matchTimer.ResetTimer();
+        StartGame();
+        gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
+        sFinish = false;
+        dFinish = false;
+        //int difficulty = Random.Range(1,3);
+        difficulty++;
+        if (difficulty != 4)
+        {
+            networkHandler.ResetOrders();
+            gameHandler.newOrder(difficulty);
+            truckManager.NewOrder(difficulty);
+            winScreen.SetActive(false);
+        } else {
+            FinalWin();
+
+        }
+    }
+
+    public void FinalWin()
+    {
         finalWinScreen.SetActive(true);
         winTime.text = bestTime;
         winAccuracy.text = "%" + gameHandler.bestPlayerScore;
         winMoney.text = "$" + gameHandler.totalTip;
+    }
+    public bool badSmoothie()
+    {
+        if (gameHandler.playerScore < 50)
+        {
+            LoseScreen.gameObject.SetActive(true);
+            loseText.text = "Your customer was uhappy with their smoothie. They said it tasted much different from what they ordered. They've decided not to order from us again.";
+            fullStar.SetActive(true);
+            return true;
+        }
+        return false;
 
-    //gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
-    //sFinish = false;
-    //dFinish = false;
-    ////int difficulty = Random.Range(1,3);
-    //int difficulty = 1;
-
-    //networkHandler.ResetOrders();
-    //gameHandler.newOrder(difficulty);
-    //truckManager.NewOrder(difficulty);
-    //winScreen.SetActive(false);
-    //matchTimer.ResetTimer();
-
-}
+    }
 
     public void StartGame()
     {

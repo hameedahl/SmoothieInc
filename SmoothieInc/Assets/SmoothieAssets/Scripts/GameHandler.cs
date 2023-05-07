@@ -178,8 +178,8 @@ public class GameHandler : MonoBehaviour
     public void getTip()
     {
         double percent = playerScore / 100;
-        tripTip = (maxTip * percent);
-        totalTip += tripTip;
+        tripTip = System.Math.Round(maxTip * percent, 2);
+        totalTip += System.Math.Round(tripTip, 2);
     }
 
     private void checkOrder(int start, int end)
@@ -191,7 +191,6 @@ public class GameHandler : MonoBehaviour
                 if (playerOrder[item] != -1 && playerOrder[item] == valuesArray[orderItem] && playerScore < 100)
                 {
                     playerScore += itemWeight;
-                    Debug.Log(playerScore);
                     inOrder = true;
                     break;
                 }
@@ -205,9 +204,6 @@ public class GameHandler : MonoBehaviour
         if (blenderLevel != 0 && valuesArray[7] != 0)
         {
             playerScore += (blenderLevel / (valuesArray[7])) * itemWeight;
-            Debug.Log("BlenderV " + (valuesArray[7]));
-            Debug.Log("Blender " + (blenderLevel / (valuesArray[7])));
-            Debug.Log("Blender " + (blenderLevel / (valuesArray[7])) * itemWeight);
         }
     }
 

@@ -4,6 +4,8 @@ using UnityEngine;
 using Unity.Netcode;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
+using UnityEngine.XR;
 
 public class MatchTimer : NetworkBehaviour
 {
@@ -18,6 +20,8 @@ public class MatchTimer : NetworkBehaviour
     public TextMeshProUGUI RemainingTimeText2;
 
     public GameObject LoseScreen;
+    public Text loseText;
+
 
     public bool isTimerStarted = false;
 
@@ -30,8 +34,6 @@ public class MatchTimer : NetworkBehaviour
           RemainingTime.Value = 0;
           EndMatchServerRpc();
         }
-
-
       }
 
       if (IsClient) {
@@ -57,18 +59,20 @@ public class MatchTimer : NetworkBehaviour
     private void EndMatchClientRpc()
     {
         LoseScreen.gameObject.SetActive(true);
+        loseText.text = "Looks like your customer is upset because they had to wait a long time. They're asking for a free smoothie to make up for it.";
     }
 
     public void ResetTimer()
     {
-      if(IsHost) {
-        RemainingTime.Value = 60.0f;
-      }
+        if (IsHost) {
+            RemainingTime.Value = 60.0f;
+        }
     }
 
     public void StartTimer()
     {
       isTimerStarted = true;
+
     }
 
 
