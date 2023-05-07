@@ -33,6 +33,13 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableReadPermission.Everyone,
       NetworkVariableWritePermission.Owner
     );
+
+    public NetworkVariable<double> playerTipNetworkVariable = new NetworkVariable<double>(
+      value:0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
     public NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
       value:new Vector3(0,0,0),
       NetworkVariableReadPermission.Everyone,
@@ -232,7 +239,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
     {
       destinationPos.Value = pos;
     }
-    
+
     public bool GetArrivedStatus()
     {
         return arrivedNetworkVariable.Value;
@@ -253,6 +260,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
         return playerScoreNetworkVariable.Value;
     }
 
+    public double GetPlayerTipStatus()
+    {
+      return playerTipNetworkVariable.Value;
+    }
+
     public bool GetHostStatus()
     {
       if(IsHost)
@@ -271,7 +283,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void SetSmoothieServerRPC(bool finished, double points, ServerRpcParams serverRpcParams = default)
+    public void SetSmoothieServerRPC(bool finished, double points, double tip ServerRpcParams serverRpcParams = default)
     {
       var clientId = serverRpcParams.Receive.SenderClientId;
       if (NetworkManager.ConnectedClients.ContainsKey(clientId))
@@ -279,6 +291,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
           var client = NetworkManager.ConnectedClients[clientId];
           drinkFinishedNetworkVariable.Value = finished;
           playerScoreNetworkVariable.Value = points;
+          playerTipNetworkVariable.Value = tip;
       }
     }
 

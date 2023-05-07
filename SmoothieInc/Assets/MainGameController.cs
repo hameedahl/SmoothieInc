@@ -80,7 +80,7 @@ public class MainGameController : MonoBehaviour
                 }
 
                 tipText.text = "$" + gameHandler.tripTip.ToString();
-                tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
+                tipTextSmoothie.text = "$" + networkHandler.GetPlayerTipStatus().ToString();
 
                 if (!networkHandler.GetHostStatus())
                 {
