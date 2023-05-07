@@ -20639,7 +20639,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0045176744, y: 0.7070269}
+  m_Offset: {x: 0.0045176744, y: 0.84833443}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -20650,7 +20650,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9712496, y: 0.71116984}
+  m_Size: {x: 1.9712496, y: 0.42855477}
   m_EdgeRadius: 0
 --- !u!1 &1279983905
 GameObject:
@@ -30881,7 +30881,7 @@ GameObject:
   - component: {fileID: 2005809966}
   m_Layer: 5
   m_Name: Honey
-  m_TagString: FoodStack
+  m_TagString: Food
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
