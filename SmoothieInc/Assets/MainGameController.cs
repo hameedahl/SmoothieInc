@@ -142,7 +142,7 @@ public class MainGameController : MonoBehaviour
     {
         (matchTimer.RemainingTimeText.text).Remove(2, 1);
         int x = System.Int32.Parse(matchTimer.RemainingTimeText.text);
-        x -y 
+         
     }
 
     public void StartGame()
