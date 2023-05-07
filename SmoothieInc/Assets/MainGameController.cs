@@ -115,7 +115,6 @@ public class MainGameController : MonoBehaviour
             winScreen.SetActive(false);
         } else {
             FinalWin();
-
         }
     }
 
@@ -130,7 +129,7 @@ public class MainGameController : MonoBehaviour
     {
         if (gameHandler.playerScore < 50)
         {
-            LoseScreen.gameObject.SetActive(true);
+            LoseScreen.SetActive(true);
             loseText.text = "Your customer was uhappy with their smoothie. They said it tasted much different from what they ordered. They've decided not to order from us again.";
             fullStar.SetActive(true);
             return true;
@@ -151,7 +150,7 @@ public class MainGameController : MonoBehaviour
         Debug.Log(System.Int32.Parse(bestTime));
         Debug.Log(System.Int32.Parse(finishTime));
 
-        if (System.Int32.Parse(bestTime) > System.Int32.Parse(finishTime))
+        if (System.Int32.Parse(bestTime) < System.Int32.Parse(finishTime))
         {
             bestTime = finishTime;
         }
