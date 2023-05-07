@@ -107,7 +107,7 @@ public class MainGameController : MonoBehaviour
         dFinish = false;
         //int difficulty = Random.Range(1,3);
         difficulty++;
-        if (difficulty != 2)
+        if (difficulty != 4)
         {
             networkHandler.ResetOrders();
             gameHandler.newOrder(difficulty);
