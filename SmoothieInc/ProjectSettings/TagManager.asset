@@ -21,6 +21,10 @@ TagManager:
   - Tray
   - PauseMenuSlider
   - PlayerTray
+  - SCup
+  - MCup
+  - LCup
+  - Trash
   layers:
   - Default
   - TransparentFX

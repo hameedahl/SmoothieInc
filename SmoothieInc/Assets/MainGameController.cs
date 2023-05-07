@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
+using UnityEngine.UIElements;
 
 public class MainGameController : MonoBehaviour
 {
@@ -13,15 +15,33 @@ public class MainGameController : MonoBehaviour
     public TruckManager truckManager;
     public GameHandler gameHandler;
     public GameObject winScreen;
+
     public TMP_Text accuracyText;
+    public TMP_Text timeText;
+    public TMP_Text tipText;
+    public TMP_Text tipTextSmoothie;
+
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
-
+    public string finishTime;
+    public string bestTime = "01:00";
 
     bool sFinish = false;
     bool dFinish = false;
 
     bool finished = false;
+
+
+    public GameObject finalWinScreen;
+    public TMP_Text winTime;
+    public TMP_Text winAccuracy;
+    public TMP_Text winMoney;
+    public GameObject LoseScreen;
+    public Text loseText;
+    public GameObject fullStar;
+    public int difficulty = 1;
+
+
 
     private void Start()
     {
@@ -36,28 +56,40 @@ public class MainGameController : MonoBehaviour
         if (!sFinish && networkHandler.GetDrinkFinishedStatus())
         {
             sFinish = true;
-            Debug.Log("Smoothie has finished");
         }
         if (!dFinish && networkHandler.GetArrivedStatus())
         {
             dFinish = true;
-            Debug.Log("Driver has arrived");
         }
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
-        double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
-            Debug.Log("BOTH ARE THERE");
-
-            winScreen.gameObject.SetActive(true);
-            accuracyText.text = playerScore + "%";
-
-            if(!networkHandler.GetHostStatus())
+            double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
+            matchTimer.isTimerStarted = false; /* pause timer */
+            if (!badSmoothie(playerScore))
             {
-                nextLevelButton.SetActive(false);
+                winScreen.gameObject.SetActive(true);
+                accuracyText.text = playerScore + "%";
+                finishTime = matchTimer.RemainingTimeText.text;
+                timeText.text = finishTime;
+                if (gameHandler.isFirstRound)
+                {
+                    bestTime = finishTime;
+                }
+                else
+                {
+                    BestTime();
+                }
+
+                tipText.text = "$" + gameHandler.tripTip.ToString();
+                tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
+
+                if (!networkHandler.GetHostStatus())
+                {
+                    nextLevelButton.SetActive(false);
+                }
+
+
+                finished = true;
             }
-
-            matchTimer.ResetTimer();
-
-            finished = true;
         }
 
         if(finished && !networkHandler.GetArrivedStatus())
@@ -68,21 +100,61 @@ public class MainGameController : MonoBehaviour
 
     public void NewOrders()
     {
-        /* destory old drink tray */
-        GameObject tray = GameObject.FindGameObjectWithTag("PlayerTray");
-        Destroy(tray);
+        matchTimer.ResetTimer();
+        StartGame();
+        gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
         sFinish = false;
         dFinish = false;
-        int difficulty = Random.Range(1,3);
-        networkHandler.ResetOrders();
-        gameHandler.newOrder(difficulty);
-        truckManager.NewOrder(difficulty);
-        winScreen.SetActive(false);
+        //int difficulty = Random.Range(1,3);
+        difficulty++;
+        if (difficulty != 2)
+        {
+            networkHandler.ResetOrders();
+            gameHandler.newOrder(difficulty);
+            truckManager.NewOrder(difficulty);
+            winScreen.SetActive(false);
+        } else {
+            FinalWin();
+        }
+    }
+
+    public void FinalWin()
+    {
+        finalWinScreen.SetActive(true);
+        winTime.text = bestTime;
+        winAccuracy.text = gameHandler.bestPlayerScore + "%";
+        winMoney.text = "$" + gameHandler.totalTip;
+    }
+
+    public bool badSmoothie(double playerScore)
+    {
+        if (playerScore < 50)
+        {
+            LoseScreen.SetActive(true);
+            loseText.text = "Your customer was uhappy with their smoothie. They said it tasted much different from what they ordered. They've decided not to order from us again.";
+            fullStar.SetActive(true);
+            return true;
+        }
+        return false;
+
     }
 
     public void StartGame()
     {
-      matchTimer.StartTimer();
+        matchTimer.StartTimer();
     }
 
-  }
+    public void BestTime()
+    {
+        bestTime.Remove(2, 1);
+        finishTime.Remove(2, 1);
+        Debug.Log(System.Int32.Parse(bestTime));
+        Debug.Log(System.Int32.Parse(finishTime));
+
+        if (System.Int32.Parse(bestTime) < System.Int32.Parse(finishTime))
+        {
+            bestTime = finishTime;
+        }
+    }
+
+}

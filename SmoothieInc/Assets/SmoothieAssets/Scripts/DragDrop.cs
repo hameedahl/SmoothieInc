@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -26,6 +27,8 @@ public class DragDrop : MonoBehaviour
     public Texture2D cursorGrab;
 
     public string message;
+    private Trash trashCan;
+
 
     // Start is called before the first frame update
     void Start() {
@@ -33,6 +36,7 @@ public class DragDrop : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Blender-Top"))  {
             blenderTop = GameObject.FindGameObjectWithTag("Blender-Top").GetComponent<BlenderSlot>();
         }
+        trashCan = GameObject.FindGameObjectWithTag("Trash").GetComponent<Trash>();
     }
 
     void Update() {
@@ -56,16 +60,7 @@ public class DragDrop : MonoBehaviour
         Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
         Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         /* object name displayed when e is pressed */
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            TooltipHover._instance.SetAndShowTip(message);
-        }
-
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            TooltipHover._instance.HideTip();
-        }
-
+        TooltipHover._instance.SetAndShowTip(message);
     }
 
     private void OnMouseExit()
@@ -90,41 +85,116 @@ public class DragDrop : MonoBehaviour
             } else if (this.tag == "FoodStack") {
                 isFoodStack = true;
                 isFood = false;
-                singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
-                singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
-                foodInfo = singleObj.GetComponent<Food>();
+                GameObject[] arr;
+                arr = GameObject.FindGameObjectsWithTag(objToGrab.tag);
+
+                if (objToGrab.tag == "LCup")
+                {
+                    if (arr.Length == 0)
+                    { /* only have one of each of drink stuff */
+                            newItem();
+                    } else if (arr.Length == 1) {
+                        if (!(arr[0].GetComponent<Cup>().isEmpty))
+                        {
+                            newItem();
+                        }
+                    } 
+                } else if (objToGrab.tag == "MCup") {
+                    if (arr.Length == 0)
+                    { /* only have one of each of drink stuff */
+                        newItem();
+                    }
+                    else if (arr.Length == 1)
+                    {
+                        if (!(arr[0].GetComponent<Cup>().isEmpty))
+                        {
+                            newItem();
+                        }
+                    }
+                } else if (objToGrab.tag == "SCup") {
+                    if (arr.Length == 0)
+                    { /* only have one of each of drink stuff */
+                        newItem();
+                    }
+                    else if (arr.Length == 1)
+                    {
+                        if (!(arr[0].GetComponent<Cup>().isEmpty))
+                        {
+                            newItem();
+                        }
+                    }
+                }
+                else if (objToGrab.tag == "Tray" || objToGrab.tag == "Cover" || objToGrab.tag == "Straw") {
+                    if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
+                    {
+                            newItem();
+                    }
+                } else {
+                    newItem();
+                }
             }
             isMoving = true;
 
         }
     }
 
+    public void newItem()
+    {
+        singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
+        singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+        foodInfo = singleObj.GetComponent<Food>();
+    }
+
     private void OnMouseUp() {
-            Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
-            Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
+        Vector2 cursorOffset = new Vector2(cursorHand.width / 2, cursorHand.height / 2);
+        Cursor.SetCursor(cursorHand, cursorOffset, CursorMode.ForceSoftware);
         
         isMoving = false;
         if (isFood) {
-            if (!blenderTop.addedToSlot(this.gameObject)) {
-               if (blenderTop.blenderIsFull) { /* returns false if not close enough or if filled up */
-                    Destroy(gameObject);
-                }
-            }
-        } else if (isFoodStack) {
-            /* insert item into available slot if close to blender */
-            if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "Cup" && singleObj.tag != "Straw") {
-                if (!blenderTop.addedToSlot(singleObj))
+                if (!blenderTop.addedToSlot(this.gameObject))
                 {
-                    if (blenderTop.blenderIsFull)
+                    if (foodInfo.category == "Liquids")
+                    {
+                        /* reset to starting position if not inserted */
+                        this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
+                    }
+                    else
                     { /* returns false if not close enough or if filled up */
+                        Destroy(gameObject);
+                    }
+                }
+        } else if (isFoodStack) {
+            if (trashCan.hitTrash)
+            {
+                Destroy(singleObj);
+                trashCan.trash.Play();
+                trashCan.hitTrash = false;
+            }
+            else
+            {
+                /* insert item into available slot if close to blender */
+                if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "LCup" && singleObj.tag != "MCup" && singleObj.tag != "SCup" && singleObj.tag != "Tray" && singleObj.tag != "Straw")
+                {
+                    if (!blenderTop.addedToSlot(singleObj))
+                    {
                         Destroy(singleObj);
                     }
-                    /* reset to starting position if not inserted */
-                    //Destroy(singleObj);
-                    //this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
                 }
             }
         }
+
+        if (tag == "Cover" || tag == "LCup" && tag == "MCup" ||
+            tag == "SCup" || tag == "Tray" || tag == "Straw")
+        {
+            if (trashCan.hitTrash)
+            {
+                Destroy(this.gameObject);
+                trashCan.trash.Play();
+                trashCan.hitTrash = false;
+            }
+        }
+
+
     }
 
     private Vector3 MousePosition() {
@@ -143,4 +213,8 @@ public class DragDrop : MonoBehaviour
             this.transform.localPosition = new Vector3(resetPos.x, resetPos.y, resetPos.z);
         }
     }
+
+    public LayerMask wallsLayer;
+
+
 }
