@@ -287,7 +287,7 @@ public class GameHandler : MonoBehaviour
         }
         Debug.Log(tripTip);
         Debug.Log(points);
-        bnh.SetSmoothieServerRPC(true, points, tripTip);
+        bnh.SetSmoothieServerRPC(true, points, tripTip, bestPlayerScore, totalTip);
     }
 
 }

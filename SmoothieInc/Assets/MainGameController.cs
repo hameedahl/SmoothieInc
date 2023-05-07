@@ -79,14 +79,13 @@ public class MainGameController : MonoBehaviour
                     BestTime();
                 }
 
-                tipText.text = "$" + gameHandler.tripTip.ToString();
-                tipTextSmoothie.text = "$" + networkHandler.GetPlayerTipStatus().ToString();
+                tipText.text = "$" + networkHandler.GetPlayerTipStatus().ToString();  
+                tipTextSmoothie.text = "$" + gameHandler.tripTip.ToString();
 
                 if (!networkHandler.GetHostStatus())
                 {
                     nextLevelButton.SetActive(false);
                 }
-
 
                 finished = true;
             }
@@ -122,8 +121,8 @@ public class MainGameController : MonoBehaviour
     {
         finalWinScreen.SetActive(true);
         winTime.text = bestTime;
-        winAccuracy.text = gameHandler.bestPlayerScore + "%";
-        winMoney.text = "$" + gameHandler.totalTip;
+        winAccuracy.text = networkHandler.GetBestScoreStatus() + "%";
+        winMoney.text = "$" + networkHandler.GetTotalMoney();
     }
 
     public bool badSmoothie(double playerScore)
@@ -137,6 +136,13 @@ public class MainGameController : MonoBehaviour
         }
         return false;
 
+    }
+
+    public void calculateTime()
+    {
+        (matchTimer.RemainingTimeText.text).Remove(2, 1);
+        int x = System.Int32.Parse(matchTimer.RemainingTimeText.text);
+        x -y 
     }
 
     public void StartGame()
