@@ -68,7 +68,8 @@ public class MainGameController : MonoBehaviour
             {
                 winScreen.gameObject.SetActive(true);
                 accuracyText.text = playerScore + "%";
-                finishTime = matchTimer.RemainingTimeText.text;
+                calculateTime();
+                //finishTime = matchTimer.RemainingTimeText.text;
                 timeText.text = finishTime;
                 if (gameHandler.isFirstRound)
                 {
@@ -139,10 +140,12 @@ public class MainGameController : MonoBehaviour
     }
 
     public void calculateTime()
-    {
-        (matchTimer.RemainingTimeText.text).Remove(2, 1);
-        int x = System.Int32.Parse(matchTimer.RemainingTimeText.text);
-         
+    { 
+        Debug.Log(matchTimer.RemainingTime.Value / 60);
+        int minutes = 0;
+        int seconds = 60 - Mathf.FloorToInt(matchTimer.RemainingTime.Value % 60);
+        finishTime = $"{minutes:0}:{seconds:D2}";
+
     }
 
     public void StartGame()

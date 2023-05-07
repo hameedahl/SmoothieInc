@@ -183,8 +183,8 @@ public class GameHandler : MonoBehaviour
     public void getTip()
     {
         double percent = playerScore / 100;
-        tripTip = System.Math.Round(maxTip * percent, 2);
-        totalTip += System.Math.Round(tripTip, 2);
+        tripTip = System.Math.Round(maxTip * percent, 3);
+        totalTip += System.Math.Round(tripTip, 3);
     }
 
     private void checkOrder(int start, int end)
@@ -252,7 +252,7 @@ public class GameHandler : MonoBehaviour
     {
         if (bestPlayerScore < playerScore)
         {
-            bestPlayerScore = playerScore;
+            bestPlayerScore = System.Math.Round(playerScore, 2);
         }
     }
 
