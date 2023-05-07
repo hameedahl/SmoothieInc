@@ -40,26 +40,24 @@ public class FillCard : MonoBehaviour
 
     void Fill(int[] arr)
     {
-        if(!colorSet)
-        {
-            Debug.Log(arr[5]);
-
-            // randomly set color of card
-            int ran = Random.Range(0, 3);
-            if(ran == 0)
-            {
-                GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f, 1f);
-            }
-            else if(ran == 2)
-            {
-                GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), 1f, Random.Range(0.5f, 1f), 1f);
-            }
-            else
-            {
-                GetComponent<Image>().color = new Color(1f, Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f);
-            }
-            colorSet = true;
-        }
+        // if(!colorSet)
+        // {
+        //     // randomly set color of card
+        //     int ran = Random.Range(0, 3);
+        //     if(ran == 0)
+        //     {
+        //         GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f, 1f);
+        //     }
+        //     else if(ran == 2)
+        //     {
+        //         GetComponent<Image>().color = new Color(Random.Range(0.75f, 1f), 1f, Random.Range(0.5f, 1f), 1f);
+        //     }
+        //     else
+        //     {
+        //         GetComponent<Image>().color = new Color(1f, Random.Range(0.75f, 1f), Random.Range(0.5f, 1f), 1f);
+        //     }
+        //     colorSet = true;
+        // }
 
         // this is very innefficient and i probably could have done it with
         // a for loop but i cannot be bothered (i will fix later maybe)
