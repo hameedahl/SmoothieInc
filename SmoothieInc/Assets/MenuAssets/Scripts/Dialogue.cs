@@ -9,6 +9,10 @@ public class Dialogue : MonoBehaviour
     public GameObject[] dialogue;
     public GameObject driverArt;
     public GameObject smoothieArt;
+    public GameObject dialogueBox;
+    public GameObject blackScreen;
+
+    public GameObject crash;
 
     public MainMenu menu;
 
@@ -76,17 +80,33 @@ public class Dialogue : MonoBehaviour
 
         else if(slideNum == 4)
         {
+            // set smoothie art innactive
+            smoothieArt.SetActive(false);
+            // set driver art innactive
+            driverArt.SetActive(false);
+
+            dialogue[3].SetActive(false);
+            crash.SetActive(true);
+            dialogueBox.SetActive(true);
+            blackScreen.SetActive(true);
+        }
+
+        else if(slideNum == 5)
+        {
              // set driver art innactive
             smoothieArt.SetActive(false);
             // set driver art active
             driverArt.SetActive(true);
 
-            dialogue[3].SetActive(false);
+            crash.SetActive(false);
+            dialogueBox.SetActive(false);
+            blackScreen.SetActive(false);
             dialogue[4].SetActive(true);
+            dialogueBox.SetActive(true);
         }
 
 
-        else if(slideNum == 5)
+        else if(slideNum == 6)
         {
             driverArt.SetActive(false);
             // set smoothie art active
@@ -97,7 +117,7 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        else if(slideNum == 6)
+        else if(slideNum == 7)
         {
             // set smoothie art innactive
             smoothieArt.SetActive(false);
@@ -109,7 +129,7 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        else if(slideNum == 7)
+        else if(slideNum == 8)
         {
             // set driver art innactive
             driverArt.SetActive(false);
@@ -121,7 +141,7 @@ public class Dialogue : MonoBehaviour
         }
 
 
-        else if(slideNum == 8)
+        else if(slideNum == 9)
         {
             // set smoothie art innactive
             smoothieArt.SetActive(false);
@@ -132,7 +152,7 @@ public class Dialogue : MonoBehaviour
             dialogue[8].SetActive(true);
         }
 
-        else if(slideNum == 9)
+        else if(slideNum == 10)
         {
 
             // set driver art innactive
