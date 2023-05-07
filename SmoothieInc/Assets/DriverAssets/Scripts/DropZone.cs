@@ -11,7 +11,7 @@ public class DropZone : MonoBehaviour
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
-        sr.color = new Color(1f,1f,1f,0.1f);
+        sr.color = new Color(1f,1f,1f,0.5f);
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -26,7 +26,7 @@ public class DropZone : MonoBehaviour
     {
         if(col.tag == "Player")
         {
-            sr.color = new Color(1f,1f,1f,0.1f);
+            sr.color = new Color(1f,1f,1f,0.5f);
         }
     }
 
