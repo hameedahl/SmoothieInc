@@ -315,6 +315,7 @@ public class MainMenu : MonoBehaviour
     public void SetLevel(float sliderValue)
     {
         smoothieMixer.SetFloat("MusicVolume", Mathf.Log10(sliderValue) * 20);
+        audioMixer.SetFloat("SFXVolume", Mathf.Log10(sliderValue) * 20);
         volumeLevel = sliderValue;
     }
 
