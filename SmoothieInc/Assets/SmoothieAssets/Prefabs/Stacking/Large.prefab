@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 2529488039676914214}
   m_Layer: 0
   m_Name: Large
-  m_TagString: Cup
+  m_TagString: LCup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

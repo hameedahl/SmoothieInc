@@ -24,8 +24,6 @@ public class DragDrop : MonoBehaviour
 
     public Texture2D cursorHand;
     public Texture2D cursorGrab;
-    LayerMask layerMask;
-
 
     public string message;
 
@@ -81,22 +79,23 @@ public class DragDrop : MonoBehaviour
                 isFoodStack = false;
                 pourLiquid(); /* check if liquid is pouring */
             } else if (this.tag == "FoodStack") {
-                //bool HasPathFreeOfWalls(Transform player, Transform enemy, float reticleRadius)
-                //{
-                //Vector2 direction = enemy.position - player.position;
-                //Vector2 origin = (player.position + (direction.normalized) * reticleRadius);
-                //float distance = direction.magnitude - reticleRadius;
-                    RaycastHit2D rayHit = Physics2D.Raycast(transform.position, transform.forward, 100f);
-                    if (rayHit)
-                    {
-                    Debug.Log(rayHit.collider.name);
-                    }
                 isFoodStack = true;
                 isFood = false;
-                singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
-     
-                singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
-                foodInfo = singleObj.GetComponent<Food>();
+
+                if (objToGrab.tag == "LCup" || objToGrab.tag == "MCup" || objToGrab.tag == "SCup" || objToGrab.tag == "Tray"
+                    || objToGrab.tag == "Cover" || objToGrab.tag == "Straw") {
+                    if (!GameObject.FindGameObjectWithTag(objToGrab.tag))
+                    { /* only have one of each of drink stuff */
+
+                        singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
+                        singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+                        foodInfo = singleObj.GetComponent<Food>();
+                    }
+                } else {
+                    singleObj = Instantiate(objToGrab, MousePosition(), Quaternion.identity); /* create new object from stack */
+                    singleObj.GetComponent<DragDrop>().SmoothieCam = SmoothieCam;
+                    foodInfo = singleObj.GetComponent<Food>();
+                }
             }
             isMoving = true;
 

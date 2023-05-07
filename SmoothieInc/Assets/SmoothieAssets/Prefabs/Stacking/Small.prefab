@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 7468686786314464456}
   m_Layer: 0
   m_Name: Small
-  m_TagString: Cup
+  m_TagString: SCup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

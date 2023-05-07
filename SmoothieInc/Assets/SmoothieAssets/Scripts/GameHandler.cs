@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using TMPro;
+using static UnityEditor.Progress;
 
 
 
@@ -196,6 +197,10 @@ public class GameHandler : MonoBehaviour
                 }
             }
         }
+        if (!inOrder)
+        {
+            Debug.Log("Points Lost at: " + start);
+        }
         lowerScore();
     }
 
@@ -211,6 +216,7 @@ public class GameHandler : MonoBehaviour
     {
         if (!inOrder && (playerScore - itemWeight) > 0)
         {
+
             playerScore -= itemWeight;
         }
     }
@@ -245,6 +251,7 @@ public class GameHandler : MonoBehaviour
             bestPlayerScore = playerScore;
         }
     }
+
 
     public bool GetDrinkFinished()
     {

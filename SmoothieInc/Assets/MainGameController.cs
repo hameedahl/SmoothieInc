@@ -64,7 +64,7 @@ public class MainGameController : MonoBehaviour
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
             matchTimer.isTimerStarted = false; /* pause timer */
-            if (!badSmoothie())
+            if (!badSmoothie(playerScore))
             {
                 winScreen.gameObject.SetActive(true);
                 accuracyText.text = playerScore + "%";
@@ -125,9 +125,10 @@ public class MainGameController : MonoBehaviour
         winAccuracy.text = "%" + gameHandler.bestPlayerScore;
         winMoney.text = "$" + gameHandler.totalTip;
     }
-    public bool badSmoothie()
+
+    public bool badSmoothie(double playerScore)
     {
-        if (gameHandler.playerScore < 50)
+        if (playerScore < 50)
         {
             LoseScreen.SetActive(true);
             loseText.text = "Your customer was uhappy with their smoothie. They said it tasted much different from what they ordered. They've decided not to order from us again.";
