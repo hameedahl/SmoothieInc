@@ -111,7 +111,7 @@ public class MainGameController : MonoBehaviour
         {
             networkHandler.ResetOrders();
             gameHandler.newOrder(difficulty);
-            truckManager.NewOrder(difficulty);
+            truckManager.NewOrder(difficulty + 2);
             winScreen.SetActive(false);
         } else {
             FinalWin();
