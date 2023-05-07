@@ -20,6 +20,7 @@ public class MatchTimer : NetworkBehaviour
     public TextMeshProUGUI RemainingTimeText2;
 
     public GameObject LoseScreen;
+    public BooleanNetworkHandler networkHandler;
     public Text loseText;
 
 
@@ -58,6 +59,7 @@ public class MatchTimer : NetworkBehaviour
     [ClientRpc]
     private void EndMatchClientRpc()
     {
+        networkHandler.SetLostStatus(true);
         LoseScreen.gameObject.SetActive(true);
         loseText.text = "Looks like your customer is upset because they had to wait a long time. They're asking for a free smoothie to make up for it.";
     }

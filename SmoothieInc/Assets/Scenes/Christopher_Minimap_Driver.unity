@@ -19760,6 +19760,8 @@ MonoBehaviour:
     m_InternalValue: 0
   finalWinNetworkVariable:
     m_InternalValue: 0
+  lostNetworkVariable:
+    m_InternalValue: 0
   drinkFinishedNetworkVariable:
     m_InternalValue: 0
   playerScoreNetworkVariable:
@@ -22965,6 +22967,7 @@ MonoBehaviour:
   RemainingTimeText: {fileID: 106961351}
   RemainingTimeText2: {fileID: 1138164533}
   LoseScreen: {fileID: 1832806108}
+  networkHandler: {fileID: 1226185016}
   loseText: {fileID: 502267905}
   isTimerStarted: 0
 --- !u!1 &1498944927
