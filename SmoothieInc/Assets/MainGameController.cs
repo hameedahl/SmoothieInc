@@ -96,6 +96,11 @@ public class MainGameController : MonoBehaviour
         {
             winScreen.SetActive(false);
         }
+
+        if(!networkHandler.GetHostStatus() && networkHandler.GetFinalWin())
+        {
+            FinalWin();
+        }
     }
 
     public void NewOrders()
@@ -114,6 +119,7 @@ public class MainGameController : MonoBehaviour
             truckManager.NewOrder(difficulty + 2);
             winScreen.SetActive(false);
         } else {
+            networkHandler.SetFinalWin(true);
             FinalWin();
         }
     }

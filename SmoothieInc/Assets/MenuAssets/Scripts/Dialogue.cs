@@ -12,6 +12,8 @@ public class Dialogue : MonoBehaviour
     public GameObject dialogueBox;
     public GameObject blackScreen;
 
+    public AudioSource click;
+
     public GameObject crash;
 
     public MainMenu menu;
@@ -29,6 +31,7 @@ public class Dialogue : MonoBehaviour
         if(Input.GetButtonDown("Fire1"))
         {
             ShowSlide(slideNum);
+            click.Play();
             slideNum++;
         }
         

@@ -23,6 +23,12 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableWritePermission.Owner
     );
 
+    public NetworkVariable<bool> finalWinNetworkVariable = new NetworkVariable<bool>(
+      value:false,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
     public NetworkVariable<bool> drinkFinishedNetworkVariable = new NetworkVariable<bool>(
       value:false,
       NetworkVariableReadPermission.Everyone,
@@ -260,6 +266,16 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public void SetArrivedStatus(bool arrived)
     {
         arrivedNetworkVariable.Value = arrived;
+    }
+
+    public void SetFinalWin(bool win)
+    {
+        finalWinNetworkVariable.Value = win;
+    }
+
+    public bool GetFinalWin()
+    {
+        return finalWinNetworkVariable.Value;
     }
 
     public bool GetDrinkFinishedStatus()
