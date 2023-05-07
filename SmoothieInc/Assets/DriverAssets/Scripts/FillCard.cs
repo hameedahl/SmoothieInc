@@ -31,17 +31,12 @@ public class FillCard : MonoBehaviour
 
     public Image cupSize;
 
-    public Image mixIn;
-
-    public Image topping1;
-    public Image topping2;
-
     public TextMeshProUGUI nameText;
 
     public void Initialize(int[] arr)
-   {
-       Fill(arr);
-   }
+    {
+        Fill(arr);
+    }
 
     void Fill(int[] arr)
     {
@@ -122,23 +117,5 @@ public class FillCard : MonoBehaviour
             cupSize.sprite = empty;
         else
             cupSize.sprite = cupSizes[arr[8]];
-
-        //// Mix-In
-        //if(arr[9] == -1)
-        //    mixIn.sprite = empty;
-        //else
-        //    mixIn.sprite = mixIns[arr[9]];
-
-        //// Topping 1
-        //if(arr[10] == -1)
-        //    topping1.sprite = empty;
-        //else
-        //    topping1.sprite = toppings[arr[10]];
-
-        //// Topping 2
-        //if(arr[11] == -1)
-        //    topping2.sprite = empty;
-        //else
-        //    topping2.sprite = toppings[arr[11]];
     }
 }
