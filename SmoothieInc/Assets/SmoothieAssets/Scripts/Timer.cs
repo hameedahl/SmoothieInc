@@ -20,7 +20,6 @@ public class Timer : MonoBehaviour
     {
         this.gameObject.SetActive(false);
         StopCoroutine(timer());
-        Debug.Log("timer: " + level);
         gameHandler.blenderLevel = level;
     }
 

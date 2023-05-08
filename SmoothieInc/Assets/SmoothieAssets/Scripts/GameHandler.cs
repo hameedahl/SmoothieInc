@@ -36,11 +36,7 @@ public class GameHandler : MonoBehaviour
     public int[] valuesArray = new int[arraySize];
     private GameObject tray;
     public double playerScore = 0;
-
-    //new
     public double playerTip = 0;
-    //new
-
     public double bestPlayerScore = 0;
 
     public double itemWeight = 0;
@@ -51,8 +47,9 @@ public class GameHandler : MonoBehaviour
     public int drinkCount = 0;
     public bool levelCompleted = false;
 
-    public FillCard fillCard;
     public BooleanNetworkHandler bnh;
+    public MainGameController gameController;
+
 
     public TMP_Text tipText;
     public double maxTip = 0;
@@ -63,7 +60,13 @@ public class GameHandler : MonoBehaviour
     public bool isFirstRound = true;
     public SmoothieTut smoothieTut;
 
-
+    public string finishTime;
+    public int bestTimeMin = 0;
+    public int bestTimeSec = 0;
+    int minutes = 0;
+    int seconds = 0;
+    int playerMinutes = 0;
+    int playerSeconds = 0;
 
 
     // Start is called before the first frame update
@@ -73,9 +76,10 @@ public class GameHandler : MonoBehaviour
 
     public void newOrder(int difficulty)
     {
-        /* destory old drink tray */
+        ///* destory old drink tray */
         if (GameObject.FindGameObjectWithTag("PlayerTray") != null)
         {
+            Debug.Log("gone");
             Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
         }
 
@@ -101,37 +105,28 @@ public class GameHandler : MonoBehaviour
     public void generateOrder(int difficulty) {
         orderComplete = false;
         System.Random rand = new System.Random();
+        drinkCount = 1;
+
         if (difficulty == 1) {
-            drinkCount = 1;
             maxTip = 5;
             generateSolids(rand, 2);
             generateLiquids(rand, 1);
         } else if (difficulty == 2) {
-            drinkCount = 1;
             maxTip = 6;
             generateSolids(rand, 3);
             generateLiquids(rand, 2);
         } else if (difficulty == 3) {
-            drinkCount = 1;
             maxTip = 10;
             generateSolids(rand, 4);
             generateLiquids(rand, 3);
-        } else if (difficulty == 4) {
-            //drinkCount = 2;
-            //generateSolids(rand, 4);
-            //generateLiquids(rand, 3);
-            //order[timeIndex - 1] = new KeyValuePair<string, int>("Time", rand.Next(0, timeRange));
-            //orderCount++;
-            //order[cupsIndex - 1] = new KeyValuePair<string, int>("Cups", rand.Next(0, cupsRange));
-            //orderCount++;
-            //generateSolids(rand, 4);
-            //generateLiquids(rand, 3);
         } else {
-            //drinkCount = 4;
-            //generateSolids(rand, 4);
-            //generateLiquids(rand, 3);
-            //generateSolids(rand, 4);
-            //generateLiquids(rand, 3);
+            if (difficulty == 4) {
+                maxTip = 10;
+            } else {
+                maxTip = 20;
+            }
+            generateSolids(rand, 4);
+            generateLiquids(rand, 3);
         }
 
         order[timeIndex - 1] = rand.Next(1, timeRange+1);
@@ -141,7 +136,7 @@ public class GameHandler : MonoBehaviour
         orderCount++;
 
         itemWeight = System.Math.Round(100.0 / orderCount, 2);
-        difficulty++;
+        Debug.Log("Tip: " + maxTip);
     }
 
     public void generateSolids(System.Random rand, int count)
@@ -182,9 +177,10 @@ public class GameHandler : MonoBehaviour
 
     public void getTip()
     {
+        Debug.Log("here: " + maxTip);
         double percent = playerScore / 100;
-        tripTip = System.Math.Round(maxTip * percent, 3);
-        totalTip += System.Math.Round(tripTip, 3);
+        tripTip = System.Math.Round(maxTip * percent, 2);
+        totalTip += System.Math.Round(tripTip, 2);
     }
 
     private void checkOrder(int start, int end)
@@ -277,6 +273,52 @@ public class GameHandler : MonoBehaviour
       valuesArray = order;
     }
 
+    public void BestTime()
+    {
+        calculateTime();
+
+        if (isFirstRound)
+        {
+            bestTimeMin = playerMinutes;
+            bestTimeSec = playerSeconds;
+            return;
+        }
+        //bestTime.Remove(2, 1);
+        //finishTime.Remove(2, 1);
+        //Debug.Log(bestTime);
+        //Debug.Log(finishTime);
+        //Debug.Log(System.Int32.Parse(bestTime));
+        //Debug.Log(System.Int32.Parse(finishTime));
+
+        //int minutes = Mathf.FloorToInt((int)gameTimes[difficulty] / 60);
+        //int seconds = Mathf.FloorToInt((int)gameTimes[difficulty] % 60);
+        //int playerMinutes = Mathf.FloorToInt(matchTimer.RemainingTime.Value / 60);
+        //int playerSeconds = (int)gameTimes[difficulty] - Mathf.FloorToInt(matchTimer.RemainingTime.Value % 60);
+        /* find better time */
+        //if (System.Int32.Parse(bestTime) < System.Int32.Parse(finishTime))
+        //{
+        //    bestTime = finishTime;
+        //}
+
+        if (bestTimeMin >= playerMinutes && bestTimeSec >= playerSeconds)
+        {
+            bestTimeMin = playerMinutes;
+            bestTimeSec = playerSeconds;
+        }
+    }
+
+    public void calculateTime()
+    {
+        minutes = Mathf.FloorToInt((int)gameController.gameTimes[gameController.difficulty] / 60);
+        seconds = Mathf.FloorToInt((int)gameController.gameTimes[gameController.difficulty] % 60);
+        playerMinutes = Mathf.FloorToInt(gameController.matchTimer.RemainingTime.Value / 60);
+        playerSeconds = Mathf.FloorToInt(gameController.matchTimer.RemainingTime.Value % 60);
+
+        finishTime = $"{minutes - playerMinutes:D2}:{seconds - playerSeconds:D2}";
+        Debug.Log(finishTime);
+        gameController.timeText.text = finishTime;
+    }
+
     public void completeOrder()
     {
         valuesArray = bnh.GetValuesArrayFromNetwork();
@@ -285,9 +327,9 @@ public class GameHandler : MonoBehaviour
         {
             playerOrder[i] = -1;
         }
+
         Debug.Log(tripTip);
-        Debug.Log(points);
-        bnh.SetSmoothieServerRPC(true, points, tripTip, bestPlayerScore, totalTip);
+        bnh.SetSmoothieServerRPC(true, points, tripTip, bestPlayerScore, totalTip, bestTimeMin, bestTimeSec);
     }
 
 }
