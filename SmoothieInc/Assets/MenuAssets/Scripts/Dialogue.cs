@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Dialogue : MonoBehaviour
 {
-    int slideNum = 0;
+    int slideNum = -1;
 
     public GameObject[] dialogue;
     public GameObject driverArt;
     public GameObject smoothieArt;
     public GameObject dialogueBox;
     public GameObject blackScreen;
+    public GameObject cont;
 
     public AudioSource click;
 
@@ -37,15 +38,33 @@ public class Dialogue : MonoBehaviour
         
     }
 
+    public void Skip()
+    {
+        menu.StartMenu();
+        gameObject.SetActive(false);
+    }
+
     public void ShowSlide(int slideNum)
     {
-        if(slideNum == 0)
+        if(slideNum == -1)
+        {
+            // set driver art innactive
+            driverArt.SetActive(false);
+            // set smoothie art inactive
+            smoothieArt.SetActive(false);
+
+            cont.SetActive(true);
+            blackScreen.SetActive(true);
+        }
+        else if(slideNum == 0)
         {
             // set driver art innactive
             driverArt.SetActive(false);
             // set smoothie art active
             smoothieArt.SetActive(true);
 
+            cont.SetActive(false);
+            blackScreen.SetActive(false);
             dialogue[0].SetActive(true);
         }
         else if(slideNum == 1)
