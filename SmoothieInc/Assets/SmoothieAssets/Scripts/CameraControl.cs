@@ -8,7 +8,6 @@ public class CameraControl : MonoBehaviour
 {
     private float currentPosX;
     private Vector3 velocity = Vector3.zero;
-    private bool inStation0 = true;
     public Camera cam;
     public GameObject lBtn;
     public GameObject rBtn;

@@ -63,11 +63,6 @@ public class GameHandler : MonoBehaviour
     public string finishTime;
     public int bestTimeMin = 0;
     public int bestTimeSec = 0;
-    int minutes = 0;
-    int seconds = 0;
-    int playerMinutes = 0;
-    int playerSeconds = 0;
-
 
     // Start is called before the first frame update
     void Start() {
@@ -76,13 +71,6 @@ public class GameHandler : MonoBehaviour
 
     public void newOrder(int difficulty)
     {
-        ///* destory old drink tray */
-        if (GameObject.FindGameObjectWithTag("PlayerTray") != null)
-        {
-            Debug.Log("gone");
-            Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
-        }
-
         smoothieTut.writeToScreen("Open the cooler and add ice to the blender.");
         /* update tip */
         tipText.text = "$" + totalTip;
@@ -106,7 +94,6 @@ public class GameHandler : MonoBehaviour
         orderComplete = false;
         System.Random rand = new System.Random();
         drinkCount = 1;
-
         if (difficulty == 1) {
             maxTip = 5;
             generateSolids(rand, 2);
@@ -129,6 +116,7 @@ public class GameHandler : MonoBehaviour
             generateLiquids(rand, 3);
         }
 
+        bnh.SetMaxTip(maxTip);
         order[timeIndex - 1] = rand.Next(1, timeRange+1);
         orderCount++;
 
@@ -136,7 +124,6 @@ public class GameHandler : MonoBehaviour
         orderCount++;
 
         itemWeight = System.Math.Round(100.0 / orderCount, 2);
-        Debug.Log("Tip: " + maxTip);
     }
 
     public void generateSolids(System.Random rand, int count)
@@ -177,9 +164,8 @@ public class GameHandler : MonoBehaviour
 
     public void getTip()
     {
-        Debug.Log("here: " + maxTip);
         double percent = playerScore / 100;
-        tripTip = System.Math.Round(maxTip * percent, 2);
+        tripTip = System.Math.Round(bnh.GetMaxTip() * percent, 2);
         totalTip += System.Math.Round(tripTip, 2);
     }
 
@@ -275,49 +261,22 @@ public class GameHandler : MonoBehaviour
 
     public void BestTime()
     {
-        calculateTime();
-
         if (isFirstRound)
         {
-            bestTimeMin = playerMinutes;
-            bestTimeSec = playerSeconds;
+            bestTimeMin = gameController.playerMinutes;
+            bestTimeSec = gameController.playerSeconds;
             return;
         }
-        //bestTime.Remove(2, 1);
-        //finishTime.Remove(2, 1);
-        //Debug.Log(bestTime);
-        //Debug.Log(finishTime);
-        //Debug.Log(System.Int32.Parse(bestTime));
-        //Debug.Log(System.Int32.Parse(finishTime));
 
-        //int minutes = Mathf.FloorToInt((int)gameTimes[difficulty] / 60);
-        //int seconds = Mathf.FloorToInt((int)gameTimes[difficulty] % 60);
-        //int playerMinutes = Mathf.FloorToInt(matchTimer.RemainingTime.Value / 60);
-        //int playerSeconds = (int)gameTimes[difficulty] - Mathf.FloorToInt(matchTimer.RemainingTime.Value % 60);
-        /* find better time */
-        //if (System.Int32.Parse(bestTime) < System.Int32.Parse(finishTime))
-        //{
-        //    bestTime = finishTime;
-        //}
-
-        if (bestTimeMin >= playerMinutes && bestTimeSec >= playerSeconds)
+        if (bestTimeMin >= gameController.playerMinutes && bestTimeSec >= gameController.playerSeconds)
         {
-            bestTimeMin = playerMinutes;
-            bestTimeSec = playerSeconds;
+            bestTimeMin = gameController.playerMinutes;
+            bestTimeSec = gameController.playerSeconds;
+
         }
     }
 
-    public void calculateTime()
-    {
-        minutes = Mathf.FloorToInt((int)gameController.gameTimes[gameController.difficulty] / 60);
-        seconds = Mathf.FloorToInt((int)gameController.gameTimes[gameController.difficulty] % 60);
-        playerMinutes = Mathf.FloorToInt(gameController.matchTimer.RemainingTime.Value / 60);
-        playerSeconds = Mathf.FloorToInt(gameController.matchTimer.RemainingTime.Value % 60);
 
-        finishTime = $"{minutes - playerMinutes:D2}:{seconds - playerSeconds:D2}";
-        Debug.Log(finishTime);
-        gameController.timeText.text = finishTime;
-    }
 
     public void completeOrder()
     {
@@ -328,7 +287,6 @@ public class GameHandler : MonoBehaviour
             playerOrder[i] = -1;
         }
 
-        Debug.Log(tripTip);
         bnh.SetSmoothieServerRPC(true, points, tripTip, bestPlayerScore, totalTip, bestTimeMin, bestTimeSec);
     }
 

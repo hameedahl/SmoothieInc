@@ -24,6 +24,10 @@ public class MainGameController : MonoBehaviour
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
     public string bestTime;
+    public int minutes = 0;
+    public int seconds = 0;
+    public int playerMinutes = 0;
+    public int playerSeconds = 0;
 
 
 
@@ -69,13 +73,20 @@ public class MainGameController : MonoBehaviour
         {
             dFinish = true;
         }
+
         if (networkHandler.GetArrivedStatus() && networkHandler.GetDrinkFinishedStatus()) {
             double playerScore = System.Math.Round(networkHandler.GetPlayerScoreStatus());
             matchTimer.isTimerStarted = false; /* pause timer */
             if (!badSmoothie(playerScore) && !networkHandler.GetLostStatus())
             {
+                /* destory old drink tray */
+                if (GameObject.FindGameObjectWithTag("PlayerTray") != null)
+                {
+                    Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
+                }
                 winScreen.gameObject.SetActive(true);
                 accuracyText.text = playerScore + "%";  /* fill ui card */
+                calculateTime();
                 gameHandler.BestTime();
                 tipText.text = "$" + networkHandler.GetPlayerTipStatus().ToString();  
                 tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
@@ -100,6 +111,18 @@ public class MainGameController : MonoBehaviour
         }
     }
 
+    public void calculateTime()
+    {
+        minutes = Mathf.FloorToInt((int)gameTimes[difficulty] / 60); 
+        seconds = Mathf.FloorToInt((int)gameTimes[difficulty] % 60); 
+
+
+        int time = (int)gameTimes[difficulty] - (int)matchTimer.RemainingTime.Value;
+        playerMinutes = Mathf.FloorToInt(time / 60);
+        playerSeconds = Mathf.FloorToInt(time % 60);
+        timeText.text = $"{playerMinutes:D2}:{playerSeconds:D2}";
+    }
+
     public void NewOrders()
     {
         difficulty++;
@@ -108,7 +131,7 @@ public class MainGameController : MonoBehaviour
         gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
         sFinish = false;
         dFinish = false;
-        if (difficulty != 3)
+        if (difficulty != 6)
         {
             networkHandler.ResetOrders();
             gameHandler.newOrder(difficulty);
@@ -144,12 +167,10 @@ public class MainGameController : MonoBehaviour
     }
 
 
-
     public void StartGame(float time)
     {
         matchTimer.StartTimer(time);
     }
-
 
 
 }

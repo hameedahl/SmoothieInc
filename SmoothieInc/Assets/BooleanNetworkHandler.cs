@@ -82,6 +82,12 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableWritePermission.Owner
     );
 
+    public NetworkVariable<double> playerMaxTipNetworkVariable = new NetworkVariable<double>(
+      value: 0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
     public NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
       value:new Vector3(0,0,0),
       NetworkVariableReadPermission.Everyone,
@@ -345,6 +351,16 @@ public class BooleanNetworkHandler : NetworkBehaviour
     public double GetBestTimeMin()
     {
         return playerBestTimeMinNetworkVariable.Value;
+    }
+
+    public void SetMaxTip(double tip)
+    {
+        playerMaxTipNetworkVariable.Value = tip;
+    }
+
+    public double GetMaxTip()
+    {
+        return playerMaxTipNetworkVariable.Value;
     }
 
     public bool GetHostStatus()

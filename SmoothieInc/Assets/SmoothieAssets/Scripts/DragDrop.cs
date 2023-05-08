@@ -166,6 +166,7 @@ public class DragDrop : MonoBehaviour
         } else if (isFoodStack) {
             if (trashCan.hitTrash)
             {
+                Debug.Log("hit");
                 Destroy(singleObj);
                 trashCan.trash.Play();
                 trashCan.hitTrash = false;
@@ -173,27 +174,30 @@ public class DragDrop : MonoBehaviour
             else
             {
                 /* insert item into available slot if close to blender */
-                if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "LCup" && singleObj.tag != "MCup" && singleObj.tag != "SCup" && singleObj.tag != "Tray" && singleObj.tag != "Straw")
+                if (singleObj && singleObj.tag != "Cover" && singleObj.tag != "LCup" && singleObj.tag != "MCup" && singleObj.tag != "SCup" && singleObj.tag != "Straw" && singleObj.tag != "Tray" && singleObj.tag != "PlayerTray")
                 {
                     if (!blenderTop.addedToSlot(singleObj))
                     {
+                        Debug.Log("destorying");
+
                         Destroy(singleObj);
                     }
                 }
             }
         }
 
-        if (tag == "Cover" || tag == "LCup" && tag == "MCup" ||
-            tag == "SCup" || tag == "Tray" || tag == "Straw")
+        if (tag == "Cover" || tag == "LCup" || tag == "MCup" ||
+            tag == "SCup"  || tag == "Straw" || tag == "Tray" || tag == "PlayerTray")
         {
             if (trashCan.hitTrash)
             {
+                Debug.Log("destorying33");
+
                 Destroy(this.gameObject);
                 trashCan.trash.Play();
                 trashCan.hitTrash = false;
             }
         }
-
 
     }
 
