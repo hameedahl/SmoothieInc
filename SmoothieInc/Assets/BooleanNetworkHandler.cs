@@ -70,6 +70,18 @@ public class BooleanNetworkHandler : NetworkBehaviour
       NetworkVariableWritePermission.Owner
     );
 
+    public NetworkVariable<double> playerBestTimeMinNetworkVariable = new NetworkVariable<double>(
+      value: 0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
+    public NetworkVariable<double> playerBestTimeSecNetworkVariable = new NetworkVariable<double>(
+      value: 0,
+      NetworkVariableReadPermission.Everyone,
+      NetworkVariableWritePermission.Owner
+    );
+
     public NetworkVariable<Vector3> destinationPos = new NetworkVariable<Vector3>(
       value:new Vector3(0,0,0),
       NetworkVariableReadPermission.Everyone,
@@ -325,9 +337,14 @@ public class BooleanNetworkHandler : NetworkBehaviour
         return playerTotalMoneyNetworkVariable.Value;
     }
 
-    public double GetBestTime()
+    public double GetBestTimeSec()
     {
-        return playerBestTimeNetworkVariable.Value;
+        return playerBestTimeSecNetworkVariable.Value;
+    }
+
+    public double GetBestTimeMin()
+    {
+        return playerBestTimeMinNetworkVariable.Value;
     }
 
     public bool GetHostStatus()
@@ -348,7 +365,7 @@ public class BooleanNetworkHandler : NetworkBehaviour
     }
 
     [ServerRpc(RequireOwnership = false)]
-    public void SetSmoothieServerRPC(bool finished, double points, double tip, double bestScore, double totalMoney, ServerRpcParams serverRpcParams = default)
+    public void SetSmoothieServerRPC(bool finished, double points, double tip, double bestScore, double totalMoney, double bestTimeMin, double bestTimeSec, ServerRpcParams serverRpcParams = default)
     {
       var clientId = serverRpcParams.Receive.SenderClientId;
       if (NetworkManager.ConnectedClients.ContainsKey(clientId))
@@ -359,7 +376,11 @@ public class BooleanNetworkHandler : NetworkBehaviour
           playerTipNetworkVariable.Value = tip;
           playerBestScoreNetworkVariable.Value = bestScore;
           playerTotalMoneyNetworkVariable.Value = totalMoney;
-          //playerBestTimeNetworkVariable.Value = bestTime;
+          playerBestTimeMinNetworkVariable.Value = bestTimeMin;
+          playerBestTimeSecNetworkVariable.Value = bestTimeSec;
+
+
+            //playerBestTimeNetworkVariable.Value = bestTime;
         }
     }
 

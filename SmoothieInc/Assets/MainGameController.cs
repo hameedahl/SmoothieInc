@@ -23,8 +23,9 @@ public class MainGameController : MonoBehaviour
 
     public GameObject nextLevelButton;
     public MatchTimer matchTimer;
-    public string finishTime;
-    public string bestTime = "01:00";
+    public string bestTime;
+
+
 
     bool sFinish = false;
     bool dFinish = false;
@@ -74,21 +75,10 @@ public class MainGameController : MonoBehaviour
             if (!badSmoothie(playerScore) && !networkHandler.GetLostStatus())
             {
                 winScreen.gameObject.SetActive(true);
-                accuracyText.text = playerScore + "%";
-                calculateTime();
-                //finishTime = matchTimer.RemainingTimeText.text;
-                timeText.text = finishTime;
-                if (gameHandler.isFirstRound)
-                {
-                    bestTime = finishTime;
-                }
-                else
-                {
-                    BestTime();
-                }
-
+                accuracyText.text = playerScore + "%";  /* fill ui card */
+                gameHandler.BestTime();
                 tipText.text = "$" + networkHandler.GetPlayerTipStatus().ToString();  
-                tipTextSmoothie.text = "$" + gameHandler.tripTip.ToString();
+                tipTextSmoothie.text = "$" + gameHandler.totalTip.ToString();
 
                 if (!networkHandler.GetHostStatus())
                 {
@@ -118,9 +108,7 @@ public class MainGameController : MonoBehaviour
         gameHandler.isFirstRound = false; /* turn off smoothie maker tips */
         sFinish = false;
         dFinish = false;
-        //int difficulty = Random.Range(1,3);
-
-        if (difficulty != 6)
+        if (difficulty != 3)
         {
             networkHandler.ResetOrders();
             gameHandler.newOrder(difficulty);
@@ -135,6 +123,7 @@ public class MainGameController : MonoBehaviour
     public void FinalWin()
     {
         finalWinScreen.SetActive(true);
+        bestTime = $"{networkHandler.GetBestTimeMin().ToString():D2}:{networkHandler.GetBestTimeSec().ToString():D2}";
         winTime.text = bestTime;
         winAccuracy.text = networkHandler.GetBestScoreStatus() + "%";
         winMoney.text = "$" + networkHandler.GetTotalMoney();
@@ -154,30 +143,13 @@ public class MainGameController : MonoBehaviour
 
     }
 
-    public void calculateTime()
-    { 
-        Debug.Log(matchTimer.RemainingTime.Value / 60);
-        int minutes = 0;
-        int seconds = 60 - Mathf.FloorToInt(matchTimer.RemainingTime.Value % 60);
-        finishTime = $"{minutes:0}:{seconds:D2}";
-    }
+
 
     public void StartGame(float time)
     {
         matchTimer.StartTimer(time);
     }
 
-    public void BestTime()
-    {
-        bestTime.Remove(2, 1);
-        finishTime.Remove(2, 1);
-        Debug.Log(System.Int32.Parse(bestTime));
-        Debug.Log(System.Int32.Parse(finishTime));
 
-        if (System.Int32.Parse(bestTime) < System.Int32.Parse(finishTime))
-        {
-            bestTime = finishTime;
-        }
-    }
 
 }

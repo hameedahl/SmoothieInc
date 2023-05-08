@@ -30617,6 +30617,10 @@ MonoBehaviour:
     m_InternalValue: 0
   playerBestTimeNetworkVariable:
     m_InternalValue: 0
+  playerBestTimeMinNetworkVariable:
+    m_InternalValue: 0
+  playerBestTimeSecNetworkVariable:
+    m_InternalValue: 0
   destinationPos:
     m_InternalValue: {x: 0, y: 0, z: 0}
   valuesArrayNetwork0:
@@ -33699,7 +33703,6 @@ MonoBehaviour:
   tipTextSmoothie: {fileID: 1616144095}
   nextLevelButton: {fileID: 534142396}
   matchTimer: {fileID: 1495278601}
-  finishTime: 
   bestTime: 01:00
   finalWinScreen: {fileID: 1101807927}
   winTime: {fileID: 60228202}
@@ -40836,14 +40839,17 @@ MonoBehaviour:
   orderComplete: 0
   drinkCount: 0
   levelCompleted: 0
-  fillCard: {fileID: 1739170484}
   bnh: {fileID: 1226185016}
+  gameController: {fileID: 1364502415}
   tipText: {fileID: 1616144095}
   maxTip: 0
   totalTip: 0
   tripTip: 0
   isFirstRound: 1
   smoothieTut: {fileID: 231363865}
+  finishTime: 
+  bestTimeMin: 0
+  bestTimeSec: 0
 --- !u!4 &1652144663
 Transform:
   m_ObjectHideFlags: 0
