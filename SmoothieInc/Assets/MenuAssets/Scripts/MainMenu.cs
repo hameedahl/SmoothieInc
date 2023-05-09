@@ -47,6 +47,7 @@ public class MainMenu : MonoBehaviour
 
     public GameObject truckUI;
     public GameObject smoothieUI;
+    public AudioSource driverMusic;
     public GameObject smoothieMusicGO;
     private AudioSource smoothieMusic;
 
@@ -190,6 +191,10 @@ public class MainMenu : MonoBehaviour
         truckUI.gameObject.SetActive(true);
         toggleJoinMenu(false, false);
         audioMixer.SetFloat("SFXVolume", 1.0f);
+        if (!driverMusic.isPlaying)
+        {
+            driverMusic.Play();
+        }
     }
 
     public void StartClientMenu()
