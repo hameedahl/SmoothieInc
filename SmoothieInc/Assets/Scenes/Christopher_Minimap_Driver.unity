@@ -18558,11 +18558,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7871556540511652807, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_SortingOrder
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7871556540511652807, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_SortingLayerID
       value: -1382409981
+      objectReference: {fileID: 0}
+    - target: {fileID: -7871556540511652807, guid: 1972353c076594203b9e99a6c9450482, type: 3}
+      propertyPath: m_MaskInteraction
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3888481672020999207, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_Name
@@ -18578,11 +18582,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_LocalScale.x
-      value: 29.9
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_LocalScale.y
-      value: 29.9
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 8742538545776668643, guid: 1972353c076594203b9e99a6c9450482, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52696,7 +52700,7 @@ SpriteMask:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 3286163911610860551, guid: 17e9dd4123d174bfdab10d32f3ead887, type: 3}
-  m_MaskAlphaCutoff: 0.2
+  m_MaskAlphaCutoff: 0
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0
   m_FrontSortingLayer: 0
