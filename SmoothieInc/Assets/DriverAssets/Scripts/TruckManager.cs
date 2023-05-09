@@ -5,11 +5,14 @@ using UnityEngine;
 public class TruckManager : MonoBehaviour
 {
     public bool arrived = false;
+    bool playEffect = true;
     public DriverNetwork drivernet;
     public OrderFinder of;
     public BooleanNetworkHandler networkHandler;
     public GameObject dest;
     public Transform target;
+    public CarController controller;
+    public GameObject arriveEffect;
 
     public bool host = false;
 
@@ -24,6 +27,7 @@ public class TruckManager : MonoBehaviour
         if(host)
         {
             //int diff = Random.Range(1,10);
+            playEffect = true;
             dest = of.Find(diff);
             of.DisableCol();
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(true);
@@ -38,6 +42,11 @@ public class TruckManager : MonoBehaviour
     {
         if(col.tag == "Destination" && col.gameObject.transform.parent.gameObject == dest)
         {
+            if(playEffect)
+            {
+                Instantiate(arriveEffect, col.gameObject.transform.position, new Quaternion(-1f,0,0,1));
+                playEffect = false;
+            }
             Debug.Log("Arrived");
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(false);
             networkHandler.SetArrivedStatus(true);
