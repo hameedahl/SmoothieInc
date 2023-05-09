@@ -208,6 +208,7 @@ public class MainMenu : MonoBehaviour
         if (!smoothieMusic.isPlaying)
         {
             smoothieMusic.Play();
+            audioMixer.SetFloat("TruckMaster", -80.00f);
         }
 
         isSmoothieTut = true;
