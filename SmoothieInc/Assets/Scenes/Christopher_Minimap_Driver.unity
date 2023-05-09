@@ -56696,11 +56696,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1050823676024713820, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3635440688235857747, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
       propertyPath: m_SortingOrder
-      value: 5
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4218586072002420812, guid: 4623692bfba544083b412ead3fb409ab, type: 3}
       propertyPath: m_RootOrder
