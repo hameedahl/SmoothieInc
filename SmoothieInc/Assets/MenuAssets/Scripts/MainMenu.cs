@@ -279,7 +279,7 @@ public class MainMenu : MonoBehaviour
         if (NetworkManager.Singleton.IsHost && clientId != NetworkManager.Singleton.LocalClientId)
         {
             StartHost();
-            mainGameController.StartGame(90.0f);
+            mainGameController.StartGame(210.0f);
         }
 
     }

@@ -55,11 +55,11 @@ public class MainGameController : MonoBehaviour
         WinText.gameObject.SetActive(false);
 
         gameTimes[0] = -1f;
-        gameTimes[1] = 90.0f;
-        gameTimes[2] = 90.0f;
-        gameTimes[3] = 90.0f;
-        gameTimes[4] = 75.0f;
-        gameTimes[5] = 60.0f;
+        gameTimes[1] = 210.0f;
+        gameTimes[2] = 180.0f;
+        gameTimes[3] = 120.0f;
+        gameTimes[4] = 90.0f;
+        gameTimes[5] = 75.0f;
     }
 
     // Update is called once per frame
