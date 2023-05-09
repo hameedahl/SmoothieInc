@@ -150,7 +150,7 @@ public class MainMenu : MonoBehaviour
             else
             {
                 joinCodeDisplay.SetActive(enable);
-                closeButton.SetActive(enable);
+                //closeButton.SetActive(enable);
                 drivingControls.SetActive(enable);
                 giveCodeDirections.SetActive(enable);
             }
@@ -162,7 +162,7 @@ public class MainMenu : MonoBehaviour
             joinCodeInputBox.SetActive(enable);
             joinButton.SetActive(enable);
             joinCodeDisplay.SetActive(enable);
-            closeButton.SetActive(enable);
+            //closeButton.SetActive(enable);
         }
     }
 
