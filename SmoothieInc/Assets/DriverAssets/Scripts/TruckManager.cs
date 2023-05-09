@@ -39,11 +39,15 @@ public class TruckManager : MonoBehaviour
         if(col.tag == "Destination" && col.gameObject.transform.parent.gameObject == dest)
         {
             Debug.Log("Arrived");
-            of.EnableCol();
             dest.transform.GetChild(0).gameObject.GetComponent<DropZone>().SetCurrent(false);
             networkHandler.SetArrivedStatus(true);
             drivernet.Arrive();
         }
+    }
+
+    public void EnableCol()
+    {
+        of.EnableCol();
     }
 
     // public IEnumerator WaitOrder()

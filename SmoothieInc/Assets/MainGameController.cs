@@ -85,6 +85,7 @@ public class MainGameController : MonoBehaviour
                     Destroy(GameObject.FindGameObjectWithTag("PlayerTray"));
                 }
                 winScreen.gameObject.SetActive(true);
+                truckManager.EnableCol();
                 accuracyText.text = playerScore + "%";  /* fill ui card */
                 calculateTime();
                 gameHandler.BestTime();
